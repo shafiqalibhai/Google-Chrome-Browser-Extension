@@ -1,0 +1,916 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Installation and upgrade of TYPO3</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGED" CONTENT="20100119;21255800">
+	<META NAME="CLASSIFICATION" CONTENT="doc_inst_upgr">
+	<META NAME="DESCRIPTION" CONTENT="The keywords help with categorizing and tagging of the manuals. You can combine two or more keywords and add additional keywords yourself. Please use at least one keyword from both lists.
+
+If your manual is NOT in english, see next tab &quot;language&quot;
+
+----
+forEditors (use this for editors / german &quot;Redakteure&quot;)
+forAdmins (use this for Administrators)
+forDevelopers (use this for Developers)
+
+forBeginners (manuals covering TYPO3 basics)
+forIntermediates (manuals going into more depth)
+forAdvanced (covering the most advanced TYPO3 topics)
+
+see more: http://wiki.typo3.org/doc_template#tags
+----">
+	<META NAME="KEYWORDS" CONTENT="forAdmins, forBeginners">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="language (en, de, fr, nl, dk, es, ... )" CONTENT="en">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Tahoma", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #69a550; text-align: left; text-decoration: none; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Tahoma", sans-serif; font-size: 20pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #666666; text-align: left; page-break-before: always }
+		H2.western { font-family: "Tahoma", sans-serif; font-size: 20pt; font-style: normal; font-weight: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0.1cm; color: #69a550; text-align: left; page-break-before: auto; page-break-after: auto }
+		H3.western { font-family: "Tahoma", sans-serif; font-size: 15pt; font-style: normal; font-weight: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #ff950e; text-align: left; page-break-before: auto; page-break-after: auto }
+		H4.western { font-family: "Tahoma", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		H5 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #b84747; text-align: left; page-break-before: auto; page-break-after: auto }
+		H5.western { font-family: "Arial", sans-serif; font-size: 9pt; font-style: normal }
+		H5.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H5.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { margin-bottom: 0.21cm; font-family: "Tahoma", sans-serif; font-size: 8pt; font-weight: normal; line-height: 100%; page-break-before: auto }
+		P.footer-cjk { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		P.footer-ctl { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		H2.contents-heading-western { color: #4c4c4c; font-family: "Tahoma", sans-serif; font-size: 16pt; font-style: normal; font-weight: normal }
+		H2.contents-heading-cjk { color: #4c4c4c; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #4c4c4c; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Courier New", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		A:link { color: #333366; text-decoration: none }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#333366" BGCOLOR="#ffffff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P CLASS="footer-western" ALIGN=LEFT STYLE="margin-bottom: 0.5cm; font-style: normal">
+	<IMG SRC="2_html_4f41537f.gif" ALIGN=LEFT><IMG SRC="2_html_3c9c2593.png" NAME="Grafik2" HSPACE=9 WIDTH=87 HEIGHT=21 BORDER=0>
+	<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Installation and upgrade of TYPO3</SDFIELD>
+	<SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+	</SPAN></SPAN><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_inst_upgr</SDFIELD></SPAN></SPAN><B>	</B><SPAN STYLE="font-weight: normal"></SPAN><SPAN STYLE="font-weight: normal">
+	</SPAN><SPAN STYLE="font-weight: normal">Trouble shooting</SPAN></P>
+</DIV>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" ALIGN=LEFT STYLE="page-break-before: auto; page-break-after: auto"><A NAME="1.Installation and upgrade of TYPO3|outline"></A>
+</SPAN><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Installation and upgrade of TYPO3</SDFIELD></H1>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Extension
+Key: <SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_inst_upgr</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Language:
+<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="language (en, de, fr, nl, dk, es, ... )">en</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Keywords:
+<SDFIELD TYPE=DOCINFO SUBTYPE=KEYS>forAdmins, forBeginners</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Copyright
+2000-2010, originally by <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+maintained by the DocTeam </FONT>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><A HREF="http://forge.typo3.org/projects/show/team-docteam">http://forge.typo3.org/projects/show/team-docteam</A></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+document is published under the Open Content License</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">available
+from http://www.opencontent.org/opl.shtml</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+content of this document is related to TYPO3 </FONT>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">-
+a GNU/GPL CMS/Framework available from www.typo3.org<BR></FONT><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm; font-weight: normal"><FONT SIZE=3><A HREF="#1.Installation and upgrade of TYPO3|outline">Installation
+	and upgrade of TYPO3	1</A></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.1.About this manual|outline">About
+	this manual	3</A></B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.2.The Install Tool|outline">The
+	Install Tool	4</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.1.Aimed to end newbee agony...|outline">Aimed
+	to end newbee agony...	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.2.Install Tool Password|outline">Install
+	Tool Password	4</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.3.Installing TYPO3 - Quick install|outline">Installing
+	TYPO3 - Quick install	5</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.1.Quick Install|outline">Quick
+	Install	5</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.2.Very Important:Changing Img Processing settings |outline">Very
+	Important:Changing Img Processing settings 	8</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.4.Installing TYPO3 - In-depth|outline">Installing
+	TYPO3 - In-depth	9</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.1.Which package and which fileformat_|outline">Which
+	package and which fileformat?	9</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.2..zip distribution|outline">.zip
+	distribution	9</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.3..tgz distribution|outline">.tgz
+	distribution	10</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.4.The folders|outline">The
+	folders	10</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.5.Using the source distribution effectively|outline">Using
+	the source distribution effectively	10</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.6.The upgrade advantage|outline">The
+	upgrade advantage	11</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.5.Upgrade TYPO3|outline">Upgrade
+	TYPO3	12</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.1.Philosophy|outline">Philosophy	12</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.2.Previews and new versions_|outline">Previews
+	and new versions?	12</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.3.Upgrade|outline">Upgrade	12</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.4.The “superadmin.php” script|outline">The
+	“superadmin.php” script	16</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.6.PHP Configuration|outline">PHP
+	Configuration	17</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.6.1.safe_mode and open_basedir|outline">safe_mode
+	and open_basedir	17</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.7.Trouble shooting|outline">Trouble
+	shooting	20</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.7.1.Cached files in typo3temp/|outline">Cached
+	files in typo3temp/	20</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.7.2.Possible problems with the cached files|outline">Possible
+	problems with the cached files	20</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.7.3.PHP caches, extension classes etc.|outline">PHP
+	caches, extension classes etc.	20</A></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.1.About this manual|outline"></A>About
+this manual</H2>
+<P CLASS="western">This manual should give you an introduction on how
+to install or upgrade your TYPO3 installation. It's meant for
+beginners with TYPO3 who will work as administrators for their
+projects.</P>
+<P CLASS="western">Hopefully this manual will help you. If you find
+errors, typos or just think there are things missing please file a
+bug report at bugs.typo3.org category Documentation. Thx!</P>
+<H2 CLASS="western"><A NAME="1.2.The Install Tool|outline"></A>The
+Install Tool</H2>
+<H3 CLASS="western"><A NAME="1.2.1.Aimed to end newbee agony...|outline"></A>
+Aimed to end newbee agony...</H3>
+<UL>
+	<LI><P CLASS="western">The Install Tool is provided in order to
+	simplify installation and bug-tracking.</P>
+</UL>
+<P CLASS="western">If you go to your fresh TYPO3 installation for the
+first time you will be automatically redirected to the install tool.
+If that for some reason does not work for you, you can enter the
+install tool directly via typing
+<A HREF="http://www.example.com/typo3/install">http://www.example.com/typo3/install.</A></P>
+<H3 CLASS="western"><A NAME="1.2.2.Install Tool Password|outline"></A>
+<SPAN ID="Rahmen1" DIR="LTR" STYLE="float: left; width: 13.85cm; height: 12.93cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_m19f5bc39.png" NAME="Grafik1" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+	1 The Install Tool</I></FONT></FONT></P>
+</SPAN><BR CLEAR=LEFT>Install Tool Password
+</H3>
+<P CLASS="western"><FONT COLOR="#ff0000">You must enter a password to
+access the install-tool. The password is set in localconf.php:</FONT></P>
+<P CLASS="western"><FONT COLOR="#ff0000">$TYPO3_CONF_VARS[&quot;BE&quot;][&quot;installToolPassword&quot;]
+= &quot;bacb98acf97e0b6112b1d1b650b84971&quot;;</FONT></P>
+<P CLASS="western">If you insert this line in localconf.php, the
+<FONT COLOR="#ff0000">password to the Install Tool is 'joh316'</FONT>.
+Changing the password can be done from inside the tool. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.3.Installing TYPO3 - Quick install|outline"></A>
+Installing TYPO3 - Quick install</H2>
+<H3 CLASS="western"><A NAME="1.3.1.Quick Install|outline"></A>Quick
+Install</H3>
+<P CLASS="western"><B>Note: </B>Quick Install allows you to configure
+the vital information for TYPO3 in three simple steps. It's meant for
+newbees and is automatically active if you download one of the
+zip-packages with complete sites. A “complete site” is a
+combination of the source-code and site-specific folders. Therefore
+this would <I>not</I> apply for the TYPO3 source-code archives but
+only such downloads as the testsite or other out-of-the-box TYPO3
+applications.</P>
+<H4 CLASS="western">1-2-3</H4>
+<OL>
+	<LI><P CLASS="western">Download the matching <B>package</B><SPAN STYLE="font-weight: normal">
+	for your requirements from </SPAN><A HREF="http://typo3.org/download/packages/"><SPAN STYLE="font-weight: normal">http://typo3.org/download/packages/</SPAN></A><SPAN STYLE="font-weight: normal">
+	(If you are not sure which package you should choose read the
+	section “Which package and which file format” in the in-depth
+	part of the manual).</SPAN></P>
+	<LI><P CLASS="western"><SPAN STYLE="font-weight: normal">Upload the
+	contents of this package to your webserver. </SPAN><B>Tip:</B><SPAN STYLE="font-weight: normal">
+	The package contains thousands of files, so if you're able to unzip
+	or untar the file on the server, better do that!</SPAN></P>
+	<LI><P CLASS="western"><SPAN STYLE="font-weight: normal">Create a
+	file called “</SPAN><B>ENABLE_INSTALL_TOOL</B><SPAN STYLE="font-weight: normal">”
+	in /path/to/your/site/typo3conf/ to enable the install tool.</SPAN></P>
+	<LI><P CLASS="western"><SPAN STYLE="font-weight: normal">Hit the
+	site with your browser and follow the Install Tool
+	(</SPAN><A HREF="http://www.example.com/typo3/install/index.php?mode=123&amp;step=1"><SPAN STYLE="font-weight: normal">http://www.example.com/typo3/install/index.php?mode=123&amp;step=1</SPAN></A><SPAN STYLE="font-weight: normal">).
+	The Install Tool will help you to 1) setup MySQL
+	username/password/database, 2) dump any default database content and
+	3) check the configuration of your PHP-installation for
+	compatibility. This is outlined below.</SPAN></P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">After the Install
+	Tool, <B>you should seriously consider to protect the folder
+	typo3/install/ with a password or simply delete the
+	ENABLE_INSTALL_TOOL file. The file gets deleted automatically after
+	1h.</B></P>
+</OL>
+<H4 CLASS="western"><B>The Install Tool</B></H4>
+<P CLASS="western">The Install Tool is located in 'typo3/install/'
+but should automatically start in “123”-mode with password
+'joh316' if you have not set up any database for the site. 
+</P>
+<P CLASS="western"><B>In other words, this is what you should see:</B></P>
+<H5 CLASS="western"><B>1: Enter the username and password to your
+MySQL database:</B></H5>
+<P CLASS="western"><IMG SRC="2_html_m251bb033.png" NAME="Grafik3" ALIGN=LEFT WIDTH=538 HEIGHT=401 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western"><B>2: Select the database (should be empty) or
+create a new by name:</B></H5>
+<H5 CLASS="western"><IMG SRC="2_html_m541bafed.png" NAME="Grafik4" ALIGN=LEFT WIDTH=669 HEIGHT=549 BORDER=0><BR CLEAR=LEFT></H5>
+<H5 CLASS="western">3: If everything is OK, continue to installation
+of the default dataset:</H5>
+<P CLASS="western"><IMG SRC="2_html_4119aab3.png" NAME="Grafik5" ALIGN=LEFT WIDTH=669 HEIGHT=435 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">4: If the database is empty (has zero tables),
+just click “import database” and the sql-file is dumped</H5>
+<P CLASS="western"><IMG SRC="2_html_2da0303f.png" NAME="Grafik6" ALIGN=LEFT WIDTH=535 HEIGHT=486 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">5: The mandatory setup is completed, but please
+remember to change the password of the Install Tool or take another
+appropriate action towards securing the tool.</H5>
+<P CLASS="western">Please consider to go into normal-mode with the
+Install Tool in order to verify all the details of the configuration.
+Especially the image generation software must be paid attention to! 
+</P>
+<P CLASS="western">Starting from version 4.1 TYPO3 uses InnoDB as
+database engine for several tables. This helps to prevent locks and
+increases performance. Also InnoDB is more crash-resistant compared
+to MyISAM. We recommend to review your MySQL configuration and to
+ensure that your table space has the &quot;autoexpand&quot; option
+enabled. See MySQL manual for more information about configuring
+InnoDB. If you do not have InnoDB enabled, MySQL will use MyISAM
+automatically and you don't need to take any actions.</P>
+<H3 CLASS="western"><A NAME="1.3.2.Very Important:Changing Img Processing settings |outline"></A>
+<FONT COLOR="#ff0000">Very Important:</FONT>Changing Img Processing
+settings 
+</H3>
+<P CLASS="western">When you change the settings for Image Processing
+(in normal mode) you <I>must </I>take into account that <U>old images</U>
+may still be in typo3temp/ folder and prevent new files from being
+generated! This is especially important to know, if you're trying to
+set up image processing for the very first time.</P>
+<P CLASS="western">The problem is solved by clearing the typo3temp/
+folder. Also make sure to clear the cache_pages table. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.4.Installing TYPO3 - In-depth|outline"></A>
+Installing TYPO3 - In-depth</H2>
+<H3 CLASS="western"><A NAME="1.4.1.Which package and which fileformat_|outline"></A>
+Which package and which fileformat?</H3>
+<P CLASS="western">TYPO3 is available in various “packages” and
+within each package normally a .zip or .tgz distribution (targeted at
+Windows- and Unix-server users respectively).</P>
+<P CLASS="western">Here are some examples:</P>
+<UL>
+	<LI><P CLASS="western"><B>typo3_src<BR><BR></B><SPAN STYLE="font-weight: normal">This
+	is the source files of the TYPO3 CMS which is mandatory in all TYPO3
+	systems</SPAN>. This is how the files might be named:</P>
+</UL>
+<P CLASS="western">	typo3_src-4.2.3.<B>tgz </B>(Contains “symlinks”,
+so download only for Unix servers where you are able to 				create
+symlinks!)</P>
+<P CLASS="western">	typo3_src-3.2.3.<B>zip</B>	(This is the the
+safe-bet to download if the tgz-file is not your cup of tea.
+					Works on both Unix and Windows servers, but contains a lot of
+redundant files.)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<UL>
+	<LI VALUE=1><P CLASS="western"><B>testsite<BR><BR></B><SPAN STYLE="font-weight: normal">The
+	testsite is a “complete site” with a lot of default content for
+	testing and learning. </SPAN><FONT COLOR="#ff0000"><SPAN STYLE="font-weight: normal">It's
+	advisable to download the testsite to test TYPO3.</SPAN></FONT><SPAN STYLE="font-weight: normal">
+	This is how the filenames might be:</SPAN></P>
+</UL>
+<P CLASS="western">	<FONT COLOR="#ff0000">testsite-3.8.0</FONT><FONT COLOR="#ff0000"><B>.zip</B></FONT><B>	</B><SPAN STYLE="font-weight: normal">(This
+is </SPAN><I><SPAN STYLE="font-weight: normal">both</SPAN></I><SPAN STYLE="font-weight: normal">
+the source </SPAN><I><SPAN STYLE="font-weight: normal">and</SPAN></I><SPAN STYLE="font-weight: normal">
+site-specific files and is ready to 					upload, unzip and run
+out-of-the-box! Please try this if you 						are a newbee! Can be
+used on both Unix and Windows servers)</SPAN></P>
+<UL>
+	<P CLASS="western">	testsite-3.8.0<B>.tgz	</B><SPAN STYLE="font-weight: normal">(This
+	does not contain the source files but only symlinks to the source
+	following the 	generally recommended practice of symlinks. This is
+	for experienced TYPO3 users only	</SPAN></P>
+</UL>
+<H3 CLASS="western">.zip distribution</H3>
+<P CLASS="western" STYLE="font-weight: normal">This is a
+out-of-the-box package for ftp-upload. It is integrated with a
+testsite that will help you to get started with TYPO3. It contains
+these files and folders:</P>
+<P CLASS="western" STYLE="font-weight: normal"><SPAN ID="Rahmen6" DIR="LTR" STYLE="float: left; width: 17.7cm; height: 7.36cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_m35962a8f.png" NAME="Grafik7" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+	2 Contents of testsite package</I></FONT></FONT></P>
+</SPAN><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">TYPO3 distributed folders and documents</H4>
+<P CLASS="western"><B>media/, t3lib/, tslib/, typo3/</B><SPAN STYLE="font-weight: normal">
+contains th</SPAN>e TYPO3 source-code, files, images and scripts
+distributed by<SPAN STYLE="font-weight: normal"> TYPO3. </SPAN>
+</P>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal"><B>index.php</B>
+is the main script for the website frontend (same as
+tslib/index_ts.php).</P>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal"><B>showpic.php</B>
+is a document used to display images on request (same as
+tslib/showpic.php).</P>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal"><B>clear.gif</B>
+is a 1x1 clear-pixel gif-file. Used many places.</P>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal">All
+these files are a part of TYPO3s core, you should never change them
+and you can write protect them if you like! They are the ones you
+must upgrade when you install a new version of TYPO3.</P>
+<P CLASS="western" STYLE="font-weight: normal"><I>Don't change any of
+these!</I></P>
+<H4 CLASS="western">Site specific folders and documents</H4>
+<P CLASS="western" STYLE="font-weight: normal"><B>fileadmin/ </B>contains
+files of your choice, local to the website. You can put templates,
+user uploads, external scripts, external html and images here. Also
+used to store uploaded files by default.</P>
+<P CLASS="western" STYLE="font-weight: normal"><B>typo3temp/</B>
+should be empty from the beginning. But gradually temporary files
+will appear here. The directory must be writeable.</P>
+<P CLASS="western" STYLE="font-weight: normal"><B>uploads/</B>
+contains folders used to store documents attached to database records
+- hence they should be writeable!</P>
+<P CLASS="western" STYLE="font-weight: normal"><B>typo3conf/</B>
+contains configuration for the local site, eg. localconf.php,
+extTables.php-files, user-defined modules, user-defined classes etc.</P>
+<P CLASS="western" STYLE="font-weight: normal"><B>typo3conf/localconf.php</B>
+contains local configuration for your site.</P>
+<H4 CLASS="western">Custom folders?</H4>
+<P CLASS="western" STYLE="font-weight: normal">Yes, just add whatever
+you like. Why not?</P>
+<H3 CLASS="western">.tgz distribution</H3>
+<P CLASS="western">The tgz distribution is the 'source code only' and
+is not accompanied with any testsite. It's also intended for
+Linux/UNIX filesystems because the .tgz-file contains relative
+symlinks. 
+</P>
+<P CLASS="western"><SPAN ID="Rahmen8" DIR="LTR" STYLE="float: left; width: 17.7cm; height: 6.05cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_674755be.png" NAME="Grafik9" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+	3 folders and files with arrow represent the symlinks</I></FONT></FONT></P>
+</SPAN><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The main point is - compared to the .zip
+distribution - that the source directory is stored once in the
+file-structure (possibly writeprotected) on the UNIX server and then
+every site using this TYPO3 version symlinks the proper folders to
+the source. Thus you save space because you avoid redundant files and
+get easy maintenance if you do it right. 
+</P>
+<H3 CLASS="western"><A NAME="1.4.4.The folders|outline"></A>The
+folders</H3>
+<P CLASS="western"><B>t3lib/, tslib/, tslib/media, and typo3/</B> are
+the main directories which should be symlinked to the actual website
+running TYPO3.</P>
+<P CLASS="western"><B>misc/</B> contains information from previous
+TYPO3 releases.</P>
+<P CLASS="western"><B>files in the root:</B> Documents related to the
+current release, eg. changelog.</P>
+<H3 CLASS="western"><A NAME="1.4.5.Using the source distribution effectively|outline"></A>
+Using the source distribution effectively</H3>
+<P CLASS="western">As I wrote the source distribution provides a
+minimum of space usage and maintenance if used intelligently. This is
+my suggestion:</P>
+<OL>
+	<LI><P CLASS="western">Extract the .tgz file somewhere on your
+	server</P>
+	<LI><P CLASS="western">From the directory holding the root-directory
+	of you site, create a symlink to the source folder. Call it
+	'typo3_src':</P>
+	<LI><P CLASS="western"><SPAN ID="Rahmen9" DIR="LTR" STYLE="float: left; width: 13.2cm; height: 6.93cm; border: none; padding: 0cm; background: #ffffff">
+		<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_7f4f6867.png" NAME="Grafik10" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+		4 Symlinks</I></FONT></FONT></P>
+	</SPAN><BR CLEAR=LEFT>Afterwards create links to the index.php file
+	and the t3lib and typo3 folder as shown in figure 8. Note that those
+	just link to the first created typo3_src link. (In most current
+	available packages these symlinks are included by default so you
+	just have to create / change the typo3_src link to your source
+	directory)
+	</P>
+</OL>
+<H3 CLASS="western"><A NAME="1.4.6.The upgrade advantage|outline"></A>
+The upgrade advantage</H3>
+<P CLASS="western">The advantages of this approach is apparently that
+when you wish to upgrade to a new TYPO3 version, you simply change
+one symlink and every distributed TYPO3 file is upgraded instantly -
+on as many sites as you like!</P>
+<H4 CLASS="western">Remember the Install Tool!</H4>
+<P CLASS="western">After switching the sources around <I>you have to
+</I>enter the Install Tool of every single site that is sharing the
+upgraded source and update any changes that are required in the
+database and clear the cache tables.</P>
+<H2 CLASS="western" STYLE="page-break-before: always"><A NAME="1.5.Upgrade TYPO3|outline"></A>
+Upgrade TYPO3</H2>
+<H3 CLASS="western"><A NAME="1.5.1.Philosophy|outline"></A>Philosophy</H3>
+<P CLASS="western">The intension is to make upgrades backwards
+compatible. But sometimes you may experience changes that affect your
+website. Normally the change is small, but always backup the database
+and files before an upgrade and possibly also test the upgrade on
+another server first.</P>
+<P CLASS="western">If you conform to the recommended
+database-structures and don't use custom tables.php-files, it should
+be quite easy to upgrade.</P>
+<H3 CLASS="western"><A NAME="1.5.2.Previews and new versions_|outline"></A>
+Previews and new versions?</H3>
+<P CLASS="western">Normally months passes by between new TYPO3
+versions are out. But in between there are often a lot of previews,
+every week sometimes! Or you can upgrade your source on a development
+server continuously from SVN. 
+</P>
+<P CLASS="western">So what's the difference and what can you expect
+from them?</P>
+<UL>
+	<LI><P CLASS="western">A “new version” is a new set of
+	“official” packages including the source as tgz/zip, the
+	testsite as tgz/zip, the dummy-tgz, the quickstart-zip etc. Such
+	packages will be announced on TYPO3.org and found for download at
+	http://www.typo3.org/download/.<BR>You can expect a “new version”
+	to be tested good enough for production sites. (Still, make sure to
+	read the <B>changelog</B> for “!!!” marked lines and the<B>
+	news.txt</B> and make a test upgrade on a separate server first to
+	make sure no changes affects your site negatively!)</P>
+	<LI><P CLASS="western">A “preview” is simply a tgz-snapshot of
+	todays work on TYPO3! You can normally expect these to work
+	perfectly, but their completeness is not guaranteed to the same
+	degree as with the “new versions”. The “previews” are
+	recommended to download and test and give feedback from. Previews
+	are usually separated into “alpha”, “beta” and “RC”
+	releases.</P>
+</UL>
+<H3 CLASS="western"><A NAME="1.5.3.Upgrade|outline"></A>Upgrade</H3>
+<P CLASS="western">When new versions of TYPO3 arrive, you should
+always follow any additional upgrade information carefully. You might
+also need to skim the included changelog to see if any features
+affects the way your site works (look for lines prepended with “!!!”
+- those are the really important!)</P>
+<P CLASS="western">Basically these steps are involved in updating
+your TYPO3 site:</P>
+<H4 CLASS="western">1: Backup</H4>
+<P CLASS="western">Make a backup of both uploads/ folder and
+database. Also you may prefer to upgrade a copy of your site first if
+there has been a lot of changes and some of them seems to interfere
+with your site. See the changelog.</P>
+<H4 CLASS="western">2: Install the new source</H4>
+<P CLASS="western">Upgrade the distributed source files to the new
+version. 
+</P>
+<P CLASS="western"><B>.tgz: </B>
+</P>
+<P CLASS="western">If you're using the source-distribution in the
+.tgz file, please see right above where details on symlinking is
+explained and replace your source directory with the new one.</P>
+<P CLASS="western"><B>.zip: </B>
+</P>
+<P CLASS="western">If you're using the .zip distribution, then
+download the zip source package and copy (and overwrite) it into your
+TYPO3 folder.</P>
+<H4 CLASS="western">3: Compare and Update the database</H4>
+<P CLASS="western">Enter the Install Tool at '.../typo3/install/' on
+your TYPO3 site. 
+</P>
+<P CLASS="western">(If you have password/access problems, please see
+the section about the Install Tool later in this document).</P>
+<P CLASS="western">Go to the “Database Analyser” section, check
+that the database configuration is correct. 
+</P>
+<P CLASS="western"><IMG SRC="2_html_m5134d8dd.png" NAME="Grafik8" ALIGN=LEFT WIDTH=590 HEIGHT=824 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then click “<B>COMPARE</B>” at the “<B>Update
+required tables</B>” header:</P>
+<P CLASS="western"><IMG SRC="2_html_6266651.png" NAME="Grafik11" ALIGN=LEFT WIDTH=669 HEIGHT=155 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now all ext_tables.sql files from core and
+extensions are read and compared to your current database tables and
+fields. Any discrepancies will be shown and you'll be able to execute
+queries sufficient to upgrade your database so it corresponds to the
+structure required for the new TYPO3 version.</P>
+<P CLASS="western"><B>Notice:</B> Be aware if you have deliberately
+added fields and/or tables to your TYPO3 database for your own
+purposes! Those tables and fields are removed only if you mark them
+to be deleted of course, but please be alert that you don't overlook
+them!</P>
+<P CLASS="western">Remove unused fields (and tables) if you wish and
+click “Write to database”</P>
+<P CLASS="western"><IMG SRC="2_html_12bb0058.png" NAME="Grafik13" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">On the next screen you'll see that all add and
+changed fields are done properly since they don't show up again.
+However the fields and tables we chose to drop were renamed first.
+Now you can consider to let them be and delete them lateron when
+you're sure you're not going to need them. Or you can just go on drop
+them finally.</P>
+<P CLASS="western"><IMG SRC="2_html_m654cfe23.png" NAME="Grafik14" ALIGN=LEFT WIDTH=434 HEIGHT=138 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Finally, you should see this:</P>
+<H4 CLASS="western"><IMG SRC="2_html_m56c0894e.png" NAME="Grafik12" ALIGN=LEFT WIDTH=669 HEIGHT=73 BORDER=0><BR CLEAR=LEFT><BR>CAUTION!</H4>
+<P CLASS="western">You may have added your own fields to the database
+tables or you may have added tables on your own. <B>Don't delete
+those (of course)!</B></P>
+<P CLASS="western">If you're smart, you name user defined tables and
+fields prefixed “user_”. Then they'll show up with a little
+warning icon, so you can easier distinguish them from fields and
+tables which should be dropped. (see Figure 11)</P>
+<P CLASS="western">Tables that are defined in extensions will
+automatically be managed and you don't have to care about them. They
+are respected fully.</P>
+<H4 CLASS="western">4: Install the new static tables and description
+tables</H4>
+<P CLASS="western">The table 'static_template' (and some other
+“static_” tables) contains information that you should never
+alter yourself. The point is that this tables contains static
+information distributed with TYPO3 releases. Follow these steps to
+upgrade the table with the newest information.</P>
+<P CLASS="western">Go to the “Database Analyser” section.</P>
+<P CLASS="western">Then click “<B>IMPORT</B>” at the “<B>Dump
+static data</B>” header:</P>
+<P CLASS="western"><IMG SRC="2_html_2922624c.png" NAME="Grafik16" ALIGN=LEFT WIDTH=669 HEIGHT=162 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then tick the check box “Import the whole
+file...” and click “Write to database”:</P>
+<P CLASS="western"><IMG SRC="2_html_63b5b10f.png" NAME="Grafik15" ALIGN=LEFT WIDTH=669 HEIGHT=200 BORDER=0><BR CLEAR=LEFT>...
+and you should see (something like) this without errors:</P>
+<H4 CLASS="western"><IMG SRC="2_html_m5be9e0c8.png" NAME="Grafik17" ALIGN=LEFT WIDTH=669 HEIGHT=138 BORDER=0><BR CLEAR=LEFT>5:
+Clear cache-tables, typo3temp/ if needed, clear user-settings if
+needed.</H4>
+<P CLASS="western">You should always clear the cache-tables. 
+</P>
+<P CLASS="western">You might also consider clearing the backend user
+preferences if something in the upgrade requires this. Everything can
+be done from the Install Tool.</P>
+<H4 CLASS="western">6: Remove “temp_CACHED_” files in typo3conf/
+dir</H4>
+<P CLASS="western">In typo3conf/ you will most likely find cached
+files for ext_localconf.php and ext_tables.php files from extensions.
+These must be removed as well. 
+</P>
+<P CLASS="western"><B>So all files in typo3conf/ directory which are
+named “temp_CACHED_*_ext_localconf.php” or
+“temp_CACHED_*_ext_tables.php” must be removed!</B></P>
+<P CLASS="western">An easy way to clear these files are pressing the
+link on the top right side in the backend when logged in as admin
+user:</P>
+<P CLASS="western"><IMG SRC="2_html_110c8a0c.png" NAME="Grafik18" ALIGN=LEFT WIDTH=200 HEIGHT=99 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">However, if you see
+more than two of these “temp_CACHED_” files in typo3conf/ only
+two of them will be removed by this method and you have to<I> </I>remove
+the rest with either the superadmin.php script, the “<B>extdeveval</B>”
+extension or manually!</P>
+<H4 CLASS="western">7: Check the Changelog and NEWS.txt</H4>
+<P CLASS="western">Look through the changelog and the NEWS.txt file
+in your TYPO3 root folder. It's a good place to get an idea about new
+functions you might need or be interested in.</P>
+<P CLASS="western">Especially pay attention to the lines starting
+with “!!!”. They are important because they are about changes
+that may affect some websites.</P>
+<H3 CLASS="western"><A NAME="1.5.4.The “superadmin.php” script|outline"></A>
+The “superadmin.php” script</H3>
+<P CLASS="western">In the folder “misc/” of the core you will
+find “superadmin.php” script. You can read inside how to use it.
+I will just mention it here because it is an indispensable tool when
+you want to upgrade many sites located in subfolders on the same
+level in the file system and which all shared the same source.</P>
+<P CLASS="western">As the screenshot below shows you enter the
+“UPDATE” section of the tool. This will show you a list in the
+left frame of the sites that has been found on your server. Then you
+simply click all the links there from top-down and they will take you
+directly to the 4-5 mandatory steps involved in upgrading:</P>
+<UL>
+	<LI><P CLASS="western">Clearing the extension cache files of
+	typo3conf/</P>
+	<LI><P CLASS="western">Upgrading database tables structure</P>
+	<LI><P CLASS="western">Importing static table data (that might have
+	been updated)</P>
+	<LI><P CLASS="western">Clearing cache tables</P>
+	<LI><P CLASS="western">Possibly, logging in in the backend.</P>
+</UL>
+<P CLASS="western">The “superadmin.php” tool also features
+statistics that are nice for administrators including shortcuts to
+admin logins. 
+</P>
+<P CLASS="western"><B>However it is a highly dangerous tool if you
+leave it unprotected on the server!!! Don't mess with the security of
+this baby! Protect it good, preferably insert an “exit;” 
+statement in the top when not used and put a .htaccess password on
+its folder!</B></P>
+<H2 CLASS="western"><A NAME="1.6.PHP Configuration|outline"></A>PHP
+Configuration</H2>
+<H3 CLASS="western"><A NAME="1.6.1.safe_mode and open_basedir|outline"></A>
+safe_mode and open_basedir</H3>
+<H4 CLASS="western">Introduction</H4>
+<P CLASS="western">The PHP settings “safe_mode” and
+“open_basedir” seems to be popular ways for ISPs to configure
+their public servers. The point is to prevent customers from peeking
+in and changing each others PHP applications. This is good of course
+but can make systems like TYPO3 choke on certain features.</P>
+<P CLASS="western">This section tries to describe some experiences
+with safe_mode and open_basedir. I (kasper) am not an expert in this
+but at least this is my findings on these issues. It all applies and
+was tested with TYPO3 version 3.6.0</P>
+<H5 CLASS="western">php.ini configuration</H5>
+<PRE CLASS="western">;
+; Safe Mode
+;
+<B>safe_mode = On</B>
+
+; By default, Safe Mode does a UID compare check when
+; opening files. If you want to relax this to a GID compare,
+; then turn on safe_mode_gid.
+safe_mode_gid = Off
+
+; When safe_mode is on, UID/GID checks are bypassed when
+; including files from this directory and its subdirectories.
+; (directory must also be in include_path or full path must
+; be used when including)
+safe_mode_include_dir =                                                          
+
+; When safe_mode is on, only executables located in the safe_mode_exec_dir
+; will be allowed to be executed via the exec family of functions.
+<B>safe_mode_exec_dir = /www/htdocs/smexec/</B>
+
+; open_basedir, if set, limits all file operations to the defined directory
+; and below.  This directive makes most sense if used in a per-directory
+; or per-virtualhost web server configuration file. This directive is
+; *NOT* affected by whether Safe Mode is turned On or Off.
+<B>open_basedir = /www/htdocs/typo3/</B>
+</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The settings above is what I have tested with.
+This are some consequences:</P>
+<UL>
+	<LI><P CLASS="western"><B>Script permissions:</B> When “safe_mode”
+	is on, <I>all</I> scripts and files <I>must </I>be owned by the same
+	user as the PHP script is executed as! Generally this seems to cause
+	trouble for people, but TYPO3 cannot be changed to internally to
+	make this better - you have to fix the script ownerships.<BR>One
+	possibility is if “safe_mode_gid” is “On” - then only the
+	group membership is required to match the one of the PHP-script
+	execution user.</P>
+	<LI><P CLASS="western"><B>Working inside site root:</B>
+	“open_basedir” means that PHP cannot read/write files outside of
+	the directory configured, in this case “/www/htdocs/typo3/”.
+	TYPO3 in versions starting with 3.6.0 has been fixed so all file
+	operations on temporary files goes on inside the typo3temp/ folder
+	and never the “/tmp/” folder on the system. So this should not
+	cause trouble.</P>
+	<LI><P CLASS="western"><B>External programs: “safe_mode_exec_dir”
+	</B>ImageMagick, diff, unzip, tar, pdftotext and whatever external
+	programs are used by TYPO3 must be found in this folder (or have
+	symlinks in there!). It seems like PHP allows to use some “virtual
+	path” a la “/usr/local/php/bin” as an “alias” for this
+	path.</P>
+</UL>
+<P CLASS="western">Anyways, my experiences follows next.</P>
+<H4 CLASS="western">Experiences</H4>
+<P CLASS="western">Generally, everything in TYPO3 can work under
+safe_mode and open_basedir as long as the script permissions are
+correct. Notice, this is <I>not</I> something TYPO3 can do better or
+worse; for a working TYPO3 system there must be access to writing
+files and directories in the filesystem and this is done by plain PHP
+functions. 
+</P>
+<H5 CLASS="western">safe_mode</H5>
+<P CLASS="western">In my case my webserver runs as the user
+“www-data” and I'm editing scripts with the user “agentk”. In
+order to make this work seemlessly I follow this permission scheme:</P>
+<UL>
+	<LI><P CLASS="western">agentk is a member of the group “www-data”
+	and “www-data” is a member of group “agentk”</P>
+	<LI><P CLASS="western">All files are owned by “agentk” and group
+	is “www-data” - or vice versa. If you have a single user as
+	owner/group on scripts they may not be able to access files and
+	folders owned by the other user. In other words, even if you set
+	“safe_mode_gid” to “on” PHP scripts with ownership
+	“agentk.agentk” cannot access any file with ownership
+	“www-data.www-data” <I>even </I>if “agentk” and “www-data”
+	is included in the group of the other.</P>
+	<LI><P CLASS="western">All files and directories that require write
+	access has the permission 775 so the group can write.</P>
+</UL>
+<H5 CLASS="western">open_basedir</H5>
+<P CLASS="western">If this setting is set you should not experience
+any problems but you will probably not be able to mount paths outside
+of this path. TYPO3 is in fact able to mount any filepath on the
+server but by this setting that will be prevented effective; all you
+can do is relative operations, which should be OK for most cases.</P>
+<H5 CLASS="western">safe_mode_exec_dir</H5>
+<P CLASS="western">In my settings this was “/www/htdocs/smexec/”
+and inside of this directory on my Linux box I put symlinks to
+various programs that TYPO3 uses. You should/can do the same on your
+system:</P>
+<PRE CLASS="western">drwxr-xr-x    2 root     root         4096 Jan 28 18:43 ./
+drwxr-xr-x   18 httpd    httpd        4096 Jan 28 17:27 ../
+lrwxrwxrwx    1 root     root           22 Jan 28 17:29 combine -&gt; /usr/X11R6/bin/combine*
+lrwxrwxrwx    1 root     root           22 Jan 28 17:29 convert -&gt; /usr/X11R6/bin/convert*
+lrwxrwxrwx    1 root     root           23 Jan 28 17:29 identify -&gt; /usr/X11R6/bin/identify*
+lrwxrwxrwx    1 root     root           13 Jan 28 18:15 diff -&gt; /usr/bin/diff*
+lrwxrwxrwx    1 root     root            8 Jan 28 18:19 tar -&gt; /bin/tar*
+lrwxrwxrwx    1 root     root           14 Jan 28 18:28 unzip -&gt; /usr/bin/unzip*
+lrwxrwxrwx    1 root     root           16 Jan 28 18:21 pdfinfo -&gt; /usr/bin/pdfinfo*
+lrwxrwxrwx    1 root     root           18 Jan 28 18:21 pdftotext -&gt; /usr/bin/pdftotext*
+-rwxr-xr-x    1 3764     users      307841 Jan  7 08:36 tidy*
+</PRE><P CLASS="western">
+The point is that TYPO3 is allowed to execute external binaries <I>only</I>
+if found in this folder! The symlink is enough, you don't have to
+actually move the programs.</P>
+<P CLASS="western">Theoretically you should now set up paths to the
+programs in TYPO3 but it turns out that <I>any</I> path you apply in
+front of the filename of a binary you try to call with exec() in PHP
+will have its path <I>stripped off</I> and the “safe_mode_exec_dir”
+applied instead! This means that you don't have to worry about paths
+- just make sure all your applications are symlinked in there. (And
+you cannot put them in sub-folders to “safe_mode_exec_dir”!)</P>
+<H5 CLASS="western">About ISPs and ImageMagick et al</H5>
+<P CLASS="western">It seems that exactly this setting
+(safe_mode_exec_dir) makes it possible for ISPs to offer ImageMagick
+(and the other applications) to their customers without compromising
+safety. What they simply do is to install the applications on the
+server, then in the “safe_mode_exec_dir” that applies to their
+customers they put symlinks to these applications. See the listing
+above.</P>
+<P CLASS="western">If you have an ISP which do not know how to help
+you overcome this problem, try to show him this description and that
+might help him to understand how easy it will be.</P>
+<H5 CLASS="western">Writing Apache-style log files with “safe_mode”</H5>
+<P CLASS="western">When you have configured TYPO3 to write to
+Apache-style log files you will see it fail with “safe_mode”
+since the “echo” command on Unix cannot be executed to add a new
+line to the log.</P>
+<P CLASS="western">This can easily be fixed (and should work on
+Windows as well!) by simply setting this new configuration directive:</P>
+<PRE CLASS="western">$GLOBALS['TYPO3_CONF_VARS']['FE']['logfile_write'] = 'fputs';</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">External binaries requested by TYPO3</H4>
+<P CLASS="western">Talking about safe_mode_exec_dir - this is the
+list of programs that the core of TYPO3 wants to have (or have
+symlinks to) in the “safe_mode_exec_dir”. Of course this is also
+true for non-safe_mode systems;</P>
+<H5 CLASS="western">“combine”, “convert” and “identify”</H5>
+<P CLASS="western">These are “ImageMagick” that TYPO3 uses to
+scale images. For a long time version 4.2.9 has been recommended and
+preferred but don't go to the end of the world for this! Today all
+recent versions of ImageMagick 5 seems to work as well although they
+require some configuration in TYPO3s Install Tool to generate all
+output correctly.</P>
+<P CLASS="western"><B>This is how my Install Tool found these files
+after symlinking:</B></P>
+<P CLASS="western"><SPAN ID="Rahmen18" DIR="LTR" STYLE="float: left; width: 10.36cm; height: 3.37cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_m27bab655.png" NAME="Grafik19" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+	5</I></FONT></FONT></P>
+</SPAN><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">“tar” and “unzip”</H5>
+<P CLASS="western">Used when you click the icon of a “.tar” or
+“.zip” file in the Filelist module and select “Info”. In the
+“View Item” box you will see the list of files inside if these
+are present:</P>
+<P CLASS="western"><SPAN ID="Rahmen19" DIR="LTR" STYLE="float: left; width: 17.7cm; height: 10.7cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="2_html_m16bfe5ba.png" NAME="Grafik20" ALIGN=LEFT WIDTH=100% BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000"><FONT SIZE=2><I>Figure
+	6</I></FONT></FONT></P>
+</SPAN><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">“tidy”</H5>
+<P CLASS="western">A program that can be used to clean up the
+frontend output code from TYPO3. Can be configured with
+$TYPO3_CONF_VARS['FE']['tidy'] and other options.</P>
+<H5 CLASS="western">“pdftotext” and “pdfinfo”</H5>
+<P CLASS="western">Not used by the core by the “indexed_search”
+extension. Also “catdoc” is used. But there could be others. In
+any case; they have to be in the “safe_mode_exec_dir” if they are
+used by TYPO3!</P>
+<H5 CLASS="western">“cp”,”mv”,”rm”</H5>
+<P CLASS="western">In the old days TYPO3 used “cp” for copying
+files and “mv” for moving or renaming and “rm” for deleting
+files. 
+</P>
+<P CLASS="western">First of all the PHP-equivalents are always used
+on Windows. On UNIX PHP-functions will be used if
+$GLOBALS['TYPO3_CONF_VARS']['BE']['usePHPFileFunctions']; is set true
+which it is by default.</P>
+<P CLASS="western">For the completeness of this list I just mention
+these applications. You probably don't have to think more about this
+now.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.7.Trouble shooting|outline"></A>Trouble
+shooting</H2>
+<H3 CLASS="western"><A NAME="1.7.1.Cached files in typo3temp/|outline"></A>
+Cached files in typo3temp/</H3>
+<P CLASS="western">Generally you should know that TYPO3 generates
+temporary “cached” scripts in typo3conf/. Those would look like
+these:</P>
+<PRE CLASS="western">-rw-r--r--   1 www-data   www-data   61555  2009-08-11 16:28   temp_CACHED_ps3f58_ext_localconf.php
+-rw-r--r--   1 www-data   www-data   81995  2009-08-11 16:28   temp_CACHED_ps3f58_ext_tables.php
+-rw-r--r--   1 www-data   www-data   47098  2009-08-11 16:28   temp_CACHED_FE_ps3f58_ext_localconf.php
+-rw-r--r--   1 www-data   www-data   45517  2009-08-11 16:28   temp_CACHED_FE_ps3f58_ext_tables.php
+</PRE><P CLASS="western">
+The temp_CACHED_FE* files have been introduced in TYPO3 v4.3. 
+</P>
+<P CLASS="western">You can experience more than these files. In that
+case it will be because of multiple paths, symlinks or just old
+files. 
+</P>
+<P CLASS="western">You can at any time remove these files and on the
+next hit to the system they will be re-written. These files simply
+contains all ext_tables.php and ext_localconf.php files from the
+installed extensions concatenated in the order they are loaded.
+Therefore including one of these files would be the same as including
+potentially hundred PHP-files and that saves some milliseconds for
+the system.</P>
+<P CLASS="western">The &quot;temp_CACHED_FE&quot; files contain only
+the ext_tables.php and ext_localconf.php files from those extensions
+which are needed to render frontend output. Since these files are
+smaller than the temp_CACHED files with all extensions configuration
+this should save some additional milliseconds. 
+</P>
+<P CLASS="western">But it also means that a) you can never make any
+local changes to these files since they can at anytime be removed and
+recreated from the “originals” and b) <I>if you make changes</I>
+to the original “ext_tables.php”/”ext_localconf.php” files
+you will have to clear these files away!</P>
+<H3 CLASS="western"><A NAME="1.7.2.Possible problems with the cached files|outline"></A>
+Possible problems with the cached files</H3>
+<H4 CLASS="western">Changing absolute paths to TYPO3</H4>
+<P CLASS="western">if you change the path of the TYPO3 installation
+you might see something like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><B>Warning</B>: Unable to access /www/htdocs/typo3/32/testsite-3.6.0/typo3conf//www/htdocs/typo3/32/testsite-3.6.0/admindir/sysext/cms/tbl_cms.php in <B>/www/htdocs/typo3/32/typo3_src-3.6.0RC1/t3lib/class.t3lib_div.php</B> on line <B>2745</B><BR><BR><B>Warning</B>: Unable to access /www/htdocs/typo3/32/testsite-3.6.0/typo3conf//www/htdocs/typo3/32/testsite-3.6.0/admindir/sysext/cms/tbl_cms.php in <B>/www/htdocs/typo3/32/typo3_src-3.6.0RC1/t3lib/class.t3lib_div.php</B> on line <B>2745</B><BR><BR><B>Warning</B>: Failed opening '/www/htdocs/typo3/32/testsite-3.6.0/typo3conf//www/htdocs/typo3/32/testsite-3.6.0/admindir/sysext/cms/tbl_cms.php' for inclusion (include_path='.:/usr/local/lib/php') in <B>/www/htdocs/typo3/32/typo3_src-3.6.0RC1/t3lib/class.t3lib_div.php</B> on line <B>2745</B><BR><BR>....</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">That will go on for pages. The problem is that
+absolute file paths are hard coded inside the files.</P>
+<P CLASS="western"><B>Fix:</B> Manually remove the temp_CACHED_*.php
+files manually via FTP or the file system. Then hit the page again.</P>
+<H4 CLASS="western">Changing the TYPO3 admin dir, “typo3/”</H4>
+<P CLASS="western">Same problem as above. Solve in the same way.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western"><A NAME="1.7.3.PHP caches, extension classes etc.|outline"></A>
+PHP caches, extension classes etc.</H3>
+<P CLASS="western">There are some situations known which can cause
+what looks like totally illogical problems after an upgrade:</P>
+<UL>
+	<LI><P CLASS="western">If extensions override classes where
+	functions have changed. <BR><B>Solution</B>; try to disable
+	extensions and enable them one by one again till it fails.</P>
+	<LI><P CLASS="western">If a PHP-cache somehow fails to re-cache
+	scripts, in particular if a change happened to a parent class
+	overridden by a child class which was not updated. <BR><B>Solution</B>;
+	remove ALL cached PHP files (for PHP-Accelerator, remove
+	&quot;/tmp/phpa_*&quot;) and restart Apache.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>1</SDFIELD></P>
+</DIV>
+</BODY>
+</HTML>

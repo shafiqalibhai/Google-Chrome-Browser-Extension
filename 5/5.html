@@ -1,0 +1,2517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>TypoScript Syntax and In-depth Study</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Michael Stucki">
+	<META NAME="CHANGED" CONTENT="20081201;1172400">
+	<META NAME="CLASSIFICATION" CONTENT="doc_core_ts">
+	<META NAME="KEYWORDS" CONTENT="typoscript, syntax, forAdmins, forIntermediates">
+	<META NAME="Author" CONTENT="TYPO3 Core Development Team">
+	<META NAME="Email" CONTENT="info@typo3.org">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="language (en, de, fr, nl, dk, es, ... )" CONTENT="en">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Tahoma", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #69a550; text-align: left; text-decoration: none; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Tahoma", sans-serif; font-size: 20pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #666666; text-align: left; page-break-before: always }
+		H2.western { font-family: "Tahoma", sans-serif; font-size: 20pt; font-style: normal; font-weight: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0.1cm; color: #69a550; text-align: left; page-break-before: auto; page-break-after: auto }
+		H3.western { font-family: "Tahoma", sans-serif; font-size: 15pt; font-style: normal; font-weight: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #ff950e; text-align: left; page-break-before: auto; page-break-after: auto }
+		H4.western { font-family: "Tahoma", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		H5 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #b84747; text-align: left; page-break-before: auto; page-break-after: auto }
+		H5.western { font-family: "Arial", sans-serif; font-size: 9pt; font-style: normal }
+		H5.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H5.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { margin-bottom: 0.21cm; font-family: "Tahoma", sans-serif; font-size: 8pt; font-weight: normal; line-height: 100%; page-break-before: auto }
+		P.footer-cjk { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		P.footer-ctl { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Tahoma", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Tahoma", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		H2.contents-heading-western { color: #4c4c4c; font-family: "Tahoma", sans-serif; font-size: 16pt; font-style: normal; font-weight: normal }
+		H2.contents-heading-cjk { color: #4c4c4c; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #4c4c4c; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Courier New", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		A:link { color: #333366; text-decoration: none }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#333366" BGCOLOR="#ffffff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P CLASS="footer-western" ALIGN=LEFT STYLE="margin-bottom: 0.5cm; font-style: normal">
+	<IMG SRC="5_html_4f41537f.gif" ALIGN=LEFT><IMG SRC="5_html_3c9c2593.png" NAME="Grafik2" HSPACE=9 WIDTH=87 HEIGHT=21 BORDER=0>
+	<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript Syntax and In-depth Study</SDFIELD>
+	<SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+	</SPAN></SPAN><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_ts</SDFIELD></SPAN></SPAN><B>	</B><SPAN STYLE="font-weight: normal"></SPAN><SPAN STYLE="font-weight: normal">
+	</SPAN><SPAN STYLE="font-weight: normal">The TypoScript parser  API</SPAN></P>
+</DIV>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H1 CLASS="western" ALIGN=LEFT STYLE="page-break-before: auto; page-break-after: auto"><A NAME="1.TypoScript Syntax and In-depth Study|outline"></A>
+</SPAN><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript Syntax and In-depth Study</SDFIELD></H1>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Extension
+Key: <SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_ts</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Language:
+<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="language (en, de, fr, nl, dk, es, ... )">en</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Keywords:
+<SDFIELD TYPE=DOCINFO SUBTYPE=KEYS>typoscript, syntax, forAdmins, forIntermediates</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Copyright
+2000-2008, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">TYPO3 Core Development Team</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">info@typo3.org</SDFIELD>&gt;</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+document is published under the Open Content License</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">available
+from http://www.opencontent.org/opl.shtml</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+content of this document is related to TYPO3 </FONT>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">-
+a GNU/GPL CMS/Framework available from www.typo3.org<BR></FONT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Revised
+for TYPO3 4.2, November 2008</FONT></P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm; font-weight: normal"><FONT SIZE=3><A HREF="#1.TypoScript Syntax and In-depth Study|outline">TypoScript
+	Syntax and In-depth Study	1</A></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.1.Introduction|outline">Introduction	3</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.1.What is TypoScript_|outline">What
+	is TypoScript?	3</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.2.TypoScript syntax, object paths, objects and properties|outline">TypoScript
+	syntax, object paths, objects and properties	3</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.2.Syntax|outline">Syntax	5</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.1.Introduction|outline">Introduction	5</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.2.TypoScript Syntax|outline">TypoScript
+	Syntax	5</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.3.Conditions|outline">Conditions	9</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.4.Includes|outline">Includes	12</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.3.Sorting out details|outline">Sorting
+	out details	13</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.1.More about syntax, semantics and TypoScript compared to XML and XSLT|outline">More
+	about syntax, semantics and TypoScript compared to XML and XSLT	13</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.2.Where is TypoScript used_|outline">Where
+	is TypoScript used?	13</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.3.Entering TypoScript|outline">Entering
+	TypoScript	15</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.4.Parsing, Storing and Executing TypoScript|outline">Parsing,
+	Storing and Executing TypoScript	16</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.5.Syntax highlighting and debugging|outline">Syntax
+	highlighting and debugging	17</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.6.Myths, FAQ and Acknowledgements|outline">Myths,
+	FAQ and Acknowledgements	20</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.4.The TypoScript parser  API|outline">The
+	TypoScript parser  API	22</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.1.Introduction|outline">Introduction	22</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.2.Parsing custom TypoScript|outline">Parsing
+	custom TypoScript	22</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.3.Implementing Conditions|outline">Implementing
+	Conditions	24</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.4.Implementing Conditions II|outline">Implementing
+	Conditions II	27</A></P>
+</MULTICOL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.1.Introduction|outline"></A>Introduction</H2>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Actually
+this document should have been much much shorter - after all the
+TypoScript <I>syntax</I> can be defined in a few lines. However
+TypoScript has a history of confusing people and therefore this
+introductory chapter has been dedicated to clearly define what
+TypoScript is so you can be sure to have the right perception.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">My
+recommendation is that you at least read the next section “What is
+TypoScript?” and then you can proceed to the chapter “Syntax”
+and read that. If you are at any time confused about the concept of
+TypoScript please make sure to come back and read the introduction to
+the end! </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">If
+you are confused already, please don't skip anything. Better safe
+than sorry.</FONT></P>
+<H3 CLASS="western"><A NAME="1.1.1.What is TypoScript_|outline"></A>What
+is TypoScript?</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Since
+people are generally confused about what TypoScript (TS) is, where it
+can be used and has a tendency to think of it as something complex
+this document has been written to clearly explain these issues. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">First
+lets start with some basic truths:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+	is a <I>syntax</I> for defining information in a hierarchical
+	structure using simple ASCII text content.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+means that:</FONT></P>
+<UL>
+	<LI VALUE=1><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+	itself does not &quot;do&quot; anything - it just contains
+	information. </FONT>
+	</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+	is <I>only</I> transformed into function when it is passed to a
+	program which is designed to act according to the information in a
+	TypoScript information structure.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+strictly speaking TypoScript has no function in itself, only when
+used in a certain context. Since the context is almost always to
+<I>configure</I> something you can often understand TypoScript as
+<I>parameters </I><SPAN STYLE="font-style: normal">(or function
+arguments) passed to a function </SPAN>which acts accordingly (eg.
+&quot;background_color = red&quot;). And on the contrary you will
+probably never see TypoScript used to store information like a
+database of addresses - you would use XML or SQL for that.</FONT></P>
+<H4 CLASS="western">PHP arrays</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+scope of its use you can also understand TypoScript as a non-strict
+way to enter information into a <I>multidimensional array</I>. In
+fact when TypoScript is parsed that means it is <I>transformed into a
+PHP array</I>! So when would you define static information in PHP
+arrays? You would do that in configuration files - but probably not
+build your address database!</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+can be summarized as follows:</FONT></P>
+<UL>
+	<LI VALUE=1><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">When
+	TypoScript is <I>parsed</I> it means that the information is
+	transformed into a <I>PHP array</I> from where TYPO3 applications
+	can access it.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+	the <I>same</I> information<SPAN STYLE="font-style: normal"> could
+	in fact </SPAN>be defined in TypoScript <I>or directly </I>in PHP;
+	but the syntax would be different for the two of course.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+	offers convenient features which is the reason why we don't just
+	define the information directly with PHP syntax into arrays. These
+	features include a relaxed handling of syntax errors, definition of
+	values with less language symbols needed and the ability of using an
+	object/property metaphor etc.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">For
+more details see the bottom of the next page.</FONT></P>
+<H3 CLASS="western"><A NAME="1.1.2.TypoScript syntax, object paths, objects and properties|outline"></A>
+TypoScript syntax, object paths, objects and properties</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">See,
+that is what this document is about - the <I>syntax </I>of
+TypoScript; the rules you must obey in order to store information in
+this structure. Obviously I'll not explain the full syntax here but
+just give an example to convey the idea.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Remember
+it is about storing information, so think about TypoScript as
+<I>assigning values to variables</I>: The &quot;variables&quot; are
+called &quot;object paths&quot; because TypoScript easily lends
+itself to the metaphor of &quot;objects&quot; and &quot;properties&quot;.
+This has some  advantages as we shall see but at the same time
+TypoScript is designed to allow a very simple and straight forward
+assignment of values; simply by using the equal-sign as an operator:</FONT></P>
+<PRE CLASS="western">	asdf = qwerty</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Now
+the object path &quot;asdf&quot; contains the value &quot;qwerty&quot;.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Another
+example:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western">	asdf.zxcvbnm = uiop
+	asdf.backgroundColor = blue</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Now
+the object path &quot;asdf.zxcvbnm&quot; contains the value &quot;uiop&quot;
+and &quot;asdf.backgroundColor&quot; contains the value &quot;blue&quot;.
+According to <I>the syntax</I> of TypoScript this could also have
+been written more comfortably as:</FONT></P>
+<PRE CLASS="western">	asdf {
+	  zxcvbnm = uiop
+	  backgroundColor = blue
+	}</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">What
+happend here is that we broke down the full <I>object path</I>,
+&quot;asdf.zxcvbnm&quot; into its components &quot;asdf&quot; and
+&quot;zxcvbnm&quot; which are separated by a period, &quot;.&quot;,
+and then we used the curly brace operators, { and } , to bind them
+together again. To describe this relationship of the components of an
+<I>object path</I> we normally call &quot;asdf &quot; <I>the object</I>
+and &quot; zxcvbnm &quot; <I>the property</I> of that object.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+although the terms <I>objects</I> and <I>properties</I> normally hint
+at some context (semantics) we may also use them purely to describe
+the various parts of an object path without considering the context
+and meaning. Consider this:</FONT></P>
+<PRE CLASS="western">	asdf {
+	  zxcvbnm = uiop
+	  backgroundColor = blue
+	  backgroundColor.transparency = 95%
+	}</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Here
+we can say that &quot;zxcvbnm&quot; and &quot;backgroundColor&quot;
+are <I>properties</I> of (the object) &quot;asdf&quot;. Further,
+&quot;transparency&quot; is a property of (the object / the property)
+&quot;backgroundColor&quot; (or &quot;asdf.backgroundColor&quot;). </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Note
+about perceived semantics:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">You
+may now think that &quot;backgroundColor = blue&quot; makes more
+sense than &quot;zxcvbnm = uiop&quot; but in reality it doesn't!  The
+only reason that &quot;backgroundColor = blue&quot; seems to make
+sense is that in the <I>English language</I> we understand the words
+&quot;background color&quot; and &quot;blue&quot; and automatically
+implies some meaning. But to a machine like a computer the word
+&quot;backgroundColor&quot; makes just as little sense as &quot;zxcvbnm&quot;
+unless it has been programmed to understand either one and take its
+value as the background color for something. In fact &quot;uiop&quot;
+could be an alias for blue color values and &quot;zxcvbnm&quot; could
+be programmed as the property setting the background color of
+something, eg. a HTML page.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+just serves to point one thing out: Although most programming
+languages and TypoScript use function, method, keyword and property
+names which humans can often deduct some meaning from then ultimately
+the programming reference, DTD or XML-Schema defines the meaning.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Note
+about the internal structure when parsed into a PHP array:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">As
+stated in the previous chapter TypoScript can be understood as a
+lightweight way to enter information into a multidimensional PHP
+array. Lets take the TypoScript from above as an example:</FONT></P>
+<PRE CLASS="western">        <FONT COLOR="#0000cc">asdf</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+          <FONT COLOR="#0000cc">zxcvbnm</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">uiop</FONT>
+          <FONT COLOR="#0000cc">backgroundColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">blue</FONT>
+          <FONT COLOR="#0000cc">backgroundColor.transparency</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">95%</FONT>
+        <FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">When parsed, this information will be stored in
+a PHP array which could be defined as follows:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#000000"><FONT COLOR="#0000bb">	$TS</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'asdf.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'zxcvbnm'</FONT><FONT COLOR="#007700">]&nbsp;=&nbsp;</FONT><FONT COLOR="#dd0000">'uiop'</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#0000bb">	$TS</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'asdf.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'backgroundColor'</FONT><FONT COLOR="#007700">]&nbsp;=&nbsp;</FONT><FONT COLOR="#dd0000">'blue'</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#0000bb">	$TS</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'asdf.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'backgroundColor.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'transparency'</FONT><FONT COLOR="#007700">]&nbsp;=&nbsp;</FONT><FONT COLOR="#dd0000">'95%'</FONT><FONT COLOR="#007700">;</FONT></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Or alternatively you could define the
+information in the PHP array like this:</FONT></P>
+<PRE CLASS="western">
+<FONT COLOR="#000000"><FONT COLOR="#0000bb">$TS&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;array(</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#dd0000">'asdf.'&nbsp;</FONT><FONT COLOR="#007700">=&gt;&nbsp;array(</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#dd0000">'zxcvbnm'&nbsp;</FONT><FONT COLOR="#007700">=&gt;&nbsp;</FONT><FONT COLOR="#dd0000">'uiop'</FONT><FONT COLOR="#007700">,</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#dd0000">'backgroundColor'&nbsp;</FONT><FONT COLOR="#007700">=&gt;&nbsp;</FONT><FONT COLOR="#dd0000">'blue'</FONT><FONT COLOR="#007700">,</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#dd0000">'backgroundColor.'&nbsp;</FONT><FONT COLOR="#007700">=&gt;&nbsp;array&nbsp;(</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#dd0000">'transparency'&nbsp;</FONT><FONT COLOR="#007700">=&gt;&nbsp;</FONT><FONT COLOR="#dd0000">'95%'</FONT></FONT>
+<FONT COLOR="#000000"><FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">)</FONT></FONT>
+<FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;)</FONT>
+<FONT COLOR="#007700">)</FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Personally I'm still convinced that TypoScript 
+is the best syntax for the job! Less symbols involved and
+non-technical users can safely write it (although non-techs are <I>not
+meant to use TS</I>!) without fearing PHP parsing errors which will
+harshly abort the execution of page generation (or whatever).</FONT></P>
+<H2 CLASS="western"><A NAME="1.2.Syntax|outline"></A>Syntax</H2>
+<H3 CLASS="western"><A NAME="1.2.1.Introduction|outline"></A>Introduction</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Remember,
+TypoScript is like a (large) multidimensional PHP array; values
+arranged in a hierarchy - a tree. The &quot;branches&quot; are
+indicated with periods (&quot;.&quot;) - a syntax borrowed from for
+example JavaScript and which conveys the idea of defining
+objects/properties.<I> </I><SPAN STYLE="font-style: normal">For more
+details on these metaphors you should read the introductory chapters
+of this document. Here we will only deal with the syntactically
+rules.</SPAN></FONT></P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">myObject = [value 1]
+myObject.myProperty = [value 2]
+myObject.myProperty.firstProperty = [value 3]
+myObject.myProperty.secondProperty = [value 4]</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Refering
+to &quot;myObject&quot; we might call it an &quot;<I>object with the
+value [value 1] and the property, 'myProperty' with the value [value
+2]. Furthermore 'myPropery' has its own two properties,
+'firstProperty' and 'secondProperty' with a value each ([value 3] and
+[value 4]).</I>&quot;</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">We
+might even call 'myProperty' for a TypoScript object in this example!
+This is already explained in the introduction chapter.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Remember,
+TypoScript contains information and is not &quot;executed&quot; like
+a real scripting language is; therefore it doesn't report any errors
+if you specify non-existing objects or non-existing properties. Such
+an evaluation only makes sense when TypoScript is used in a context
+(like &quot;TypoScript Templates&quot; or &quot;Page TSconfig&quot;).
+However we can always evaluate TypoScript for a correct syntax (which
+means whether information is defined in a correct way, following the
+“grammatical” rules). </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Anyways,
+the TypoScript above looks like this in a node-tree (the TypoScript
+Object Browser creates such):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m58070f20.png" NAME="Grafik9" ALIGN=LEFT WIDTH=215 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western"><A NAME="1.2.2.TypoScript Syntax|outline"></A>TypoScript
+Syntax</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+is parsed in a very simple way; line by line. This means that each
+line normally contains three parts based on this formula:</FONT></P>
+<PRE CLASS="western">	[Object Path] [Operator] [Value]</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western" STYLE="text-align: justify">	<FONT COLOR="#0000ff">myObject.myProperty</FONT> <B>=</B> <FONT COLOR="#ff0000">[value 2]</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Object
+	path is like the variable name in a programming language (Above:
+	<FONT COLOR="#0000ff">myObject.myProperty </FONT>). The object path
+	is the first block of non-whitespace characters on a line until a
+	&quot;=&lt;&gt;{( &quot;-character (space included) is found. <B>Use
+	only A-Z, a-z, 0-9, &quot;-&quot;, &quot;_&quot; and periods (.) for
+	Object Paths.</B></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Operator
+	is one of the characters “=&lt;&gt;{(“ (Above: “=”). The
+	significance of each is described below.<BR>There is one special
+	operator “:=” that changes the value depending on a predefined
+	function.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Value
+	is whatever characters that proceeds the operator until the end of
+	the line, but trimmed for whitespace (Above: <FONT COLOR="#ff0000">[value
+	2]</FONT>). Notice that values are <I>not</I> encapsulated in
+	quotes! The value starts after the operator and ends with the
+	linebreak.</FONT></P>
+</UL>
+<H5 CLASS="western">Example</H5>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Here
+myObject is defined as a HTML content object and the property &quot;value&quot;
+is set (from the context of TypoScript Templates):</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m54aaab01.png" NAME="Grafik10" ALIGN=LEFT WIDTH=283 HEIGHT=32 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">Comments: When a line starts with &quot;/&quot;
+or &quot;#&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>...</B>then
+it's considered a comment which means the line is totally ignored.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I>// This is a comment</I></FONT>
+<FONT COLOR="#666666"><I>/ This is also a comment (only ONE slash is needed)</I></FONT>
+<FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+<FONT COLOR="#666666"><I># This line is also a comment.</I></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<H4 CLASS="western">Comment blocks: When a line starts with &quot;/*&quot;
+or  &quot;*/&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">...
+it defines the beginning or the end of a comment section
+respectively. Anything within a comment section is ignored. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">/*
+	and */ MUST be the very first characters of a trimmed line in order
+	to be detected. </FONT>
+	</P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Comments
+	are not detected inside a multiline value parenthesis.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I>/* This is a comment</I></FONT>
+<FONT COLOR="#666666"> <I>.. and this line is within that comment which...</I></FONT>
+<FONT COLOR="#666666">  <I>ends here:</I></FONT>
+<FONT COLOR="#666666"><I>*/  ... this is not parsed either though - the whole line is still within the comment</I></FONT>
+<FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>(</B></FONT>
+<FONT COLOR="#cc0000">  Here's a multiline value which </FONT>
+<FONT COLOR="#cc0000">  /* </FONT>
+<FONT COLOR="#cc0000">    ignores comments in side, so this is parsed!</FONT>
+<FONT COLOR="#cc0000">  */</FONT>
+<FONT COLOR="#000000"><B>)</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<H4 CLASS="western"><B>Value assignment: The &quot;=&quot;-operator</B></H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">assigns
+a value to an object path. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Everything
+	after the &quot;=&quot;-sign and <I>to the end of the line</I> is
+	considered to be the value. In other words: You don't need to quote
+	anything! Please be aware that the value will be trimmed which means
+	stripped for whitespace in both ends.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western"><B>Value modifications: The &quot;:=&quot;-operator</B></H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">assigns
+a value to an object path by calling a predefined function which
+modifies the existing value of the current object path in different
+ways.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is very useful for extending lists of page IDs etc. when a value
+should be extended without redefining it completely again.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+	portion after the “:=”-operator and <I>to the end of the line</I>
+	is split in two parts: A function and a value. The function is
+	specified right next to the operator (trimmed) and holding the value
+	in brackets (not trimmed).</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There
+	are four predefined functions:</FONT></P>
+	<UL>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>prependString:
+		</B><SPAN STYLE="font-weight: normal">Adds a string to the
+		beginning of the existing value.</SPAN></FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>appendString:
+		</B>Adds a string to the end of the existing value.</FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>removeString:
+		</B>Removes a string from the existing value.</FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>replaceString:
+		</B>Replaces old with new value. Separate these <SPAN STYLE="font-weight: normal">using
+		“|”.</SPAN></FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>addToList:
+		</B>Adds a comma-separated list of values to the end of a string
+		value. There is no check for duplicate values, and the list is not
+		sorted in any way.</FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>removeFromList:
+		</B>Removes a comma-separated list of values from a comma-separated
+		list.</FONT></P>
+	</UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There
+	is a hook inside class.t3lib_tsparser.php which can be used to
+	define more functions like this.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TEXT</FONT>
+<FONT COLOR="#0000cc">myObject.value </FONT><FONT COLOR="#000000"><B>=</B></FONT><FONT COLOR="#0000cc"> </FONT><FONT COLOR="#cc0000">1,2,3</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>:=</B></FONT> <FONT COLOR="#cc0000">addToList(4,5)</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>:=</B></FONT> <FONT COLOR="#cc0000">removeFromList(2,1)</FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">...results in the same like this:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TEXT</FONT>
+<FONT COLOR="#0000cc">myObject</FONT><FONT COLOR="#000000"><B>.</B></FONT><FONT COLOR="#0000cc">value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">3,4,5</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<H4 CLASS="western">Confinements: The { } signs</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">(opening/closing
+curly braces) means, that you can assign many object-properties in a
+simple way at once. It's called a <I>confinement </I><SPAN STYLE="font-style: normal">or
+nesting of properties.</SPAN></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">...is the same as:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Everything
+	on the second line that comes <I>after</I> &quot;{&quot; is ignored.</FONT></P>
+</UL>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+	&quot;}&quot;-sign <I>must </I>be the first non-space character on a
+	line in order to finish the confinement. Everything after &quot;}&quot;
+	is ignored.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>NOTE:
+	</B><SPAN STYLE="font-weight: normal">You cannot use conditions
+	inside of braces (except the [GLOBAL] condition which will be
+	detected and reset the brace-level to zero)</SPAN></FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>NOTE:
+	</B>Excessive end braces are ignored, but issues a warning in the
+	TypoScript parser.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">Multiline values: The ( ) signs</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">(opening/closing
+parenthesis) means, that you can assign a <I>multiline value</I>. By
+this method you can define values which span over several lines and
+thus includes line breaks.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>(</B></FONT>
+<FONT COLOR="#cc0000">  &lt;BLINK&gt; </FONT>
+<FONT COLOR="#cc0000">    HTML - code  </FONT>
+<FONT COLOR="#cc0000">  &lt;/BLINK&gt;</FONT>
+<FONT COLOR="#000000"><B>)</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>NOTE:</B>
+	The end-parenthesis is extremely important as if it is not found,
+	the parser does not return to parsing TypoScript. This includes the
+	[GLOBAL] condition which will not save you! So don't miss it!</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western"><B>Object copying: The &quot;&lt;&quot; sign</B> 
+</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">is
+used to copy one object path to another. The whole object is copied -
+both value and properties - and it overrides any old objects and
+values at that position. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+
+<FONT COLOR="#0000cc">myOtherObject</FONT> <FONT COLOR="#000000"><B>&lt;</B></FONT> <FONT COLOR="#006600">myObject</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">In this case you have two independent sets of
+objects/properties which exactly the same (duplicates). They are <I>not</I>
+references to each other but actually copies:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m25b59c3d.png" NAME="Grafik11" ALIGN=LEFT WIDTH=285 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Another
+example (copy from within curly brace confinement):</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">pageObj</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+  <FONT COLOR="#0000cc">10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+  <FONT COLOR="#0000cc">20</FONT> <FONT COLOR="#000000"><B>&lt;</B></FONT> <FONT COLOR="#006600">pageObj.10</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Here you also make a copy of an object. The
+object is referred to from the root. You can also use a notation
+where the object is referenced from the same level. In this case you
+just write the object but add a period before it in order to denote
+that they are on the same level.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is equal to the above example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">pageObj</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+  <FONT COLOR="#0000cc">10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+  <FONT COLOR="#0000cc">20</FONT> <FONT COLOR="#000000"><B>&lt;</B></FONT><FONT COLOR="#006600">.10</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_46676f93.png" NAME="Grafik12" ALIGN=LEFT WIDTH=305 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Note
+about references to objects (in TypoScript Templates):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">When
+TypoScript is used in the context of TypoScript Templates you can
+find that content objects can sometimes be referenced instead of
+copied. References mean that multiple positions in an object tree can
+use the same object at another position without making an actual copy
+of the object but by simply pointing to the objects full object path.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">An
+example based on the above code:</FONT></P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   0:</SPAN> <FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<SPAN STYLE="background: #eeeeee">   1:</SPAN> <FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+<SPAN STYLE="background: #eeeeee">   2:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   3:</SPAN> <FONT COLOR="#0000cc">pageObj</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<SPAN STYLE="background: #eeeeee">   4:</SPAN>   <FONT COLOR="#0000cc">10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt; myObject</FONT>
+<SPAN STYLE="background: #eeeeee">   5:</SPAN> <FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Watch line 4: This looks like a feature of
+TypoScript <I><B>but it is not!!!</B></I> It is a feature implemented
+on the context level which means that it only works because the
+TypoScript Template Engine has been programmed to perceive content
+object names starting with “&lt;” as a reference to the object
+path following the &lt; sign.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+fact, if we look at the parsed TypoScript in a node tree we can see
+that “&lt; myObject” is nothing but the simple value of the
+object path “pageObj.10”:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_1d186b0a.png" NAME="Graphic14" ALIGN=LEFT WIDTH=414 HEIGHT=79 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+note just served to point out this potential misconception you might
+get when you begin working with TypoScript in relation to template
+building.</FONT></P>
+<H4 CLASS="western">Object unsetting: The &quot;&gt;&quot; sign:</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is used to unset an object and all its properties.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>Example:</B>
+</FONT>
+</P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">myObject.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</FONT>
+
+<FONT COLOR="#0000cc">myObject</FONT> <FONT COLOR="#000000"><B>&gt;</B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">In this last line “myObject” is totally
+wiped out (removed)</FONT></P>
+<H4 CLASS="western">Conditions: Lines starting with “[“</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+break the parsing of the TypoScript in order to evaluate the content
+of the condition line. If the evaluation returns true parsing
+continues, otherwise the following TypoScript is ignored until the
+next condition found where a new evaluation will be performed. The
+next section in this document describes conditions in more detail.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Example:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[browser=netscape]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">page.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Netscape</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[else]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">page.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Not a netscape browser!</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[end]</SPAN></B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Rules:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+	can break the parsing <I>only </I>when outside of any confinement
+	(curly brace levels).</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H3 CLASS="western"><A NAME="1.2.3.Conditions|outline"></A>Conditions</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There
+is a <I>possibility </I>of using so called <I>conditions</I> in
+TypoScript. Conditions are simple control structures, that validates
+true or false based on some criteria (externally validated) and
+thereby determines whether the following TypoScript code until the
+next condition found should be parsed or not.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Examples
+of a condition could be:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Is
+	the browser “Netscape”?</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Is
+	a usergroup set for the current session?</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Is
+	it monday?</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Is
+	the GET parameter “&amp;language=uk” set?</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Is
+	it my mothers birthday?</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Do
+	I feel lucky today?</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Of
+these examples admittedly the first few is the most realistic, in
+fact they are readily available in the context of TypoScript
+Templates. But a condition can theoretically evaluate any
+circumstance and return either true/false which subsequently means
+the parsing of the TypoScript code that follows.</FONT></P>
+<H4 CLASS="western">Where conditions can be used</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+<I>detection of conditions</I> is a part of the TypoScript syntax but
+the <I>validation</I> of the condition content always relies on the
+context where TypoScript is used. Therefore in plain syntax
+highlighting (no context) conditions are just highlighted and nothing
+more. In the context of TypoScript Templates there is a <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=292&amp;cHash=c6c7d43d2f">whole
+section of TSref</A> which defines the syntax of the condition
+contents for TypoScript Templates. For “Page TSconfig” and “User
+TSconfig” conditions are not implemented at all.</FONT></P>
+<H4 CLASS="western">The syntax of conditions</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+condition always has it's own line and the line is detected by “ [
+“ (square bracket) being the first character on that line:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western">(Some TypoScript)
+
+<B>[ condition 1 ][ condition 2]</B>
+
+(Some TypoScript only parsed if cond. 1 or cond. 2 are met)
+
+<B>[GLOBAL]</B>
+
+(Some TypoScript)</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+in this example the line “[GLOBAL]” is a condition (built-in,
+always returns true) and the line <SPAN STYLE="font-weight: normal">“[
+condition 1 ][ condition 2]” is a condition. If “[ condition 1 ][
+condition 2]” is true then the TypoScript in the middle would be
+parsed until [GLOBAL] (or [END]) resets the conditions and parses the
+TypoScript for any case again.</SPAN></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>Notice:</B><SPAN STYLE="font-weight: normal">
+The condition line “[ condition 1 ][ condition 2]” conveys the
+idea of </SPAN><I><SPAN STYLE="font-weight: normal">two conditions</SPAN></I><SPAN STYLE="font-weight: normal">
+being set, but from the TypoScript parsers point of view the </SPAN><I><SPAN STYLE="font-weight: normal">whole
+line</SPAN></I><SPAN STYLE="font-weight: normal"> is the condition -
+it is in the context of TypoScript Templates that the condition line
+content is broken down into smaller units (“[ condition 1 ]” and
+“[ condition 2]”) which are individually evaluated and OR'ed
+together before they return the resulting true / false value. (That
+is all done with the class t3lib_matchCondition).</SPAN></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Here
+is an example of some TypoScript (from the context of TypoScript
+Templates) where another text is outputted if you use the Netscape
+web browser (instead of for example Internet Explorer) or use Windows
+NT as operating system:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">pageObj.10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">pageObj.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Hello World</FONT>
+<FONT COLOR="#0000cc">pageObj.10.value.case</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">upper</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[browser = netscape][system = WinNT]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">pageObj.20</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">pageObj.20</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Hello Netscape or Windows NT users!!</FONT>
+  <FONT COLOR="#0000cc">value.case</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">upper</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[GLOBAL]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">pageObj.30</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HTML</FONT>
+<FONT COLOR="#0000cc">pageObj.30.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;HR&gt;</FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">You can now use the Object Browser to actually
+see the difference in the parsed object tree depending on whether the
+condition evaluates to true or false (which can be simulated with
+that module as you can see):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_4c1d059c.png" NAME="Grafik13" ALIGN=LEFT WIDTH=551 HEIGHT=203 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">The special [ELSE], [END] and [GLOBAL] conditions</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There's
+a special condition called [ELSE] which will return true if the
+previous condition returned false. To end an [ELSE] condition you can
+use either [END] or [GLOBAL]. For all three conditions you can also
+use them in lower case.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><SPAN STYLE="font-weight: normal">Here's
+an example of using the [ELSE]</SPAN>-condition (also in the context
+of TypoScript Templates):</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">page.typeNum</FONT><FONT COLOR="#000000"><B>=</B></FONT><FONT COLOR="#cc0000">0</FONT>
+<FONT COLOR="#0000cc">page</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">PAGE</FONT>
+<FONT COLOR="#0000cc">page.10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TEXT</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[browser=netscape]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">page.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Netscape</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[else]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">page.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Not a netscape browser!</FONT>
+
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[end]</SPAN></B></FONT>
+
+<FONT COLOR="#0000cc">page.10.wrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;B&gt;|&lt;/B&gt;</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Here we have one output text if the browser is
+Netscape and another if not. Anyways the text is wrapped by &lt;B&gt;|&lt;/B&gt;
+as we see, because this wrap is added after the [END]-condition.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_57e7016a.png" NAME="Grafik14" ALIGN=LEFT WIDTH=571 HEIGHT=185 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+fact that you can &quot;enable&quot; the condition in the TypoScript
+Object Browser is a facility provided to simulate the outcome of any
+conditions you insert in a TypoScript Template. Whether or not the
+conditions correctly validate is only verified by actually getting a
+(in this example) Netscape browser and hit the site.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Another
+example could be if you wanted to do something special in case a
+bunch of conditions is NOT true. There's no negate-character, but you
+could do this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[browser=netscape][usergroup=3]</SPAN></B></FONT>
+<FONT COLOR="#666666">  <I># Enter nothing here!</I></FONT>
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[else]</SPAN></B></FONT>
+  <FONT COLOR="#0000cc">page.10.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">This text displays only if the conditions above are not true!</FONT>
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[end]</SPAN></B></FONT></PRE><H4 CLASS="western">
+Where to insert conditions in TypoScript?</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+can be used <I>outside</I> of confinements (curly braces) only! </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So,
+this is valid:</FONT></P>
+<PRE CLASS="western">someObject {
+  1property = 234
+}
+[browser=netscape]
+someObject {
+  2property = 567
+}</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">But
+this is <I><B>not valid</B></I><B>:</B></FONT></P>
+<PRE CLASS="western">someObject {
+  1property = 234
+  [browser=netscape]
+  2property = 567
+}</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">When
+parsed with syntax highlighting you will see this error:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_c63ba80.png" NAME="Graphic15" ALIGN=LEFT WIDTH=669 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><FONT COLOR="#000000">This
+means that the line was perceived as a regular definition of “[object
+path] [operator] [value]” and not as a condition.</FONT></P>
+<H4 CLASS="western">The [GLOBAL] condition</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">However
+for the special condition, [GLOBAL] (which resets any previous
+condition scope), it is a bit different since that will be detected
+at <I>any line</I> except within multiline value definitions. </FONT>
+</P>
+<PRE CLASS="western">someObject {
+  1property = 234
+  [GLOBAL]
+  2property = 567
+}</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">But
+you will still get some errors if you syntax highlight it:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m4e92f9fe.png" NAME="Graphic16" ALIGN=LEFT WIDTH=669 HEIGHT=81 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+reason for this is that the [GLOBAL] condition aborts the confinement
+started in the first line resulting in the first error (“... short
+of 1 end brace(s)”). The second error appears because the end brace
+is now in excess since the “brace level” was reset by [GLOBAL].</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So,
+in summary; the special [global] (or [GLOBAL]) condition will at
+anytime break TypoScript parsing within braces and return to the
+global scope (unless entered in a multiline value). This is true for
+any TypoScript implementation whether other condition types are
+possible or not. Therefore you can use [GLOBAL] (put on a single line
+for itself) to make sure that proceeding TypoScript is correctly
+parsed from the top level. This is normally done when TypoScript code
+from various records is combined.</FONT></P>
+<H4 CLASS="western">Summary</H4>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+	are detected by “[“ as the first line character (whitespace
+	ignored).</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+	are evaluated in relation to the context where TypoScript is used;
+	They are widely used in TypoScript Templates but not at all used
+	with “Page TSconfig” or “User TSconfig”.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Special
+	conditions [ELSE], [END] and [GLOBAL] exists.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Conditions
+	can be used outside of confinements (curly braces) only. However the
+	[GLOBAL] condition will always break a confinement if entered inside
+	of one.</FONT></P>
+</UL>
+<H3 CLASS="western"><A NAME="1.2.4.Includes|outline"></A>Includes</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">You
+can also add include-instructions in TypoScript code. Availability
+depends on the context, but it works with TypoScript templates, Page
+TSconfig and User TSconfig.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">An
+include-instruction looks like this:</FONT></P>
+<PRE CLASS="western">&lt;INCLUDE_TYPOSCRIPT: source=&quot;FILE: fileadmin/html/mainmenu_typoscript.txt&quot;&gt;</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">It
+	must have its own line in the TypoScript template, otherwise it's
+	not recognized.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">It
+	is processed BEFORE any parsing of TypoScript (contrary to
+	conditions) and therefore does not care about the nesting of
+	confinements within the TypoScript code.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+“source” parameter points to the source of the included content.
+The string before the first “:” (in the example it is the word
+“FILE”) will determine which source the content is coming from.
+This is the options:</FONT></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=31*>
+	<COL WIDTH=225*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=12%>
+				<P CLASS="western">FILE</P>
+			</TD>
+			<TD WIDTH=88%>
+				<P CLASS="western">A reference to a file relative to PATH_site.
+				Must be less than 100 KB. Cannot contain “..” (double
+				periods, back path).</P>
+				<P CLASS="western">If you prefix the relative path with such as
+				“EXT:myext/directory/file.txt” then the file included will be
+				sought for in the extension directory of extension “myext”,
+				subdirectory “directory/file.txt”.</P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.3.Sorting out details|outline"></A>Sorting
+out details</H2>
+<H3 CLASS="western"><A NAME="1.3.1.More about syntax, semantics and TypoScript compared to XML and XSLT|outline"></A>
+More about syntax, semantics and TypoScript compared to XML and XSLT</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">If
+you think you perfectly understand TypoScript now (you might
+already...) then don't bother with this section. I even risk
+confusing you again. But anyways, here it is - more theoretical
+information on TypoScript including references to the relationship
+between XML and XSLT:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">XML
+and TypoScript - all about syntax:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+chunk of &quot;TypoScript code&quot; is like an XML document - it
+only contains information in a structured way, nothing else.  But in
+order to store information in TypoScript or XML you need to follow
+the <I>syntax</I> - rules about <I>how</I> the information values can
+be  inserted in the structure. Like the grammar for a human language
+defines in which order words can be combined. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">For
+XML such rules include that &quot;all tags must be ended, eg.
+&lt;b&gt;...&lt;/b&gt; or &lt;br /&gt;&quot;, correct nesting, using
+lowercase for element and attribute names etc. If you follow these
+rules an XML document is called &quot;well formed&quot;. For
+TypoScript similar rules exist like &quot;The = operator assigns the
+rest of the text string as the value to the preceding object path&quot;
+or &quot;A line starting with # or / is a comment and therefore
+ignored&quot;.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">XSLT
+and &quot;TypoScript Templates&quot; - all about semantics (meaning,
+function):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is syntactically valid XML:</FONT></P>
+<PRE CLASS="western">	&lt;asdf&gt;qwerty&lt;/asdf&gt;</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">And
+this is syntactically valid TypoScript:</FONT></P>
+<PRE CLASS="western">	asdf = qwerty</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">And
+this is syntactically valid English:</FONT></P>
+<PRE CLASS="western">	footballs sing red</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">But
+none of these examples make sense without some reference which
+defines how elements, values and words can be combined in order to
+form <I>meaning</I> - they need a <I>context</I>. This is called
+semantics. For human languages we have it internally because we know
+footballs can't sing and you can't &quot;sing red&quot; - we know
+it's nonsense while the sentence is correctly formed. For an XML
+document you have it by the DTD or schema which defines if the
+element &quot;&lt;asdf&gt;&quot; exists on that level in the document
+(and if not, then it's nonsense) and for TypoScript you have it by
+the <I><SPAN STYLE="text-decoration: none">reference document</SPAN></I>
+for the context where the TypoScript syntax is used to define an
+information hierarchy - for instance the &quot;TSref&quot; for
+TypoScript Templates or the &quot;TSconfig&quot; document for &quot;Page
+TSconfig&quot; or &quot;User TSconfig&quot;.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+an XML document makes sense only if you know the relationship of the
+information stored inside of the document and that is required if you
+want an XSLT stylesheet to transform one XML document to another
+document. In fact an XSLT stylesheet is like babelfish for XML - it
+translate one &quot;language&quot; of XML into another &quot;language&quot;
+of XML.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Similarly
+TypoScript is used as <I>the syntax</I> to build &quot;TypoScript
+Templates&quot; (<I>containing semantics - meaning</I>); the
+information only makes sense if it follows the rules defined in the
+&quot;TSref&quot; document.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">BTW,
+the comparison of &quot;TypoScript Templates&quot; and &quot;XSLT&quot;
+is intensional since both can be described as <I>declarational
+programming languages</I>  - programming by <I>configuring values</I>
+which <I>instructs</I> a <I>real procedural program</I>  (eg. the
+TypoScript Frontend Engine which is written in PHP) how to output
+data. <A HREF="http://typo3.org/1198.0.html">More is written on this
+issue</A> on typo3.org.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">For
+more on <A HREF="http://www.jguru.com/faq/view.jsp?EID=81">syntax and
+semantics, you can read this link</A> that I found on the net.</FONT></P>
+<H3 CLASS="western"><A NAME="1.3.2.Where is TypoScript used_|outline"></A>
+Where is TypoScript used?</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+question cannot be answered completely since this document only
+describes the syntax of TypoScript and not any of the contexts where
+TypoScript syntax is applied for configuration; theoretically anyone
+could use the TypoScript parser class in TYPO3 to generate
+configuration for their own local extensions using their own local
+&quot;semantics&quot; (see <A HREF="#How%20to%20use%20TS%20in%20own%20applications">another
+chapter</A> in this document).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">But
+at least we can mention the three main applications of the TypoScript
+syntax as used in TYPO3s core parts:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Page
+	TSconfig - customization of branches of the Page tree.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">User
+	TSconfig - customization of users and their groups.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+	Templates - definition and customization of each website found in
+	the page tree.</FONT></P>
+</UL>
+<H4 CLASS="western">Page TSconfig</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Each
+page record in TYPO3 has a field where you can enter &quot;TSconfig&quot;.
+The main idea with Page TSconfig is that you can configure individual
+behavior for separate parts of the page tree. This is possible
+because the TypoScript code entered in the TSconfig fields is
+accumulated for all pages in the root line of the current position in
+the page tree starting from the root and going outwards. Thus
+TypoScript settings in TSconfig fields of outer pages can override
+those settings of pages closer to the root.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">For
+instance you may have two separate websites  located in separate
+branches of the page tree. The one website might support content from
+only the &quot;normal&quot; column while the other website supports
+it for both the &quot;normal&quot; and &quot;border&quot; column.
+Since the Page module by default shows all four possible columns you
+may want to instruct the page module to show only the normal column
+and normal + border column respectively. But this will only be
+possible if you can somehow tell the system that from this page and
+outwards, use only &quot;normal&quot; column and from that page and
+outwards use only &quot;normal&quot; + &quot;border&quot; column. So
+in the root page of the two-column website you enter this line in the
+TSconfig field:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_53d784e4.png" NAME="Graphic3" ALIGN=LEFT WIDTH=470 HEIGHT=47 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">And
+likewise for the one-column website you enter this value in the
+TSconfig field of the root page:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_6b5e7537.png" NAME="Graphic4" ALIGN=LEFT WIDTH=471 HEIGHT=47 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Now
+the &quot;Page&quot; module will receive the value of the <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=263&amp;tx_extrepmgm_pi1[tocEl]=179&amp;cHash=2a19314ea8">property
+&quot;colPos_list&quot;</A> when showing the page content available
+for any subpage of the root page where the configuration was entered.
+Accordingly only the configured columns will be shown.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+objects and properties you can use here is generally defined in the
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=263&amp;cHash=1f1b106a30">document
+&quot;TSConfig&quot;</A> in addition to local extension documents.</FONT></P>
+<H4 CLASS="western">User TSconfig</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Each
+frontend and backend user and group has a field for input of
+TSconfig. The main idea with User TSconfig is that you can configure
+individual behavior for groups and even users themselves. The
+possibilities are normally settings which are on a more detailed
+level than what you can already set as permission settings in the
+main forms for users/groups. For instance you could configure how
+many clipboard pads a user should see or whether a &quot;Save
+document and add new&quot; button should appear for all forms for
+this user - stuff which is clearly too detailed for a spot in the
+main form for permissions and settings.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Like
+with Page TSconfig the content of the TSconfig fields are accumulated
+in a certain order; the order of member groups and finally the users
+own fields settings. Thus a setting for a user will override the
+setting for one of his member groups.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">To
+mention an example of what you can do with User TSconfig for a
+backend user, then this line will enable the &quot;Save document and
+create new&quot; button in editing forms:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m112edb19.png" NAME="Graphic5" ALIGN=LEFT WIDTH=490 HEIGHT=49 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+objects and properties you can use here is generally defined in the
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=263&amp;cHash=1f1b106a30">document
+&quot;TSConfig&quot;</A> in addition to local extension documents.</FONT></P>
+<H4 CLASS="western">TypoScript Templates</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+most (in)famous and extensive use of TypoScript is in the frontend
+engine where TypoScript is used to configure how the frontend engine
+will put together the website output. This is probably also where
+TypoScript clashes most with traditional ideas of template building
+in web design and confuses people to think of TypoScript as a
+programming language - with the result that they find it even more
+confusing. (If TYPO3 has a scripting language it is <I>not</I>
+TypoScript  but PHP!)</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+introduction to TypoScript tries to eliminate this confusion and
+therefore let us make two statements about how TYPO3 handles
+templates:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>No
+	fixed template method:</B> TYPO3 does <I>not</I> offer <I>one fixed
+	way</I> to dealing with templates for websites; rather you are <I>set
+	free</I> to choose the way <I>you </I>find most appealing. You can:</FONT></P>
+	<UL>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>HTML
+		templates; </B>configure TYPO3 to facilitate external
+		HTML-templates with markers and subparts. Popular and familiar for
+		most people. Please see the tutorial <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=442&amp;cHash=d442c244f7">&quot;Modern
+		Template Building, Part 1&quot;</A>.</FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>Ext.
+		Templating Engines: </B>configure TYPO3 to use XSLT stylesheets
+		with an XSLT processor. This is done either by an extension
+		providing this functionality or by writing your own extension for
+		it. </FONT>
+		</P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>Custom
+		PHP: </B>configure TYPO3 to call your own PHP-code which generates
+		content in any way you may prefer. This might include using third
+		party templating engines!</FONT></P>
+		<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>TS
+		content objects: </B>or build the page by the Frontend Engines
+		&quot;content objects&quot; which are <I>accessible/programmable</I>
+		through the TypoScript syntax.</FONT></P>
+	</UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000"><B>TypoScript
+	Templates </B><I><B>determines</B></I><B> the method:</B> No matter
+	which template method (see list above) you would like to use TYPO3
+	needs to be told <I>which one</I>! And <I>this</I> is what the
+	TypoScript Template does first and foremost; it is used to configure
+	basic and advanced behaviors of the frontend engine so that the site
+	rendering gets done.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+TypoScript Template works a little like the Page TSconfig; it is a
+database record attaching its TypoScript content to a certain page
+and from that page and outwards the configuration contained in the
+TypoScript will affect the pages until a new template record is found
+which overrides content from earlier in the tree. Thus TypoScript
+Template records are effectively defining which page is the root page
+of a website:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m7fe1152.png" NAME="Graphic6" ALIGN=LEFT WIDTH=451 HEIGHT=79 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+Templates contain a field for the TypoScript configuration code
+(&quot;Setup&quot; field) but a template record like the one on the
+picture above (&quot;NEW typo3.org&quot;) can also contain references
+to other template records and files which contain predefined
+generally useful TypoScript code which is included and thus
+reusable/sharable across templates. The order of included TypoScript
+template records / files can be visually seen with the Template
+Analyzer extension (tstemplate_analyzer):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m57b6e611.png" NAME="Graphic7" ALIGN=LEFT WIDTH=473 HEIGHT=243 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">To
+get more background knowledge about <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=277&amp;cHash=8c7f86e5bb">how
+TypoScript templates work please read the document TypoScript
+Templates</A>. To read about all standard objects and properties you
+can use in building TypoScript templates you should refer to
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;cHash=4ad9d7acb4">TypoScript
+reference - TSref</A>. For practical examples when you want to <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=269&amp;cHash=39e3faa590">learn
+by doing, look at TypoScript by Example</A>.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H3 CLASS="western"><A NAME="1.3.3.Entering TypoScript|outline"></A>Entering
+TypoScript</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Since
+TypoScript has a line-based syntax which most of all resembles what
+is found in simple text based configuration files it is also authored
+in ordinary textarea input fields inside of TYPO3. An example is the
+&quot;TSconfig&quot; box of a regular page header:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m14442e01.png" NAME="Graphic2" ALIGN=LEFT WIDTH=495 HEIGHT=119 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is typically how TypoScript is entered - directly in form fields. No
+syntax highlighting, no way of using TAB stops, no line number
+counting etc. Quite boring and rudimentary. Of course the lack of
+such features is not a political manifest but rather the lack of the
+ability to create such features with a simple textarea. Could anyone
+provide a nice Java-editor instead we would be happy. (In the
+meantime you can find TypoScript syntax highlighting for certain text
+editors. Ask on the mailing lists or search typo3.org).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">However
+there are some helpful features: </FONT>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">a)
+	There is the &quot;TS wizard&quot; icon which is often found to the
+	right of the textarea - this can help you finding properties for the
+	current TypoScript context</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">b)
+	there also is the ability to insert an include-tag in any TypoScript
+	field (see later in this document) which refers to an external file
+	which can contain TypoScript - and that file can be edited with an
+	external editor with whatever benefits that has.</FONT></P>
+</UL>
+<H3 CLASS="western"><A NAME="1.3.4.Parsing, Storing and Executing TypoScript|outline"></A>
+Parsing, Storing and Executing TypoScript</H3>
+<H4 CLASS="western">Parsing TypoScript</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+means that the TypoScript text content is transformed into a PHP
+array structure by following the rules of the TypoScript syntax. But
+still the meaning of the parsed content is not evaluated.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">During
+parsing, syntax errors may occur when the input TypoScript text
+content does not follow the rules of the TypoScript syntax. The
+parser is however very forgiving in that case and it only registers
+an error internally while it will continue to parse the TypoScript
+code. Syntax errors can therefore  be seen only with a tool that
+analyzes the syntax - like the syntax highlighter does.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+class &quot;t3lib_tsparser&quot; is used to parse TypoScript content.
+Please see another chapter in this document for details.</FONT></P>
+<H4 CLASS="western">Storing parsed TypoScript</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">When
+TypoScript has been parsed it is stored in a <I>PHP array</I><SPAN STYLE="font-style: normal">
+(which is often serialized and cached in the database afterward)</SPAN>.
+If you take the TypoScript from the introduction examples and parses
+it you will get a result like below:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">First,
+the TypoScript:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">asdf</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">qwerty</FONT>
+<FONT COLOR="#0000cc">asdf</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">zxcvbnm</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">uiop</FONT>
+  <FONT COLOR="#0000cc">backgroundColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">blue</FONT>
+  <FONT COLOR="#0000cc">backgroundColor.transparency</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">95%</FONT>
+<B>}</B>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Then after parsing it with the function
+&quot;parse()&quot; in the t3lib_tsparser class the internal variable
+$this-&gt;setup in that class will contain a PHP array which looks
+like this (with the print_r() PHP function):</FONT></P>
+<PRE CLASS="western">Array
+(
+    [asdf] =&gt; qwerty
+    [asdf.] =&gt; Array
+        (
+            [zxcvbnm] =&gt; uiop
+            [backgroundColor] =&gt; blue
+            [backgroundColor.] =&gt; Array
+                (
+                    [transparency] =&gt; 95%
+                )
+
+        )
+
+)</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">You
+can also print the array by an API function in TYPO3, namely
+t3lib_div::view_array() or just debug(). Then it looks like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m6c5d3db5.png" NAME="Graphic8" ALIGN=LEFT WIDTH=336 HEIGHT=104 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">As
+you see the value (&quot;blue&quot;) of the property
+&quot;backgroundColor&quot; can be fetched by this PHP code:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#0000bb">$this</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'asdf.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'backgroundColor'</FONT><FONT COLOR="#007700">]</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+you can say that TypoScript offers a text-based <I>interface</I> for
+getting values into a multidimensional PHP array from a simple text
+field or file. This can be very useful if you need to take that kind
+of input from users without giving them direct access to PHP code -
+hence the reason why TypoScript came into existence.</FONT></P>
+<H4 CLASS="western">&quot;Executing&quot; TypoScript</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Since
+TypoScript itself contains only information (!) you cannot &quot;execute&quot;
+it. The closest you come to &quot;executing&quot; TypoScript is when
+you take the PHP array with the parsed TypoScript structure and
+passes it to a PHP function which <I>then</I>  performs whatever
+actions according to the values found in the array. This is the
+syntax/semantics debate again.</FONT></P>
+<H3 CLASS="western"><A NAME="1.3.5.Syntax highlighting and debugging|outline"></A>
+Syntax highlighting and debugging</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Syntax
+highlighting of TypoScript code is done by various analysis
+applications in TYPO3 like the Template Analyzer for TypoScript
+Templates or the User Admin module or Page TSconfig function in the
+Info module. These typically allows you to view the TypoScript in
+each context highlighted with syntax. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Here
+is an example from Page TSconfig:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_908270a.png" NAME="Graphic9" ALIGN=LEFT WIDTH=517 HEIGHT=376 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+the extension &quot;extdeveval&quot; you will also find a tool, &quot;Code
+highlighting&quot;, which can analyse TypoScript code adhoc:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_31ac4583.png" NAME="Graphic10" ALIGN=LEFT WIDTH=455 HEIGHT=407 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There
+are various modes of display:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m54da8033.png" NAME="Graphic11" ALIGN=LEFT WIDTH=447 HEIGHT=196 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+analytic mode (displayed above) colors all parts of the syntax: </FONT>
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Object
+	and property names gets light blue background (#1)</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Values
+	get a yellow background (#2)</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Whitespace
+	becomes olive green in the background (#3)</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Operators
+	are colored with a brown background</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Another
+mode is the &quot;Block mode&quot;, which simply indents the
+TypoScript code:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_37d98181.png" NAME="Graphic12" ALIGN=LEFT WIDTH=457 HEIGHT=582 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Finally
+you will be warned if syntax errors are found and ignored data will
+also be highlighted in green:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_2afde0a8.png" NAME="Graphic13" ALIGN=LEFT WIDTH=669 HEIGHT=200 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Debugging</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Debugging
+TypoScript for syntax errors can be done with this tool and any other
+place where the syntax highlighter is used. But this will only tell
+you if something is <I>syntactically</I> wrong with the code -
+whether you combine objects and properties <I>semantically</I>
+correctly depends on the context and cannot be told by the TypoScript
+parser itself. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Currently
+no tools exist to do semantically checking for either TypoScript
+Templates, Page TSconfig or User TSconfig (writing summer 2003)</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">(This
+tool for syntax highlighting is available from TYPO3 version 3.6.0)</FONT></P>
+<H3 CLASS="western"><A NAME="1.3.6.Myths, FAQ and Acknowledgements|outline"></A>
+Myths, FAQ and Acknowledgements</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+page is the final word in this introduction chapter to the TypoScript
+syntax. It contains a few remarks and answers to questions you may
+still have. So here it goes:</FONT></P>
+<H4 CLASS="western">Myth: &quot;TypoScript is a scripting language&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+is misleading to say since you will think that TypoScript is like PHP
+or JavaScript while it is not. From the previous pages you have
+learned that TypoScript strictly speaking is just a syntax. However
+when the TypoScript syntax is applied to create TypoScript Templates
+then it begins to look like programming and the parallel to XSLT
+might also hint at that. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+any case TypoScript is NOT a comparable to a scripting language like
+PHP or JavaScript. In fact, if TYPO3 offers any scripting language it
+is PHP itself! TypoScript is only an API which is often used to
+configure underlying PHP code.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Finally;
+The name &quot;TypoScript&quot; is misleading as well. We are sorry
+about that, too late to change now.</FONT></P>
+<H4 CLASS="western">Myth: &quot;TypoScript has the same syntax as
+JavaScript&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+was designed to be simple to use and understand. Therefore the syntax
+looks like JavaScript objects to some degree. But again; it's very
+dangerous to say this since it all stops with the syntax - TypoScript
+is still not a procedural programming language!</FONT></P>
+<H4 CLASS="western">Myth: &quot;TypoScript is a proprietary standard&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Since
+TypoScript is not a scripting language it does not make sense to
+claim this in comparison to PHP, JavaScript, Java or whatever
+<I>scripting language</I>. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">However
+compared to XML or PHP arrays (which also contain <I>information</I>)
+you can say that TypoScript is a proprietary syntax since a PHP array
+or XML file could be used to contain the same information as
+TypoScript does. But this is <I>not </I>a drawback: For storage and
+exchange of <I>content</I> TYPO3 uses SQL (or XML if you need to),
+for storage of <I>configuration values</I> XML is not suitable
+anyways - TypoScript is much better at that job (see below).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">To
+claim that TypoScript is a proprietary standard as an argument
+against TYPO3 is really unfair since the claim makes it sound like
+TypoScript is a whole new programming language or likewise. Yes, the
+TypoScript <I>syntax </I>is proprietary but extremely useful and when
+you get the hang of it it is very easy to use. In all other cases
+TYPO3 uses official standards like PHP, SQL, XML, XHTML etc. for all
+<I>external </I>data storage and manipulation.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+most complex use of TypoScript is probably with the TypoScript
+Template Records. It is understandable that TypoScript has earned a
+reputation of being complex when you consider how much of the
+Frontend Engine you can configure through TypoScript Template
+records. But basically TypoScript is just an API to the PHP functions
+underneath. And if you think there are a lot of options there it
+would be no better if you were to use the PHP functions directly!
+Then there would be maybe even more API documentation to explain the
+API and you wouldn't have the streamlined abstraction provided by
+TypoScript Templates. This just served to say: The amount of features
+and the time it would take to learn about them would not be
+eliminated if TypoScript were not made! </FONT>
+</P>
+<H4 CLASS="western">Myth: &quot;TypoScript is very complex&quot;</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">TypoScript
+is simple in nature. But certainly it can quickly become complex and
+get &quot;out of hand&quot; when the amount of code lines grows! This
+can partly be solved by:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Disciplined
+	coding: Organize your TypoScript in a way that you can visually
+	comprehend.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Use
+	the Syntax Highlighter to analyze and clean up your code - this
+	gives you overview as well.</FONT></P>
+</UL>
+<H4 CLASS="western">Why not XML instead?</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+few times TypoScript has been compared with XML since both
+&quot;languages&quot; are frameworks for storing information. Apart
+from XML being a W3C standard (and TypoScript still not... :-) the
+main difference is that XML is great for large amounts of information
+with a high degree of &quot;precision&quot; while TypoScript is great
+for small amounts of &quot;ad hoc&quot; information - like
+configuration values normally are. </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Actually
+a data structure defined in TypoScript could also have been modeled
+in XML. Currently you <I>cannot</I> use XML as an alternative to
+TypoScript (writing of June 2003) but this may happen at some point.
+Lets present this fictitious example of how a TypoScript structure
+could also have been implemented in &quot;TSML&quot; (our fictitious
+name for the non-existing TypoScript-Mark Up Language):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">styles.content.bulletlist</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TEXT</FONT>
+<FONT COLOR="#0000cc">styles.content.bulletlist</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">current</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">trim</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">if.isTrue.current</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+        # Copying the object &quot;styles.content.parseFunc&quot; to this position
+  <FONT COLOR="#0000cc">parseFunc</FONT> <FONT COLOR="#000000"><B>&lt;</B></FONT> <FONT COLOR="#006600">styles.content.parseFunc</FONT>
+  <FONT COLOR="#0000cc">split</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+    <FONT COLOR="#0000cc">token.char</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">10</FONT>
+    <FONT COLOR="#0000cc">cObjNum</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+    <FONT COLOR="#0000cc">1.current</FONT> <FONT COLOR="#000000"><B>&lt;</B></FONT> <FONT COLOR="#006600">.cObjNum</FONT>
+    <FONT COLOR="#0000cc">1.wrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;li&gt;</FONT>
+  <FONT COLOR="#000000"><B>}</B></FONT>
+    # Setting wrapping value:
+  <FONT COLOR="#0000cc">fontTag</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;ol type=&quot;1&quot;&gt; | &lt;/ol&gt;</FONT>
+  <FONT COLOR="#0000cc">textStyle.altWrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$styles.content.bulletlist.altWrap}</FONT>
+<B>}</B>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">That
+was 17 lines of TypoScript code and converting this information into
+an XML structure could look like this:</FONT></P>
+<PRE CLASS="western">&lt;<FONT COLOR="#0000cc">TSML</FONT> <FONT COLOR="#006600">syntax</FONT><FONT COLOR="#000000"><B>=&quot;</B></FONT><FONT COLOR="#cc0000">3</FONT><FONT COLOR="#000000"><B>&quot;</B></FONT>&gt;
+    &lt;<FONT COLOR="#0000cc">styles</FONT>&gt;
+        &lt;<FONT COLOR="#0000cc">content</FONT>&gt;
+            &lt;<FONT COLOR="#0000cc">bulletlist</FONT>&gt;
+                <FONT COLOR="#cc0000">TEXT</FONT>
+                &lt;<FONT COLOR="#0000cc">current</FONT>&gt;<FONT COLOR="#cc0000">1</FONT>&lt;/<FONT COLOR="#0000cc">current</FONT>&gt;
+                &lt;<FONT COLOR="#0000cc">trim</FONT>&gt;<FONT COLOR="#cc0000">1</FONT>&lt;/<FONT COLOR="#0000cc">trim</FONT>&gt;
+                &lt;<FONT COLOR="#0000cc">if</FONT>&gt;
+                    &lt;<FONT COLOR="#0000cc">isTrue</FONT>&gt;
+                        &lt;<FONT COLOR="#0000cc">current</FONT>&gt;<FONT COLOR="#cc0000">1</FONT>&lt;/<FONT COLOR="#0000cc">current</FONT>&gt;
+                    &lt;/<FONT COLOR="#0000cc">isTrue</FONT>&gt;
+                &lt;/<FONT COLOR="#0000cc">if</FONT>&gt;
+                  &lt;!-- Copying the object &quot;styles.content.parseFunc&quot; to this position --&gt;
+                &lt;<FONT COLOR="#0000cc">parseFunc</FONT> <FONT COLOR="#006600">copy</FONT><FONT COLOR="#000000"><B>=&quot;</B></FONT><FONT COLOR="#cc0000">styles.content.parseFunc</FONT><FONT COLOR="#000000"><B>&quot;</B></FONT>/&gt;
+                &lt;<FONT COLOR="#0000cc">split</FONT>&gt;
+                    &lt;<FONT COLOR="#0000cc">token</FONT>&gt;
+                        &lt;<FONT COLOR="#0000cc">char</FONT>&gt;<FONT COLOR="#cc0000">10</FONT>&lt;/<FONT COLOR="#0000cc">char</FONT>&gt;
+                    &lt;/<FONT COLOR="#0000cc">token</FONT>&gt;
+                    &lt;<FONT COLOR="#0000cc">cObjNum</FONT>&gt;<FONT COLOR="#cc0000">1</FONT>&lt;/<FONT COLOR="#0000cc">cObjNum</FONT>&gt;
+                    &lt;<FONT COLOR="#0000cc">num:1</FONT>&gt;
+                        &lt;<FONT COLOR="#0000cc">current</FONT>&gt;<FONT COLOR="#cc0000">1</FONT>&lt;/<FONT COLOR="#0000cc">current</FONT>&gt;
+                        &lt;<FONT COLOR="#0000cc">wrap</FONT>&gt;<FONT COLOR="#cc0000">&amp;lt;li&amp;gt;</FONT>&lt;/<FONT COLOR="#0000cc">wrap</FONT>&gt;
+                    &lt;/<FONT COLOR="#0000cc">num:1</FONT>&gt;
+                &lt;/<FONT COLOR="#0000cc">split</FONT>&gt;
+                  &lt;!-- Setting wrapping value: --&gt;
+                &lt;<FONT COLOR="#0000cc">fontTag</FONT>&gt;<FONT COLOR="#cc0000">&amp;lt;ol type=&amp;quot;1&amp;quot;&amp;gt; | &amp;lt;/ol&amp;gt;</FONT>&lt;/<FONT COLOR="#0000cc">fontTag</FONT>&gt;
+                &lt;<FONT COLOR="#0000cc">textStyle</FONT>&gt;
+                    &lt;<FONT COLOR="#0000cc">altWrap</FONT>&gt;<FONT COLOR="#cc0000">{$styles.content.bulletlist.altWrap}</FONT>&lt;/<FONT COLOR="#0000cc">altWrap</FONT>&gt;
+                &lt;/<FONT COLOR="#0000cc">textStyle</FONT>&gt;
+            &lt;/<FONT COLOR="#0000cc">bulletlist</FONT>&gt;
+        &lt;/<FONT COLOR="#0000cc">content</FONT>&gt;
+    &lt;/<FONT COLOR="#0000cc">styles</FONT>&gt;
+&lt;/<FONT COLOR="#0000cc">TSML</FONT>&gt;</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">That was 33 lines of XML - the double amount of
+lines! And in bytes probably also much bigger. This example clearly
+demonstrates <I>why not XML</I>! XML will just get in the way, it is
+not handy for what TypoScript normally does. But hopefully you can at
+least use this example in your understand of what TypoScript is
+compared to XML.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+reasonable application for using XML as an alternative to TypoScript
+is if an XML editor existed which in some way makes the entering of
+XML data into a structure like this possible and easy.</FONT></P>
+<H2 CLASS="western"><A NAME="1.4.The TypoScript parser  API|outline"></A>
+The TypoScript parser  API</H2>
+<H3 CLASS="western"><A NAME="1.4.1.Introduction|outline"></A>Introduction</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><A NAME="How to use TS in own applications"></A>
+<FONT COLOR="#000000">If you want to deploy TypoScript in your own
+TYPO3 applications it is really easy. The TypoScript parser is
+readily available to you and the only thing that may take a little
+more effort that instantiation of a PHP is if you want to define
+conditions for TypoScript.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Basically
+this chapter will teach you how you can parse you own TypoScript
+strings into a PHP array structure. The exercise might even help you
+to further understand the straight forward nature of TypoScript.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Notice
+that the following pages are for experienced TYPO3 developers and
+requires a good knowledge of PHP.</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.2.Parsing custom TypoScript|outline"></A>
+Parsing custom TypoScript</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Lets
+imagine that you have created an application in TYPO3, for example a
+plugin. You have defined certain parameters editable directly in the
+form fields of the plugin content element. However you want advanced
+users to be able to set up more detailed parameters but instead of
+adding a host of such detailed options to the interface - which would
+just clutter it all up - you rather want advanced users to have a
+text area field into which they can enter configuration codes based
+on a little reference you make for them.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+reference could look like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">Root level</H4>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=40*>
+	<COL WIDTH=31*>
+	<COL WIDTH=148*>
+	<COL WIDTH=37*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=16%>
+				<P CLASS="western">Property</P>
+			</TH>
+			<TH WIDTH=12%>
+				<P CLASS="western">Datatype</P>
+			</TH>
+			<TH WIDTH=58%>
+				<P CLASS="western">Description</P>
+			</TH>
+			<TH WIDTH=14%>
+				<P CLASS="western">Default</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">colors</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">-&gt;COLORS</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">Defining colors for various elements.</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">adminInfo</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">-&gt;ADMINFO</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">Define administrator contact information for
+				cc-emails</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">headerImage</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">file-reference</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">A reference to an image file relative to the
+				websites path (PATH_site)</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">-&gt;COLORS</H4>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=40*>
+	<COL WIDTH=31*>
+	<COL WIDTH=148*>
+	<COL WIDTH=37*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=16%>
+				<P CLASS="western">Property</P>
+			</TH>
+			<TH WIDTH=12%>
+				<P CLASS="western">Datatype</P>
+			</TH>
+			<TH WIDTH=58%>
+				<P CLASS="western">Description</P>
+			</TH>
+			<TH WIDTH=14%>
+				<P CLASS="western">Default</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">backgroundColor</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">HTML-color</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The background color of blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western">white</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">fontColor</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">HTML-color</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The font color of text in blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western">black</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">popUpColor</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">HTML-color</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The shadow color of the pop up blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western">#333333</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H4 CLASS="western">-&gt;ADMINFO</H4>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=40*>
+	<COL WIDTH=31*>
+	<COL WIDTH=148*>
+	<COL WIDTH=37*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=16%>
+				<P CLASS="western">Property</P>
+			</TH>
+			<TH WIDTH=12%>
+				<P CLASS="western">Datatype</P>
+			</TH>
+			<TH WIDTH=58%>
+				<P CLASS="western">Description</P>
+			</TH>
+			<TH WIDTH=14%>
+				<P CLASS="western">Default</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">cc_email</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The email address that blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">cc_name</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The name of blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">cc_return_adr</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">The return address of blablabla...</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western">[servers]</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">html_emails</P>
+			</TD>
+			<TD WIDTH=12%>
+				<P CLASS="western">boolean</P>
+			</TD>
+			<TD WIDTH=58%>
+				<P CLASS="western">If set, emails are sent in HTML</P>
+			</TD>
+			<TD WIDTH=14%>
+				<P CLASS="western">false</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">So
+these are the “objects” and “properties”  you have chosen to
+offer to your users of the plugin. This reference defines <I>what
+information makes sense</I> to put into the TypoScript field
+(semantics) because you will program your application to use this
+information as needed.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H5 CLASS="western">A case story</H5>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Now
+lets imagine that a user inputs this TypoScript configuration in
+whatever medium you have offered (e.g. a textarea field):</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western">colors {
+  backgroundColor = red
+  fontColor = blue
+}
+adminInfo {
+  cc_email = email@email.com
+  cc_name = Copy Name
+}
+showAll = true
+
+[UserIpRange = 123.456.*.*]
+
+  headerImage = fileadmin/img1.jpg
+
+[ELSE]
+
+  headerImage = fileadmin/img2.jpg
+
+[GLOBAL]
+
+  // Wonder if this works... :-)
+wakeMeUp = 7:00</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+a syntax highlighted version it would look like this (below) which
+indicates that there are no <I>syntax errors</I> and everything is
+fine in that regard:</FONT></P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   0:</SPAN> <FONT COLOR="#0000cc">colors</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<SPAN STYLE="background: #eeeeee">   1:</SPAN>   <FONT COLOR="#0000cc">backgroundColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">red</FONT>
+<SPAN STYLE="background: #eeeeee">   2:</SPAN>   <FONT COLOR="#0000cc">fontColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">blue</FONT>
+<SPAN STYLE="background: #eeeeee">   3:</SPAN> <FONT COLOR="#000000"><B>}</B></FONT>
+<SPAN STYLE="background: #eeeeee">   4:</SPAN> <FONT COLOR="#0000cc">adminInfo</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<SPAN STYLE="background: #eeeeee">   5:</SPAN>   <FONT COLOR="#0000cc">cc_email</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">email@email.com</FONT>
+<SPAN STYLE="background: #eeeeee">   6:</SPAN>   <FONT COLOR="#0000cc">cc_name</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Copy Name</FONT>
+<SPAN STYLE="background: #eeeeee">   7:</SPAN> <FONT COLOR="#000000"><B>}</B></FONT>
+<SPAN STYLE="background: #eeeeee">   8:</SPAN> <FONT COLOR="#0000cc">showAll</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">true</FONT>
+<SPAN STYLE="background: #eeeeee">   9:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 123.456.*.*]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT>
+<SPAN STYLE="background: #eeeeee">  13:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  14:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[ELSE]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  15:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  16:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img2.jpg</FONT>
+<SPAN STYLE="background: #eeeeee">  17:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  18:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[GLOBAL]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  19:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  20:</SPAN> <FONT COLOR="#666666">  </FONT><FONT COLOR="#666666"><I>// Wonder if this works... :-)</I></FONT>
+<SPAN STYLE="background: #eeeeee">  21:</SPAN> <FONT COLOR="#0000cc">wakeMeUp</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">7:00</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">(Syntax highlighting of TS (and XML and PHP)
+can be done with the extension “extdeveval”).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+order to parse this TypoScript we can use the following code provided
+that the variable $tsString contains the above TypoScript as its
+value:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   3:<FONT COLOR="#0000bb"> </FONT><FONT COLOR="#007700">require_once(</FONT><FONT COLOR="#0000bb">PATH_t3lib</FONT><FONT COLOR="#007700">.</FONT><FONT COLOR="#dd0000">'class.t3lib_tsparser.php'</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   4:</FONT> </FONT>
+<FONT COLOR="#000000">   5:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">$TSparserObject&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">makeInstance</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'t3lib_tsparser'</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">   6:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">parse</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$tsString</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   7:</FONT> </FONT>
+<FONT COLOR="#000000">   8:<FONT COLOR="#007700"> echo&nbsp;</FONT><FONT COLOR="#dd0000">'&lt;pre&gt;'</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000">   9:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">print_r</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  10:<FONT COLOR="#007700"> echo&nbsp;</FONT><FONT COLOR="#dd0000">'&lt;/pre&gt;'</FONT><FONT COLOR="#007700">;</FONT></FONT></PRE>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	3: The TypoScript parser class is included (most likely already done
+	in both frontend and backend of TYPO3)</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	5: Create an object of the parser class.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	6: Initiates parsing of the TypoScript content in the string
+	$tsString.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	8-10: Outputs the parsed result which is located in
+	<FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT></FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+result of this code is run will be this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western">Array
+(
+    [colors.] =&gt; Array
+        (
+            [backgroundColor] =&gt; red
+            [fontColor] =&gt; blue
+        )
+
+    [adminInfo.] =&gt; Array
+        (
+            [cc_email] =&gt; email@email.com
+            [cc_name] =&gt; Copy Name
+        )
+
+    [showAll] =&gt; true
+    [headerImage] =&gt; fileadmin/img2.jpg
+    [wakeMeUp] =&gt; 7:00
+)</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Now your application could use this information
+in a manner like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000"><FONT COLOR="#007700">echo&nbsp;</FONT><FONT COLOR="#dd0000">'&lt;table bgcolor=&quot;'</FONT><FONT COLOR="#007700">.</FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'colors.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'backgroundColor'</FONT><FONT COLOR="#007700">].</FONT><FONT COLOR="#dd0000">'&quot;&gt;</FONT></FONT>
+<FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;</FONT>
+<FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</FONT>
+<FONT COLOR="#000000"><FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;font color=&quot;'</FONT><FONT COLOR="#007700">.</FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'colors.'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'fontColor'</FONT><FONT COLOR="#007700">].</FONT><FONT COLOR="#dd0000">'&quot;&gt;HELLO WORLD!&lt;/font&gt;</FONT></FONT>
+<FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</FONT>
+<FONT COLOR="#dd0000">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</FONT>
+<FONT COLOR="#000000"><FONT COLOR="#dd0000">&lt;/table&gt;'</FONT><FONT COLOR="#007700">;</FONT></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">As you can see some of the TypoScript
+properties (or <I>object paths</I>) which are found in the reference
+tables are implemented here. There is not much mystique about this
+and in fact this is how all TypoScript is used in its respective
+contexts; TypoScript is simply configuration values that makes our
+underlying PHP code act accordingly - parameters, function arguments,
+as you please; TypoScript is an API to instruct an underlying system.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+also means that now we can begin to meaningfully talk about invalid
+information in TypoScript - it is obvious that two properties are
+entered in TypoScript but does not make any sense; “showAll” and
+“wakeMeUp”. Both properties are not defined in the reference
+tables and therefore they should neither be implemented in the PHP
+code of course. However no errors are issued by the parser since the
+syntax used to define those properties are still right. The only
+problem is that they are irrelevant; it is like defining a variable
+in PHP and then never use it! A waste of time - and probably
+confusing later.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">As
+noted there exists no “semantics-checker” for any TypoScript
+implementation AFAIK at this writing. It might be interesting and
+very helpful some day if we had that as well so we could also be
+warned if we use non-existing properties (which could just be
+spelling errors).</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.3.Implementing Conditions|outline"></A>
+Implementing Conditions</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Now
+we know how to parse TypoScript and the only thing we need is to
+implement support for conditions. As stated a few places <I>the
+evaluation</I> of a condition is external to TypoScript and all you
+need to do in order to have an external process deal with conditions
+is to pass an object as the second parameter to the parse-function.
+This is done in the code listing below:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:<FONT COLOR="#0000bb"> </FONT><FONT COLOR="#007700">require_once(</FONT><FONT COLOR="#0000bb">PATH_t3lib</FONT><FONT COLOR="#007700">.</FONT><FONT COLOR="#dd0000">'class.t3lib_tsparser.php'</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   2:</FONT> </FONT>
+<FONT COLOR="#000000">   3:<FONT COLOR="#007700"> class&nbsp;</FONT><FONT COLOR="#0000bb">myConditions&nbsp;</FONT><FONT COLOR="#007700">{</FONT></FONT>
+<FONT COLOR="#000000">   4:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</FONT><FONT COLOR="#0000bb">match</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">   5:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT><FONT COLOR="#0000bb">$conditionLine&nbsp;</FONT><FONT COLOR="#007700">==&nbsp;</FONT><FONT COLOR="#dd0000">'[TYPO3 IS GREAT]'</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">true</FONT><FONT COLOR="#007700">;&nbsp;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   6:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   7:</FONT> }</FONT>
+<FONT COLOR="#000000">   8:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">$matchObj&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">makeInstance</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'myConditions'</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   9:</FONT> </FONT>
+<FONT COLOR="#000000">  10:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">$TSparserObject&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">makeInstance</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'t3lib_tsparser'</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  11:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">parse</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$tsString</FONT><FONT COLOR="#007700">,&nbsp;</FONT><FONT COLOR="#0000bb">$matchObj</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  12:</FONT> </FONT>
+<FONT COLOR="#000000">  13:<FONT COLOR="#007700"> </FONT><FONT COLOR="#0000bb">debug</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$TSparserObject</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">setup</FONT><FONT COLOR="#007700">);</FONT></FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Here goes some notes to this listing:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	3-8 defines a very simple class with a function, match(), inside.
+	<BR>The function “match()” must exist and take a string as its
+	argument and the match function must also return a boolean value.
+	This function should be programmed to evaluate the condition line
+	according to your specifications.<BR>Currently, if a condition line
+	contains the value “[TYPO3 IS GREAT]” then the condition will
+	evaluate to true and parse the subsequent TypoScript.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	11: Here the instantiated object, $matchObj, of the “myConditions”
+	class is passed to the parser.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	13: Just a little side note: Instead of using PHPs “print_r”
+	function we use the classic debug() function in TYPO3 which prints
+	an array in an HTML table - some of us think this is the nicest way
+	to look into the content of an array (make your own opinion from the
+	screenshot below).</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Anyways,
+let's test the custom condition class from the code listing above.
+This is done by parsing this TypoScript code:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   0:</SPAN> <FONT COLOR="#0000cc">someOtherTS</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">123</FONT>
+<SPAN STYLE="background: #eeeeee">   1:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   2:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[TYPO3 IS GREAT]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">   3:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   4:</SPAN> <FONT COLOR="#0000cc">message</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Yes</FONT>
+<SPAN STYLE="background: #eeeeee">   5:</SPAN> <FONT COLOR="#0000cc">someOtherTS</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">987</FONT>
+<SPAN STYLE="background: #eeeeee">   6:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   7:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[ELSE]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">   8:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   9:</SPAN> <FONT COLOR="#0000cc">message</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">No</FONT>
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[GLOBAL]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  12:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  13:</SPAN> <FONT COLOR="#0000cc">someTotallyOtherTS</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">456</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">With this listing we would expect to get the
+object path “message” set to “Yes” since the condition line
+“[TYPO3 IS GREAT]” matches the criteria for what will return
+true. Lets try:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m4ac96c8f.png" NAME="Graphic17" ALIGN=LEFT WIDTH=192 HEIGHT=67 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">According
+to this output it worked! </FONT>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Lets
+try to alter line 2 to this:</FONT></P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   1:</SPAN> 
+<SPAN STYLE="background: #eeeeee">   2:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[TYPO3 IS great]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">   3:</SPAN> </PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The parsed result is now:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_m5d5fbee8.png" NAME="Graphic18" ALIGN=LEFT WIDTH=192 HEIGHT=67 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">As
+you can see the value of “message” is now “No” since the
+condition would return false; The string “[TYPO3 IS great]” is
+obviously <I>not</I> the same as “[TYPO3 IS GREAT]”! The value of
+“someOtherTS” was also changed to “123” which was the value
+set before the condition and since the condition was not true the
+overriding of that former value did not happen like in the first
+case.</FONT></P>
+<H4 CLASS="western">A realistic example</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Most
+likely you don't want to evaluate conditions based on their bare
+string value. More likely you want to set up rules for a syntax and
+then parse the condition string. One example could be this modified
+condition class which will implement support for the condition seen
+in the TypoScript listings in the former section, “[UserIpRange =
+123.456.*.*]”:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:<FONT COLOR="#0000bb"> </FONT><FONT COLOR="#007700">class&nbsp;</FONT><FONT COLOR="#0000bb">myConditions&nbsp;</FONT><FONT COLOR="#007700">{</FONT></FONT>
+<FONT COLOR="#000000">   2:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</FONT><FONT COLOR="#0000bb">match</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">   3:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Getting the value inside of the square brackets:</FONT></FONT>
+<FONT COLOR="#000000">   4:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$insideSqrBrackets&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">ereg_replace</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\]$'</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#dd0000">''</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">substr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">1</FONT><FONT COLOR="#007700">)));</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   5:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">   6:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Splitting value into a key and value based on the &quot;=&quot; sign</FONT></FONT>
+<FONT COLOR="#000000">   7:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">list(</FONT><FONT COLOR="#0000bb">$key</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">)&nbsp;=&nbsp;</FONT><FONT COLOR="#0000bb">explode</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'='</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$insideSqrBrackets</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">2</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   8:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">   9:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch(</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$key</FONT><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  10:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT><FONT COLOR="#dd0000">'UserIpRange'</FONT><FONT COLOR="#007700">:</FONT></FONT>
+<FONT COLOR="#000000">  11:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">cmpIP</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">getIndpEnv</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'REMOTE_ADDR'</FONT><FONT COLOR="#007700">),&nbsp;</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">))&nbsp;?&nbsp;</FONT><FONT COLOR="#0000bb">TRUE&nbsp;</FONT><FONT COLOR="#007700">:&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  12:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT>
+<FONT COLOR="#000000">  13:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT><FONT COLOR="#dd0000">'Browser'</FONT><FONT COLOR="#007700">:</FONT></FONT>
+<FONT COLOR="#000000">  14:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">$GLOBALS</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'CLIENT'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'BROWSER'</FONT><FONT COLOR="#007700">]==</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  15:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  16:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  17:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  18:</FONT> }</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This class works in this way:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	4: The square brackets in the start (and possibly end as well) of
+	the condition line is removed.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	7: The condition line without square brackets is exploded into a key
+	and a value separated by the “=” sign; we are trying to
+	implement the concept of evaluating a data source to a value.</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Line
+	9-16: This switch construct will allow the “key” to be either
+	“UserIpRange” or “Browser”  (the datasource pointer) and the
+	value after the equal sign is of course interpreted accordingly.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Lets
+try and parse the TypoScript listing from the former section:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   0:</SPAN> <FONT COLOR="#0000cc">colors</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<SPAN STYLE="background: #eeeeee">   1:</SPAN>   <FONT COLOR="#0000cc">backgroundColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">red</FONT>
+<SPAN STYLE="background: #eeeeee">   2:</SPAN>   <FONT COLOR="#0000cc">fontColor</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">blue</FONT>
+<SPAN STYLE="background: #eeeeee">   3:</SPAN> <FONT COLOR="#000000"><B>}</B></FONT>
+<SPAN STYLE="background: #eeeeee">   4:</SPAN> <FONT COLOR="#0000cc">adminInfo</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<SPAN STYLE="background: #eeeeee">   5:</SPAN>   <FONT COLOR="#0000cc">cc_email</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">email@email.com</FONT>
+<SPAN STYLE="background: #eeeeee">   6:</SPAN>   <FONT COLOR="#0000cc">cc_name</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">Copy Name</FONT>
+<SPAN STYLE="background: #eeeeee">   7:</SPAN> <FONT COLOR="#000000"><B>}</B></FONT>
+<SPAN STYLE="background: #eeeeee">   8:</SPAN> <FONT COLOR="#0000cc">showAll</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">true</FONT>
+<SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 123.456.*.*]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT>
+<SPAN STYLE="background: #eeeeee">  13:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  14:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[ELSE]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  15:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  16:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img2.jpg</FONT>
+<SPAN STYLE="background: #eeeeee">  17:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  18:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[GLOBAL]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  19:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  20:</SPAN> <FONT COLOR="#666666">  </FONT><FONT COLOR="#666666"><I>// Wonder if this works... :-)</I></FONT>
+<SPAN STYLE="background: #eeeeee">  21:</SPAN> <FONT COLOR="#0000cc">wakeMeUp</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">7:00</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The result of parsing this will be an array
+like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_b7ea2ab.png" NAME="Graphic19" ALIGN=LEFT WIDTH=324 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">As
+you can see the “headerImage” property value stems from the
+[ELSE] condition section and thus the “[UserIpRange = 123.456.*.*]”
+must still have evaluated to false - which is actually no wonder
+since nobody can have the IP address range “123.456.*.*” !</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Lets
+change line 10 of the TypoScript to this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 192.168.*.*]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> </PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Since I'm currently on an internal network with
+an IP number which falls into this space the condition should now
+evaluate to TRUE when the TypoScript is parsed:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><IMG SRC="5_html_341ee7f1.png" NAME="Graphic20" ALIGN=LEFT WIDTH=324 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">...
+and in fact it does!</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.4.Implementing Conditions II|outline"></A>
+Implementing Conditions II</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">What
+about implementing the combination of conditions? For instance in the
+context of TypoScript Templates you can place  more “conditions”
+in the same (real) condition:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[browser = netscape][browser = opera]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">someTypoScript</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">123</FONT>
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[GLOBAL]</SPAN></B></FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">They are evaluated by OR-ing the result of each
+sub-condition (done in the class t3lib_matchCondition). We could
+implement something alike and maybe even better. For instance we
+could implement a syntax like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western" STYLE="margin-bottom: 0.5cm"><FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[ CON 1 ] &amp;&amp; [ CON 2 ] || [ CON 3 ]</SPAN></B></FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This will be read like “Returns true if
+condition 1 and condition 2 are true OR if condition 3 is true”. In
+other words we implement the ability to AND and OR conditions
+together.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+implementation goes as follows:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:<FONT COLOR="#0000bb"> </FONT><FONT COLOR="#007700">class&nbsp;</FONT><FONT COLOR="#0000bb">myConditions&nbsp;</FONT><FONT COLOR="#007700">{</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   2:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">   3:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">/**</FONT></FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   4:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; * Splits the input condition line into AND and OR parts </FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   5:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; * which are separately evaluated and logically combined to the final output.</FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   6:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; */</FONT>
+<FONT COLOR="#000000">   7:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">function&nbsp;</FONT><FONT COLOR="#0000bb">match</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">   8:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Getting the value from inside of the wrapping </FONT></FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   9:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// square brackets of the condition line:</FONT>
+<FONT COLOR="#000000">  10:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$insideSqrBrackets&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">ereg_replace</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\]$'</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#dd0000">''</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">substr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">1</FONT><FONT COLOR="#007700">)));</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  11:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  12:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// The &quot;weak&quot; operator, OR, takes precedence:</FONT></FONT>
+<FONT COLOR="#000000">  13:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$ORparts&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">split</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\][[:space:]]*\|\|[[:space:]]*\['</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$insideSqrBrackets</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  14:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT><FONT COLOR="#0000bb">$ORparts&nbsp;</FONT><FONT COLOR="#007700">as&nbsp;</FONT><FONT COLOR="#0000bb">$andString</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  15:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$resBool&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  16:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  17:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Splits by the &quot;&amp;&amp;&quot; and operator:</FONT></FONT>
+<FONT COLOR="#000000">  18:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$ANDparts&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">split</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\][[:space:]]*\&amp;\&amp;[[:space:]]*\['</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$andString</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  19:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT><FONT COLOR="#0000bb">$ANDparts&nbsp;</FONT><FONT COLOR="#007700">as&nbsp;</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  20:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$resBool&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">$this</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">evalConditionStr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">)&nbsp;?&nbsp;</FONT><FONT COLOR="#0000bb">TRUE&nbsp;</FONT><FONT COLOR="#007700">:&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000">  21:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  22:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  23:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  24:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  25:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#000000">  26:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  27:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  28:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  29:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">/**</FONT></FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">  30:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; * Evaluates the inner part of the conditions.</FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">  31:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; */</FONT>
+<FONT COLOR="#000000">  32:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">function&nbsp;</FONT><FONT COLOR="#0000bb">evalConditionStr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  33:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Splitting value into a key and value based on the &quot;=&quot; sign</FONT></FONT>
+<FONT COLOR="#000000">  34:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">list(</FONT><FONT COLOR="#0000bb">$key</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">)&nbsp;=&nbsp;</FONT><FONT COLOR="#0000bb">explode</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'='</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">2</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  35:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  36:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch(</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$key</FONT><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  37:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT><FONT COLOR="#dd0000">'UserIpRange'</FONT><FONT COLOR="#007700">:</FONT></FONT>
+<FONT COLOR="#000000">  38:<FONT COLOR="#007700"> </FONT><FONT COLOR="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">cmpIP</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">t3lib_div</FONT><FONT COLOR="#007700">::</FONT><FONT COLOR="#0000bb">getIndpEnv</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'REMOTE_ADDR'</FONT><FONT COLOR="#007700">),&nbsp;</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">))&nbsp;?&nbsp;</FONT><FONT COLOR="#0000bb">TRUE&nbsp;</FONT><FONT COLOR="#007700">:&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  39:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT>
+<FONT COLOR="#000000">  40:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT><FONT COLOR="#dd0000">'Browser'</FONT><FONT COLOR="#007700">:</FONT></FONT>
+<FONT COLOR="#000000">  41:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">$GLOBALS</FONT><FONT COLOR="#007700">[</FONT><FONT COLOR="#dd0000">'CLIENT'</FONT><FONT COLOR="#007700">][</FONT><FONT COLOR="#dd0000">'BROWSER'</FONT><FONT COLOR="#007700">]==</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$value</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  42:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  43:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  44:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  45:</FONT> }</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">With
+this implementation I can make a condition line like this:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 192.168.*.*] &amp;&amp; [Browser = msie]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT>
+<SPAN STYLE="background: #eeeeee">  13:</SPAN> </PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">So if I'm in the right IP range AND has the
+right browser the value of “headerImage” will be
+“fileadmin/img1.jpg”</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">If
+we modify the TypoScript as follows the same condition applies but if
+the browser is Netscape then the condition will evaluated to true
+regardless of the IP range:</FONT></P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 192.168.*.*] &amp;&amp; [Browser = msie] || [Browser = netscape]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This is because the conditions are read like
+the parenthesis levels show:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">	<B>(</B>
+ “UserIpRange = 192.168.*.*”  <B>AND </B> “Browser = msie”  <B>)
+ OR </B>“Browser = netscape”</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+order of the “||” and “&amp;&amp;” operators may be a problem
+now. For instance:</FONT></P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 192.168.*.*] || [UserIpRange = 212.237.*.*] &amp;&amp; [Browser = msie]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Imagine this condition; I would like it to read
+as “If User IP Range is either #1 or #2 provided that the browser
+is MSIE in any case!”. But right now it will be true if the User IP
+range is 192.168.... OR if either the range is 212.... and the
+browser is MSIE.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Formally,
+this is what I want:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">	<B>(</B>
+ “UserIpRange = 192.168.*.*”  <B>OR</B> “UserIpRange =
+212.237.*.*”  <B>)  AND</B>   “Browser = msie”</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">My
+solution will be to implement a second way of OR'ing conditions
+together - by simply implying an OR between two “condition
+sections” if no operator is there. Thus the line above could be
+implemented as follows:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><SPAN STYLE="background: #eeeeee">   9:</SPAN>  
+<SPAN STYLE="background: #eeeeee">  10:</SPAN> <FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[UserIpRange = 192.168.*.*][UserIpRange = 212.237.*.*] &amp;&amp; [Browser = msie]</SPAN></B></FONT>
+<SPAN STYLE="background: #eeeeee">  11:</SPAN> 
+<SPAN STYLE="background: #eeeeee">  12:</SPAN>   <FONT COLOR="#0000cc">headerImage</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">fileadmin/img1.jpg</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Line 10 will be understood in this way:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western">[UserIpRange = 192.168.*.*]<FONT COLOR="#ff0000"><B>(implied OR here!)</B></FONT>[UserIpRange = 212.237.*.*] &amp;&amp; [Browser = msie]</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+function match() of the condition class will have to be modified as
+follows:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:<FONT COLOR="#0000bb"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">/**</FONT></FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   2:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; * Splits the input condition line into AND and OR parts </FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   3:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; * which are separately evaluated and logically combined to the final output.</FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   4:</FONT> &nbsp;&nbsp;&nbsp;&nbsp; */</FONT>
+<FONT COLOR="#000000">   5:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#007700">function&nbsp;</FONT><FONT COLOR="#0000bb">match</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">   6:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Getting the value from inside of the wrapping </FONT></FONT>
+<FONT COLOR="#ff8000"><FONT COLOR="#000000">   7:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// square brackets of the condition line:</FONT>
+<FONT COLOR="#000000">   8:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$insideSqrBrackets&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">trim</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">ereg_replace</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\]$'</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#dd0000">''</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">substr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$conditionLine</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">1</FONT><FONT COLOR="#007700">)));</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">   9:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  10:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// The &quot;weak&quot; operator, OR, takes precedence:</FONT></FONT>
+<FONT COLOR="#000000">  11:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$ORparts&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">split</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\][[:space:]]*\|\|[[:space:]]*\['</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$insideSqrBrackets</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  12:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT><FONT COLOR="#0000bb">$ORparts&nbsp;</FONT><FONT COLOR="#007700">as&nbsp;</FONT><FONT COLOR="#0000bb">$andString</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  13:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$resBool&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  14:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  15:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Splits by the &quot;&amp;&amp;&quot; and operator:</FONT></FONT>
+<FONT COLOR="#000000">  16:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$ANDparts&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">split</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\][[:space:]]*\&amp;\&amp;[[:space:]]*\['</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$andString</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  17:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT><FONT COLOR="#0000bb">$ANDparts&nbsp;</FONT><FONT COLOR="#007700">as&nbsp;</FONT><FONT COLOR="#0000bb">$subOrStr</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  18:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  19:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#ff8000">// Split by no operator between ] and [ (sub-OR)</FONT></FONT>
+<FONT COLOR="#000000">  20:<FONT COLOR="#ff8000"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$subORparts&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">split</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#dd0000">'\][[:space:]]*\['</FONT><FONT COLOR="#007700">,</FONT><FONT COLOR="#0000bb">$subOrStr</FONT><FONT COLOR="#007700">);</FONT></FONT>
+<FONT COLOR="#000000">  21:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$resBool&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">FALSE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000">  22:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT><FONT COLOR="#0000bb">$subORparts&nbsp;</FONT><FONT COLOR="#007700">as&nbsp;</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  23:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT><FONT COLOR="#0000bb">$this</FONT><FONT COLOR="#007700">-&gt;</FONT><FONT COLOR="#0000bb">evalConditionStr</FONT><FONT COLOR="#007700">(</FONT><FONT COLOR="#0000bb">$condStr</FONT><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{</FONT></FONT>
+<FONT COLOR="#000000">  24:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT COLOR="#0000bb">$resBool&nbsp;</FONT><FONT COLOR="#007700">=&nbsp;</FONT><FONT COLOR="#0000bb">TRUE</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  25:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  26:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  27:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  28:</FONT> </FONT>
+<FONT COLOR="#000000">  29:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  30:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  31:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT>
+<FONT COLOR="#000000">  32:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;break;</FONT></FONT>
+<FONT COLOR="#007700"><FONT COLOR="#000000">  33:</FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT>
+<FONT COLOR="#000000">  34:<FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT><FONT COLOR="#0000bb">$resBool</FONT><FONT COLOR="#007700">;</FONT></FONT>
+<FONT COLOR="#000000">  35:</FONT><FONT COLOR="#007700"> &nbsp;&nbsp;&nbsp;&nbsp;}</FONT></PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">That's it.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">In
+fact this function might be implemented for TypoScript Templates some
+day. Currently they only offer the OR'ing of condition-subparts, but
+this parsing above could probably be applied directly. Who knows,
+maybe it has already been done when you are reading this document...</FONT></P>
+<H4 CLASS="western">Addendum to the reference for our application</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Remember
+in the previous sections? We defined three tables with properties
+that could be used in TypoScript in the context of our case-story
+application. To that reference we should now add a section with
+conditions which defines the following:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">#1:
+Line syntax:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+condition is splitted into smaller parts which are logically AND'ed
+or OR'ed together. Each sub-part of the condition line is separated
+by “] (Operator) [“ where operator can be “&amp;&amp;” (AND)
+, “||” (OR) or nothing at all (also meaning OR “below” AND in
+order).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+format of the condition line therefore is:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">	[
+COND1 ]  ||  [ COND2 ] &amp;&amp; [ COND3 ]  [ COND4 ]  ....etc</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">where
+the operators has precedence as indicated by these illustrative
+parenthesis:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">	[
+COND1 ]  || <FONT COLOR="#ff0000"> </FONT><FONT COLOR="#ff0000"><B>(</B></FONT><FONT COLOR="#ff0000">
+</FONT>[ COND2 ] &amp;&amp;  <FONT COLOR="#ff0000"><B>(</B></FONT> [
+COND3 ]  [ COND4 ]<B> </B><FONT COLOR="#ff0000"><B>) )</B></FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">(Notice:
+Between COND3 and COND4 the blank space is implicitly an OR)</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">#2:
+Subpart syntax:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">For
+each subpart (for example “[ COND 1 ]”) the content is evaluated
+as follows:</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">	[
+KEY = VALUE ]</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">where
+KEY denotes a type of condition from the table below:</FONT></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=33*>
+	<COL WIDTH=163*>
+	<COL WIDTH=60*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=13%>
+				<P CLASS="western">KEY</P>
+			</TH>
+			<TH WIDTH=64%>
+				<P CLASS="western">Description</P>
+			</TH>
+			<TH WIDTH=23%>
+				<P CLASS="western">Example</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=13%>
+				<P CLASS="western">UserIpRange</P>
+			</TD>
+			<TD WIDTH=64%>
+				<P CLASS="western">Returns true if the clients remote IP address
+				matches the pattern given as value.</P>
+				<P CLASS="western">The value is matched against REMOTE_ADDR by
+				the function t3lib_div::cmpIP() which you can consult for details
+				on the syntax.</P>
+			</TD>
+			<TD WIDTH=23%>
+				<P CLASS="western">[UserIpRange = 192.168.*.*]</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=13%>
+				<P CLASS="western">Browser</P>
+			</TD>
+			<TD WIDTH=64%>
+				<P CLASS="western">Returns true if the client browser matches one
+				of the keywords below:</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Value you can use:</P>
+				<P CLASS="western"><B>konqu</B> = Konqueror</P>
+				<P CLASS="western"><B>opera</B> = Opera</P>
+				<P CLASS="western"><B>msie</B> = Microsoft Internet Explorer</P>
+				<P CLASS="western"><B>net</B> = Netscape (or any other)</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Values are evaluated against the output of the
+				function t3lib_div::clientInfo() which can be consulted for
+				details on the values for browsers.</P>
+			</TD>
+			<TD WIDTH=23%>
+				<P CLASS="western">[Browser = msie]</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm; font-weight: normal">
+<BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>33</SDFIELD></P>
+</DIV>
+</BODY>
+</HTML>

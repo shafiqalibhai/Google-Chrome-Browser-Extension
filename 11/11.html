@@ -1,0 +1,2868 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Modern Template Building, Part 2+3</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Donald Duck">
+	<META NAME="CHANGED" CONTENT="20030401;1332100">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0cm; color: #333366; text-align: left; page-break-before: auto }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Arial", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Arial Narrow", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		H2.contents-heading-western { color: #000000; font-family: "Arial Narrow", sans-serif; font-size: 16pt; font-style: normal }
+		H2.contents-heading-cjk { color: #000000; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #000000; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		PRE.table-contents/pre-western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.table-contents/pre-cjk { font-family: "Cumberland", monospace }
+		PRE.table-contents/pre-ctl { font-family: "Cumberland", monospace }
+		CODE { font-family: "Cumberland", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Modern Template Building, Part 2+3</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER><B>Extension key:
+doc_tut_templselect2</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2003, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Modern Template
+	Building, Part 2+3	1</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	1</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">What does it do?	1</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Part 2:
+	Creating a Template Selector	2</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Preparations	3</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Investigating the
+	source material	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating an
+	extension	12</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Modifying item
+	arrays (backend)	14</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Reading the selected
+	template (frontend)	20</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">A TypoScript session
+	for Mr. Benoit	25</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The content area
+	template	28</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Real content in the
+	columns	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Setting the default
+	template with a constant	33</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Configuration of the
+	template paths	35</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Conclusions	36</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Part 3:
+	Extending the Built-In Access Scheme	38</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	38</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The theory of
+	&quot;enablefields&quot;	38</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Extending the
+	t3lib_pageSelect class	39</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Changing the
+	&quot;fe_group&quot; field	42</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Adding our custom
+	&quot;enablecolumn&quot; type	43</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Access control on
+	user level?	44</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Extending access
+	control for pages	44</P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Introduction</H2>
+<H3 CLASS="western">What does it do?</H3>
+<P CLASS="western">This is Part 2 and 3 of the tutorial &quot;Modern
+Template Building&quot; from the &quot;doc_tut_templselect&quot;
+extension.</P>
+<P CLASS="western">For developers on intermediate to expert level.</P>
+<P CLASS="western">For further introduction see the intro-section of
+Part 1.</P>
+<H4 CLASS="western">Skill levels</H4>
+<P CLASS="western">Part 1 of this tutorial contained:</P>
+<P CLASS="western"><B>The Basics</B> - a newbee introduction to
+building websites with TYPO3, template records, TypoScript and
+Content Objects (cObjects). Any person who wants to develop with
+TYPO3 should be familiar with the concept described here.</P>
+<P CLASS="western"><B>Part 1: Integration of an HTML template</B> -
+this part aims specifically at intermediate HTML-webdesigners with a
+limited amount of technical knowledge.</P>
+<P CLASS="western"><I>Notice: The Basics and Part 1 are found in
+another document, in the extension &quot;<SPAN STYLE="font-weight: normal">doc_tut_templselect</SPAN>&quot;</I></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This part (2+3) contains:</P>
+<P CLASS="western"><B>Part 2: Creating a Template Selector </B>- this
+part aims at intermediate web developer with good knowledge of PHP,
+SQL and programming concepts in general.</P>
+<P CLASS="western"><B>Part 3: Extending the Built-In Access Scheme</B>
+- for advanced TYPO3/PHP-developers.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Part 2:
+Creating a Template Selector</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">Most websites will do fine having only one main
+template and nothing more. Normally alternative designs are only
+about substitution of a single image or a stylesheet and most likely
+such changes are supposed to work within a certain level of the page
+tree. For instance a customer service section might have its own
+header image to set the environment of that section. Or another
+common feature is to have a totally different template for the
+frontpage, possibly some kind of entrance choice.  These features can
+often be done without invoking a whole new template file (except from
+the unique front page of course) but simply by setting some
+conditional properties inside the template record.</P>
+<H4 CLASS="western">The challenge</H4>
+<P CLASS="western">However we will now take the basic example from
+the previous section in this tutorial and expand it heavily so that
+instead of one template file we can select from any number of
+template files per page and per section. Further we want the content
+area to be more flexible having different sub-templates for columns,
+news sections etc. And all this should be made so flexible that new
+templates can be added by Mr. Raphael (the designer) simply by
+creating the file in the right location! At the same time the
+non-technical authors/editors should be able to select from these
+templates on a per-page basis in a visually intuitive  way.</P>
+<H4 CLASS="western">The technical outlines</H4>
+<P CLASS="western">The illustration below outlines what we need in
+order to achieve our goal:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_2d0175ed.png" NAME="Graphic74" ALIGN=LEFT WIDTH=669 HEIGHT=573 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see the main structure (light blue
+section) is the same as in the previous section. However the template
+file delivered to the &quot;plugin.tx_automaketemplate_pi1&quot; USER
+cObject must be selected based on which template file is selected for
+the current page/template. 
+</P>
+<P CLASS="western">Further the insertion of page content elements
+must be done based on the currently selected content area template
+which will be combined with content from one or more columns by a
+TEMPLATE cObject (the light yellow section).</P>
+<P CLASS="western">In the backend we need to add selector boxes for
+the templates in the page records. The content of these selectors
+must be dynamically loaded by some logic that looks up template files
+from a designated location in the file system. Thus Mr. Raphael  can
+add new templates by the act of just creating a new template file
+there!</P>
+<P CLASS="western">The selectors should be equipped with icons
+representing the template options visually, something like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m5ea6b06e.png" NAME="Graphic75" ALIGN=LEFT WIDTH=491 HEIGHT=205 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Skill level</H4>
+<P CLASS="western"><I>Intermediate to advanced web developer.
+Requires skills with PHP. Developer experience with TYPO3 and
+extension development is highly recommended.</I></P>
+<P CLASS="western">To complete this section of the tutorial you
+should be a developer minded type of person. It requires you to know
+PHP and furthermore I'll be less explicit than in the previous
+section. So you will have to enable your brain during this section
+and figure out what's between the lines once in a while.</P>
+<H3 CLASS="western">Preparations</H3>
+<P CLASS="western">To complete this section of the tutorial you
+should perform these steps no matter if you went through the previous
+section or not:</P>
+<UL>
+	<LI><P CLASS="western"><B>Copy files:</B> Remove old content in the
+	fileadmin/template/ folder, then copy the content from the folder
+	&quot;part2/&quot; of this tutorial extension to
+	fileadmin/template/. You should now have a directory structure with
+	content equal to this:<BR><BR><BR>
+	</P>
+	<P CLASS="western"><IMG SRC="11_html_5e77fbbb.png" NAME="Graphic77" ALIGN=LEFT WIDTH=412 HEIGHT=168 BORDER=0><BR CLEAR=LEFT></P>
+	<LI><P CLASS="western"><B>Create page tree:</B> <I>Unless </I>you
+	did the previous section of the tutorial you need to create a page
+	structure in the database. The easiest way to do this is to import
+	the trd-file &quot;part1_result_pagetree.t3d&quot; by following
+	these steps:</P>
+	<UL>
+		<LI><P CLASS="western">Copy the file
+		&quot;part1/part1_result_pagetree.t3d&quot; from the tutorial
+		extension to &quot;fileadmin/&quot;</P>
+		<LI><P CLASS="western">In the backend, create a new page on root
+		level, call it &quot;Import folder &quot; and select the type
+		&quot;sysFolder&quot;.</P>
+		<LI><P CLASS="western">Click the page/sysFolder icon of the new
+		page, select &quot;More options...&quot;, select &quot;Import from
+		.t3d&quot;.</P>
+		<LI><P CLASS="western">Select the t3d file in the selectorbox,
+		press preview. You should now see something like this:</P>
+		<P CLASS="western"><IMG SRC="11_html_m281d68fc.png" NAME="Graphic78" ALIGN=LEFT WIDTH=416 HEIGHT=351 BORDER=0><BR CLEAR=LEFT></P>
+		<P CLASS="western"><BR><BR><BR>
+		</P>
+		<LI><P CLASS="western">Press &quot;Import&quot;: Now, the page tree
+		starting with &quot;Root page&quot; should be created inside the
+		&quot;Import folder&quot;. 
+		</P>
+		<LI><P CLASS="western">Cut the &quot;Root page&quot; and paste it
+		into the root of the tree so you get &quot;Root page&quot; as the
+		first page in the tree from the top.</P>
+		<LI><P CLASS="western">The &quot;Import folder&quot; still contains
+		three template records which are related to the main template
+		record on the &quot;Root page&quot; - let them stay in the &quot;Import
+		folder&quot; and rename the folder to &quot;Template Storage&quot;.</P>
+	</UL>
+	<LI><P CLASS="western"><B>Install Kickstart Wizard:</B> Make sure
+	the Kickstart Wizard extension (&quot;extrep_wizard&quot;) is
+	installed:<BR><BR><BR>
+	</P>
+</UL>
+<P CLASS="western"><IMG SRC="11_html_51e00223.png" NAME="Graphic76" ALIGN=LEFT WIDTH=460 HEIGHT=64 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Investigating the source material</H3>
+<P CLASS="western">Before we move on with the creation of the
+extension it's very important to analyse the material we have at hand
+here. What we will do now is a kind of reverse-enginering where we
+take a set of templates and figure out what subparts we will need.
+Normally you would work the other way around: You would define what
+you need, then let the designer loose. For instance you might say &quot;I
+want a template with two columns, one for NORMAL column content and
+one for RIGHT column content.&quot; - and the designer would make
+that by creating a template which has two table cells with id
+attributes that will place the subparts for NORMAL and RIGHT column
+content at the right position.</P>
+<H4 CLASS="western">The main templates</H4>
+<P CLASS="western">The main templates Mr. Raphael made are stored in
+the folder &quot;fileadmin/template/main/&quot;. There are currently
+two main templates there: 
+</P>
+<P CLASS="western"><B>template_1.html:</B></P>
+<P CLASS="western"><IMG SRC="11_html_m3db8e930.png" NAME="Graphic79" ALIGN=LEFT WIDTH=365 HEIGHT=310 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This is the same template as in Part 1 of this
+tutorial.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>template_2.html:</B></P>
+<P CLASS="western"><IMG SRC="11_html_22892ac6.png" NAME="Graphic80" ALIGN=LEFT WIDTH=395 HEIGHT=336 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This is an alternative main template. It includes
+a &quot;path-menu&quot; (Root page &gt; First page &gt; ....), a
+horizontal menu of current-page sub items and a content area which
+spreads over the full width of the page.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">For each of these templates Raphael also made a
+little icon. He gave the icons the same name as the template file,
+but with the &quot;gif&quot; extension instead:</P>
+<P CLASS="western"><B>template_1.gif:</B></P>
+<P CLASS="western"><IMG SRC="11_html_5aef27b2.gif" NAME="Graphic81" ALIGN=LEFT WIDTH=43 HEIGHT=54 BORDER=0><BR CLEAR=LEFT><B>template_2.gif:</B></P>
+<P CLASS="western"><IMG SRC="11_html_4c2a3f75.gif" NAME="Graphic82" ALIGN=LEFT WIDTH=43 HEIGHT=54 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see these icons are designed to reflect
+the overall structure of the main templates.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, lets just look inside of the template_2.html
+file for a second:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m14c17ed2.png" NAME="Graphic95" ALIGN=LEFT WIDTH=477 HEIGHT=588 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western">Notice the title of the document - we will
+	use this for the main template selector box!</P>
+	<LI><P CLASS="western">This template uses an additional stylesheet!</P>
+	<LI><P CLASS="western">The template has a &quot;path-menu&quot; in a
+	table cell with the id &quot;path&quot;</P>
+	<LI><P CLASS="western">The main menu is contained in a <I>table row</I>
+	with id &quot;menu_2&quot; (#5) and each element is wrapped in a
+	&lt;td&gt; element.</P>
+	<LI><P CLASS="western">&quot;menu_2&quot; is the id of the table row
+	(see #4)</P>
+	<LI><P CLASS="western">The class &quot;oddcell&quot; is used for
+	every second menu item - this will produce alternating background
+	colors</P>
+	<LI><P CLASS="western">The class &quot;menu2-level1-act&quot; is
+	used to define the style for active elements in the menu.</P>
+	<LI><P CLASS="western">The id &quot;content&quot; is used - as with
+	template_1.html - for the table cell defining the content area of
+	the main template.</P>
+</OL>
+<H4 CLASS="western">Content area templates</H4>
+<P CLASS="western">In the folder &quot;fileadmin/templates/sub/&quot;
+we find four templates for different layouts of the content area of
+either of the main templates. Thus we have two main templates times
+four content area templates - a total of 8 possible combinations!</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=96*>
+	<COL WIDTH=160*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=37%>
+				<P CLASS="western">Layout</P>
+			</TH>
+			<TH WIDTH=63%>
+				<P CLASS="western">Info</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=37%>
+				<P CLASS="western"><IMG SRC="11_html_m46eba315.png" NAME="Graphic83" ALIGN=LEFT WIDTH=216 HEIGHT=202 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+			</TD>
+			<TD WIDTH=63%>
+				<P CLASS="western"><B>ct_1.html</B></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Single Large Content Area (default)</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><B>Icon:</B></P>
+				<P CLASS="western"><IMG SRC="11_html_28df4bd1.gif" NAME="Graphic87" ALIGN=LEFT WIDTH=43 HEIGHT=31 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=37%>
+				<P CLASS="western"><IMG SRC="11_html_6d78052d.png" NAME="Graphic84" ALIGN=LEFT WIDTH=216 HEIGHT=202 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+			</TD>
+			<TD WIDTH=63%>
+				<P CLASS="western"><B>ct_2.html</B></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Wide Main Column, narrow right column.</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><B>Icon:</B></P>
+				<P CLASS="western"><IMG SRC="11_html_1914f0a4.gif" NAME="Graphic88" ALIGN=LEFT WIDTH=43 HEIGHT=31 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=37%>
+				<P CLASS="western"><IMG SRC="11_html_30ee77b2.png" NAME="Graphic85" ALIGN=LEFT WIDTH=216 HEIGHT=202 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+			</TD>
+			<TD WIDTH=63%>
+				<P CLASS="western"><B>ct_3.html</B></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Three even Columns (left + normal + right)</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><B>Icon:</B></P>
+				<P CLASS="western"><IMG SRC="11_html_m11bab858.gif" NAME="Graphic89" ALIGN=LEFT WIDTH=43 HEIGHT=31 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=37%>
+				<P CLASS="western"><IMG SRC="11_html_m3112eb1.png" NAME="Graphic86" ALIGN=LEFT WIDTH=216 HEIGHT=202 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+			</TD>
+			<TD WIDTH=63%>
+				<P CLASS="western"><B>ct_4.html</B></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Single Large Content Column with News Section
+				in Upper Right Corner.</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><B>Icon:</B></P>
+				<P CLASS="western"><IMG SRC="11_html_203df798.gif" NAME="Graphic90" ALIGN=LEFT WIDTH=43 HEIGHT=31 BORDER=0><BR CLEAR=LEFT><BR>
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see only the content area changes in
+Mr. Raphaels templates. In fact the menu and header image are just a
+background image inserted temporarily so that the content area
+designs could be evaluated in the right context!</P>
+<P CLASS="western">Lets take a look at the source code of the
+template file ct_1.html:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7f4215d.png" NAME="Graphic91" ALIGN=LEFT WIDTH=478 HEIGHT=537 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western">Each template file has a page title which is
+	carefully describing the template properties - this will in fact be
+	the title used for the selector box inside of TYPO3s backend.</P>
+	<LI><P CLASS="western">This &lt;style&gt; section inserts the
+	background image and positions the &lt;div&gt;-section with id
+	&quot;contentsection&quot; on the page. Since this is here <I>only</I>
+	for guidance in the design phase we must instruct the Tempalte
+	Auto-parser in TYPO3 to <I>discard</I> this section along with the
+	&lt;title&gt; tag!</P>
+	<LI><P CLASS="western">This stylesheet reference on the other hand
+	defines how the content from our content area template should be
+	rendered. We want to have this added to the header of the final
+	page!</P>
+	<LI><P CLASS="western">The &lt;div&gt; section &quot;contentsection&quot;
+	is used in <I>all</I> of the content area templates to point out the
+	content area section we want to extract! 
+	</P>
+</OL>
+<P CLASS="western">For each of the (currently) four content area
+templates there is individual HTML code found inside the &lt;div
+id=&quot;contentsection&quot;&gt; element:</P>
+<P CLASS="western">(Some lines are shortened for brevity):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>ct_1.html:</B></P>
+<PRE CLASS="western"><FONT COLOR="#ff0000">&lt;div id=&quot;colNormal&quot;&gt;</FONT>
+	&lt;h1&gt;Buy PaperShredder(tm) Gizmo with 30-days money-back guarantee!&lt;/h1&gt;
+	&lt;img src=&quot;../main/images/paperwork.jpg&quot; width . . . =&quot;0&quot; alt=&quot;&quot; align=&quot;right&quot;/&gt;
+	&lt;p class=&quot;bodytext&quot;&gt;Adam Seth Enos Cainan Malelehel . . . &lt;/p&gt;
+	&lt;p class=&quot;bodytext&quot;&gt;Filii Ham Chus et M. . . &lt;/p&gt;
+	
+	&lt;br /&gt;
+&lt;/div&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Simple template, using the id &quot;colNormal&quot;
+to insert page content elements from the &quot;NORMAL&quot; column
+here.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>ct_2.html:</B></P>
+<PRE CLASS="western">&lt;table border=&quot;0&quot; width=&quot;100%&quot;&gt;
+&lt;tr&gt;
+	<FONT COLOR="#ff0000">&lt;td id=&quot;colNormal&quot; width=&quot;390&quot; valign=&quot;top&quot;&gt;</FONT>
+		&lt;h1&gt;Buy PaperShredder(tm) Gizmo with 30-days money-back guarantee!&lt;/h1&gt;
+		&lt;img src=&quot;../main/images/paperwork.jpg&quot; wid...0&quot; alt=&quot;&quot; align=&quot;right&quot;/&gt;
+		&lt;p class=&quot;bodytext&quot;&gt;Adam Seth Enos Cainan Maleleh.../p&gt;
+		&lt;p class=&quot;bodytext&quot;&gt;Filii Ham Chus et M...&lt;/p&gt;
+		
+		&lt;br /&gt;
+	&lt;/td&gt;
+	<FONT COLOR="#ff0000">&lt;td width=&quot;20&quot;&gt;&lt;/td&gt;</FONT>
+	<FONT COLOR="#ff0000">&lt;td id=&quot;colRight&quot; width=&quot;190&quot; valign=&quot;top&quot;&gt;</FONT>
+		&lt;h1&gt;Buy PaperShredder(tm) Gizmo with 30-days money-back guarantee!&lt;/h1&gt;
+		&lt;img src=&quot;../main/images/paperwork.jpg&quot; wid...der=&quot;0&quot; alt=&quot;&quot; align=&quot;right&quot;/&gt;
+		&lt;p class=&quot;bodytext&quot;&gt;Adam Seth Enos Cainan Malelehel Iar...&lt;/p&gt;
+		&lt;p class=&quot;bodytext&quot;&gt;Filii Ham Chus et Mesraim Ph...&lt;/p&gt;
+		
+		&lt;br /&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">A table with three cells (columns) is used. The
+first column has the id &quot;colNormal&quot; which should insert
+page content elements from the NORMAL column. The id &quot;colRight&quot;
+inserts content elements from the RIGHT column in TYPO3. 
+</P>
+<P CLASS="western">Notice how the stylesheet in &quot;res/stylesheet.css&quot;
+specifically overrides certain properties for the content in the
+right column so it gets a different rendering:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">. . . 
+/* Additional attributes for content in RIGHT column */
+<FONT COLOR="#ff0000">#colRight H1</FONT> {
+	font-size: 12px;
+	background-color: #eefffe;
+	text-align: center;
+	font-color: maroon;
+}
+<FONT COLOR="#ff0000">#colRight P.bodytext</FONT> {
+	font-size: 10px;
+}
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The result looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_2b443132.png" NAME="Graphic92" ALIGN=LEFT WIDTH=531 HEIGHT=175 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>ct_3.html:</B></P>
+<P CLASS="western">Much like ct_2.html, but with three columns in the
+table where every column is used for content:</P>
+<PRE CLASS="western">&lt;table border=&quot;0&quot; width=&quot;100%&quot; <FONT COLOR="#ff0000">id=&quot;ct3&quot;</FONT>&gt;
+&lt;tr&gt;
+	&lt;td <FONT COLOR="#ff0000">id=&quot;colLeft&quot;</FONT> width=&quot;30%&quot; valign=&quot;top&quot;&gt;
+		. . .
+	&lt;/td&gt;
+	&lt;td <FONT COLOR="#ff0000">id=&quot;colNormal&quot;</FONT> width=&quot;30%&quot; valign=&quot;top&quot;&gt;
+		. . .
+	&lt;/td&gt;
+	&lt;td <FONT COLOR="#ff0000">id=&quot;colRight&quot;</FONT> width=&quot;30%&quot; valign=&quot;top&quot;&gt;
+		. . . 
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The ids colNormal, colLeft and colRight are used
+to mark up the table cells where the content for each content element
+column should be put. 
+</P>
+<P CLASS="western"><I>Further</I> notice the id=&quot;ct3&quot; of
+the &lt;table&gt; element! Because like with ct_2.html the stylesheet
+also specifies the rendering for each column but in this case it is
+targeted even stronger at only the ct_3.html template by using &quot;#ct3&quot;
+as prefix selector:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">. . .
+/* Overriding attributes for columns in case of content template #3 */
+
+#ct3 #colRight P.bodytext,
+#ct3 #colLeft P.bodytext,
+#ct3 #colNormal P.bodytext
+{
+	font-size: 10px;
+}
+#ct3 #colRight H1,
+#ct3 #colLeft H1,
+#ct3 #colNormal H1
+{
+	font-size: 12px;
+	text-align: center;
+	font-color: maroon;
+}
+
+#ct3 #colLeft H1 {	background-color: #E3DEBC; }
+#ct3 #colNormal H1 { background-color: #F4EAAB; }
+#ct3 #colRight H1 {	background-color: #FFF2A0; }
+
+#ct3 TD#colRight {padding-left: 5px;}
+#ct3 TD#colLeft {padding-right: 5px;}
+#ct3 TD#colNormal {padding-right: 5px;padding-left: 5px;}
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The result is three columns with the same style,
+but different background colors for the H1 tag and different padding
+settings for the columns:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_1a0bd5c0.png" NAME="Graphic93" ALIGN=LEFT WIDTH=669 HEIGHT=384 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>ct_4.html:</B></P>
+<P CLASS="western">The last content area template includes a section
+for the front-page news splash of the &quot;mininews&quot; extension
+(marked with <FONT COLOR="#008080">teal color</FONT>):</P>
+<PRE CLASS="western">&lt;table border=&quot;0&quot; align=&quot;right&quot; <FONT COLOR="#ff0000">id=&quot;news-table&quot;</FONT> width=&quot;200&quot;&gt;
+&lt;tr&gt;
+	&lt;td class=&quot;news-header&quot;&gt;&lt;h1&gt;News:&lt;/h1&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	<FONT COLOR="#ff0000">&lt;td id=&quot;news-pi&quot;&gt;</FONT>
+		<FONT COLOR="#008080">&lt;DIV class=&quot;tx-mininews-pi1&quot;&gt;</FONT>
+<FONT COLOR="#008080">			&lt;DIV class=&quot;tx-mininews-pi1-fp_listrow&quot; style=&quot;margin-top: 5px;&quot;&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-datetime&quot;&gt;07-02-03 16:00&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-title&quot;&gt;&lt;A HREF=&quot;#&quot;&gt;Adam.. &lt;/a&gt;&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-teaser&quot;&gt;Ham et. . .&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">	</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-datetime&quot;&gt;29-01-03 10:30&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-title&quot;&gt;&lt;A HREF=&quot;#&quot;&gt;Saba ...&lt;/a&gt;&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-teaser&quot;&gt; . . &lt;/P&gt;</FONT>
+<FONT COLOR="#008080">	</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-datetime&quot;&gt;06-01-03 16:24&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-title&quot;&gt;&lt;A HREF=&quot;#&quot;&gt;Sabat. .&lt;/a&gt;&lt;/P&gt;</FONT>
+<FONT COLOR="#008080">				&lt;P class=&quot;tx-mininews-pi1-fp_listrowField-teaser&quot;&gt;Chus et Mesr. . &lt;/P&gt;</FONT>
+<FONT COLOR="#008080">			&lt;/DIV&gt;</FONT>
+<FONT COLOR="#008080">		&lt;/DIV&gt;</FONT>
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+<FONT COLOR="#ff0000">&lt;!-- ###colNormal### --&gt;</FONT>
+	&lt;h1&gt;Buy PaperShredder(tm) Gizmo with 30-days money-back guarantee!&lt;/h1&gt;
+	&lt;p class=&quot;bodytext&quot;&gt;Adam Seth Enos Cainan Malelehel. . .m.&lt;/p&gt;
+	&lt;p class=&quot;bodytext&quot;&gt;Filii Ham Chus et Mesraim Phut et ... &lt;/p&gt;
+	
+	&lt;br /&gt;
+<FONT COLOR="#ff0000">&lt;!-- ###colNormal### --&gt;</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice that the content from the mininews
+extensions is encapsulated in a table. This table has the id
+&quot;news-table&quot; for the &lt;table&gt; element and the id
+&quot;news-pi&quot; for the cell where we want to insert the content
+from mininews. 
+</P>
+<P CLASS="western">Contrary to the other content area templates we
+have chosen to <I>directly</I> insert the subpart markers for a
+change! (&lt;!-- ###colNormal### --&gt;). The reason is that because
+of the table with the mininews it is not possible to have the content
+wrapped in a &lt;div&gt; section for itself. So we have to do it
+manually this time.</P>
+<P CLASS="western">In the stylesheet you will notice that some CSS
+for the mininews splash has crept in:</P>
+<PRE CLASS="western">/* NEWS splash in template #4 */
+TABLE#news-table {
+  margin-left: 10px;
+  border: solid 1px black;
+}
+TD.news-header {
+	background-color: navy;
+}
+TD.news-header H1 {
+  color: white;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+}
+DIV.tx-mininews-pi1-fp_listrow P {
+	font-size: 11px;
+	font-color: navy;
+	font-family: verdana;
+	margin: 0px 0px 0px 0px;
+}
+DIV.tx-mininews-pi1-fp_listrow P.tx-mininews-pi1-fp_listrowField-datetime { font-size: 10p. . .x;}
+DIV.tx-mininews-pi1-fp_listrow P.tx-mininews-pi1-fp_listrowField-title { font-weight: bold; }
+ . . .
+DIV.tx-mininews-pi1-fp_listrow P.tx-mininews-pi1-fp_listrowField-teaser A:hover { tex . . derline;}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">These styles specifically target the content of
+the &quot;mininews&quot; extension in the news splash table:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_3e1bd2b4.png" NAME="Graphic94" ALIGN=LEFT WIDTH=518 HEIGHT=217 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Summary</H4>
+<P CLASS="western">After this analysis of the source templates from
+Mr. Raphael we can define this overview of id/class values for which
+Mr. Benoit - the developer on the team - needs to produce subparts
+and dynamic content:</P>
+<P CLASS="western"><B>Main templates:</B></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=51*>
+	<COL WIDTH=40*>
+	<COL WIDTH=165*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=20%>
+				<P CLASS="western">Selector</P>
+			</TH>
+			<TH WIDTH=16%>
+				<P CLASS="western">Used in</P>
+			</TH>
+			<TH WIDTH=65%>
+				<P CLASS="western">Subpart action</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#header_1</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_1.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Currently not used.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#menu_1</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_1.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a vertical menu in 2 levels rendered
+				with &lt;div&gt; tags</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#content</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_1.html</P>
+				<P CLASS="western">template_2.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Marks the content area of the main template. A
+				&quot;sub template&quot; - content area template - will be
+				inserted here with page content elements.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#footer</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_1.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Currently not used.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#header_2</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_2.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Currently not used.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#path</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_2.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a horizontal &quot;path menu&quot;</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TR#menu_2</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">template_2.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a horizontal menu of table cells in a
+				table row.  Do NOT add any other rows  to the table!</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Content area templates:</B></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=51*>
+	<COL WIDTH=40*>
+	<COL WIDTH=165*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=20%>
+				<P CLASS="western">Selector</P>
+			</TH>
+			<TH WIDTH=16%>
+				<P CLASS="western">Used in</P>
+			</TH>
+			<TH WIDTH=65%>
+				<P CLASS="western">Subpart action</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">DIV#colNormal</P>
+				<P CLASS="western">TD#colNormal</P>
+				<P CLASS="western">&lt;!-- ###colNormal### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">ct_1.html</P>
+				<P CLASS="western">ct_2.html</P>
+				<P CLASS="western">ct_3.html</P>
+				<P CLASS="western">ct_4.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the NORMAL column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#colRight</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">ct_2.html</P>
+				<P CLASS="western">ct_3.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the RIGHT column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#colLeft</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">ct_3.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the LEFT column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">TD#news-pi</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">ct_4.html</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">FrontPage news splash from the &quot;mininews&quot;
+				extension.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">From the analysis above Mr. Benoit can conclude
+that he needs the Template Auto-parser plugin to:</P>
+<UL>
+	<LI><P CLASS="western">wrap TD and TR elements in subparts for main
+	templates.</P>
+	<LI><P CLASS="western">wrap TD and DIV elements in subparts for
+	content area templates.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now everything is ready for the production of the
+extension and the template record with this integration.</P>
+<H3 CLASS="western">Creating an extension</H3>
+<P CLASS="western">Basically we need two things for this application:</P>
+<UL>
+	<LI><P CLASS="western">Add fields to the pages table, configuring
+	them as selector boxes for selecting the template files (backend).</P>
+	<LI><P CLASS="western">Make a frontend plugin that can get the value
+	from these selector box fields, read the right file and return it to
+	the Template Auto-parser (frontend).</P>
+</UL>
+<P CLASS="western">For the extension we therefore need two things: a
+dummy-framework for an  PHP class included in the template and
+secondly two selector boxes with a blank item in the pages record. It
+goes like this:</P>
+<H4 CLASS="western">Get an extension key</H4>
+<P CLASS="western">First you should register an extension key on
+typo3.org. The extension key I'm using here, tmplselect, is <I>mine</I>
+(I registered it!) and you cannot/should not use it (except for
+internal playing around on your own server).</P>
+<H4 CLASS="western">Go to the kickstart wizard</H4>
+<P CLASS="western">The Kickstarter Wizard allows you to quickly
+launch a framework for a new extension. The Kickstarter Wizard is <I>not</I>
+an extension <I>editor</I> and it will probably never be one. When
+your extension framework is written to disc you are basically on your
+own... (for re-modelling a framework you can load the original
+K-Wizard configuration by selecting &quot;Backup/Delete&quot; in the
+menu and click &quot;Start new&quot; when looking at the details of
+an extension in the Extension Manager.)</P>
+<P CLASS="western">Now, enter general information:</P>
+<P CLASS="western"><IMG SRC="11_html_726f4838.png" NAME="Graphic96" ALIGN=LEFT WIDTH=482 HEIGHT=361 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Extend the &quot;pages&quot; table by two new,
+completely alike selector boxes with a single, blank item and
+PHP-preprocessing added:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m561e5a81.png" NAME="Graphic97" ALIGN=LEFT WIDTH=582 HEIGHT=382 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Add a &quot;Frontend Plugin&quot;, select the
+&quot;Just include library&quot; type:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m4605e827.png" NAME="Graphic98" ALIGN=LEFT WIDTH=409 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Finally, press the &quot;View result&quot; button
+and write the extension to the local extension space of your
+installation:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m16c4ed97.png" NAME="Graphic99" ALIGN=LEFT WIDTH=398 HEIGHT=61 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You should see this message confirming the success
+of the operation:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_1b28b4c8.png" NAME="Graphic100" ALIGN=LEFT WIDTH=576 HEIGHT=70 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, install the extension you just created:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_714c5761.png" NAME="Graphic101" ALIGN=LEFT WIDTH=531 HEIGHT=45 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Confirm the creation of the two new database
+fields and clear cache.</P>
+<P CLASS="western">The new extension is now installed. 
+</P>
+<H4 CLASS="western">Check the installed extension</H4>
+<P CLASS="western">First, lets verify that the extension is available
+as we would expect. 
+</P>
+<P CLASS="western">For the frontend plugin which should include a
+simple library we would expect to find this in the Object Browser
+from the Template module:</P>
+<P CLASS="western"><IMG SRC="11_html_m3912ed37.png" NAME="Graphic102" ALIGN=LEFT WIDTH=451 HEIGHT=133 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And for the two new fields in the &quot;pages&quot;
+table we should find this when we edit a page header:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7b978432.png" NAME="Graphic103" ALIGN=LEFT WIDTH=342 HEIGHT=143 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see there is both a dummy-icon and an
+item supposedly added by a PHP function.</P>
+<P CLASS="western">Next stop is to fill these selector boxes with a
+list of template files from &quot;fileadmin/template/main/&quot; and
+&quot;fileadmin/template/sub/&quot; including their icons!</P>
+<H3 CLASS="western">Modifying item arrays (backend)</H3>
+<P CLASS="western">The main place to look for the code which adds the
+two new fields is in the ext_tables.php file in the extension. It
+consists of mainly three parts:</P>
+<UL>
+	<LI><P CLASS="western">Two lines that includes the PHP classes used
+	to modify the item arrays, fx:</P>
+	<PRE CLASS="western">if (TYPO3_MODE==&quot;BE&quot;)	include_once(t3lib_extMgm::extPath(&quot;tmplselect&quot;).&quot;class.tx_tmplselect_pages_tx_tmplselect_main_tmpl.php&quot;);</PRE>
+	<LI><P CLASS="western">Two column definitions configured in the
+	temporary variable $tempColumns. 
+	</P>
+	<LI><P CLASS="western">API calls to t3lib_div::loadTCA(),
+	t3lib_extMgm::addTCAcolumns() and t3lib_extMgm::addToAllTCAtypes().
+	These functions will make sure to fully load the &quot;pages&quot;
+	key of $TCA (Table Configuration Array), then add the columns
+	defined in $tempColumns and finally configure all form renderings of
+	page records to display the two new fields.</P>
+</UL>
+<P CLASS="western">The main point of interest is the configuration of
+the class/method which will manipulate the item array:</P>
+<PRE CLASS="western">. . .
+			&quot;items&quot; =&gt; Array (
+				Array(&quot;LLL:EXT:tmplselect/locallang_db.php: . . . elect_main_tmpl_0.gif&quot;),
+			),
+			<FONT COLOR="#ff0000">&quot;itemsProcFunc&quot; =&gt; &quot;tx_tmplselect_pages_tx_tmplselect_main_tmpl-&gt;main&quot;,</FONT>
+		)
+	), 
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This line instructs the TCAforms class (in charge
+of rendering the edit forms in TYPO3) to pass on the item array to
+our custom class/method for manipulation. The content of
+&quot;itemsProcFunc&quot; has the syntax [classname]-&gt;[method-name]
+and of course the class &quot;tx_tmplselect_pages_tx_tmplselect_main_tmpl&quot;
+must be included prior to the rendering of a form. But that was done
+in the very first lines of the ext_tables.php file! (see bullet list
+above).</P>
+<P CLASS="western">The first thing I will do is a) to shorten down
+this class name and b) use the same class for both select boxes since
+the function is almost the same:</P>
+<P CLASS="western">So I:</P>
+<UL>
+	<LI><P CLASS="western">Change the filename
+	&quot;class.tx_tmplselect_pages_tx_tmplselect_main_tmpl.php&quot; to
+	&quot;class.tx_tmplselect_addfilestosel.php&quot; and removes the
+	other filename</P>
+	<LI><P CLASS="western">In ext_tables.php I will correct the
+	references to point to the new filename of the class.</P>
+	<LI><P CLASS="western">Inside the class file
+	&quot;class.tx_tmplselect_addfilestosel.php&quot; I will change
+	names as well plus clean up the dummy a bit. Further I will add an
+	extension class to use for the content area selector.</P>
+	<LI><P CLASS="western">Back in ext_tables.php I will correct the
+	references in &quot;itemProcFunc&quot; to point to the new name of
+	the class.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The result looks like this when editing a page
+header:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m41de9e18.png" NAME="Graphic104" ALIGN=LEFT WIDTH=236 HEIGHT=126 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The code listings are:</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=39*>
+	<COL WIDTH=217*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=15%>
+				<P CLASS="western">Filename</P>
+			</TH>
+			<TH WIDTH=85%>
+				<P CLASS="western">Code listing</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=15%>
+				<P CLASS="western">ext_tables.php</P>
+			</TD>
+			<TD WIDTH=85%>
+				<P CLASS="western">Changes made to the filename included and the
+				two references to the classes used for manipulation:</P>
+				<P CLASS="western"><BR>
+				</P>
+				<PRE CLASS="table-contents/pre-western"><FONT SIZE=1>&lt;?php</FONT>
+<FONT SIZE=1>if (!defined (&quot;TYPO3_MODE&quot;)) 	die (&quot;Access denied.&quot;);</FONT>
+
+<FONT SIZE=1>if (TYPO3_MODE==&quot;BE&quot;)	{</FONT>
+<FONT SIZE=1>	include_once(t3lib_extMgm::extPath(&quot;tmplselect&quot;).</FONT>
+<FONT SIZE=1>					&quot;<FONT COLOR="#ff0000">class.tx_tmplselect_addfilestosel.php</FONT>&quot;);</FONT>
+<FONT SIZE=1>}</FONT>
+
+<FONT SIZE=1>$tempColumns = Array (</FONT>
+<FONT SIZE=1>	&quot;tx_tmplselect_main_tmpl&quot; =&gt; Array (		</FONT>
+<FONT SIZE=1>		&quot;exclude&quot; =&gt; 1,		</FONT>
+<FONT SIZE=1>		&quot;label&quot; =&gt; &quot;LLL:EXT:tmplselect/locallang_db.php:pages.tx_tmplselect_main_tmpl&quot;,		</FONT>
+<FONT SIZE=1>		&quot;config&quot; =&gt; Array (</FONT>
+<FONT SIZE=1>			&quot;type&quot; =&gt; &quot;select&quot;,</FONT>
+<FONT SIZE=1>			&quot;items&quot; =&gt; Array (</FONT>
+<FONT SIZE=1>				Array(</FONT>
+<FONT SIZE=1>					&quot;LLL:EXT:tmplselect/locallang_db.php:pages.tx_tmplselect_main_tmpl.I.0&quot;, </FONT>
+<FONT SIZE=1>					&quot;0&quot;, </FONT>
+<FONT SIZE=1>					t3lib_extMgm::extRelPath(&quot;tmplselect&quot;).&quot;selicon_pages_tx_tmplselect_main_tmpl_0.gif&quot;</FONT>
+<FONT SIZE=1>				),</FONT>
+<FONT SIZE=1>			),</FONT>
+<FONT SIZE=1>			&quot;itemsProcFunc&quot; =&gt; &quot;<FONT COLOR="#ff0000">tx_tmplselect_addfilestosel-&gt;main</FONT>&quot;,</FONT>
+<FONT SIZE=1>		)</FONT>
+<FONT SIZE=1>	),</FONT>
+<FONT SIZE=1>	&quot;tx_tmplselect_ca_tmpl&quot; =&gt; Array (		</FONT>
+<FONT SIZE=1>		&quot;exclude&quot; =&gt; 1,		</FONT>
+<FONT SIZE=1>		&quot;label&quot; =&gt; &quot;LLL:EXT:tmplselect/locallang_db.php:pages.tx_tmplselect_ca_tmpl&quot;,		</FONT>
+<FONT SIZE=1>		&quot;config&quot; =&gt; Array (</FONT>
+<FONT SIZE=1>			&quot;type&quot; =&gt; &quot;select&quot;,</FONT>
+<FONT SIZE=1>			&quot;items&quot; =&gt; Array (</FONT>
+<FONT SIZE=1>				Array(</FONT>
+<FONT SIZE=1>					&quot;LLL:EXT:tmplselect/locallang_db.php:pages.tx_tmplselect_ca_tmpl.I.0&quot;, </FONT>
+<FONT SIZE=1>					&quot;0&quot;, </FONT>
+<FONT SIZE=1>					t3lib_extMgm::extRelPath(&quot;tmplselect&quot;).&quot;selicon_pages_tx_tmplselect_ca_tmpl_0.gif&quot;</FONT>
+<FONT SIZE=1>				),</FONT>
+<FONT SIZE=1>			),</FONT>
+<FONT SIZE=1>			&quot;itemsProcFunc&quot; =&gt; &quot;<FONT COLOR="#ff0000">tx_tmplselect_addfilestosel_ca-&gt;main</FONT>&quot;,</FONT>
+<FONT SIZE=1>		)</FONT>
+<FONT SIZE=1>	),</FONT>
+<FONT SIZE=1>);</FONT>
+
+
+<FONT SIZE=1>t3lib_div::loadTCA(&quot;pages&quot;);</FONT>
+<FONT SIZE=1>t3lib_extMgm::addTCAcolumns(&quot;pages&quot;,$tempColumns,1);</FONT>
+<FONT SIZE=1>t3lib_extMgm::addToAllTCAtypes(&quot;pages&quot;,&quot;tx_tmplselect_main_tmpl;;;;1-1-1, tx_tmplselect_ca_tmpl&quot;);</FONT>
+<FONT SIZE=1>?&gt;</FONT></PRE>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=15%>
+				<P CLASS="western">class.tx_tmplselect_addfilestosel.php</P>
+			</TD>
+			<TD WIDTH=85%>
+				<P CLASS="western">The class is cleaned up, an extension class
+				for the content area template selector is created with a single
+				internal variable set to &quot;sub&quot;:</P>
+				<P CLASS="western"><BR>
+				</P>
+				<PRE CLASS="table-contents/pre-western">class tx_tmplselect_addfilestosel {
+	var $dir = &quot;main&quot;;
+	
+	function main(&amp;$params,&amp;$pObj)	{
+			// Adding an item!
+		$params[&quot;items&quot;][]=Array($pObj-&gt;sL(&quot;Mode: &quot;.$this-&gt;dir), 999);
+	}
+}
+class tx_tmplselect_addfilestosel_ca extends tx_tmplselect_addfilestosel {
+	var $dir = &quot;sub&quot;;
+}</PRE>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now the whole game is about programming the main
+function in the class tx_tmplselect_addfilestosel. The input array
+$params is passed as a reference and we only need to add entries in
+this array with label / filename / icon-reference pairs.</P>
+<P CLASS="western">I'll just flatly list the PHP code that needs to
+go into class.tx_tmplselect_addfilestosel.php to achieve this and
+since the code is well commented you can read the comments to
+understand the details:</P>
+<P CLASS="western"><CODE><FONT COLOR="#0000bb"><BR>&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Include the parse-html
+class:<BR></FONT></CODE><CODE><FONT COLOR="#007700">require_once(</FONT></CODE><CODE><FONT COLOR="#0000bb">PATH_t3lib</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#dd0000">'class.t3lib_parsehtml.php'</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>class&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">tx_tmplselect_addfilestosel&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">{<BR>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$dir&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;main&quot;</FONT></CODE><CODE><FONT COLOR="#007700">;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">/**
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; * Manipulating the input array, $params,
+adding new selectorbox items.<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">function&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">main</FONT></CODE><CODE><FONT COLOR="#007700">(&amp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$params</FONT></CODE><CODE><FONT COLOR="#007700">,&amp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$pObj</FONT></CODE><CODE><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+configuration of paths for template
+files:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$confArray&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;array(<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;main&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;fileadmin/template/main/&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;sub&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;fileadmin/template/sub/&quot;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Finding value for the path containing the template
+files.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$readPath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getFileAbsFileName</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$confArray</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#0000bb">$this</FONT></CODE><CODE><FONT COLOR="#007700">-&gt;</FONT></CODE><CODE><FONT COLOR="#0000bb">dir</FONT></CODE><CODE><FONT COLOR="#007700">]);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+If that directory is valid, is a directory then select files in
+it:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">if&nbsp;(@</FONT></CODE><CODE><FONT COLOR="#0000bb">is_dir</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$readPath</FONT></CODE><CODE><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Getting all HTML files in the directory:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$template_files&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getFilesInDir</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$readPath</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#dd0000">'html,htm'</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">1</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">1</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Start up the HTML
+parser:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$parseHTML&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">makeInstance</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#dd0000">'t3lib_parseHTML'</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Traverse that
+array:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">foreach(</FONT></CODE><CODE><FONT COLOR="#0000bb">$template_files&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">as&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$htmlFilePath</FONT></CODE><CODE><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Reset
+vars:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_title</FONT></CODE><CODE><FONT COLOR="#007700">=</FONT></CODE><CODE><FONT COLOR="#dd0000">''</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_icon</FONT></CODE><CODE><FONT COLOR="#007700">=</FONT></CODE><CODE><FONT COLOR="#dd0000">''</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Reading the content of the template
+document...<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$content&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getUrl</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$htmlFilePath</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+... and extracting the content of the
+title-tags:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$parts&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$parseHTML</FONT></CODE><CODE><FONT COLOR="#007700">-&gt;</FONT></CODE><CODE><FONT COLOR="#0000bb">splitIntoBlock</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#dd0000">'title'</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$content</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$titleTagContent&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$parseHTML</FONT></CODE><CODE><FONT COLOR="#007700">-&gt;</FONT></CODE><CODE><FONT COLOR="#0000bb">removeFirstAndLastTag</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$parts</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#0000bb">1</FONT></CODE><CODE><FONT COLOR="#007700">]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Setting the item
+label:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_title&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">trim</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$titleTagContent</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#dd0000">'
+('</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#0000bb">basename</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$htmlFilePath</FONT></CODE><CODE><FONT COLOR="#007700">).</FONT></CODE><CODE><FONT COLOR="#dd0000">')'</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Trying to look up an image icon for the
+template<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$fI&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">split_fileref</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$htmlFilePath</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$testImageFilename</FONT></CODE><CODE><FONT COLOR="#007700">=</FONT></CODE><CODE><FONT COLOR="#0000bb">$readPath</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#0000bb">$fI</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'filebody'</FONT></CODE><CODE><FONT COLOR="#007700">].</FONT></CODE><CODE><FONT COLOR="#dd0000">'.gif'</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(@</FONT></CODE><CODE><FONT COLOR="#0000bb">is_file</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$testImageFilename</FONT></CODE><CODE><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+If an icon was found, set the icon reference
+value:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_icon&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'../'</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#0000bb">substr</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$testImageFilename</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">strlen</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">PATH_site</FONT></CODE><CODE><FONT COLOR="#007700">));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Finally add the new
+item:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$params</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;items&quot;</FONT></CODE><CODE><FONT COLOR="#007700">][]=Array(<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_title</FONT></CODE><CODE><FONT COLOR="#007700">,&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">basename</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$htmlFilePath</FONT></CODE><CODE><FONT COLOR="#007700">),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$selectorBoxItem_icon<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+No return - the $params and $pObj variables are passed by reference,
+so just change content in them and it is passed back
+automatically...<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">}<BR>}<BR>class&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">tx_tmplselect_addfilestosel_ca&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">extends&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">tx_tmplselect_addfilestosel&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">{<BR>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$dir&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;sub&quot;</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>}<BR></FONT></CODE><BR><BR>
+</P>
+<P CLASS="western">There are two things to comment now: 
+</P>
+<P CLASS="western">First of all the class does a little trick by
+reading out the content of the &lt;title&gt; tag in the template
+files (this is why Mr. Raphael should name them carefully!). This
+title is used in the selector box. The class t3lib_parseHTML is used
+for that and the API is fully documented elsewhere.</P>
+<P CLASS="western">Secondly the path from which the HTML-template
+files are read is stored in the hardcoded array $confArray. We might
+consider making this array configurable somehow. But we will just
+bypass that for now. Notice how it was the internal variable
+$this-&gt;dir that pointed out the position of the template records
+for both the main templates and content area templates. If we wanted
+a third or forth selector box for other kinds of templates it would
+be easily implemented by just another extension class.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The result will be two nice selector boxes just
+like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m6f1332de.png" NAME="Graphic105" ALIGN=LEFT WIDTH=515 HEIGHT=152 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">And if you look inside of them....</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_4f50fe92.png" NAME="Graphic106" ALIGN=LEFT WIDTH=519 HEIGHT=179 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">IMPORTANT NOTE on working with ext_tables.php and
+ext_localconf.php</H4>
+<P CLASS="western">When you are making changes to the files
+ext_tables.php and ext_localconf.php you must beware of two things:</P>
+<UL>
+	<LI><P CLASS="western">Don't make parsing errors!</P>
+	<LI><P CLASS="western">Always clear out the cache file in typo3conf/
+	- otherwise your changes will not take effect!</P>
+	<P CLASS="western"></P>
+</UL>
+<P CLASS="western"><IMG SRC="11_html_88a4e0b.png" NAME="Graphic114" ALIGN=LEFT WIDTH=128 HEIGHT=65 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The reason is simple: Unless TYPO3 is configured
+otherwise all ext_tables.php and ext_localconf.php files from the
+installed extensions will be read from disc and concatenated to one,
+big file named something like
+&quot;typo3conf/temp_CACHED_xxxxxx_ext_[localconf/tables].php&quot;.
+Thus TYPO3 needs to include only <I>one</I> file - not hundreds.</P>
+<P CLASS="western">So from now on, every time you change one of these
+scripts in an extension it is implicit that you click this link to
+remove the cached files!</P>
+<P CLASS="western">The downside is that changes made to the
+individual ext_localconf.php / ext_tables.php files in the installed
+extensions will not be shown unless you remove these cache-files
+first (they will automatically be rewritten upon the next page hit).
+That is what clicking the link on the image above does!</P>
+<P CLASS="western">But you might be very unfortunate to introduce a
+fatal error in one of these files and if you do the cached file will
+have this error as well ... and in return TYPO3 will not work! The
+solution to the problem is that a) you locate the error-line in the
+cached file, identify the problem and fix it in the original
+ext_tables/localconf.php file in the extension, then b) you manually
+remove the cached files through the servers file system (since TYPO3
+is unable to do that for you due to the error!).</P>
+<P CLASS="western">Statistically this problem has proved to be of
+very little significance in both production and development
+environments but it should be clear to everyone that the
+installation, removal and development of extensions should always be
+done only if you are ultimately able to remove these files by other
+means than TYPO3s built-in tools.</P>
+<H4 CLASS="western">Dummy icons, labels and SQL</H4>
+<P CLASS="western">We are almost finished with the backend work of
+the extension. I'll just direct your attension to a few features. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">First, look in the ext_tables.sql file:</P>
+<PRE CLASS="western">#
+# Table structure for table 'pages'
+#
+CREATE TABLE pages (
+	tx_tmplselect_main_tmpl int(11) unsigned DEFAULT '0' NOT NULL,
+	tx_tmplselect_ca_tmpl int(11) unsigned DEFAULT '0' NOT NULL
+);</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">As you can see the two new fields for the pages
+table is defined in this &quot;pseudo-query&quot; - if you piped it
+into MySQL it would not work well - it is rather used by the
+Extension Manager to control the database requirements for this
+extension.</P>
+<P CLASS="western">But another thing is that the fields are defined
+to be integer fields - this is useless if we want to store a
+reference to a filename! So you should change the entries to this
+instead:</P>
+<PRE CLASS="western">#
+# Table structure for table 'pages'
+#
+CREATE TABLE pages (
+	tx_tmplselect_main_tmpl varchar(32) DEFAULT '' NOT NULL,
+	tx_tmplselect_ca_tmpl varchar(32) DEFAULT '' NOT NULL
+);</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now you have to go to the Extension Manager in
+order to update the database as well:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m58e006d7.png" NAME="Graphic107" ALIGN=LEFT WIDTH=492 HEIGHT=51 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and :</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_1b3f90fa.png" NAME="Graphic108" ALIGN=LEFT WIDTH=669 HEIGHT=184 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After this everything should be cool.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then look in the <FONT COLOR="#008080"><B>locallang_db.php</B></FONT>
+file:</P>
+<P CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR></FONT></CODE><CODE><FONT COLOR="#ff8000">/**<BR>*
+Language labels for database tables/fields belonging to extension
+&quot;tmplselect&quot;<BR>* <BR>* This file is detected by the
+translation
+tool.<BR>*/<BR><BR></FONT></CODE><CODE><FONT COLOR="#0000bb">$LOCAL_LANG&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;Array&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;default&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;Array&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;pages.tx_tmplselect_main_tmpl.I.0&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;Default&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;pages.tx_tmplselect_main_tmpl&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;Select
+template:&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;pages.tx_tmplselect_ca_tmpl.I.0&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;Default&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;pages.tx_tmplselect_ca_tmpl&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;Select
+content area template:&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;),<BR>);<BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Here labels for the selector box labels and dummy
+items are defined. If you look in ext_tables.php you can easily see
+the references although it may at first seem a little complex:</P>
+<PRE CLASS="western">$tempColumns = Array (
+	&quot;tx_tmplselect_main_tmpl&quot; =&gt; Array (		
+		&quot;exclude&quot; =&gt; 1,		
+		&quot;label&quot; =&gt; &quot;<B>LLL:</B><FONT COLOR="#008080"><B>EXT:tmplselect/locallang_db.php</B></FONT><B>:</B><FONT COLOR="#ff0000"><B>pages.tx_tmplselect_main_tmpl</B></FONT>&quot;,		
+		&quot;config&quot; =&gt; Array (
+			&quot;type&quot; =&gt; &quot;select&quot;,
+			&quot;items&quot; =&gt; Array (
+				Array(
+					&quot;<B>LLL:</B><FONT COLOR="#008080"><B>EXT:tmplselect/locallang_db.php</B></FONT><B>:</B><FONT COLOR="#ff0000"><B>pages.tx_tmplselect_main_tmpl.I.0</B></FONT>&quot;, 
+					&quot;0&quot;, 
+					t3lib_extMgm::extRelPath(&quot;tmplselect&quot;).&quot;selicon_pages_tx_tmplselect_main_tmpl_0.gif&quot;
+				),
+			),
+			&quot;itemsProcFunc&quot; =&gt; &quot;tx_tmplselect_addfilestosel-&gt;main&quot;,
+		)
+	),
+	&quot;tx_tmplselect_ca_tmpl&quot; =&gt; Array (		
+		&quot;exclude&quot; =&gt; 1,		
+		&quot;label&quot; =&gt; &quot;<B>LLL:</B><FONT COLOR="#008080"><B>EXT:tmplselect/locallang_db.php</B></FONT><B>:</B><FONT COLOR="#ff0000"><B>pages.tx_tmplselect_ca_tmpl</B></FONT>&quot;,		
+		&quot;config&quot; =&gt; Array (
+			&quot;type&quot; =&gt; &quot;select&quot;,
+			&quot;items&quot; =&gt; Array (
+				Array(
+					&quot;<B>LLL:</B><FONT COLOR="#008080"><B>EXT:tmplselect/locallang_db.php</B></FONT><B>:</B><FONT COLOR="#ff0000"><B>pages.tx_tmplselect_ca_tmpl.I.0</B></FONT>&quot;, 
+					&quot;0&quot;, 
+					t3lib_extMgm::extRelPath(&quot;tmplselect&quot;).&quot;selicon_pages_tx_tmplselect_ca_tmpl_0.gif&quot;
+				),
+			),
+			&quot;itemsProcFunc&quot; =&gt; &quot;tx_tmplselect_addfilestosel_ca-&gt;main&quot;,
+		)
+	),
+);</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The references are reproduced in bold above, the
+reference to the particular locallang-file is in <FONT COLOR="#008080"><B>teal</B></FONT>
+color and the reference to the label inside the locallang file is in
+<FONT COLOR="#ff0000"><B>red</B></FONT>. 
+</P>
+<P CLASS="western">This was just for your understanding of these
+references to labels from locallang files. Actually you can enter a
+label value directly instead of a &quot;LLL: ...:&quot; string but
+then you will bypass the internal translation framework of TYPO3 so
+you are really encouraged to use and extend the locallang_db.php file
+with more labels as you need them! It keeps your work &quot;translatable&quot;.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally, lets substitute the two dummy icons with
+some better equalents from the &quot;misc/&quot; folder of the
+tutorial extension:</P>
+<UL>
+	<LI><P CLASS="western">Copy &quot;dummy_main.gif&quot; and
+	&quot;dummy_ca.gif&quot; to the extension folder of &quot;tmplselect&quot;</P>
+</UL>
+<UL>
+	<LI><P CLASS="western">Remove the old files,
+	&quot;selicon_pages_tx_tmplselect_ca_tmpl_0.gif&quot; and
+	&quot;selicon_pages_tx_tmplselect_main_tmpl_0.gif&quot;</P>
+	<LI><P CLASS="western">In ext_tables.php, find the references to the
+	old filenames and insert the new.</P>
+</UL>
+<P CLASS="western">The result will be this nice set of selectors:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m4c112ac.png" NAME="Graphic109" ALIGN=LEFT WIDTH=523 HEIGHT=154 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Reading the selected template (frontend)</H3>
+<P CLASS="western">The next step is to use the frontend plugin as the
+file-reader for the Template Auto-parser instead of the FILE cObject
+currently used. As an initial test to see if our plugin delivers just
+anything I have slightly modified the file
+&quot;pi1/class.tx_tmplselect_pi1.php&quot; from our &quot;tmplselect&quot;
+extension:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">require_once(PATH_tslib.&quot;class.tslib_pibase.php&quot;);
+
+class tx_tmplselect_pi1 extends tslib_pibase {
+	var $prefixId = &quot;tx_tmplselect_pi1&quot;;		// Same as class name
+	var $scriptRelPath = &quot;pi1/class.tx_tmplselect_pi1.php&quot;;	// Path to this script ...
+	var $extKey = &quot;tmplselect&quot;;	// The extension key.
+	
+	/**
+	 * [Put your description here]
+	 */
+	function main($content,$conf)	{
+<FONT COLOR="#ff0000">		$content = t3lib_div::getUrl(PATH_site.'fileadmin/template/main/template_1.html');</FONT>
+<FONT COLOR="#ff0000">		return strtoupper($content);</FONT>
+	}
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">As you can see the main function of the plugin
+just reads the template we used in Part 1 and returns it - in
+uppercase!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Before we test our plugin, let's see what we have
+got for display in the frontend:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_56a89735.png" NAME="Graphic110" ALIGN=LEFT WIDTH=558 HEIGHT=292 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Seems OK - the template file
+&quot;fileadmin/template/main/template_1.html&quot; is correctly
+processed. And looking at the Object Browser we can see that the
+Template Auto-parser actually reads the &quot;template_1.html&quot;
+file as we would expect:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7f885302.png" NAME="Graphic111" ALIGN=LEFT WIDTH=475 HEIGHT=188 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">But we will now make a copy of our plugin cObject
+so that <I>our plugin</I> will called instead of the FILE cObject to
+return the file content. So we will insert this TypoScript string in
+the bottom of the template record's Setup field:</P>
+<PRE CLASS="western">	plugin.tx_automaketemplate_pi1.content &lt; plugin.tx_tmplselect_pi1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">And the Object Browser will show us this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m2177c0f8.png" NAME="Graphic112" ALIGN=LEFT WIDTH=466 HEIGHT=184 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">And the frontend goes crazy:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m76ab2569.png" NAME="Graphic113" ALIGN=LEFT WIDTH=523 HEIGHT=274 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">But at least we know that our plugin is now in
+charge of the content!</P>
+<H4 CLASS="western">Getting template right...</H4>
+<P CLASS="western">We will immediately begin writing the real plugin
+code needed for selecting the right template file. This code listing
+should totally substitute the existing class:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR></FONT></CODE><CODE><FONT COLOR="#007700">require_once(</FONT></CODE><CODE><FONT COLOR="#0000bb">PATH_tslib</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;class.tslib_pibase.php&quot;</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>class&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">tx_tmplselect_pi1&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">extends&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">tslib_pibase&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">{<BR>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$prefixId&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;tx_tmplselect_pi1&quot;</FONT></CODE><CODE><FONT COLOR="#007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Same as class
+name<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">var&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$scriptRelPath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;pi1/class.tx_tmplselect_pi1.php&quot;</FONT></CODE><CODE><FONT COLOR="#007700">;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Path to this script relative to the extension
+dir.<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">var&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$extKey&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;tmplselect&quot;</FONT></CODE><CODE><FONT COLOR="#007700">;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+The extension key.<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;/**
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; * Reads the template-html file which is
+pointed to by the selector box on the page <BR>&nbsp;&nbsp;&nbsp;&nbsp;
+* and type parameter send through TypoScript.<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+* cObject (Content Object)<BR>&nbsp;&nbsp;&nbsp;&nbsp; *<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+* @param&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;Empty
+content string passed. Not used.<BR>&nbsp;&nbsp;&nbsp;&nbsp; *
+@param&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;&nbsp;&nbsp;&nbsp;TypoScript
+properties that belongs to this Content Object.<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+* @return&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;The
+content of the required file.<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">function&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">main</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$content</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$conf</FONT></CODE><CODE><FONT COLOR="#007700">)&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+configuration of paths for template
+files:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$confArray&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;array(<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;main&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;fileadmin/template/main/&quot;</FONT></CODE><CODE><FONT COLOR="#007700">,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;sub&quot;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;fileadmin/template/sub/&quot;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Getting the &quot;type&quot; from the input TypoScript
+configuration:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">switch((string)</FONT></CODE><CODE><FONT COLOR="#0000bb">$conf</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'templateType'</FONT></CODE><CODE><FONT COLOR="#007700">])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'sub'</FONT></CODE><CODE><FONT COLOR="#007700">:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$GLOBALS</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'TSFE'</FONT></CODE><CODE><FONT COLOR="#007700">]-&gt;</FONT></CODE><CODE><FONT COLOR="#0000bb">page</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'tx_tmplselect_ca_tmpl'</FONT></CODE><CODE><FONT COLOR="#007700">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$relPath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$confArray</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'sub'</FONT></CODE><CODE><FONT COLOR="#007700">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'main'</FONT></CODE><CODE><FONT COLOR="#007700">:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$GLOBALS</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'TSFE'</FONT></CODE><CODE><FONT COLOR="#007700">]-&gt;</FONT></CODE><CODE><FONT COLOR="#0000bb">page</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'tx_tmplselect_main_tmpl'</FONT></CODE><CODE><FONT COLOR="#007700">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$relPath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$confArray</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'main'</FONT></CODE><CODE><FONT COLOR="#007700">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+Setting templateFile reference to the currently selected value - or
+the default if not
+set:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">?&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">:&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$conf</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'defaultTemplateFileName'</FONT></CODE><CODE><FONT COLOR="#007700">];<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></CODE><CODE><FONT COLOR="#0000bb">$relPath</FONT></CODE><CODE><FONT COLOR="#007700">)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">//
+If a value was found, we dare to continue:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+Get Absolute
+Filepath:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$absFilePath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getFileAbsFileName</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$relPath</FONT></CODE><CODE><FONT COLOR="#007700">.</FONT></CODE><CODE><FONT COLOR="#0000bb">$templateFile</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></CODE><CODE><FONT COLOR="#0000bb">$absFilePath&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">&amp;&amp;&nbsp;@</FONT></CODE><CODE><FONT COLOR="#0000bb">is_file</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$absFilePath</FONT></CODE><CODE><FONT COLOR="#007700">))&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$content&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getUrl</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$absFilePath</FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$content</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">There are lots of comments in the script which
+will make you wise if you take time to read them. But for now I'll
+just lead your attention to these details:</P>
+<UL>
+	<LI><P CLASS="western">The $confArray known from the class for
+	manipulation of the items array is <I>also</I> found here with the
+	same information!</P>
+	<LI><P CLASS="western">Two &quot;TypoScript properties&quot; are
+	expected: &quot;templateType&quot; and &quot;defaultTemplateFileName&quot;.
+	Notice that the only mandatory TypoScript property of a USER cObject
+	is &quot;userFunc&quot; - all others are free for <I>you</I> to
+	define the meaning and purpose of! And they are conveniently
+	available in the $conf-array as you can see!</P>
+	<LI><P CLASS="western">The current page has its page record stored
+	in the global object TSFE; $GLOBALS[&quot;TSFE&quot;]-&gt;page (used
+	in the script to get the value from the two custom fields we have
+	added!)</P>
+	<LI><P CLASS="western">The API function, 
+	<CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">getFileAbsFileName(),</FONT></CODE>
+	was used to fetch the absolute path and further verify the path
+	validity of the template filepath before we read it. Does not check
+	if the file or directory exists though.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Further we will create a new file in the root of
+our extension: &quot;ext_typoscript_setup.txt&quot;. This file will
+contain default TypoScript code for the setup fields:</P>
+<PRE CLASS="western">plugin.tx_tmplselect_pi1 {
+
+	  # Template type. Default is &quot;main&quot;. Allowed values: &quot;main&quot;, &quot;sub&quot;
+	templateType = main
+
+	  # Refers to the default template file name to use 
+	  # if no value is set for the current page
+	defaultTemplateFileName = 
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This adds two TypoScript properties to the default
+representation of the plugin in the Object Tree:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7ed9a7c1.png" NAME="Graphic115" ALIGN=LEFT WIDTH=455 HEIGHT=85 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(You will have to flush the cache-files to update
+this.)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally we will set the property
+&quot;.defaultTemplateFile&quot; for the plugin as used by the
+Template Auto-parser:</P>
+<PRE CLASS="western">	plugin.tx_automaketemplate_pi1.content.defaultTemplateFileName = template_1.html
+</PRE><P CLASS="western">
+This makes the Object Browser show this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m59b7ff5e.png" NAME="Graphic116" ALIGN=LEFT WIDTH=481 HEIGHT=172 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, hit the frontend of the page &quot;License
+C&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7768406f.png" NAME="Graphic119" ALIGN=LEFT WIDTH=544 HEIGHT=272 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then change the main template of the page &quot;License
+C&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7dcdb2e7.png" NAME="Graphic117" ALIGN=LEFT WIDTH=543 HEIGHT=159 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and hit the frontend again. You should see
+this now:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_7f7b078d.png" NAME="Graphic118" ALIGN=LEFT WIDTH=564 HEIGHT=282 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This confirms that our plugin correctly reads the
+file &quot;fileadmin/template/main/template_2.html&quot; if selected,
+otherwise it defaults to &quot;fileadmin/template/main/template_1.html&quot;.</P>
+<H3 CLASS="western">A TypoScript session for Mr. Benoit</H3>
+<P CLASS="western">Now that the technical framework for selecting and
+reading the template files is in place it's time for the web team
+developer, Mr. Benoit, to produce the necessary TypoScript to glue
+the content from Mr. Raphaels template-files together with the
+dynamic content in TYPO3 that Mr. Picouto has entered meanwhile.
+Notice that at this point in time Raphael can freely add new template
+files on his own, Mr. Picouto can freely add content and pages and
+Mr. Benoit just has to configure the frontend engine to combine
+everything - and we are done!</P>
+<P CLASS="western">The configuration of the Template Auto-parser and
+TEMPLATE cObjects was covered in Part 1 of this tutorial so I will
+just  make some changes to the current template structure and comment
+on them:</P>
+<P CLASS="western">The main template record in Mr. Benoits page tree
+looks like this with the Template Analyzer:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_42258c3b.png" NAME="Graphic120" ALIGN=LEFT WIDTH=452 HEIGHT=180 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The content of each template records Setup field
+looks like this:</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=42*>
+	<COL WIDTH=51*>
+	<COL WIDTH=163*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=16%>
+				<P CLASS="western">Template</P>
+			</TH>
+			<TH WIDTH=20%>
+				<P CLASS="western">Comment</P>
+			</TH>
+			<TH WIDTH=64%>
+				<P CLASS="western"> Setup field TS:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">tmplselect</P>
+			</TD>
+			<TD WIDTH=20%>
+				<P CLASS="western">This is just the default TypoScript we added
+				to the file ext_typoscript_setup.txt.</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=64%>
+				<PRE CLASS="table-contents/pre-western">545: plugin.tx_tmplselect_pi1 {
+546:
+548:   templateType = main
+549:
+552:   defaultTemplateFileName = 
+553: }</PRE>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">ext: Auto-parser plugin</P>
+			</TD>
+			<TD WIDTH=20%>
+				<P CLASS="western">The Template Auto-parser configuration. 
+				</P>
+				<P CLASS="western">Main changes compared to part 1 of this
+				tutorial is that the content is now delivered by the plugin from
+				the extension &quot;tmplselect&quot; (line 558-559)</P>
+				<P CLASS="western">Further all TD and TR tags are wrapped in
+				subparts if id/class attributes are found (line 571-572) - this
+				is according to the summary of our analysis of the template files
+				from Mr. Raphael.</P>
+			</TD>
+			<TD WIDTH=64%>
+				<PRE CLASS="table-contents/pre-western"><FONT SIZE=1>556: plugin.tx_automaketemplate_pi1 {</FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>558:   content &lt; plugin.tx_tmplselect_pi1</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>559:   content.defaultTemplateFileName = template_1.html</FONT></FONT>
+<FONT SIZE=1>560:</FONT>
+<FONT SIZE=1>563:   elements {</FONT>
+<FONT SIZE=1>564:     BODY.all = 1</FONT>
+<FONT SIZE=1>565:     BODY.all.subpartMarker = DOCUMENT_BODY</FONT>
+<FONT SIZE=1>566:</FONT>
+<FONT SIZE=1>567:     HEAD.all = 1</FONT>
+<FONT SIZE=1>568:     HEAD.all.subpartMarker = DOCUMENT_HEADER</FONT>
+<FONT SIZE=1>569:     HEAD.rmTagSections = title</FONT>
+<FONT SIZE=1>570:</FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>571:     TD.all = 1</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>572:     TR.all = 1</FONT></FONT>
+<FONT SIZE=1>573:   }</FONT>
+<FONT SIZE=1>574:</FONT>
+<FONT SIZE=1>576:   relPathPrefix = fileadmin/template/main/</FONT>
+<FONT SIZE=1>577: }</FONT></PRE>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">ext: Menu 1</P>
+			</TD>
+			<TD WIDTH=20%>
+				<P CLASS="western">The inclusion template holding all the menu
+				now has three kinds: The vertical 2-level menu, the horizonal
+				1-level menu and the path-menu. 
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Menu &quot;menu_1&quot; is basically
+				unchanged. This belongs in the template_1.html file</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Menu &quot;menu_2&quot; is new and as you can
+				see the most fancy feature of this menu is the &quot;NO.allWrap&quot;
+				property which specifies the wrapping code for even and odd table
+				cells! This is done by the syntax of <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=289&amp;cHash=6604390b37">&quot;optionSplit&quot;
+				- read more here.</A></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">Menu &quot;path&quot; will render the Path
+				used in fx. template_2.html</P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western">For more information about menu objects etc.
+				please see the <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=269&amp;cHash=39e3faa590">TypoScript
+				by Example</A> document which has a large section on the topic.</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=64%>
+				<PRE CLASS="table-contents/pre-western"><FONT SIZE=1>580: # ------------------------</FONT>
+<FONT SIZE=1>581: # Menu 1 cObject - vertical 2-level menu</FONT>
+<FONT SIZE=1>582: # ------------------------</FONT>
+<FONT SIZE=1>583:</FONT>
+<FONT SIZE=1>584: temp.menu_1 = HMENU</FONT>
+<FONT SIZE=1>585:</FONT>
+<FONT SIZE=1>586:   # First level menu-object, textual</FONT>
+<FONT SIZE=1>587: temp.menu_1.1 = TMENU</FONT>
+<FONT SIZE=1>588: temp.menu_1.1 {</FONT>
+<FONT SIZE=1>589:     # Normal state properties</FONT>
+<FONT SIZE=1>590:   NO.allWrap = &lt;div class=&quot;menu1-level1-no&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT SIZE=1>591:</FONT>
+<FONT SIZE=1>592:     # Enable active state and set properties:</FONT>
+<FONT SIZE=1>593:   ACT = 1</FONT>
+<FONT SIZE=1>594:   ACT.allWrap = &lt;div class=&quot;menu1-level1-act&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT SIZE=1>595: }</FONT>
+<FONT SIZE=1>596:</FONT>
+<FONT SIZE=1>597:   # Second level menu-object, textual</FONT>
+<FONT SIZE=1>598: temp.menu_1.2 = TMENU</FONT>
+<FONT SIZE=1>599: temp.menu_1.2 {</FONT>
+<FONT SIZE=1>600:     # Normal state properties</FONT>
+<FONT SIZE=1>601:   NO.allWrap = &lt;div class=&quot;menu1-level2-no&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT SIZE=1>602:</FONT>
+<FONT SIZE=1>603:     # Enable active state and set properties:</FONT>
+<FONT SIZE=1>604:   ACT = 1</FONT>
+<FONT SIZE=1>605:   ACT.allWrap = &lt;div class=&quot;menu1-level2-act&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT SIZE=1>606: }</FONT>
+<FONT SIZE=1>607:</FONT>
+<FONT SIZE=1>608:</FONT>
+<FONT SIZE=1>609:</FONT>
+<FONT SIZE=1>610: # ------------------------</FONT>
+<FONT SIZE=1>611: # Menu 2 cObject - horizontal, one-level menu</FONT>
+<FONT SIZE=1>612: # ------------------------</FONT>
+<FONT SIZE=1>613:</FONT>
+<FONT SIZE=1>614: temp.menu_2 = HMENU</FONT>
+<FONT SIZE=1>615:   # Setting the entryLevel to be subpages to CURRENT page:</FONT>
+<FONT SIZE=1>616: temp.menu_2.entryLevel = -1</FONT>
+<FONT SIZE=1>617:</FONT>
+<FONT SIZE=1>618:   # First level menu-object, textual</FONT>
+<FONT SIZE=1>619: temp.menu_2.1 = TMENU</FONT>
+<FONT SIZE=1>620: temp.menu_2.1 {</FONT>
+<FONT SIZE=1>621:     # Normal state wrapping with alternating wrap-values (see &quot;optionSplit&quot;)</FONT>
+<FONT SIZE=1>622:   NO.allWrap =  |*|   &lt;td&gt;|&lt;/td&gt;  ||  &lt;td class=&quot;oddcell&quot;&gt;|&lt;/td&gt;   |*|</FONT>
+<FONT SIZE=1>623:</FONT>
+<FONT SIZE=1>624:     # Enable active state and set properties:</FONT>
+<FONT SIZE=1>625:   ACT = 1</FONT>
+<FONT SIZE=1>626:   ACT.allWrap = &lt;td class=&quot;menu2-level1-act&quot;&gt; | &lt;/td&gt;</FONT>
+<FONT SIZE=1>627: }</FONT>
+<FONT SIZE=1>628:</FONT>
+<FONT SIZE=1>629:</FONT>
+<FONT SIZE=1>630:</FONT>
+<FONT SIZE=1>631:</FONT>
+<FONT SIZE=1>632: # ------------------------</FONT>
+<FONT SIZE=1>633: # Path menu cObject</FONT>
+<FONT SIZE=1>634: # ------------------------</FONT>
+<FONT SIZE=1>635:</FONT>
+<FONT SIZE=1>636: temp.path = HMENU</FONT>
+<FONT SIZE=1>637:   # Setting the special property to &quot;rootline&quot; - this will produce a &quot;Path-menu&quot;</FONT>
+<FONT SIZE=1>638: temp.path.special = rootline</FONT>
+<FONT SIZE=1>639:</FONT>
+<FONT SIZE=1>640:   # First level menu-object, textual</FONT>
+<FONT SIZE=1>641: temp.path.1 = TMENU</FONT>
+<FONT SIZE=1>642:   # Wrapping value for the whole menu:</FONT>
+<FONT SIZE=1>643: temp.path.1.wrap = Path: &amp;nbsp; | </FONT>
+<FONT SIZE=1>644: temp.path.1 {</FONT>
+<FONT SIZE=1>645:     # Normal state properties appending &quot; &gt; &quot; to all elements but the last one. </FONT>
+<FONT SIZE=1>646:     # (See &quot;optionSplit&quot;)</FONT>
+<FONT SIZE=1>647:   NO.allWrap =   |&amp;nbsp;&amp;gt;&amp;nbsp; |*||*|   | </FONT>
+<FONT SIZE=1>648: }</FONT></PRE>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">ext: Main TEMPLATE cObject</P>
+			</TD>
+			<TD WIDTH=20%>
+				<P CLASS="western">This is the same as before - just with the
+				subparts &quot;menu_2&quot; and &quot;path&quot; defined.</P>
+			</TD>
+			<TD WIDTH=64%>
+				<PRE CLASS="table-contents/pre-western"><FONT SIZE=1>654: # Main TEMPLATE cObject for the BODY</FONT>
+<FONT SIZE=1>655: temp.mainTemplate = TEMPLATE</FONT>
+<FONT SIZE=1>656: temp.mainTemplate {</FONT>
+<FONT SIZE=1>657:     # Feeding the content from the Auto-parser to the TEMPLATE cObject:</FONT>
+<FONT SIZE=1>658:   template =&lt; plugin.tx_automaketemplate_pi1</FONT>
+<FONT SIZE=1>659:     # Select only the content between the &lt;body&gt;-tags</FONT>
+<FONT SIZE=1>660:   workOnSubpart = DOCUMENT_BODY</FONT>
+<FONT SIZE=1>661:</FONT>
+<FONT SIZE=1>662:     # Substitute the ###menu_1### subpart with dynamic menu:</FONT>
+<FONT SIZE=1>663:   subparts.menu_1 &lt; temp.menu_1</FONT>
+<FONT SIZE=1>664:</FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>665:     # Substitute the ###menu_2### subpart with dynamic menu:</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>666:   subparts.menu_2 &lt; temp.menu_2</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>667:</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>668:     # Substitute the ###path### subpart with dynamic path menu:</FONT></FONT>
+<FONT COLOR="#ff0000"><FONT SIZE=1>669:   subparts.path &lt; temp.path</FONT></FONT>
+<FONT SIZE=1>670:</FONT>
+<FONT SIZE=1>671:     # Substitute the ###content### subpart with some example content:</FONT>
+<FONT SIZE=1>672:   subparts.content &lt; styles.content.get</FONT>
+<FONT SIZE=1>673: }</FONT></PRE>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=16%>
+				<P CLASS="western">NEW SITE</P>
+			</TD>
+			<TD WIDTH=20%>
+				<P CLASS="western">No change.</P>
+			</TD>
+			<TD WIDTH=64%>
+				<PRE CLASS="table-contents/pre-western"><FONT SIZE=1>678: # Main TEMPLATE cObject for the HEAD</FONT>
+<FONT SIZE=1>679: temp.headTemplate = TEMPLATE</FONT>
+<FONT SIZE=1>680: temp.headTemplate {</FONT>
+<FONT SIZE=1>681:     # Feeding the content from the Auto-parser to the TEMPLATE cObject:</FONT>
+<FONT SIZE=1>682:   template =&lt; plugin.tx_automaketemplate_pi1</FONT>
+<FONT SIZE=1>683:     # Select only the content between the &lt;head&gt;-tags</FONT>
+<FONT SIZE=1>684:   workOnSubpart = DOCUMENT_HEADER</FONT>
+<FONT SIZE=1>685: }</FONT>
+<FONT SIZE=1>686:</FONT>
+<FONT SIZE=1>687:</FONT>
+<FONT SIZE=1>688:</FONT>
+<FONT SIZE=1>689:</FONT>
+<FONT SIZE=1>690: # Default PAGE object:</FONT>
+<FONT SIZE=1>691: page = PAGE</FONT>
+<FONT SIZE=1>692: page.typeNum = 0</FONT>
+<FONT SIZE=1>693:</FONT>
+<FONT SIZE=1>694: # Copying the content from TEMPLATE for &lt;body&gt;-section:</FONT>
+<FONT SIZE=1>695: page.10 &lt; temp.mainTemplate</FONT>
+<FONT SIZE=1>696:</FONT>
+<FONT SIZE=1>697: # Copying the content from TEMPLATE for &lt;head&gt;-section:</FONT>
+<FONT SIZE=1>698: page.headerData.10  &lt; temp.headTemplate</FONT></PRE>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Setting a different default template for a
+section</H4>
+<P CLASS="western">The current set up allows Mr. Picouto to select an
+<I>alternative</I> template for each page he creates. The default
+template is &quot;template_1.html&quot; and &quot;template_2.html&quot;
+must be selected explicitly in the page header if he wants that.</P>
+<P CLASS="western">However for the whole section &quot;Terms &amp;
+Conditions&quot; Mr. Picouto wants &quot;template_2.html&quot; to be
+used by default! 
+</P>
+<P CLASS="western">This is very easy in TYPO3. Mr. Benoit simply has
+to create a single template record on the page &quot;Terms &amp;
+Conditions&quot; and then override the definition of the default
+template file:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_859ac41.png" NAME="Graphic121" ALIGN=LEFT WIDTH=669 HEIGHT=71 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">From the Template Analyzer it looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m1ec4fd1d.png" NAME="Graphic122" ALIGN=LEFT WIDTH=408 HEIGHT=137 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice how the extension template on the &quot;Terms
+&amp; Conditions&quot; page is the last one included and thus any
+Setup code will be able to override previous values!</P>
+<P CLASS="western">Now Benoit simply uses the Object Browser to
+locate the property, click the link (remember to have &quot;Enable
+object links&quot; turned on), edit the value and - voilá:</P>
+<P CLASS="western"><IMG SRC="11_html_32743a31.png" NAME="Graphic123" ALIGN=LEFT WIDTH=513 HEIGHT=232 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In the frontend this now means that all pages from
+&quot;Terms &amp; Conditions&quot; <I>by default</I> will use
+template_2.html <I>unless </I>another selection is made in the page
+header for individual pages!</P>
+<H3 CLASS="western">The content area template</H3>
+<P CLASS="western">The main template is in place. Now the content
+area templates must be enabled since at this point the content area
+of all main templates will just get the content from the NORMAL
+column loaded without further notice.</P>
+<P CLASS="western">The theory behind this operation is to create a
+new temporary cObject, &quot;temp.contentArea&quot;, which will
+generate the content area content from the content area template
+selected for the current page!</P>
+<P CLASS="western">First of all we will create a new include template
+record in the Template Storage folder:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m7a6462ac.png" NAME="Graphic126" ALIGN=LEFT WIDTH=444 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This contains the following TypoScript
+configuration:</P>
+<PRE CLASS="western"># Content Area TEMPLATE cObject
+temp.contentArea = TEMPLATE
+temp.contentArea {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+    # CREATES A COPY since we need to manipulate some properties!
+  template &lt; plugin.tx_automaketemplate_pi1
+
+    # Reconfigurating the &quot;tmplselect&quot; plugin to select from the 
+    # &quot;conten area templates &quot; in sub/ folder instead of main templates:
+<FONT COLOR="#ff0000">  template.content.templateType = sub</FONT>
+<FONT COLOR="#ff0000">  template.content.defaultTemplateFileName = ct_1.html</FONT>
+
+    # Since the template files are now located in another path
+    # the relative prefix must be changed as well:
+<FONT COLOR="#ff0000">  template.relPathPrefix = fileadmin/template/sub/</FONT>
+
+    # Clears the &quot;elements&quot; property:
+  template.elements &gt; 
+    # Sets the DIV and TD elements to be wrapped in subparts:
+    # Wrap the header section but remove &lt;title&gt; and &lt;style&gt; sections:
+<FONT COLOR="#008080">  template.elements {</FONT>
+<FONT COLOR="#008080">    HEAD.all = 1</FONT>
+<FONT COLOR="#008080">    HEAD.all.subpartMarker = DOCUMENT_HEADER</FONT>
+<FONT COLOR="#008080">    HEAD.rmTagSections = title, style</FONT>
+<FONT COLOR="#008080">    </FONT>
+<FONT COLOR="#008080">    DIV.all = 1</FONT>
+<FONT COLOR="#008080">    TD.all = 1</FONT>
+<FONT COLOR="#008080">  } </FONT>
+
+    # Select only the content of the &lt;div id=&quot;contentsection&quot;&gt; element
+<FONT COLOR="#008080">  workOnSubpart = contentsection</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice how a <I>copy</I> of the
+plugin.tx_automaketemplate_pi1 object is made and then a lot of
+properties overridden. This includes the ones marked with red which
+corrects for the position of the content area templates instead of
+main templates. Further the properties marked up with teal color are
+for the Auto-parser to fit the characteristics of the Content Area
+templates usage of id-attributes.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After the creation of the new include template it
+should be added to the basis templates of the main template, &quot;NEW
+SITE&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m3e3790d1.png" NAME="Graphic127" ALIGN=LEFT WIDTH=515 HEIGHT=88 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Further the Setup field of the &quot;NEW SITE&quot;
+main template record is expanded like this (red lines added):</P>
+<PRE CLASS="western">
+
+# Main TEMPLATE cObject for the HEAD
+temp.headTemplate = TEMPLATE
+temp.headTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;head&gt;-tags
+  workOnSubpart = DOCUMENT_HEADER
+}
+
+<FONT COLOR="#ff0000"># Main TEMPLATE cObject for the HEAD / Content Area</FONT>
+<FONT COLOR="#ff0000">temp.headTemplateCA = TEMPLATE</FONT>
+<FONT COLOR="#ff0000">temp.headTemplateCA {</FONT>
+<FONT COLOR="#ff0000">    # Feeding the content from the Auto-parser to the TEMPLATE cObject:</FONT>
+<FONT COLOR="#ff0000">  template &lt; temp.contentArea.template</FONT>
+<FONT COLOR="#ff0000">    # Select only the content between the &lt;head&gt;-tags</FONT>
+<FONT COLOR="#ff0000">  workOnSubpart = DOCUMENT_HEADER</FONT>
+<FONT COLOR="#ff0000">}</FONT>
+
+
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Copying the content from TEMPLATE for &lt;body&gt;-section:
+page.10 &lt; temp.mainTemplate
+
+# Copying the content from TEMPLATE for &lt;head&gt;-section:
+page.headerData.10  &lt; temp.headTemplate
+
+<FONT COLOR="#ff0000"># Copying the content from Content Area TEMPLATE for &lt;head&gt;-section:</FONT>
+<FONT COLOR="#ff0000">page.headerData.20  &lt; temp.headTemplateCA</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This will grab the header from the content area
+template and include on the page as well. Needed for the stylesheet
+reference!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally we need to change a single line in the
+include template &quot;ext: Main TEMPLATE cObject&quot;:</P>
+<PRE CLASS="western">
+# Main TEMPLATE cObject for the BODY
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;body&gt;-tags
+  workOnSubpart = DOCUMENT_BODY
+
+    # Substitute the ###menu_1### subpart with dynamic menu:
+  subparts.menu_1 &lt; temp.menu_1
+
+    # Substitute the ###menu_2### subpart with dynamic menu:
+  subparts.menu_2 &lt; temp.menu_2
+
+    # Substitute the ###path### subpart with dynamic path menu:
+  subparts.path &lt; temp.path
+
+<FONT COLOR="#ff0000">    # Substitute the ###content### subpart with the content area template:</FONT>
+<FONT COLOR="#ff0000">  subparts.content &lt; temp.contentArea</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Previously this was set to &quot;styles.content.get&quot;.
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Lets see if it works. Edit the page header of the
+&quot;License C&quot; page and select the template combination as
+seen here:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_3967b1aa.png" NAME="Graphic124" ALIGN=LEFT WIDTH=541 HEIGHT=160 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In the frontend you should see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_5d91d2ab.png" NAME="Graphic125" ALIGN=LEFT WIDTH=588 HEIGHT=332 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If you do see this it confirms that 
+</P>
+<UL>
+	<LI><P CLASS="western">a) the content area template selection is
+	working</P>
+	<LI><P CLASS="western">b) grabbing the stylesheet reference form the
+	&lt;head&gt;-section of the content area template succeeded as well.</P>
+</UL>
+<P CLASS="western">If you dare, try and play around with main
+template / content area template combinations available!</P>
+<H3 CLASS="western">Real content in the columns</H3>
+<P CLASS="western">As you might have realized none of the content in
+the content area templates is substituted yet. We are looking at the
+<I>dummy content</I> that Mr. Raphael put into them! However it
+confirms that the stylesheet and general mechanism for reading the
+template files is in place.</P>
+<P CLASS="western">Adding dynamic content to the columns is really
+easy. Just edit the inclusion template &quot;ext: CA TEMPLATE
+cObject&quot; like this:</P>
+<PRE CLASS="western">. . .
+    # Select only the content of the &lt;div id=&quot;contentsection&quot;&gt; element
+  workOnSubpart = contentsection
+
+<FONT COLOR="#ff0000">  subparts {</FONT>
+<FONT COLOR="#ff0000">    colNormal &lt; styles.content.get</FONT>
+<FONT COLOR="#ff0000">    colLeft &lt; styles.content.getLeft</FONT>
+<FONT COLOR="#ff0000">    colRight &lt; styles.content.getRight</FONT>
+<FONT COLOR="#ff0000">  }</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Then add some content to the LEFT and RIGHT column
+on the &quot;License C&quot; page:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_3173624b.png" NAME="Graphic128" ALIGN=LEFT WIDTH=532 HEIGHT=309 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Or with the second content area template, &quot;Wide
+Main Column, narrow right column.&quot; the page will look like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_668f365.png" NAME="Graphic129" ALIGN=LEFT WIDTH=536 HEIGHT=311 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And what about the forth content area template -
+the one with the news splash...:</P>
+<P CLASS="western"><IMG SRC="11_html_57b559ce.png" NAME="Graphic130" ALIGN=LEFT WIDTH=521 HEIGHT=442 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Well as you can see - the dynamic content is there
+for the <I>NORMAL column </I>- but the news splash is still static.
+Of course it is - we didn't specify anything to substitute it!</P>
+<H4 CLASS="western">The &quot;mininews&quot; plugin</H4>
+<P CLASS="western">Now you should connect to TER (TYPO3 Extension
+Repository) from the Extension Manager. Import the &quot;mininews&quot;
+extension and install it:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m3986aec9.png" NAME="Graphic131" ALIGN=LEFT WIDTH=579 HEIGHT=48 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then create a few news items on the page &quot;License
+C&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m10e59529.png" NAME="Graphic132" ALIGN=LEFT WIDTH=554 HEIGHT=234 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Finally just modify the inclusion template &quot;ext:
+CA TEMPLATE cObject&quot; like this:</P>
+<PRE CLASS="western">. . .
+  subparts {
+    colNormal &lt; styles.content.get
+    colLeft &lt; styles.content.getLeft
+    colRight &lt; styles.content.getRight
+   <FONT COLOR="#ff0000"> news-pi &lt; plugin.tx_mininews_pi1</FONT>
+<FONT COLOR="#ff0000">    news-pi.CMD = FP</FONT>
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This will insert the mininews plugin cObject in
+the subpart &quot;news-pi&quot; (which was the id-attribute of the
+table cell where the dummy-content for the mininews plugin was found
+in Mr. Raphaels template!)</P>
+<P CLASS="western">The result is convincing:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m3f5b3c3.png" NAME="Graphic133" ALIGN=LEFT WIDTH=499 HEIGHT=423 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">So now everything is running!</P>
+<H3 CLASS="western">Setting the default template with a constant</H3>
+<P CLASS="western">Mr. Benoit is generally happy with his work.
+However there is one problem with the way the TypoScript structure
+has been handled. Looking at the Object Tree shows that the setting
+for the default content area template file is redundant since Mr.
+Benoit was more or less forced to create a copy of the template
+source for his header section data:</P>
+<P CLASS="western"><IMG SRC="11_html_5573eaf4.png" NAME="Graphic134" ALIGN=LEFT WIDTH=446 HEIGHT=501 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">One solution is to reorganize the TypoScript
+structure so the cObject of the template source for the content area
+template is located in an object path that can be refered to - not
+copied (see section The Basics where we created a TLO named
+&quot;MY_TLO&quot;). That is the clean solution. But the quick and
+dirty one is to create a constant in the Setup code instead:</P>
+<P CLASS="western">So Mr. Benoit edits the <I>Constants field</I> of
+the &quot;ext: CA TEMPLATE cObject&quot; inclusion template:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m118b9e0c.png" NAME="Graphic135" ALIGN=LEFT WIDTH=313 HEIGHT=125 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then he edits the Setup field to insert the
+constant - the object path of the constant wrapped in {$ ... }</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m77d7f956.png" NAME="Graphic136" ALIGN=LEFT WIDTH=608 HEIGHT=92 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Looking in the Object Browser he will now see how
+the constant is inserted in both positions - but the constant itself
+needs only be set once! That's the cool thing with constants: One
+place to change a value - which is used at multiple positions in the
+object tree.</P>
+<P CLASS="western"><IMG SRC="11_html_507ae14f.png" NAME="Graphic137" ALIGN=LEFT WIDTH=427 HEIGHT=469 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Configuration of the template paths</H3>
+<P CLASS="western">Before ending Part 2 of this tutorial I would like
+to suggest a change:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In the file
+&quot;class.tx_tmplselect_addfilestosel.php&quot; we find these
+lines:</P>
+<PRE CLASS="western">. . .
+	function main(&amp;$params,&amp;$pObj)	{
+			// configuration of paths for template files:
+	<FONT COLOR="#ff0000">	$confArray = array(</FONT>
+<FONT COLOR="#ff0000">			&quot;main&quot; =&gt; &quot;fileadmin/template/main/&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;sub&quot; =&gt; &quot;fileadmin/template/sub/&quot;</FONT>
+<FONT COLOR="#ff0000">		);</FONT>
+
+			// Finding value for the path containing the template files.
+		$readPath = t3lib_div::getFileAbsFileName($confArray[$this-&gt;dir]);
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Likewise In the file
+&quot;pi1/class.tmplselect_pi1.php&quot; we find:</P>
+<PRE CLASS="western">. . .
+	function main($content,$conf)	{
+			// configuration of paths for template files:
+<FONT COLOR="#ff0000">		$confArray = array(</FONT>
+<FONT COLOR="#ff0000">			&quot;main&quot; =&gt; &quot;fileadmin/template/main/&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;sub&quot; =&gt; &quot;fileadmin/template/sub/&quot;</FONT>
+<FONT COLOR="#ff0000">		);</FONT>
+
+			// Getting the &quot;type&quot; from the input TypoScript configuration:
+		switch((string)$conf['templateType'])		{
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">It's the same array, the same information pointing
+out the locations of the main and content area (sub) template
+directories. First of all the information is redundant since it's
+found twice. Secondly it might be interesting if we could configure
+the path from the Extension Manager instead!</P>
+<H4 CLASS="western">Creating a configuration template file</H4>
+<P CLASS="western">In the root of the &quot;tmplselect&quot;
+extension (the one we are working on...), create a file named
+&quot;ext_conf_template.txt&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">  # cat=basic//; type=string; label=Main Template folder: Enter the folder relative to the PATH_site where the main templates are placed.
+main = fileadmin/template/main/
+
+  # cat=basic//; type=string; label=Content Area Template folder: Enter the folder relative to the PATH_site where the content area templates are stored.
+sub = fileadmin/template/sub/</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, in the Extensions Manager you will find these
+two fields for the extension &quot;tmplselect&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_77bc7e5c.png" NAME="Graphic138" ALIGN=LEFT WIDTH=669 HEIGHT=199 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Press the Update button and the values in the form
+are written in a serialized string to a reserved key for the
+&quot;tmplselect&quot; extension in $TYPO3_CONF_VARS in
+typo3conf/localconf.php:</P>
+<PRE CLASS="western">$TYPO3_CONF_VARS[&quot;EXT&quot;][&quot;extConf&quot;][&quot;tmplselect&quot;] = 'a:2:{s:3:&quot;sub&quot;;s:23:&quot;fileadmin/template/sub/&quot;;s:4:&quot;main&quot;;s:24:&quot;fileadmin/template/main/&quot;;}';	//  Modified or inserted by Typo3 Extension Manager.</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">These values can then be extracted by the two
+classes using them:</P>
+<P CLASS="western"><B>class.tx_tmplselect_addfilestosel.php</B></P>
+<PRE CLASS="western">. . .
+	function main(&amp;$params,&amp;$pObj)	{
+<FONT COLOR="#ff0000">			// GETTING configuration for the extension:</FONT>
+<FONT COLOR="#ff0000">		$confArray = unserialize($GLOBALS[&quot;TYPO3_CONF_VARS&quot;][&quot;EXT&quot;][&quot;extConf&quot;][&quot;tmplselect&quot;]);</FONT>
+
+			// Finding value for the path containing the template files.
+		$readPath = t3lib_div::getFileAbsFileName($confArray[$this-&gt;dir]);
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>pi1/class.tmplselect_pi1.php</B></P>
+<PRE CLASS="western">. . .
+	function main($content,$conf)	{
+<FONT COLOR="#ff0000">			// GETTING configuration for the extension:</FONT>
+<FONT COLOR="#ff0000">		$confArray = unserialize($GLOBALS[&quot;TYPO3_CONF_VARS&quot;][&quot;EXT&quot;][&quot;extConf&quot;][&quot;tmplselect&quot;]);</FONT>
+
+			// Getting the &quot;type&quot; from the input TypoScript configuration:
+		switch((string)$conf['templateType'])		{
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Conclusions</H3>
+<P CLASS="western">This part of the tutorial showed how powerfully
+you can create applications with TYPO3. The extension created in this
+part is even available for download from TER on typo3.org! And when
+you need special features for your websites you don't have to ask
+&quot;can TYPO3 do that&quot; because it's always a YES (almost). If
+it's not there already you can build it easily using the strong
+framework for application development and management - the Extension
+API. That will be further proved in the final Part 3 of this
+document. 
+</P>
+<H4 CLASS="western">The &quot;template selector manual&quot;</H4>
+<P CLASS="western">I would like to point out that our &quot;reverse
+engineering&quot; of Raphaels original templates should in the end -
+after the construction and implementation of the template selector -
+be reversed into a manual for the template designer.</P>
+<P CLASS="western">Mr. Raphael has the power to add new templates in
+fileadmin/template/ without Mr. Benoit being involved. However Benoit
+created a technical framework which accepts only certain input from
+Mr. Raphael.</P>
+<P CLASS="western">In the section &quot;Investigating the source
+material&quot; we ended up with two tables that told Benoit what
+selectors he needed to support in his template. This should be
+reversed now in order to become a manual for Raphael to design more
+templates!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Main templates:</B></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=51*>
+	<COL WIDTH=40*>
+	<COL WIDTH=165*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=20%>
+				<P CLASS="western">Subpart marker</P>
+			</TH>
+			<TH WIDTH=16%>
+				<P CLASS="western">Possible Selectors</P>
+			</TH>
+			<TH WIDTH=65%>
+				<P CLASS="western">Subpart action</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###content### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">TD#content</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Marks the content area of the main template. A
+				&quot;sub template&quot; - content area template - will be
+				inserted here with page content elements.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###path### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">TD#path</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a horizontal &quot;path menu&quot;</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###menu_1### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">TD#menu_1</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a vertical menu in 2 levels rendered
+				with &lt;div&gt; tags</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###menu2### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">TR#menu_2</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Inserts a horizontal menu of table cells in a
+				table row.  Do NOTadd any other rows  to the table!</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Content area templates:</B></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=51*>
+	<COL WIDTH=40*>
+	<COL WIDTH=165*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=20%>
+				<P CLASS="western">Subpart marker</P>
+			</TH>
+			<TH WIDTH=16%>
+				<P CLASS="western">Possible Selectors</P>
+			</TH>
+			<TH WIDTH=65%>
+				<P CLASS="western">Subpart action</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###colNormal### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">DIV#colNormal</P>
+				<P CLASS="western">TD#colNormal</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the NORMAL column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###colRight### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">DIV#colRight</P>
+				<P CLASS="western">TD#colRight</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the RIGHT column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###colLeft### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">DIV#colLeft</P>
+				<P CLASS="western">TD#colLeft</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">Page content element from the LEFT column.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=20%>
+				<P CLASS="western">&lt;!-- ###news-pi### --&gt;</P>
+			</TD>
+			<TD WIDTH=16%>
+				<P CLASS="western">DIV#news-pi</P>
+				<P CLASS="western">TD#news-pi</P>
+			</TD>
+			<TD WIDTH=65%>
+				<P CLASS="western">FrontPage news splash from the &quot;mininews&quot;
+				extension.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">From these tables
+Raphael can see 
+</P>
+<UL>
+	<LI><P CLASS="western" STYLE="font-weight: normal">which dynamic
+	objects he can insert in his templates!</P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">which subpart
+	markers are used to insert them!</P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">which
+	id-selectors for which HTML-elements that will produce an
+	automatically marked up subpart by Template Auto-parser.</P>
+</UL>
+<P CLASS="western" STYLE="font-weight: normal">With this information
+Raphael can now begin to design more templates for the website and as
+long as he plays by the rules in these tables Benoit doesn't need to
+make any adjustments to the &quot;glue&quot; inside TYPO3 - the
+TypoScript configuration in the template records.</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Part 3:
+Extending the Built-In Access Scheme</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">TYPO3 performs access control to elements in the
+frontend by a set of standard criterias - socalled &quot;enablefields&quot;.
+These include the possibility for hidden, starttime, endtime and
+fe_group filtering.</P>
+<P CLASS="western">When you want to restrict access to a content
+element on your website so only certain people can see it you must
+create frontend users and assign member groups to those users. The
+access to a single element is then controlled by selecting a specific
+user group for which the element is visible only. If a user is not
+logged in or not a member of the selected group he will not get to
+see the element!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_493ddfb7.png" NAME="Graphic139" ALIGN=LEFT WIDTH=470 HEIGHT=146 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">However the limitation is that only <I>one</I>
+group can be selected! What if we want to allow access for multiple
+groups?</P>
+<P CLASS="western">Well this is not possible directly but requires a
+little fiddling with the source code of the &quot;cms&quot; extension
+of TYPO3. This is what we will work on in this part of the tutorial.</P>
+<H4 CLASS="western">Skill level</H4>
+<P CLASS="western">In order to complete this level you should be an
+<I>advanced TYPO3 user and PHP expert. You should be a developer.</I></P>
+<H3 CLASS="western">The theory of &quot;enablefields&quot;</H3>
+<P CLASS="western">&quot;enablefields&quot; are fields in a table
+which holds the value for either hidden/visible, start time, end time
+or user group access. The fields are pointed to by an entry in the
+&quot;ctrl&quot; section for tables in $TCA. For instance the
+configuration for the table &quot;tt_content&quot; looks like this:</P>
+<PRE CLASS="western">$TCA['tt_content'] = Array (
+	'ctrl' =&gt; Array (
+		'label' =&gt; 'header',
+		'label_alt' =&gt; 'subheader,bodytext',
+		'sortby' =&gt; 'sorting',
+		'tstamp' =&gt; 'tstamp',
+		'title' =&gt; 'LLL:EXT:cms/locallang_tca.php:tt_content',
+<FONT COLOR="#ff0000">		'delete' =&gt; 'deleted',</FONT>
+		'type' =&gt; 'CType',
+		'prependAtCopy' =&gt; 'LLL:EXT:lang/locallang_general.php:LGL.prependAtCopy',
+		'copyAfterDuplFields' =&gt; 'colPos,sys_language_uid',
+		'useColumnsForDefaultValues' =&gt; 'colPos,sys_language_uid',
+<FONT COLOR="#ff0000">		'enablecolumns' =&gt; Array (</FONT>
+<FONT COLOR="#ff0000">			'disabled' =&gt; 'hidden',</FONT>
+<FONT COLOR="#ff0000">			'starttime' =&gt; 'starttime',</FONT>
+<FONT COLOR="#ff0000">			'endtime' =&gt; 'endtime',</FONT>
+<FONT COLOR="#ff0000">			'fe_group' =&gt; 'fe_group',</FONT>
+<FONT COLOR="#ff0000">		),</FONT>
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">&quot;enablefields&quot; are used only in the
+frontend since they are all about <I>frontend access</I> to elements
+- not backend access! So hidden records, records with start and end
+times or access restriction will always be visible for backend users.
+</P>
+<P CLASS="western">The &quot;delete&quot; key of the &quot;ctrl&quot;
+section is however also included in the filtering for &quot;enable
+fields&quot; but that feature is valid for <I>both</I> the frontend
+and backend. In fact TYPO3 is not allowed to recognize a record with
+the &quot;deleted&quot; field set! 
+</P>
+<H4 CLASS="western">Filtering out &quot;disabled records&quot;</H4>
+<P CLASS="western">Whenever records from tables configured in $TCA
+are selected in the context of the frontend for display on webpages
+the function enableFields() is called (should be!) with the table
+name as argument. It might look like this:</P>
+<PRE CLASS="western">. . .
+		} else {
+			$query=&quot;FROM &quot;.$table.&quot; WHERE pid IN (&quot;.$pidList.&quot;)&quot;.chr(10).
+					<FONT COLOR="#ff0000">$this-&gt;cObj-&gt;enableFields($table);</FONT>
+		}
+. . .</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">$this-&gt;cObj is normally available in plugins
+and is the parent object which is an instance of the class
+&quot;tslib_cObj&quot; from the file &quot;class.tslib_content.php&quot;.
+</P>
+<P CLASS="western">So in tslib/class.tslib_content.php we will find
+the function enableFields() - but just to see it act as a simple
+wrapper for the function $GLOBALS[&quot;TSFE&quot;]-&gt;sys_page-&gt;enableFields()</P>
+<P CLASS="western">$TSFE is an instance of the class &quot;tslib_fe&quot;
+and looking inside of &quot;tslib/class.tslib_fe.php&quot; we will
+find that $GLOBALS[&quot;TSFE&quot;]-&gt;sys_page is an instance of
+the class &quot;t3lib_pageSelect&quot;.</P>
+<P CLASS="western">The class &quot;t3lib_pageSelect&quot; is found in
+&quot;t3lib/class.t3lib_page.php&quot;. Now we should be there:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><CODE><FONT COLOR="#007700"><FONT SIZE=1>function&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>enableFields</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=-</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>1</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=array())&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>==-</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>1&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>&amp;&amp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>is_object</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;TSFE&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]))&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>==</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;pages&quot;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>?&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;TSFE&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]-&gt;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>showHiddenPage&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>:&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;TSFE&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]-&gt;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>showHiddenRecords</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>==-</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>1</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>)&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>0</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;TCA&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;ctrl&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>is_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>))&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;delete&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+AND NOT
+&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;.&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;delete&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>is_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]))&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;disabled&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]&nbsp;&amp;&amp;&nbsp;!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$show_hidden&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>&amp;&amp;&nbsp;!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;disabled&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;.&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;disabled&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+AND NOT
+&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;starttime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]&nbsp;&amp;&amp;&nbsp;!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;starttime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;.&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;starttime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+AND
+(&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;&lt;=&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;SIM_EXEC_TIME&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>].</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;)&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;endtime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]&nbsp;&amp;&amp;&nbsp;!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;endtime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;.&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;endtime&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+AND (&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;=0
+OR
+&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;&gt;&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;SIM_EXEC_TIME&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>].</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;)&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;fe_group&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]&nbsp;&amp;&amp;&nbsp;!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;fe_group&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;.&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$ctrl</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;enablecolumns&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;fe_group&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$gr_list&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;TSFE&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>]-&gt;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>gr_list</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>strcmp</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$gr_list</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>,</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>))&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$gr_list</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>=</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>0</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+AND &quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;
+IN (&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$gr_list</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;)&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{die&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;NO
+entry in the \$TCA-array for '&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1>&quot;'&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>);}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1>$query</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1>;<BR>}</FONT></FONT></CODE></P>
+<P CLASS="western"> 
+</P>
+<P CLASS="western">This function simply looks in the &quot;ctrl&quot;
+section of $TCA for the table and will put together the part of the
+WHERE clause that will filter out all records that should be hidden
+according to the settings for the enablefields, if any.</P>
+<P CLASS="western">This is the general theory.</P>
+<H3 CLASS="western">Extending the t3lib_pageSelect class</H3>
+<P CLASS="western">Since we are going to implement our own access
+control for user groups we will apparently have to either extend or
+totally replace the function enableFields() from the class
+&quot;t3lib_pageSelect&quot;. So it should not be wasted time to
+create an extension class for it.</P>
+<P CLASS="western">But first, lets create a new, user defined
+extension by hand:</P>
+<H4 CLASS="western">User defined extension</H4>
+<P CLASS="western">1: Create a directory in typo3conf/ext/ named
+&quot;user_accessctrl&quot;</P>
+<P CLASS="western">2: Create a file named &quot;ext_emconf.php&quot;
+in &quot;user_accessctrl/&quot;:</P>
+<PRE CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR><BR>$EM_CONF</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#0000bb">$_EXTKEY</FONT></CODE><CODE><FONT COLOR="#007700">]&nbsp;=&nbsp;Array&nbsp;(<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'title'&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'New Access Control'</FONT></CODE><CODE><FONT COLOR="#007700">,<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'version'&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&gt;&nbsp;</FONT></CODE><CODE><FONT COLOR="#dd0000">'0.0.0'<BR></FONT></CODE><CODE><FONT COLOR="#007700">);<BR><BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">3: Create a file named &quot;ext_localconf.php&quot;
+in &quot;user_accessctrl/&quot;:</P>
+<PRE CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR><BR>$TYPO3_CONF_VARS</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;FE&quot;</FONT></CODE><CODE><FONT COLOR="#007700">][</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;XCLASS&quot;</FONT></CODE><CODE><FONT COLOR="#007700">][</FONT></CODE><CODE><FONT COLOR="#dd0000">&quot;t3lib/class.t3lib_page.php&quot;</FONT></CODE><CODE><FONT COLOR="#007700">]&nbsp;=&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_extMgm</FONT></CODE><CODE><FONT COLOR="#007700">:</FONT></CODE><CODE><FONT COLOR="#0000bb">extPath</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#dd0000">'user_accessctrl'</FONT></CODE><CODE><FONT COLOR="#007700">).</FONT></CODE><CODE><FONT COLOR="#dd0000">'class.ux_t3lib_pageSelect.php'</FONT></CODE><CODE><FONT COLOR="#007700">;<BR><BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">4: Create a file named
+&quot;class.ux_t3lib_pageSelect.php&quot; in &quot;user_accessctrl/&quot;:</P>
+<PRE CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR><BR></FONT></CODE><CODE><FONT COLOR="#007700">class&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">ux_t3lib_pageSelect&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">extends&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_pageSelect&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">{<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">/**<BR>&nbsp;&nbsp;&nbsp;&nbsp; * Extending function for enableFields()<BR>&nbsp;&nbsp;&nbsp;&nbsp; */<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">function&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">enableFields</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$table</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$show_hidden</FONT></CODE><CODE><FONT COLOR="#007700">=-</FONT></CODE><CODE><FONT COLOR="#0000bb">1</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$ignore_array</FONT></CODE><CODE><FONT COLOR="#007700">=array())&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">// Call parent function (the original!)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$return_value&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">=&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">parent</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">enableFields</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#0000bb">$table</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$show_hidden</FONT></CODE><CODE><FONT COLOR="#007700">,</FONT></CODE><CODE><FONT COLOR="#0000bb">$ignore_array</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">// Output the value so we can see what is produced:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">debug</FONT></CODE><CODE><FONT COLOR="#007700">(array(</FONT></CODE><CODE><FONT COLOR="#0000bb">$return_value</FONT></CODE><CODE><FONT COLOR="#007700">));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#ff8000">// Return the value:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></CODE><CODE><FONT COLOR="#007700">return&nbsp;</FONT></CODE><CODE><FONT COLOR="#0000bb">$return_value</FONT></CODE><CODE><FONT COLOR="#007700">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR><BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then go to the Extension Manager and install the
+extension:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m3555e5a2.png" NAME="Graphic140" ALIGN=LEFT WIDTH=499 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>... Oups:</B></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m73d4aee6.png" NAME="Graphic141" ALIGN=LEFT WIDTH=669 HEIGHT=81 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<PRE CLASS="western"><B>Parse error</B>: parse error in <B>/www/htdocs/typo3/32/dummy_tut/typo3conf/temp_CACHED_pseed3_ext_localconf.php</B> on line <B>121</B><BR>Typo3 Fatal Error: Extension key &quot;cms&quot; was NOT loaded!</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The solution to this problem is a) not to panic
+and then b) open the file &quot;temp_CACHED_pseed3_ext_localconf.php&quot;
+and find the problem:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_10feb3f7.png" NAME="Graphic142" ALIGN=LEFT WIDTH=669 HEIGHT=227 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Apparently a &quot;:&quot; (colon) was missing!
+So... 
+</P>
+<UL>
+	<LI><P CLASS="western">a) we add the colon here so the file does not
+	generate a parse error and 
+	</P>
+	<LI><P CLASS="western">b) we add the colon in the <I>source file</I>
+	located in ... user_accessctrl/ext_localconf.php!</P>
+</UL>
+<P CLASS="western">(The weird thing is that line 121 had nothing to
+do with this problem...)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Anyways, after this little intermezzo our
+extension should be installed and if we clear the cache and hit the
+frontend of page &quot;License C&quot; we should see something like
+this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_5f3cbed.png" NAME="Graphic143" ALIGN=LEFT WIDTH=669 HEIGHT=446 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This debug information was outputted by the
+function t3lib_div::debug() which was found in our extension function
+of the enableFields() function.</P>
+<H4 CLASS="western">The WHERE clause</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see from the screen dump the
+enableFields() function was called three times for the &quot;tt_content&quot;
+table - that is reasonable since we insert page content elements
+three times on this page!</P>
+<P CLASS="western">The WHERE clause returned by
+parent::enableFields() is this:</P>
+<PRE CLASS="western"> AND NOT tt_content.deleted
+ AND NOT tt_content.hidden
+ AND (tt_content.starttime&lt;=1047535575)
+ AND (tt_content.endtime=0 OR tt_content.endtime&gt;1047535575)
+ AND tt_content.fe_group IN (0,-1)</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The first line checks for the mandatory &quot;deleted&quot;
+field, the other four checks for the hidden, starttime, endtime and
+fe_groups.</P>
+<H4 CLASS="western">Removing the check for &quot;fe_group&quot;</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, add this file, &quot;ext_tables.php&quot;, to
+the extension:</P>
+<P CLASS="western"><CODE><FONT COLOR="#0000bb">&lt;?php<BR><BR>t3lib_div</FONT></CODE><CODE><FONT COLOR="#007700">::</FONT></CODE><CODE><FONT COLOR="#0000bb">loadTCA</FONT></CODE><CODE><FONT COLOR="#007700">(</FONT></CODE><CODE><FONT COLOR="#dd0000">'tt_content'</FONT></CODE><CODE><FONT COLOR="#007700">);<BR>unset(</FONT></CODE><CODE><FONT COLOR="#0000bb">$TCA</FONT></CODE><CODE><FONT COLOR="#007700">[</FONT></CODE><CODE><FONT COLOR="#dd0000">'tt_content'</FONT></CODE><CODE><FONT COLOR="#007700">][</FONT></CODE><CODE><FONT COLOR="#dd0000">'ctrl'</FONT></CODE><CODE><FONT COLOR="#007700">][</FONT></CODE><CODE><FONT COLOR="#dd0000">'enablecolumns'</FONT></CODE><CODE><FONT COLOR="#007700">][</FONT></CODE><CODE><FONT COLOR="#dd0000">'fe_group'</FONT></CODE><CODE><FONT COLOR="#007700">]);<BR><BR></FONT></CODE><CODE><FONT COLOR="#0000bb">?&gt;</FONT></CODE></P>
+<P CLASS="western">Clear all cache, clear cache files and reload the
+frontend. The WHERE clause for tt_content elements is now reduced to:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">AND NOT tt_content.deleted
+AND NOT tt_content.hidden 
+AND (tt_content.starttime&lt;=1047536630) 
+AND (tt_content.endtime=0 OR tt_content.endtime&gt;1047536630)</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">As you can see the check for the
+&quot;tt_content.fe_group&quot; field is not included anymore since
+we removed the definition of this column from the &quot;enablecolumns&quot;
+key of the &quot;ctrl&quot; section for the table &quot;tt_content&quot;.</P>
+<H3 CLASS="western">Changing the &quot;fe_group&quot; field</H3>
+<P CLASS="western">Now we are ready to change the fe_group field -
+the &quot;Access&quot; selector box - to a multiple select field. We
+will do two things:</P>
+<UL>
+	<LI><P CLASS="western">manipulate the entry for &quot;fe_group&quot;
+	in the &quot;columns&quot; section of $TCA['tt_content']</P>
+	<LI><P CLASS="western">re-configure the field from a integer to a
+	varchar(100)</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">First add this to the ext_tables.php file (red
+lines):</P>
+<PRE CLASS="western">&lt;?php
+
+t3lib_div::loadTCA('tt_content');
+unset($TCA['tt_content']['ctrl']['enablecolumns']['fe_group']);
+<FONT COLOR="#ff0000">unset($TCA['tt_content']['columns']['fe_group']['config']['items']);</FONT>
+<FONT COLOR="#ff0000">$TCA['tt_content']['columns']['fe_group']['config']['size']=5;</FONT>
+<FONT COLOR="#ff0000">$TCA['tt_content']['columns']['fe_group']['config']['maxitems']=20;</FONT>
+
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Then create the file &quot;ext_tables.sql&quot;
+and add this content:</P>
+<PRE CLASS="western"># Redefining the fe_group field:
+CREATE TABLE tt_content (
+	fe_group varchar(100) DEFAULT '' NOT NULL
+);
+
+</PRE><P CLASS="western">
+Now go to the Extension Manager, click the &quot;user_accessctrl&quot;
+extension and you should see this form:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_m1b90c451.png" NAME="Graphic144" ALIGN=LEFT WIDTH=669 HEIGHT=144 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Press &quot;Make updates&quot;.</P>
+<P CLASS="western">Then go and edit a page content element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="11_html_4a28b74a.png" NAME="Graphic145" ALIGN=LEFT WIDTH=669 HEIGHT=221 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see we have successfully redefined the
+field so that more than one group can be selected. Try and add a few
+groups. 
+</P>
+<P CLASS="western">If you look at the field value when more than one
+group is added you will see that it is a comma list of the uids of
+the groups, eg. &quot;2,1&quot;. This is what we must select on if we
+want to have multiple group access control.</P>
+<H3 CLASS="western">Adding our custom &quot;enablecolumn&quot; type</H3>
+<P CLASS="western">Now we are ready to create the logic for our new
+&quot;enablecolumn&quot; type. In fact we should give it a name and
+use the &quot;enablecolumns&quot; array to activate it. Thus we can
+use it not only for content elements but for any element in the
+database (except &quot;pages&quot; which needs more complicated
+manipulation).</P>
+<P CLASS="western">Add this line to ext_tables.php:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">&lt;?php
+
+t3lib_div::loadTCA('tt_content');
+unset($TCA['tt_content']['ctrl']['enablecolumns']['fe_group']);
+unset($TCA['tt_content']['columns']['fe_group']['config']['items']);
+$TCA['tt_content']['columns']['fe_group']['config']['size']=5;
+$TCA['tt_content']['columns']['fe_group']['config']['maxitems']=20;
+
+<FONT COLOR="#ff0000">$TCA['tt_content']['ctrl']['enablecolumns']['user_accessctrl_multigroup'] = 'fe_group';</FONT>
+
+?&gt;
+</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">All there is left now is to program the extended
+enableFields() function:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">&lt;?php<BR><BR></FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">class&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">ux_t3lib_pageSelect&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">extends&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">t3lib_pageSelect&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">{<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">/**<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+* Extending function for enableFields()<BR>&nbsp;&nbsp;&nbsp;&nbsp;
+*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">function&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">enableFields</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=-</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">1</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=array())&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$TCA</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">//
+Call parent function (the
+original!)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$return_value&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">parent</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">::</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">enableFields</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$show_hidden</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$ignore_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">//
+Check for our custom enable-column,
+&quot;user_accessctrl_multigroup&quot;:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">is_array</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$TCA</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">])&nbsp;&amp;&amp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$TCA</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'ctrl'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'enablecolumns'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'user_accessctrl_multigroup'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">])&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'.'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$TCA</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$table</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'ctrl'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'enablecolumns'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'user_accessctrl_multigroup'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$orChecks</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=array();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$orChecks</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[]=</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'=&quot;&quot;'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">//
+If the field is empty, then
+OK<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$orChecks</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[]=</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'=&quot;0&quot;'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">//
+If the field is empty, then
+OK<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$memberGroups&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">=&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">t3lib_div</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">::</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">intExplode</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">(</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">&quot;,&quot;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$GLOBALS</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'TSFE'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">]-&gt;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">gr_list</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$memberGroups&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">as&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">)&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">&gt;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">0</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">)&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">//
+If user is member of a real group, not zero or negative pseudo
+group<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$orChecks</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">[]=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'('</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'
+LIKE &quot;%,'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">',%&quot;
+OR '</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'
+LIKE &quot;'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">',%&quot;
+OR '</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'
+LIKE &quot;%,'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'&quot;
+OR
+'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$field</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'=&quot;'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'&quot;)'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$return_value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.=</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'
+AND ('</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">.</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">implode</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">(</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">'
+OR
+'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">,</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$orChecks</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">).</FONT></FONT></CODE><CODE><FONT COLOR="#dd0000"><FONT SIZE=1 STYLE="font-size: 8pt">')'</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR></FONT></FONT></CODE><CODE><FONT COLOR="#ff8000"><FONT SIZE=1 STYLE="font-size: 8pt">#t3lib_div::debug(array($return_value));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+Return the value:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">return&nbsp;</FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">$return_value</FONT></FONT></CODE><CODE><FONT COLOR="#007700"><FONT SIZE=1 STYLE="font-size: 8pt">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR><BR></FONT></FONT></CODE><CODE><FONT COLOR="#0000bb"><FONT SIZE=1 STYLE="font-size: 8pt">?&gt;</FONT></FONT></CODE></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This is what it does:</P>
+<UL>
+	<LI><P CLASS="western">First, call the parent function to get the
+	enableFields clause for the standard fields!</P>
+	<LI><P CLASS="western">Then, check if a field is configured for the
+	key &quot;user_accessctrl_multigroup&quot;</P>
+	<LI><P CLASS="western">If so, create a big OR statement where all
+	field values equal to &quot;&quot; (blank string) or 0 (zero) will
+	always be selected plus all fields which has one of the positive
+	group ids of the current user (if any) in the list or groups.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The result from this should be a query like this
+provided that the current user is member of the groups with uid &quot;1&quot;
+and &quot;2&quot; (value found in $TSFE-&gt;gr_list):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">AND NOT tt_content.deleted 
+AND NOT tt_content.hidden 
+AND (tt_content.starttime&lt;=1047539324) 
+AND (tt_content.endtime=0 OR tt_content.endtime&gt;1047539324) 
+<FONT COLOR="#ff0000">AND (</FONT>
+<FONT COLOR="#ff0000">	tt_content.fe_group=&quot;&quot; OR </FONT>
+<FONT COLOR="#ff0000">	tt_content.fe_group=&quot;0&quot; OR </FONT>
+<FONT COLOR="#ff0000">	(	tt_content.fe_group LIKE &quot;%,<FONT COLOR="#000080">1</FONT>,%&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group LIKE &quot;<FONT COLOR="#000080">1</FONT>,%&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group LIKE &quot;%,<FONT COLOR="#000080">1</FONT>&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group=&quot;<FONT COLOR="#000080">1</FONT>&quot;</FONT>
+<FONT COLOR="#ff0000">					) OR </FONT>
+<FONT COLOR="#ff0000">	(	tt_content.fe_group LIKE &quot;%,<FONT COLOR="#000080">2</FONT>,%&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group LIKE &quot;<FONT COLOR="#000080">2</FONT>,%&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group LIKE &quot;%,<FONT COLOR="#000080">2</FONT>&quot; OR </FONT>
+<FONT COLOR="#ff0000">		tt_content.fe_group=&quot;<FONT COLOR="#000080">2</FONT>&quot;</FONT>
+<FONT COLOR="#ff0000">					)</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(The extension &quot;user_accessctrl&quot; can be
+found as the file &quot;T3X_user_accessctrl-0_0_0.t3x&quot; in the
+&quot;part3/&quot; folder of the tutorial extension.)</P>
+<H3 CLASS="western">Access control on user level?</H3>
+<P CLASS="western">You might ask if it's possible to restrict access
+to pages by selecting on users instead of user groups. The answer is
+&quot;no&quot; - unless you disable caching!</P>
+<P CLASS="western">The problem is that caching of pages is based on a
+hash string which includes the id, the type and the gr_list
+parameters (plus a little more) and therefore you can only make
+cached access restrictions based on user group combinations and
+nothing more. The only way to do this differently is to disable
+caching for the pages. Probably if you want user based access you
+really want to make some application on a page which serves
+user-specific content - that is totally different and can be done by
+creating a plugin which inserts a non-cached cObject on a page.</P>
+<H3 CLASS="western">Extending access control for pages</H3>
+<P CLASS="western">This extension will work for all other tables as
+well, except the &quot;pages&quot; table. Well, if the function is
+used to get the enableFields for the pages table it will work
+correctly. But the pages table is a little special because the object
+$GLOBALS[&quot;TSFE&quot;]-&gt;sys_page contains a lot of functions
+selecting pages for menus etc. <I>without </I>using the
+enableFields() function but rather by the internal variable
+$this-&gt;where_hid_del.</P>
+<P CLASS="western">You will therefore have to control the
+$this-&gt;where_hid_del variable and do so even at a very early stage
+in its existence if you want your custom access field taken into
+consideration when the current page and it's visibility is evaluated.
+</P>
+<P CLASS="western">The -&gt;where_hid_del variable is set as a part
+of the initialization of the $GLOBALS[&quot;TSFE&quot;]-&gt;sys_page
+object inside the class/method tslib_fe::fetch_the_id(). 
+</P>
+<P CLASS="western">Have fun.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="11_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Modern Template Building, Part 2+3</SDFIELD>
+	- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>22</SDFIELD></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

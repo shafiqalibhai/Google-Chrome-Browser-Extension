@@ -1,0 +1,1235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>TypoScript Templates</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Kasper Skårhøj">
+	<META NAME="CHANGED" CONTENT="20021130;3323800">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #008080 }
+		P.western { font-family: "Verdana", sans-serif; font-size: 8pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; color: #008000; text-align: center; page-break-after: auto }
+		H1.western { font-family: "Formata Regular", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0cm; margin-bottom: 0cm; color: #008000; text-align: left; page-break-after: auto }
+		H2.western { font-family: "Formata Regular", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.3cm; margin-bottom: 0cm; color: #008000; text-align: left; page-break-after: auto }
+		H3.western { font-family: "Formata Regular", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0cm; margin-bottom: 0cm; color: #008000; text-align: left; page-break-after: auto }
+		H4.western { font-family: "Formata Regular", sans-serif; font-size: 11pt; font-style: italic }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		H5 { margin-top: 0cm; margin-bottom: 0cm; color: #800080; text-align: left; page-break-after: auto }
+		H5.western { font-family: "Formata Regular", sans-serif; font-size: 11pt; font-style: italic }
+		H5.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H5.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { font-family: "Verdana", sans-serif; font-size: 8pt }
+		TD P { margin-bottom: 0cm; color: #008080 }
+		TD P.western { font-family: "Verdana", sans-serif; font-size: 7pt }
+		TH P { margin-bottom: 0cm; color: #008080 }
+		TH P.western { font-family: "Verdana", sans-serif; font-size: 7pt; font-style: italic }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		H2.contents-heading-western { font-family: "Formata Regular", sans-serif; font-size: 16pt; font-style: normal }
+		H2.contents-heading-cjk { font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #808000 }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western"><BR><BR>
+</P>
+<H1 CLASS="western"><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript Templates</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER>Extension Key: <B>doc_core_tstemplates</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2000-2002, <SDFIELD TYPE=AUTHOR FORMAT=NAME>Shafiq Issani</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to Typo3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents2_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=3><B>TypoScript
+	Templates	1</B></FONT></FONT></P>
+	<P STYLE="margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=3><B>Introduction
+	to TypoScript templates	2</B></FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Introduction	2</B></FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Location
+	of the front end scripts	4</B></FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Note
+	about the pagetype “Mount point”	4</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">The
+	&amp;MP GET-var	4</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Support	4</FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Syntax	5</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">The
+	concept	5</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Basic
+	construction	5</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Conditions	7</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Includes	9</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Syntax-error
+	and debugging	9</FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Comments
+	in TypoScript Constants-field (TS-module)	9</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Default
+	values:	10</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Comments:	10</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Keys:	10</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Subcategories	11</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">TSConstantEditor.[category]	11</FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>The
+	template system	14</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Rootlevel,
+	Constants and Setup	14</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Template
+	on next level	14</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Include
+	static	14</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Based
+	on	14</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Checkbox
+	option: Include static AFTER basedOn	14</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Next
+	template	14</FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Technical
+	implementation in PHP	16</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Template
+	cache	16</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">The
+	Rootline	16</FONT></FONT></P>
+	<P STYLE="margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=3><B>Admin
+	Panel	17</B></FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt"><B>Introduction	17</B></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Controlling
+	it	17</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Modules	17</FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm"><FONT COLOR="#800000"><FONT SIZE=2 STYLE="font-size: 9pt">Publish	17</FONT></FONT></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always">Introduction to
+TypoScript templates</H1>
+<H2 CLASS="western">Introduction</H2>
+<P CLASS="western">TypoScript (TS) is the &quot;language&quot;, for
+setting up templates with Typo3. TS is really not a
+scripting-language with control structures (like if(), while(),
+for()) and everything. Actually it's just a way to define a whole lot
+of values in a hierarchical tree-like structure. In fact it's very
+much alike the Windows Registry: Values arranged logically as
+&quot;objects&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_9ced767.png" NAME="Grafik1" ALIGN=LEFT WIDTH=423 HEIGHT=294 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_65c9d2fc.png" NAME="Grafik7" ALIGN=LEFT WIDTH=377 HEIGHT=368 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">TS has a certain resemblance with JavaScript in
+the syntax, but you must really take the time to explore the few
+important rules of the syntax. It's very simple. 
+</P>
+<P CLASS="western">Here is an example of TypoScript:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">temp.topmenu = HMENU
+temp.topmenu.entryLevel = 1
+temp.topmenu.1 = GMENU
+temp.topmenu.1.target = content
+temp.topmenu.1.NO {
+  XY = [10.w]+12,20
+  backColor = {$bgCol}
+  wrap = |*|  || || || | &lt;br&gt; |*|
+  10 = TEXT
+  10.text.field = title
+  10.fontFile = media/fonts/hatten.ttf
+  10.fontSize = 16
+  10.fontColor = {$menuCol1}
+  10.offset = 6,14
+  10.niceText = 1
+  10.emboss.offset = 1,1
+  10.emboss.lowColor = white
+  10.emboss.highColor = black
+  10.emboss.blur = 40
+  10.emboss.opacity = 40
+}
+temp.topmenu.1.RO &lt; temp.topmenu.1.NO
+temp.topmenu.1.RO = 1
+temp.topmenu.1.RO {
+  10.emboss.offset = -1,-1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This piece of code defines an <I>object</I>
+&quot;temp.topmenu&quot; which generates a navigation menu for the
+www.typo3.com website (the topmenu).</P>
+<P CLASS="western">temp.topmenu is a <I>content-object</I> of the
+type &quot;HMENU&quot;. Content-objects usually return some HTML
+content like in this case the HTML-code for site navigation. &quot;HMENU&quot;
+stands for &quot;hierarchical menu&quot; and this content object is
+designed to create menus you can put on the website. Here the HMENU
+has an &quot;entryLevel = 1&quot;. This means that the menu consists
+of pages on the first level (zero being the root-level!) of the
+page-tree on this website. Now the first level of the menu is defined
+to be a &quot;GMENU&quot;. This is a graphical menu. The target for
+the menu is &quot;content&quot;. This refers the toplevel-object
+which contains the configuration of the content-frame. The actual
+frame on the website will also be named &quot;content&quot; by the
+way...</P>
+<P CLASS="western">The next thing that happens is that NO is defined
+for the GMENU. NO stands for normal. This means that the following
+configuration is for the buttons when in normal mode (if not
+mouseover and such stuff...). NO is an GIFBUILDER-object. You cannot
+see this directly from this piece of code but you can see it in this
+documentation if you look at the GMENU-object. There you'll see that
+NO is always a GIFBUILDER-object. You cannot change this!</P>
+<P CLASS="western">Next an object inside GIFBUILDER is defined (a
+GifBuilderObj) on position 10 of an array in this object. The
+GifBuilderObj is of type &quot;TEXT&quot;. The actual text is defined
+by the object-property &quot;text&quot;. Here we could just assign a
+value like &quot;10.text = some text!&quot; but we need the title of
+the page from the database. As the text-property has properties from
+the <I>stdWrap</I> function we import the value of field &quot;title&quot;
+from the page-record for this particular menuitem.</P>
+<P CLASS="western">Now the fontfile, fontsize and fontcolor is
+defined. Fontcolor is also defined to be a constant. Again this adds
+the flexibility of easily changing this value from the constant-field
+of the templatesetup and not directly in TypoScript. &quot;offset&quot;
+is used to move the text 6 pixels down and 14 pixels to the right on
+the gif-file. &quot;emboss&quot; adds the embossed effect to the
+text.</P>
+<P CLASS="western">The GIFBUILDER-object is very exciting. Here the
+dimensions (XY) of the gif-images is defined to be a height of 20
+pixels and a width of the text on the gif + 12 pixels. In this way
+the width differs depending on the text upon it! The background color
+of the gif-file (backColor) is set to a constant, bgCol, which is the
+global background color on the website!! This is very clever as a
+change of this global value will also change the background color of
+the gif-files! Then a &quot;wrap&quot; is defined. A wrap means a
+value which is split in halfs by the |-character (vertical line). The
+first and second parts is placed around something. This kind of wrap
+is a bit crazy as it puts a &lt;BR&gt;-tag behind every fourth of the
+menu-gifs! 
+</P>
+<P CLASS="western">Now the normal-state part of the menu is finished:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_3e3c79a6.png" NAME="Grafik3" ALIGN=LEFT WIDTH=447 HEIGHT=59 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The next thing is that we would really like to add
+mouse-over effects to the buttons. So the next piece of
+TypoScript-code is added:</P>
+<PRE CLASS="western">temp.topmenu.1.RO &lt; temp.topmenu.1.NO
+temp.topmenu.1.RO = 1
+temp.topmenu.1.RO {
+  10.emboss.offset = -1,-1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">&quot;RO&quot; stands for roll-over, so this is
+the configuration of the gif-images when the mouse is moved over
+them. 
+</P>
+<P CLASS="western">Here the NO property of GMENU is <I>copied</I> to
+the RO property of GMENU!! But as RO is optional (NO was required),
+we must enable it by setting RO = 1. The next is that a single
+property inside the GIFBUILDER-object is overridden, the
+emboss-offset is set to &quot;-1,-1&quot;. Everything else is just
+like the normal version of the menu. 
+</P>
+<P CLASS="western">Thus the buttons is kind off &quot;pressed&quot;
+when you move the mouse over them!:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_3e3c79a6.png" NAME="Graphic2" ALIGN=LEFT WIDTH=447 HEIGHT=59 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can see this menu on www.typo3.com.</P>
+<H2 CLASS="western">Location of the front end scripts</H2>
+<P CLASS="western">The location of any script refered to in this
+manual is in the &quot;tslib/&quot;-dir in the regular
+Typo3-distributions. The Typo3 CMS/TypoScript frontend consists of
+code from this library.</P>
+<H2 CLASS="western">Note about the pagetype “Mount point”</H2>
+<P CLASS="western">A mountpoint is a page which - for the next level
+- points to another page. See this image:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_35657a6d.png" NAME="Graphic3" ALIGN=LEFT WIDTH=399 HEIGHT=285 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Here a menu for the page “Sub-subpage
+(MOUNT...)” (the one with the mousecursor over) will display the
+subpages found in the sysFolder “Mounted pages 2”. When clicking
+any of these pages the pages displayed will look to the frontend as
+if they were really subpages to the “Sub-subpage (MOUNT...”
+instead of “Mounted pages 2”. The ways this is done is by sending
+an additional parameter with the id to the index.php script. This
+parameter tells the system that when the “Mounted pages 2” pages
+is found in the rootLine it should be substituted with the
+“Sub-subpage (MOUNT...” page and continue the decent in the
+rootline from there.</P>
+<P CLASS="western">When making this kind of feature there are two
+things to consider.</P>
+<P CLASS="western">- Reading from the root of the page tree and
+outwards: No problem, when we discover a mountpoint, we could simply
+read on from the other page! However we must check that we do not end
+up in an eternal look if a mountpoint points to itself. 
+</P>
+<P CLASS="western">- Reading from the branch and inwards: Problem: We
+will by default get the rootline where the page is really mounted.
+But in many cases we would need the rootline of the mount instead!
+Therefore we must add a variable so the frontend KNOWS that this page
+id is supposed to be found in another rootline. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">The &amp;MP GET-var</H3>
+<P CLASS="western">The solution is the get-var called &amp;MP. If you
+have a page (id=1) which is a mountpoint to another page (id=2), then
+if you want to see the page with id 2 (or any other page inside of
+this) as mounted from the rootline of page with id 1, then you must
+call the page with &amp;id=2&amp;MP=2-1.</P>
+<H3 CLASS="western">Support</H3>
+<P CLASS="western">The problem is that most of the default linking
+mechanisms in Typo3 does not recognize the MP variable. Only does
+HMENU links. They are programmed to do that because it is thought
+that the typical use of mount points is with menus where you want to
+share some pages between sites in a system while using various
+templates.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>So:</B></P>
+<P CLASS="western">- only HMENU currently offers support for linking
+which observes mountpoints</P>
+<P CLASS="western">- if you retrieve a list of id-numbers from a
+certain page and outwards in the tree, you will NOT get the ids of
+the mounted branch but rather the real id's of any subpages. (This is
+because support for this is not yet implemented if ever. Further
+implementation requires a check for recursiveness which makes it
+little more complex.)</P>
+<H2 CLASS="western">Syntax</H2>
+<H3 CLASS="western">The concept</H3>
+<P CLASS="western">Remember, TypoScript is like the Windows Registry.
+It is values arranged in a hierarchy. The &quot;branches&quot; are
+indicated with periods - like objects in JavaScript. But remember,
+just because JavaScript was an inspiration, TypoScript is not anyway
+near the same.</P>
+<P CLASS="western">Objects: Sometimes we refer to something being an
+&quot;object&quot;. If we're talking about a &quot;menu-object&quot;
+or &quot;contentObject&quot; it's related to a specific function, but
+generally <I>a TypoScript &quot;object&quot; is a value with
+properties.</I></P>
+<H4 CLASS="western">Example:</H4>
+<PRE CLASS="western">myObject = [value 1]
+myObject.myProperty = [value 2]
+myObject.myProperty.firstProperty = [value 3]
+myObject.myProperty.secondProperty = [value 4]</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Refering to &quot;myObject&quot; we might call it
+an &quot;<I>object with the value [value 1] and the property,
+'myProperty' with the value [value 2]. Furthermore 'myPropery' has
+its own two properties, 'firstProperty' and 'secondProperty' with a
+value each ([value 3] and [value 4]).</I>&quot;</P>
+<P CLASS="western" STYLE="font-style: normal">We might even call
+'myProperty' for a TypoScript object in this example!</P>
+<P CLASS="western">OK?</P>
+<P CLASS="western">Remember, TypoScript is not &quot;executed&quot;
+like JavaScript and therefore doesn't report any errors if you
+specify non-existing objects or non-existing properties. Whether or
+not something happends depends on whether or not you have specified
+the correct properties to the correct objects. And which &quot;correct
+objects&quot; there is - that's what this reference is all about. The
+combinations.</P>
+<P CLASS="western">Anyway the TypoScript above looks like this in a
+node-tree:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_m58070f20.png" NAME="Grafik9" ALIGN=LEFT WIDTH=215 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The TypoScript syntax applies to both the &quot;Setup&quot;
+and &quot;Constants&quot; field of the template records. 
+</P>
+<P CLASS="western">In the &quot;Setup&quot;-field the TypoScript is
+&quot;executed&quot; - that is the TypoScript hierarchy is traversed
+and your definition of objects and values will result in some output
+- but the TypoScript in the &quot;Constants&quot; field just results
+in a hierarchy of values where each value may represent an inserted
+constant in the &quot;Setup&quot; field which is substituted before
+the template configuration is cached.</P>
+<P CLASS="western">About this mechanism (constants), see later in
+this document.</P>
+<H3 CLASS="western">Basic construction</H3>
+<P CLASS="western">TypoScript is parsed in a VERY simple way: All
+lines are devided and parsed (In PHP: exploded into an array).</P>
+<P CLASS="western" ALIGN=JUSTIFY>The first block of characters on a
+line - that is every character until a &quot;=&lt;&gt;{} &quot;-character
+(space included) is met - is seen as the object reference. <B>Use
+only A-Z, a-z, 0-9, &quot;-&quot;, &quot;_&quot; and periods (.).
+</B><SPAN STYLE="font-weight: normal">This is stricly checked in
+TypoScript ver2 (comes with Typo3.2+).</SPAN></P>
+<P CLASS="western">Ex: Here myObject is defined as a
+HTML-content-object and the property &quot;value&quot; is set:</P>
+<PRE CLASS="western">myObject = HTML
+myObject.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_m54aaab01.png" NAME="Grafik10" ALIGN=LEFT WIDTH=283 HEIGHT=32 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western"><B>If a line starts out with &quot;/&quot; or &quot;#&quot;</B></H5>
+<P CLASS="western"><B>...</B>then it's considered a comment.</P>
+<P CLASS="western">Ex:</P>
+<PRE CLASS="western">// This is a comment
+/ This is also a comment (only ONE slash is needed)
+myObject = HTML
+myObject.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+# This line is also a comment.</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H5 CLASS="western"><B>If a line starts out with &quot;/*&quot; or 
+&quot;*/&quot;</B></H5>
+<P CLASS="western">... it defines the beginning and the end of a
+comment section respectively. Anything within a comment section is
+ignored. Notice these codes, /* and */ MUST be the very first
+characters of a trimmed line in order to be detected. Comments are
+not detected inside a multiline value parenthesis.</P>
+<P CLASS="western">Ex:</P>
+<PRE CLASS="western">/* This is a comment
+ .. and this line is within that comment which...
+  ends here:
+*/  ... this is not parsed either though - the whole line is still within the comment
+myObject = HTML
+myObject.value (
+  Here's a multiline value which 
+  /* 
+    ignores comments in side, so this is parsed!
+  */
+)</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H5 CLASS="western"><B>The &quot;=&quot;-sign</B> 
+</H5>
+<P CLASS="western">assigns a value to a property. Everything after
+the &quot;=&quot;-sign and <I>to the end of the line</I> is
+considered to be the value. In other words: You don't need to quote
+anything! Please be aware that the value will be trimmed - stripped
+for whitespace in both ends.</P>
+<H5 CLASS="western"><B>The {} signs</B></H5>
+<P CLASS="western">(opening/closing braces) means, that you can
+assign many object-properties a simple way at once. It's called a
+confinement.</P>
+<P CLASS="western">Ex:</P>
+<PRE CLASS="western">myObject = HTML
+myObject.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+</PRE><P CLASS="western">
+...is the same as:</P>
+<PRE CLASS="western">myObject = HTML
+myObject {
+  value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Everything on the second line that comes <I>after</I>
+&quot;{&quot; is ignored</P>
+<P CLASS="western">The &quot;}&quot;-sign <I>must </I>be the first
+non-space character on a line in order to finish the confinement.
+Everything after &quot;}&quot; is ignored.</P>
+<P CLASS="western"><B>NOTE: </B><SPAN STYLE="font-weight: normal">You
+cannot use conditions inside of braces.</SPAN></P>
+<P CLASS="western"><B>NOTE: </B><SPAN STYLE="font-weight: normal">Excessive
+endbraces are ignored, but issues a warning</SPAN></P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western"><B>The () signs</B></H5>
+<P CLASS="western">(opening/closing parenthesis) means, that you can
+assign a multiline value.</P>
+<P CLASS="western">Ex:</P>
+<PRE CLASS="western">myObject = HTML
+myObject.value (
+  &lt;BLINK&gt; 
+    HTML - code  
+  &lt;/BLINK&gt;
+)</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><B>NOTE:</B> The end-parenthesis is extremely
+important as if it is not found, the parser does not return to
+parsing TypoScript. So don't miss it!</P>
+<H5 CLASS="western"><B>The &quot;&lt;&quot; sign</B> 
+</H5>
+<P CLASS="western">is used to copy one object to another. The whole
+object is copied - both value and properties - and it overrides any
+old objects and values at that position. 
+</P>
+<P CLASS="western">Ex.</P>
+<PRE CLASS="western">myObject = HTML
+myObject.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+
+myOtherObject &lt; myObject</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In this case you have two independent objects
+exactly the same. They are not references to each other but actually
+copies.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_m25b59c3d.png" NAME="Grafik11" ALIGN=LEFT WIDTH=285 HEIGHT=63 BORDER=0><BR CLEAR=LEFT>Another
+example:</P>
+<PRE CLASS="western">pageObj {
+  10 = HTML
+  10.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+  20 &lt; pageObj.10
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Here you also make a copy of an object. The object
+is refered to from the root. You can also use a notation where the
+object is referenced from the same level. In this case you just write
+the object but adds a period before it in order to denote they are on
+the same level</P>
+<P CLASS="western">This is equal to the above example:</P>
+<PRE CLASS="western">pageObj {
+  10 = HTML
+  10.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+  20 &lt;.10
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_46676f93.png" NAME="Grafik12" ALIGN=LEFT WIDTH=305 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>NOTE:</B> From ver2 of TypoScript the original
+object is totally wiped out at copying.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western"><B>The &quot;&gt;&quot; sign:</B></H5>
+<P CLASS="western">This is used to unset an object.</P>
+<P CLASS="western">Ex. 
+</P>
+<PRE CLASS="western">myObject = HTML
+myObject.value = &lt;BLINK&gt; HTML - code &lt;/BLINK&gt;
+
+myObject &gt; </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In this last line myObject is totally wiped out.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Conditions</H3>
+<P CLASS="western">There are a possibility of using conditions in
+TypoScript. Conditions is a simple kind of control structure, that
+validates true or false based on some criteria. The outcome of the
+validation determines whether or not, the following TypoScript code
+should be parsed or not. 
+</P>
+<P CLASS="western"><B>Note: </B>Conditions can be used outside of
+braces only! That means this is <B>not valid:</B></P>
+<PRE CLASS="western">someObject {
+  1property = 234
+  [browser=netscape]
+  2property = 567
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><B>Note:</B> Condition does not necessarily apply
+to all uses of TypoScript. For instance the TypoScript style
+configuration for backend users does not use conditions. However most
+other does including the most prevalent use; frontend templates
+(which is what this document is about...)</P>
+<P CLASS="western"><B>Note:</B> The special [global] (or [GLOBAL])
+condition will at anytime break TypoScript parsing within braces and
+return to the global scope. This is true for any TypoScript
+implementation whether other condition types are possible or not.
+Therefore use [GLOBAL] (put on a single line for itself) to make sure
+that preceeding TypoScript is correctly parsed from the top level.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">A condition has it's own line and looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">(Some TypoScript)
+
+[ condition 1 ][ condition 2]
+
+(Some TypoScript only parsed if cond. 1 or cond. 2 are met)
+
+[GLOBAL]
+
+(Some TypoScript)</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, if condition 1 <I>or</I> 2 is met, then the
+TypoScript in the middle would be parsed until [GLOBAL] (or [END])
+resets the conditions and parses the TypoScript for everybody.</P>
+<P CLASS="western">Here is an example of some TypoScript where
+another text is output if you use Netscape instead of Internet
+Explorer or use Windows NT:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">pageObj.10 = HTML
+pageObj.10.value = Hello World
+pageObj.10.value.case = upper
+
+[browser = netscape][system = WinNT]
+pageObj.20 = HTML
+pageObj.20 {
+  value = Hello Netscape or Windows NT users!!
+  value.case = upper
+}
+
+[GLOBAL]
+pageObj.30 = HTML
+pageObj.30.value = &lt;HR&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><B>Note:</B> Conditions can be used in the global
+space ONLY!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_4c1d059c.png" NAME="Grafik13" ALIGN=LEFT WIDTH=551 HEIGHT=203 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">The [ELSE] condition:</H5>
+<P CLASS="western" STYLE="font-weight: normal">There's a special
+condition called [else] which will return true if the previous
+condition returned false. In this context the condition [end] is
+better understood as being an alias to [global] which returns us to
+the global scape.</P>
+<P CLASS="western"><SPAN STYLE="font-weight: normal">Here's an
+example of using the [else]</SPAN>-condition:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.typeNum=0
+page = PAGE
+page.10 = TEXT
+
+[browser=netscape]
+page.10.value = Netscape
+
+[else]
+page.10.value = Not a netscape browser!
+
+[end]
+
+page.10.wrap = &lt;B&gt;|&lt;/B&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Here we have one output text if the browser is
+netscape and another if not. Anyways the text is wrapped by &lt;B&gt;|&lt;/B&gt;
+as we see, because this wrap is added after the [end]-condition.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_57e7016a.png" NAME="Grafik14" ALIGN=LEFT WIDTH=571 HEIGHT=185 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The fact that you can &quot;enable&quot; the
+condition in the TypoScript Object Browser is a facility provided to
+&quot;test&quot; the outcome of any conditions, you insert in the
+script. Whether or not the conditions correctly validate is only
+verified by actually getting a (in this example) Netscape browser and
+hit the site</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Another example could be if you wanted to do
+something special in case a bunch of conditions is NOT true. There's
+no negate-character, but you could do this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">[browser=netscape][usergroup=3]
+  # Enter nothing here!
+[else]
+  page.10.value = This text displays only if the conditions above are not true!
+[end]</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H3 CLASS="western">Includes</H3>
+<P CLASS="western">You can also add include-instructions in
+TypoScript code. Availability depends on the context, but it works
+with TypoScript templates, Page TSconfig and User TSconfig.</P>
+<P CLASS="western">An include-instruction looks like this:</P>
+<PRE CLASS="western">&lt;INCLUDE_TYPOSCRIPT: source=&quot;FILE: fileadmin/html/mainmenu_typoscript.txt&quot;&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western">It must have it's own line in the TypoScript
+	template, otherwise it's not recognized.</P>
+	<LI><P CLASS="western">It is processed BEFORE any parsing of
+	TypoScript (contrary to conditions) and therefore does not care
+	about the nesting within the TypoScript code.</P>
+</UL>
+<P CLASS="western">The “source” parameter points to the source of
+the included content. The string before the first “:” (in the
+example it is the word “FILE”) will determine which source the
+content is coming from. This is the options:</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=31*>
+	<COL WIDTH=225*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TD WIDTH=12%>
+				<P CLASS="western">FILE</P>
+			</TD>
+			<TD WIDTH=88%>
+				<P CLASS="western">A reference to a file relative to PATH_site.
+				Must be lest than 100 KB. Cannot contain “..”.</P>
+				<P CLASS="western">If you prefix the relative path with such as
+				“EXT:myext/directory/file.txt” then the file included will be
+				sought for in the extension directory of extension “myext”,
+				subdirectory “directory/file.txt”.</P>
+			</TD>
+		</TR>
+	</THEAD>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Syntax-error and debugging</H3>
+<P CLASS="western">If there's a bug in your TypoScript then you'll
+know only by the fact that the desired result didn't appear. Any
+wrong configuration is simply ignored. This can lead to problems
+because the error is not discovered and therefore it's hard to find. 
+</P>
+<P CLASS="western">Your help in the misery is basically the
+TypoScript Object Browser (see screenshots from above). But you can
+also set &quot;.debug...&quot; properties for a few objects like
+stdWrap (.debug, .debugFunc, .debugData) and the menuobjects, GMENU,
+TMENU, IMGMENU.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Comments in TypoScript Constants-field
+(TS-module)</H2>
+<P CLASS="western">You can put comments anywhere in your TypoScripts.
+Comments are always ignored by the parser when the template is
+processed. But the backend module Web&gt;TS has the ability to
+utilize comments in a constant-editor that makes simple configuration
+of a template even easier than constants in them selves make it.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_58508f33.png" NAME="Grafik4" ALIGN=LEFT WIDTH=510 HEIGHT=253 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">When the TS &quot;Constant Editor&quot; parses the
+template, <I>all </I>comments before every constant-definition is
+registeret. In the constants you can follow a certain syntax to
+define what category the constant should be in, which type it has and
+what explaination there is about the constant. This is an example:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">styles.content.textStyle {
+    # cat=content/cText/1; type=; label= Bodytext font: This is the fontface used for text!
+  face = 
+    # cat=content/cText/2; type=int[1-5]; label= Bodytext size
+  size = 
+    # cat=content/cText/3; type=color; label= Bodytext color
+  color = 
+  color1 =
+  color2 =
+  properties =
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">It's totally optional to make the comments before
+your constants compliant with this system, but it's very useful
+lateron if you want others to make simple corrections to your
+template or distribute the template in a template-archive or such.</P>
+<H3 CLASS="western">Default values:</H3>
+<P CLASS="western">The default value of a constant is determined by
+the value the constant has BEFORE the last template (the one you're
+manipulating with the module) is parsed (previous templates are
+typically included static_template-records!), unless the mark
+###MOD_TS:EDITABLE_CONSTANTS### is found in the last template, in
+which case constant-definitions before this mark is also regarded
+default-values.</P>
+<P CLASS="western">This means that all constant values - or values
+after the mark ###MOD_TS:EDITABLE_CONSTANTS### if present - in the
+template-record you're manipulating is regarded to be your customized
+extensions.</P>
+<H3 CLASS="western">Comments:</H3>
+<P CLASS="western">How the comments are percieved by the module:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">- All comments set on lines before the constant
+whereever it's found in the templates are parsed sequentially.</P>
+<P CLASS="western">- Each line is split by the &quot;;&quot;
+(semicolon) character, that separates the various parameters</P>
+<P CLASS="western">- Each parameter is split by the &quot;=&quot;
+(equal) sign to separate the parameter &quot;key&quot; and the
+&quot;value&quot;.</P>
+<H3 CLASS="western">Keys:</H3>
+<P CLASS="western"><B>cat=</B></P>
+<P CLASS="western">- Comma-separated list of the categories
+(caseinsensitive) that the constant is a member of. You should <I>list
+only one category</I>, because it usually turns out to be confusing
+for users, if a constant appears in multiple categories!</P>
+<P CLASS="western">- If category is <I>not</I> found among the
+default categories listed below, it's regarded a new category</P>
+<P CLASS="western">- If the category is empty (&quot;&quot;), the
+constant is excluded by the editor!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><B>basic:</B> 
+Constants of superior importance for the template-layout. This is dimensions, imagefiles and enabling of various features. The most basic constants, which you would almost always want to configure.
+
+menu: 
+Menu setup. This includes fontfiles, sizes, background images. Depending on the menutype.
+
+content:
+All constants related to the display of pagecontent elements
+
+page:
+General configuration like metatags, link targets
+
+advanced:
+Advanced functions, which are used very seldomly.
+</PRE><H3 CLASS="western">
+Subcategories</H3>
+<P CLASS="western">There are a number of subcategories to use.
+Subcategories are entered after the category-name separated by a
+slash &quot;/&quot;. Example: &quot;basic/color/a&quot;</P>
+<P CLASS="western">This will make the constant go into the
+&quot;BASIC&quot;-category, be listed under the &quot;COLOR&quot;-section
+and probably be one of the top-constants listed, because the &quot;a&quot;
+is used to sort the constants in a subcategory. If &quot;a&quot; was
+not entered, the default is &quot;z&quot; and thus it would be one of
+the last colors to select. As the third parameter here, you can
+choose whatever you like.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Subcategories must be one of these. If not, it'll
+not be create as it's the case with categories, but the constant will
+just go into the subegory &quot;Other&quot;.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Here is the current subcategories</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Standard subcategories (in the order listed in
+Typo3):</P>
+<PRE CLASS="western">enable	Used for options that enable or disable primary functions of a template
+dims		Dimensions of all kinds; pixels, widths, heights of images, frames, cells and so on.
+file		Files like background images, fonts and so on. Other options related to the file may also enter
+typo		Typography and related constants
+color		Color setup. Many colors will be found with related options in other categories though.
+links		Links: Targets typically
+language	Language specific options.</PRE><P CLASS="western">
+		</P>
+<P CLASS="western">Subcategories based on the default content
+elements</P>
+<P CLASS="western">cheader,cheader_g,ctext,ctextpic,cimage,cbullets,ctable,cuploads,cmultimedia,cmailform,csearch,clogin,csplash,cmenu,cshortcut,clist,cscript,chtml</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">These are all categories reserved for options that
+relate to content rendering for each type of tt_content element. See
+static_template &quot;content (default)&quot; and &quot;styles.content
+(default)&quot; for examples.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H5 CLASS="western">type=</H5>
+<PRE CLASS="western">int [low-high]		integer, opt. in range &quot;low&quot; to &quot;high&quot;
+int+  				positive integer
+offset	[L1,L2,...L6]		comma-separated integers. Default is “x,y”, but as comma separated parameters in brackets you can specify up to 6 labels being comma separated! If you wish to omit one of the last 4 fields, just don't enter a label for that element.
+color				HTML color
+wrap				HTML-code that is wrapped around some content.
+options [item1,item2,...]	Selectbox with values/labels item1, item2 etc. Commaseparated. Split by &quot;=&quot; also and in that case, first part is label, second is value
+boolean [truevalue]		Boolean, opt. you can define the value of &quot;true&quot;, def.=1
+comment 			Boolean, checked= &quot;&quot;, not-checked = &quot;#&quot;.
+file [ext-list/IMAGE_EXT]	Selectorbox with resources. Opt. list allowed extensions (no space in list!), eg. &quot;[ttf]&quot; or &quot;[txt,html,htm]&quot;. You can also enter &quot;[IMAGE_EXT]&quot; in which case the default image-extensions are listed. (used for datatype &quot;imgResouce&quot;)
+string (the default)	Just a string value</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">label=</H5>
+<P CLASS="western">- Textstring. trimmed.</P>
+<P CLASS="western">- Split by &quot;|&quot; to indicate language,
+following the default sequence of languages in Typo3 (see
+typo3/lang/).</P>
+<P CLASS="western">- Split by the first &quot;:&quot; to separate a
+header and body of the comment. Header is displayed on it's own line
+in bold.</P>
+<H3 CLASS="western">TSConstantEditor.[category]</H3>
+<P CLASS="western">In addition to using constants, you can also
+configure a category in the constant editor by a special toplevel
+TypoScript &quot;object&quot; in the <I><SPAN STYLE="font-weight: normal">constants</SPAN></I>-field.
+The name is &quot;TSConstantEditor&quot; and any properties to this
+object will NOT be substituted like any other constant normally
+would.</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto">
+	<COL WIDTH=43*>
+	<COL WIDTH=43*>
+	<COL WIDTH=134*>
+	<COL WIDTH=36*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=17% BGCOLOR="#c0c0c0">
+				<P CLASS="western">Property:</P>
+			</TH>
+			<TH WIDTH=17% BGCOLOR="#c0c0c0">
+				<P CLASS="western">Data type:</P>
+			</TH>
+			<TH WIDTH=52% BGCOLOR="#c0c0c0">
+				<P CLASS="western">Description:</P>
+			</TH>
+			<TH WIDTH=14% BGCOLOR="#c0c0c0">
+				<P CLASS="western">Default:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">header</P>
+			</TD>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=52% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Header, displayed in upper-case</P>
+			</TD>
+			<TD WIDTH=14% SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" STYLE="font-style: normal">description</P>
+			</TD>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string, break by //</P>
+			</TD>
+			<TD WIDTH=52% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" STYLE="font-weight: normal">Description, enter
+				&quot;//&quot; to make a linebreak</P>
+			</TD>
+			<TD WIDTH=14% SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">bulletlist</P>
+			</TD>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string, break by //</P>
+			</TD>
+			<TD WIDTH=52% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western"><SPAN STYLE="font-weight: normal">Lines for a
+				bulletlist</SPAN>, enter &quot;//&quot; (double-slash) in order
+				to break to next bullet</P>
+			</TD>
+			<TD WIDTH=14% SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">image</P>
+			</TD>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">image</P>
+			</TD>
+			<TD WIDTH=52% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" STYLE="font-weight: normal">This is an
+				optional image you can attach to the category. 
+				</P>
+				<P CLASS="western" STYLE="font-weight: normal">The image would
+				normally show a given configuration of the template and contain
+				numberet marks, that indicate positions that are referred to by
+				the constants, listed in the number-array.</P>
+				<P CLASS="western" STYLE="font-weight: normal">The image must be
+				located in &quot;gfx/&quot; in the module path OR be a file from
+				the resource-list of the template.</P>
+			</TD>
+			<TD WIDTH=14% SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Array, 1-20</P>
+			</TD>
+			<TD WIDTH=17% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">list of constant-names</P>
+			</TD>
+			<TD WIDTH=52% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Each number refers to a number-mark on the
+				image and all constants that are listed at each number will get a
+				little number-icon by it's header.</P>
+			</TD>
+			<TD WIDTH=14% SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">## TSConstantsEditor Config
+TSConstantEditor.<FONT COLOR="#ff0000">basic</FONT> {
+  header = Standard Template &quot;BUSINESS&quot;
+  description = BUSINESS is a framebased template in a very simple layout, based on ....
+  bulletlist = Left-frame image in the top. The dimensions are fixed to ....
+  image = gfx/BUSINESS_basic.gif
+
+  1=leftFrameWidth,menu.file.bgImg,menu.bgCol
+  2=page.file.bgImg,bgCol
+  3=contentOffset
+  4=file.logo
+  5=page.L0.titleWrap
+  6=page.L1.titleWrap
+  7=contentWidth,styles.content.imgtext.maxW
+  8=page.lineCol
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This example shows how the static_template
+BUSINESS is configured for the <B>basic</B>-module. This is how it
+looks in Typo3:</P>
+<P CLASS="western"><IMG SRC="16_html_m3aec58a7.png" NAME="Graphic4" ALIGN=LEFT WIDTH=514 HEIGHT=591 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">The template
+system</H2>
+<H3 CLASS="western">Rootlevel, Constants and Setup</H3>
+<P CLASS="western">The template system is built in a way so that a
+new website can actually start from whatever page in the tree! The
+starting point - or frontpage - is in this context called rootlevel.</P>
+<P CLASS="western">If a template is meant to define the looks of a
+website from the rootlevel and outwards, then &quot;Rootlevel&quot;
+must be checked. Normally you would also check the fields &quot;Clear
+constants and setup&quot;. By this operation <I>every</I> value from
+earlier in the tree is cleared.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_112fb150.png" NAME="Graphic10" ALIGN=LEFT WIDTH=300 HEIGHT=57 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Template on next level</H3>
+<P CLASS="western">But you can also place a template in a branch of
+your website. That template would by default work as an extension to
+templates from earlier in the tree.</P>
+<P CLASS="western">Such an extension could be used to change the
+color of the menu if one has entered the sales-part of a website.</P>
+<H3 CLASS="western">Include static</H3>
+<P CLASS="western">A really cool feature of Typo3's templates is that
+they can include a bunch of standard-templates (static templates)
+which follows Typo3 CMS as standard. These templates comes from the
+table &quot;static_template&quot; and reside in the root of the
+page-tree. You must have administrator access in order to view these
+static templates.</P>
+<P CLASS="western">Including a static template means that they will
+be the first thing parsed at all. Typically such templates hold some
+standard-setup like framesets, menus or content-formatting.</P>
+<H3 CLASS="western">Based on</H3>
+<P CLASS="western">Another really cool feature of Typo3's templates
+is that they can be based on other templates you make yourself.</P>
+<P CLASS="western">Basing a template on other templates means that
+these other templates will be parsed <I>after</I> included
+standard-templates but <I>before</I> the current template. 
+</P>
+<P CLASS="western">In the template of the actual website you can then
+make customizations to these basis-templates.</P>
+<H3 CLASS="western">Checkbox option: Include static AFTER basedOn</H3>
+<P CLASS="western">This options is available in the palette if you
+click the field “Include static” or “Based On”. The point of
+this is to let you choose whether to include the static template
+before or after the inclusion of any “Based On” template. You
+would like to do that if you for instance wants to add meta-tags with
+the static template “plugin.meta” record.</P>
+<P CLASS="western">See this picture:</P>
+<P CLASS="western"><IMG SRC="16_html_m52e9b5cc.png" NAME="Grafik19" ALIGN=LEFT WIDTH=498 HEIGHT=330 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Next template</H3>
+<P CLASS="western">This function makes it possible to pick a template
+that will be loaded for every page on the next level of this actual
+template. This is smart when you want to make a frontpage in one
+layout and subpages in another layout depending on the content of the
+&quot;next&quot;-template</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Technical
+implementation in PHP</H2>
+<P CLASS="western">The technical implementation of the templates in
+PHP is so when the required templates are found, the setup and
+constants-field are textually concatenated and divided by a
+[GLOBAL]-tag in order to ensure resetting to the global scope between
+each template.</P>
+<P CLASS="western">Afterwards the data from the constant-field is
+parsed. Thus all constants are known. Now a string-replace operation
+is performed in the setup-data in order to substitute constants. Now
+the setup-data is parsed.</P>
+<P CLASS="western">Parsing TypoScript means that a script is
+converted into a PHP-array that reflects the structure of TypoScript.
+This can best be shown by an example:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">TypoScript:
+pageObj.20 = HTML
+pageObj.20 {
+  value = Hello Netscape or Windows NT users!!
+  value.case = upper
+}
+
+PHP Array:
+$setup[&quot;pageObj.&quot;][&quot;20&quot;] = &quot;HTML&quot;;
+$setup[&quot;pageObj.&quot;][&quot;20.&quot;][&quot;value&quot;] = &quot;Hello Netscape or Windows NT users!!&quot;;
+$setup[&quot;pageObj.&quot;][&quot;20.&quot;][&quot;value.&quot;][&quot;case&quot;] = &quot;upper&quot;;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H3 CLASS="western">Template cache</H3>
+<P CLASS="western">When a TypoScript is parsed and loaded into an
+array, then information about 1) all the conditions there has been in
+TypoScript and 2) all of these conditions that were met is collected.
+This information together with data about other things is converted
+to an md5-hash which are the unique identification of this template.</P>
+<P CLASS="western">The template is serialized and saved in a
+cache-table in SQL.</P>
+<P CLASS="western">The next time this template is requested - the
+conditions taken into account - then you get template as an array
+from the template cache-table. Thereby the template does not need the
+be parsed once again.</P>
+<H3 CLASS="western">The Rootline</H3>
+<P CLASS="western">&quot;Rootline&quot; is a term used for the line
+of pages from somewhere in the treestructure to the root of the
+website. On this illustration you can see it quite clearly. To the
+left is a &quot;print&quot; of the rootline, when the page
+&quot;Experience...&quot; was hit. It was printed with this line of
+code from &quot;pagegen.php&quot;.</P>
+<PRE CLASS="western">	debug($GLOBALS[&quot;TSFE&quot;]-&gt;tmpl-&gt;rootLine);</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">With PHP you can reach the title of the page on
+the second level by this reference:</P>
+<PRE CLASS="western">	$GLOBALS[&quot;TSFE&quot;]-&gt;tmpl-&gt;rootLine[1][&quot;title&quot;]</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">With TypoScript you can do it by the
+stdWrap-function  (&quot;.data&quot;-property and &quot;getText&quot;-datatype)</P>
+<PRE CLASS="western">	.data = leveltitle : 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="16_html_7577cbc2.png" NAME="Grafik2" ALIGN=LEFT WIDTH=418 HEIGHT=165 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>IMPORTANT: </B>Please notice, that the rootLine
+will always start over from zero when the &quot;Rootlevel&quot;
+checkbox is set in a template!</P>
+<P CLASS="western"><B>Two kinds of rootline:</B></P>
+<P CLASS="western">In the array $GLOBALS[&quot;TSFE&quot;]-&gt;rootLine
+you have the rootline all the way to the pagetree root (that is
+PID=0). In the array $GLOBALS[&quot;TSFE&quot;]-&gt;config[&quot;rootLine&quot;]
+you have only the rootline of the current site (which is what was
+described above). $GLOBALS[&quot;TSFE&quot;]-&gt;config[&quot;rootLine&quot;]
+is the same as $GLOBALS[&quot;TSFE&quot;]-&gt;tmpl-&gt;rootLine.</P>
+<P CLASS="western">Currently the rootline array holds the uid, title,
+media and layout field of the page-records represented in the
+rootline array (the image above displays only title and uid)</P>
+<H1 CLASS="western" STYLE="page-break-before: always">Admin Panel</H1>
+<H2 CLASS="western">Introduction</H2>
+<P CLASS="western">The Admin Panel (admPanel) is a tool you can
+insert in the bottom of the front-end pages. It provides access to
+backend like function, which are all related specifically to the
+front-end. For most users the destinction between frontend and
+backend concepts may blur out, but because Typo3 may be used for
+other non-CMS purposes, these functions are not included in the
+backend module. Well, some of them are and in that case: Just regard
+the panel as a mini-backend in the frontend!</P>
+<H3 CLASS="western">Controlling it</H3>
+<P CLASS="western">You must configure the panel for each backend
+user/group. For instructions, please see the admin guide document.</P>
+<P CLASS="western">From TypoScript you must do one important thing
+though: Enable the display of the panel. In the config-object of the
+templates/PAGE-objects, you can enable it by setting “admPanel”
+true. Example:</P>
+<PRE CLASS="western">	page.config.admPanel = 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This enables the panel to be displayed on the
+'page' PAGE-object frame (which is normally used for plain content).
+You would probably not want the panel to go to eg. a menu frame which
+is why you don't enable it by “config.admPanel=1” which would
+enable it globally for all frames.</P>
+<P CLASS="western"><B>NOTE:</B> The panel will only display if the
+backend user has it enabled as well!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Modules</H3>
+<H3 CLASS="western">Publish</H3>
+<P CLASS="western">The Publish-module allows to you write the pages
+to static html. You must configure a path in
+TYPO3_CONF_VARS[“FE”][“publish_dir”].</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Enable “simulateStaticDocuments”</B></P>
+<P CLASS="western">You should enable “simulateStaticDocuments”
+when publishing because then the links on the pages will point to
+“[id].[type].html” instead of “index.php?id=....”. The files
+written are namely named by the same conventions as used with
+“simulateStaticDocuments”</P>
+<H4 CLASS="western">Tip:</H4>
+<P CLASS="western">If you decide to publish to the same dir as the
+real dynamic site, you can do that. Using “simulateStaticDocuments”
+you can modify your .htaccess file so that the static files are
+served in case they exist - if not the dynamic page. This is
+extremely cool because the dynamic/static pages will exist
+side-by-side transparently.</P>
+<P CLASS="western">Use this in .htaccess:</P>
+<PRE CLASS="western">RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule   ^[^/]*\.html$  index.php
+</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="16_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript Templates</SDFIELD>
+	<B>- </B><B><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>16</SDFIELD></B></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

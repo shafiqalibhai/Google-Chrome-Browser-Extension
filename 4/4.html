@@ -1,0 +1,3040 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Futuristic Template Building (FTB)</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Donald Duck">
+	<META NAME="CHANGED" CONTENT="20040202;15344700">
+	<META NAME="Author" CONTENT="Kasper Skårhøj &amp; Robert Lemke">
+	<META NAME="Email" CONTENT="kasper@typo3.com / rl@robertlemke.de">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0cm; color: #333366; text-align: left; page-break-before: auto }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		H2.contents-heading-western { color: #000000; font-family: "Arial Narrow", sans-serif; font-size: 16pt; font-style: normal }
+		H2.contents-heading-cjk { color: #000000; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #000000; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		A.western:visited { so-language: en-US }
+		A.cjk:visited { so-language: zxx }
+		A.ctl:visited { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Futuristic Template Building (FTB)</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER>Extension Key: <B>doc_tut_ftb1</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2004, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj &amp; Robert Lemke</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com / rl@robertlemke.de</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Futuristic Template
+	Building	1</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	1</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">What does it do?	1</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Goal	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The extension
+	“TemplaVoila”	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Dedication	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The extension	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">WARNING - beta
+	software	3</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Integration of
+	an HTML page template - with TemplaVoila	4</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The HTML template	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Install
+	“TemplaVoila” and “CSS Styled Content”	6</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The Storage Folder	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Create the
+	TypoScript Template Record	8</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating the
+	Template Object for the page template	9</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Applying the TO as
+	page template	16</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Setting up
+	css_styled_content for content rendering	17</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Adding page
+	content	17</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating the dynamic
+	menu	21</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Setting the
+	stylesheet and &lt;body&gt; tag	24</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Summary	26</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Creating
+	additional page templates	28</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Modifying a formerly
+	made DS/TO	28</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">A print version	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Alternative template
+	for a sub section	35</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating a
+	two-column page?	40</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Icons for TOs and
+	DSs	45</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">“<B>Flexible
+	Content Elements”	47</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating a basic
+	Flexible Content Element (FCE)	48</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating a “grid”
+	Content Element	55</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating an
+	alternative template for the 2-columns FCE	57</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Content Element with
+	repetitive data objects	59</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating a
+	“pseudo-record” list	69</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Miscellaneous	75</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Working with
+	TypoScript inside of Data Structures	75</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Hints about
+	mapping	81</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>ToDo of
+	TemplaVoila	83</B></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Introduction</H2>
+<H3 CLASS="western">What does it do?</H3>
+<P CLASS="western">This extension is a from-scratch tutorial about
+how to build a CMS-powered website with TYPO3 based on a
+HTML-template and the extension TemplaVoila (ext key: “templavoila”).
+</P>
+<P CLASS="western">It is based on the same basic material as the
+reknown “Modern Template Building, Part 1” but demonstrates the
+templating concepts taken to a new level compared to the Modern
+Template Building tutorial.</P>
+<P CLASS="western">The document is recommended for developers on
+beginner level. However, before doing this tutorial you should have
+gone through “Getting Started” and “Modern Template Building,
+Part 1” in order to equip yourself with basic TYPO3 knowledge. 
+</P>
+<P CLASS="western">The website you will be guided to build will look
+like this:</P>
+<P CLASS="western"><IMG SRC="4_html_m2a56f020.png" NAME="Graphic146" ALIGN=LEFT WIDTH=458 HEIGHT=526 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Goal</H3>
+<P CLASS="western">The goal of the tutorial is to present to you a
+newly developed concept of templating revolving around the extension
+“templavoila” mixed with what is known as “FlexForms” and
+“Data Structures”. Further it turns the traditional way of
+working with content elements around from being “columns”-centered
+to being totally hierarchically nested inside each other.</P>
+<P CLASS="western">Whether this tutorial provides a best-practice
+implementation or not is not sure yet - that will depend on the
+general success and adoption of these techniques. But it is backed by
+high motivation from sponsors and personally we believe it holds
+great potentials.</P>
+<H3 CLASS="western">The extension “TemplaVoila”</H3>
+<P CLASS="western">The extension “TemplaVoila” was developed by
+Kasper Skårhøj and Robert Lemke for a project in a large, french
+company, Dassault Systemes.   TemplaVoila was the result of the
+innovation that followed some problem solving for the project. In
+particular the problems that TemplaVoila addresses are how to create
+more flexible page structures than currently known in TYPO3s concept
+of “columns”. Further, it integrates traditional templating on
+the content element level but with a far more flexible point-n-click
+style than seen before. Finally the development of TemplaVoila also
+lead to some enhancements of the TYPO3 Core, in particular a concept
+called FlexForms which allows TYPO3s backend to build hierarchical
+forms and store their content into XML structures.</P>
+<H3 CLASS="western">Dedication</H3>
+<P CLASS="western">&lt;kasper&gt; This time  want to dedicate this
+document to my friends at Dassault Systemes in France. I want to
+thank you from my hearts deep for your generouscity, both personally
+and professionally, and I have loved to work with and for you all the
+time, both in Denmark and Paris. It has truely blessed my life on all
+levels and for TYPO3 your adoption has been a major reward and
+testimony to the quality it holds.&lt;/kasper&gt;</P>
+<H3 CLASS="western">The extension</H3>
+<P CLASS="western">This tutorial has all its files contained in a
+TYPO3 extension (doc_tut_ftb1). Extensions normally contain scripts
+and resources that extend the capabilities of TYPO3. However this
+tutorial extension does <I>not</I> interact with TYPO3s core if you
+install it - it merely serves as a vehicle for transporting the
+tutorial files to your server and for presenting the tutorial
+document online on typo3.org.</P>
+<P CLASS="western">Therefore to follow this tutorial;</P>
+<UL>
+	<LI><P CLASS="western">first install the dummy-package (see The
+	Basics section of the tutorial “Modern Template Building, Part 1”)</P>
+	<LI><P CLASS="western">then import the extension &quot;doc_tut_ftb1&quot;
+	from TER (TYPO3 Extension Repository) with the EM (Extension
+	Manager) and you will have all files at hand on your server when you
+	need them.</P>
+</UL>
+<P CLASS="western">This tutorial document can either be read online
+or you can download it as a SXW file from typo3.org for your
+convenience. If you are lucky some merciful soul might have uploaded
+a PDF version for you as well...</P>
+<H3 CLASS="western">WARNING - beta software</H3>
+<P CLASS="western"><B>Although TemplaVoila is used in production it
+is far from finished. The same goes for FlexForms - a core feature of
+TYPO3 3.6.0</B></P>
+<P CLASS="western"><B>You must be aware that what you are reading
+about in this document is all subject to change and we expect to
+revise this tutorial heavily upon the final release of the
+TemplaVoila extension. Please bear this in mind while you play with
+this!</B></P>
+<P CLASS="western"><B>Also notice that TYPO3 in version 3.6.0 is a
+requirement for this tutorial!</B></P>
+<H2 CLASS="western" STYLE="page-break-before: always">Integration of
+an HTML page template - with TemplaVoila</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">This chapter will demonstrate an implementation
+parallel to “Modern Template Building, Part 1” but with
+TemplaVoila instead of the “Auto-parse Template” extension. This
+will show you how powerful TemplaVoila is!</P>
+<P CLASS="western">As an introduction to the principles we are
+following please read the chapter <A CLASS="western" HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=442&amp;tx_extrepmgm_pi1[tocEl]=1273&amp;cHash=e678dd49eb">“Implementation
+of a CMS” in “Modern Template Building, Part 1”</A> first.</P>
+<H4 CLASS="western">Installed the dummy-package and page-tree?</H4>
+<P CLASS="western">At first you have to make sure that you did
+install a blank TYPO3 database - basically the “dummy”-package is
+what you need. Further you should create a page tree structure as
+outlined in the <A CLASS="western" HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=442&amp;tx_extrepmgm_pi1[tocEl]=1267&amp;cHash=885ac047ea">“The
+Basics”</A> chapter of “Modern Template Building, Part 1”
+(MTB/1). You don't need to follow the rest of “The Basics”
+section in MTB/1 - just create the page structure.</P>
+<P CLASS="western">What you should see in the backend is a page tree
+like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m7f450514.png" NAME="Graphic2" ALIGN=LEFT WIDTH=256 HEIGHT=284 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">The HTML template</H3>
+<P CLASS="western">The web team has just got a new customer - Main
+Dish &amp; Son - and Raphael, the artist on the team, has produced
+the website template as a regular HTML file:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always"><IMG SRC="4_html_m55b13e67.png" NAME="Graphic5" ALIGN=LEFT WIDTH=669 HEIGHT=85 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This HTML file “template_page.html” is put
+into the directory &quot;fileadmin/template/main/&quot; relative to
+the TYPO3 installation (the dummy-package).</P>
+<P CLASS="western"><I>To follow this tutorial you should now copy the
+folder &quot;template/&quot; from this tutorial extension into the
+folder &quot;fileadmin/”. If you didn't import the tutorial
+extension &quot;doc_tut_ftb1&quot; from TER you should do that now!</I></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_a57787c.png" NAME="Graphic3" ALIGN=LEFT WIDTH=529 HEIGHT=245 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Well, back to Raphaels work; the template HTML
+file is really just a regular HTML page. But when TYPO3 imports this
+file as a template the point is to make <I>certain parts</I> dynamic.
+This includes the menu to the left and also the section with dummy
+content to the middle/right.</P>
+<P CLASS="western">Lets look at the source code of this file. In
+TYPO3 that is easy - just go the the File &gt; Filelist module, click
+the title of the main/ folder and click the image in the list:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3cd7d14d.png" NAME="Graphic4" ALIGN=LEFT WIDTH=511 HEIGHT=178 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This will open the file in a webbrowser.</P>
+<P CLASS="western">Looking into the source code of the HTML template
+reveals a simple XHTML compliant document referring to a stylesheet
+and using a single table to position various elements on the page:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_c147af8.png" NAME="Graphic6" ALIGN=LEFT WIDTH=669 HEIGHT=631 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Here follows some commentary on this HTML template
+and the challenges we are facing:</P>
+<OL>
+	<LI><P CLASS="western">This section from the header of the document
+	must go into our webpage since it refers to the stylesheet
+	used.<BR><B>Challenge:</B> We must make sure to extract this part of
+	the document into the header section generated by the frontend
+	engine!</P>
+	<LI><P CLASS="western">The menu on the left is made by a
+	&lt;div&gt;-section per menu item. Each of these &lt;div&gt;-elements
+	has a class assigned to it. By this class name the design of the
+	element is controlled in the CSS stylesheet. <BR>This is a very
+	clever way to create a menu since each element consists of a minimum
+	amount of HTML-code (good for TypoScript implementation), they are
+	easily repeatable (necessary when the menu will be dynamic).
+	<BR><B>Challenge:</B> We must substitute the dummy-menu here with a
+	dynamically generated one!</P>
+	<LI><P CLASS="western">This is dummy content that Raphael put into
+	the template file just to get the visual impression right. Notice
+	how it is formatted with &lt;h1&gt; and &lt;p&gt; tags (using the
+	class &quot;bodytext&quot;) - this is clever since the dynamic
+	content inserted by TYPO3 later on will use those tags / classes for
+	formatting as well! (Raphael must have cheated with some TYPO3
+	experience on beforehand, eh?) <BR><B>Challenge:</B> We must
+	substitute the dummy-content with dynamically generated page
+	content.</P>
+</OL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now the tutorial files are safely in place. Next
+step - installing the needed extensions.</P>
+<H3 CLASS="western">Install “TemplaVoila” and “CSS Styled
+Content”</H3>
+<P CLASS="western">The next step is to install TemplaVoila which will
+be our template- and content rendering engine. Further we need “CSS
+Styled Content” which will render the regular content elements as
+for other normal TYPO3 websites.</P>
+<P CLASS="western" STYLE="font-weight: normal">If you didn't do it
+yet, import “TemplaVoila” from TER (TYPO3 Extension Repository)
+through the EM. When that is done, install the two extensions:</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="4_html_m42bc128a.png" NAME="Graphic7" ALIGN=LEFT WIDTH=367 HEIGHT=48 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">For TemplaVoila you
+should make sure to enable the Page Template Selector in the update
+screen:</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="4_html_m5489d1af.png" NAME="Graphic8" ALIGN=LEFT WIDTH=347 HEIGHT=129 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">Press “Update” and
+all database tables and fields will automatically be created for you!</P>
+<P CLASS="western" STYLE="font-weight: normal">After you installed
+TemplaVoila, please reload the whole backend since the extension
+contains backend modules.</P>
+<H4 CLASS="western">“css_styled_content”</H4>
+<P CLASS="western">Now, install CSS Styled Content extension:</P>
+<P CLASS="western"><IMG SRC="4_html_3620a424.png" NAME="Graphic9" ALIGN=LEFT WIDTH=436 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">The Storage Folder</H3>
+<P CLASS="western">Now you are about to create an important element
+for the website - the “Storage Folder”. Normally you store
+elements related to a page on the page itself, eg. Content Elements
+or maybe even frontend users. However you will often find that for a
+website you need some general purpose page to place records which are
+related to the whole site and not just single pages - this is what we
+call a Storage Folder; A “SysFolder” page defined to be a general
+purpose storage page for elements related to a website in a branch of
+the page tree.</P>
+<P CLASS="western">Steps involved in creating a SysFolder are these:</P>
+<UL>
+	<LI><P CLASS="western">Create a page in the page tree of the type
+	“SysFolder”. You might want to place this page as the last page
+	on the first level of the website branch.</P>
+	<LI><P CLASS="western">Create a relation for “General Storage
+	Folder” from the page header of the website root page to the new
+	sysFolder page.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_48cb6620.png" NAME="Graphic10" ALIGN=LEFT WIDTH=528 HEIGHT=219 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Above screenshot shows the created storage folder.
+But to make it the storage folder of the website starting from “Root
+page” we need to edit the page header of “Root page”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_4e999ef6.png" NAME="Graphic11" ALIGN=LEFT WIDTH=560 HEIGHT=359 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">That's it.</P>
+<H3 CLASS="western">Create the TypoScript Template Record</H3>
+<P CLASS="western">Next, we create a root template record on the
+“Root page” page. For details you can refer to “MTB/1” where
+this process is outlined in details. The point is that you end up
+with a “Template” record with this contents:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m61a0095d.png" NAME="Graphic12" ALIGN=LEFT WIDTH=549 HEIGHT=166 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_d0435a1.png" NAME="Graphic13" ALIGN=LEFT WIDTH=271 HEIGHT=192 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The information you see in the “Setup” field
+is called “Template TypoScript” - it is configuration code that
+TYPO3s frontend engine (extension “cms”) interprets in order to
+render the website pages. In the above case the text “HELLO WORLD”
+is outputted. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">If you know about TypoScript in a historical
+perspective you know that a) the Setup field might end up being
+hundreds and hundreds of lines long, b) after a while slightly
+confusing to manage and c) requiring a lot of TypoScript knowledge,
+basically all of <A CLASS="western" HREF="/home/doc_core_tsref/doc/manual.sxw">TSref</A>.</P>
+<P CLASS="western">If you know how we did in the MTB/1 tutorial you
+saw that the amount of TypoScript was not that frightening. In fact
+we just configured the extension “automaketemplate” to read an
+external HTML file and insert dynamic content at certain locations.
+That configuration was only like hundred lines or so (except menus).
+Far less than the “nightmares” of past times.</P>
+<P CLASS="western">If you read on in this document you will see how
+we do not even add a single line - we just change the last two:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_28979d17.png" NAME="Graphic14" ALIGN=LEFT WIDTH=376 HEIGHT=181 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">So, all you initially need in order to use
+TemplaVoila in terms of TypoScript is a code listing like this:</P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I># Default PAGE object:</I></FONT>
+<FONT COLOR="#0000cc">page</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">PAGE</FONT>
+<FONT COLOR="#0000cc">page.typeNum</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">0</FONT>
+<FONT COLOR="#0000cc">page.10</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">USER</FONT>
+<FONT COLOR="#0000cc">page.10.userFunc</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">tx_templavoila_pi1-&gt;main_page</FONT></PRE><P CLASS="western">
+(Admittedly, a little more will be added later since we also have to
+define the menu....)</P>
+<P CLASS="western">Make sure to save this code listing. If you view
+the website now you should see a blank page with nothing in the body.</P>
+<P CLASS="western">Now, the next step is to create a <I>TemplaVoila
+Template Object</I> for the page template.</P>
+<H3 CLASS="western">Creating the Template Object for the page
+template</H3>
+<P CLASS="western">Go to the File &gt; Filelist module, click the
+“template/main/” folder and then click the icon of the file
+“template_page.html”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_ca02e49.png" NAME="Graphic15" ALIGN=LEFT WIDTH=203 HEIGHT=131 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This will bring you to the mapping interface of
+TemplaVoila:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3285fac2.png" NAME="Graphic16" ALIGN=LEFT WIDTH=669 HEIGHT=609 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In this interface we will <I>create a Data
+Structure</I> <I>(DS)</I> for the page template and at the same time
+map that DS to the HTML elements of this template file and finally
+<I>store the mapping information in a Template Object (TO)</I><SPAN STYLE="font-style: normal">
+created along with the DS</SPAN>.</P>
+<H4 CLASS="western">Data Structures (DS) and Template Objects (TO)</H4>
+<P CLASS="western">You can read more technical information about Data
+Structures in the document “TYPO3 Core API” and the documentation
+of “TemplaVoila”. However, to give a quick distinction between DS
+and TO:</P>
+<UL>
+	<LI><P CLASS="western">A Data Structure (DS) says which “fields”
+	we can map to a HTML template.</P>
+	<LI><P CLASS="western">A Template Object (TO) says which HTML
+	elements the fields from the DS maps to.</P>
+</UL>
+<P CLASS="western">By this definition we can see that a TO <I>always</I>
+refers to a DS which tells the TO which fields can be mapped and by
+which rules and hierarchies. It also means that you can have <I>many</I>
+TOs referring to the same DS - thus more templates for the same data!</P>
+<H4 CLASS="western">Creating the Data Structure of “Main Dish &amp;
+son”</H4>
+<P CLASS="western">In our tutorial the Data Structure needed for the
+page template is:</P>
+<UL>
+	<LI><P CLASS="western">Definition of the overall element containing
+	the page - that is obviously the &lt;body&gt; tag!</P>
+	<UL>
+		<LI><P CLASS="western">Menu: Define container element for the menu
+		to the left</P>
+		<LI><P CLASS="western">Content: Define container element for the
+		content cell.</P>
+	</UL>
+</UL>
+<P CLASS="western">Such a DS could be manually created by hand if you
+know the syntax of the DS XML, &lt;T3DataStructure&gt;. However, the
+whole point of what we are doing just now is that TemplaVoila offers
+a visual point'n'click tool for automatic kickstarting such a Data
+Structure! It works like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Add an element representing the menu:</B></P>
+<P CLASS="western"><IMG SRC="4_html_4e8b62eb.png" NAME="Graphic17" ALIGN=LEFT WIDTH=264 HEIGHT=136 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(The name “field_menu” is prefixed “field_”
+which is a best-practice convention. You can use other field names if
+you like.)</P>
+<P CLASS="western">This gives you a form by which you can enter
+details for the new element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m156a26d1.png" NAME="Graphic18" ALIGN=LEFT WIDTH=669 HEIGHT=241 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can enter information like we have done above.
+Here are a few hints about options not so obvious. For details you
+should refer to the TemplaVoila documentation.</P>
+<UL>
+	<LI><P CLASS="western"><B>Mapping Type:</B> Here you select the
+	behavior of the element in terms of mapping to HTML. Select
+	“Element”</P>
+	<LI><P CLASS="western"><B>Editing Type:</B> This selects a preset
+	for the field content. In our case we want to insert content from a
+	TypoScript Object Path - which we will define to be the HMENU
+	cObject later!</P>
+	<LI><P CLASS="western"><B>Mapping rules:</B> Since the menu should
+	probably be contained inside an HTML element like &lt;div&gt; or
+	&lt;td&gt; etc. we define the rule “*:inner” which means that we
+	can map the menu to be <I>inside</I> whatever element in the
+	template.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After pressing “Add” you will see this:</P>
+<P CLASS="western"><IMG SRC="4_html_63712a1c.png" NAME="Graphic19" ALIGN=LEFT WIDTH=669 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can repeat this process for the page content:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6095885a.png" NAME="Graphic20" ALIGN=LEFT WIDTH=586 HEIGHT=206 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In this case we selected the Editing Type preset
+to be “Content Elements” - this will give us the ability to
+insert content elements in this field later. 
+</P>
+<P CLASS="western">After pressing “Add” we now have a data
+structure reflecting what we wrote earlier - basically a menu and
+content cell:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3412bff6.png" NAME="Graphic21" ALIGN=LEFT WIDTH=669 HEIGHT=81 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Mapping the DS to the HTML content</H4>
+<P CLASS="western">After having created the DS (which you could also
+have done on the fly when mapping if you liked that better) you have
+to map the elements in it to HTML elements in the template file. 
+</P>
+<P CLASS="western">Click “Map” for the “ROOT” element, then
+click the “&lt;body&gt;” tag icon in the “Mapping Window”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m7958b946.png" NAME="Graphic22" ALIGN=LEFT WIDTH=390 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This brings you a little form for the “ROOT”
+element where you can select mapping type:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7bccf651.png" NAME="Graphic24" ALIGN=LEFT WIDTH=142 HEIGHT=83 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For all “block-elements” (my name for HTML
+elements which has a beginning and an end, eg. &lt;td&gt;...&lt;/td&gt;
+or &lt;div&gt;...&lt;/div&gt;, contrary to eg. &lt;img ....&gt;) you
+can select INNER or OUTER mapping. This means whether we capture the
+content of the tag <I>inside the tag</I> (excluding the tag) or
+<I>outside the tag</I> (including the tag). Since we only want the
+<I>contents of the &lt;body&gt; tag</I> excluding the &lt;body&gt;
+tag we select “INNER”.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_63afe15a.png" NAME="Graphic23" ALIGN=LEFT WIDTH=144 HEIGHT=93 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The result is this:</P>
+<P CLASS="western"><IMG SRC="4_html_3053b2a0.png" NAME="Graphic25" ALIGN=LEFT WIDTH=258 HEIGHT=141 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The DS listing now shows that the “ROOT”
+element has successfully been mapped to the &lt;body&gt; tag of the
+template! And since the “ROOT” element in the DS is parent
+element to the menu and content area elements we can now perform
+mapping of those DS elements as well. 
+</P>
+<P CLASS="western">Click the “Map” button for the “field_menu”
+element in the DS. Then click the “&lt;td&gt;” tag icon
+representing the &lt;td&gt; tag inside of which our dummy menu of the
+template was found:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_mb48bf7.png" NAME="Graphic26" ALIGN=LEFT WIDTH=230 HEIGHT=260 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice that we do not have other options that
+“INNER” this time:</P>
+<P CLASS="western"><IMG SRC="4_html_m695b6273.png" NAME="Graphic28" ALIGN=LEFT WIDTH=281 HEIGHT=131 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This is as expected because we made a rule that
+any element selected can only be mapped by the “INNER” mode -
+thus keeping the tag in the template and substituting only the
+contents with dynamic content.</P>
+<P CLASS="western">So again, create an “INNER” mapping for the
+element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m4ac6c1a4.png" NAME="Graphic27" ALIGN=LEFT WIDTH=219 HEIGHT=112 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, do the final mapping of the “Page content”
+DS element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_31fa32f5.png" NAME="Graphic29" ALIGN=LEFT WIDTH=288 HEIGHT=130 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Like with the other elements, just map it to
+“INNER” again.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">You should see this result:</P>
+<P CLASS="western"><IMG SRC="4_html_m67fdaf8.png" NAME="Graphic30" ALIGN=LEFT WIDTH=669 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can always verify a mapping by clicking the
+“HTML-path” link. This will shown <I>only</I> the mapped portion
+of the template marked-up:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m1d1af4f3.png" NAME="Graphic31" ALIGN=LEFT WIDTH=320 HEIGHT=236 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Previewing the mapping</H4>
+<P CLASS="western">Since we entered a little sample data for our
+entries in the Data Structure we will be able to perform a simple
+preview of how a substitution in the template will look. Simply press
+the “Preview” button:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_4e6363ce.png" NAME="Graphic32" ALIGN=LEFT WIDTH=295 HEIGHT=83 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This will render this “Mapping Window” for
+you:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m73781b17.gif" NAME="Graphic33" ALIGN=LEFT WIDTH=669 HEIGHT=349 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Saving the DS and TO</H4>
+<P CLASS="western">Until now all you have done has been stored in the
+session data for your backend user profile. To complete the job you
+have just done you must click the “Save” button...</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_620bb583.png" NAME="Graphic34" ALIGN=LEFT WIDTH=256 HEIGHT=97 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and then 
+</P>
+<UL>
+	<LI><P CLASS="western">Enter a title of the DS / TO (can be changed
+	later)</P>
+	<LI><P CLASS="western">Enter a type, in this case “Page template”
+	(tells TYPO3 that this Data Structure is for a whole page). You
+	should set this correctly now!</P>
+	<LI><P CLASS="western">Select a Storage Folder to store it in - and
+	you should only have one at this point in time. <BR>If you do <I>not</I>
+	see a storage folder in the selector box you have a problem - you
+	didn't configure the Storage Folder correctly according to the steps
+	outlined earlier in this document!)</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m7f8c27b8.png" NAME="Graphic35" ALIGN=LEFT WIDTH=346 HEIGHT=171 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If everything went well you should see this
+acknowledgment:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3fe2cd48.png" NAME="Graphic36" ALIGN=LEFT WIDTH=477 HEIGHT=63 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">And in the “Storage Folder” page you will find
+the DS and TO records just created!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m4a49ebcf.png" NAME="Graphic37" ALIGN=LEFT WIDTH=481 HEIGHT=147 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Applying the TO as page template</H3>
+<P CLASS="western">Let's summarize what we have done till now:</P>
+<UL>
+	<LI><P CLASS="western"><B>Template Files:</B> Placed pre-made HTML
+	files from a designer in “fileadmin/template/main/”</P>
+	<LI><P CLASS="western"><B>Extensions:</B> Installed TemplaVoila and
+	CSS Styled Content</P>
+	<LI><P CLASS="western"><B>Storage Folder:</B> Configured a storage
+	folder for the website.</P>
+	<LI><P CLASS="western"><B>TypoScript Template record:</B> We created
+	a simple TypoScript Template record in the root of the website -
+	only containing a USER cObject triggering TemplaVoila.</P>
+	<LI><P CLASS="western"><B>Create DS/TO:</B> Creating a Data
+	Structure (DS) and Template Object (TO) for the main page template</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">All we need now is to select the newly created TO
+as the page template to be used. This is very easy. Just edit the
+page header of “Root page”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m57f1efcd.png" NAME="Graphic38" ALIGN=LEFT WIDTH=373 HEIGHT=103 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This selects the DS for the page template - this
+is needed as a first step in order to tell TYPO3 which “features”
+the page will have (in this case two things; a menu and page
+content). Now, save the page header. 
+</P>
+<P CLASS="western">After that you will have to select the “Template
+Design” (the TO record):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3882b694.png" NAME="Graphic39" ALIGN=LEFT WIDTH=266 HEIGHT=119 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then save - maybe even click “Save Document and
+View”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_5711aa22.png" NAME="Graphic40" ALIGN=LEFT WIDTH=31 HEIGHT=21 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and as a reward you will see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_38eb7797.png" NAME="Graphic41" ALIGN=LEFT WIDTH=669 HEIGHT=334 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Yes, the template is used! But, reward? At least
+we are not at the end yet! What we miss is:</P>
+<UL>
+	<LI><P CLASS="western">Setting up css_styled_content for content
+	rendering</P>
+	<LI><P CLASS="western">Adding page content</P>
+	<LI><P CLASS="western">Creating the dynamic menu</P>
+	<LI><P CLASS="western">Setting the stylesheet and body tag</P>
+</UL>
+<H3 CLASS="western">Setting up css_styled_content for content
+rendering</H3>
+<P CLASS="western">Before content elements can be rendered we need a
+static TypoScript template to do that for us. This is known from all
+other implementations of TYPO3 so there is nothing new here; just
+edit the Template Record and add the “CSS Styled Content” static
+template file:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3163454e.png" NAME="Graphic46" ALIGN=LEFT WIDTH=669 HEIGHT=150 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Save and close.</P>
+<H3 CLASS="western">Adding page content</H3>
+<P CLASS="western">One of the new things that comes with TemplaVoila
+is a totally new concept for integrating page content. Normally we
+use the concept of organizing content elements in columns on a page.
+Thus the content elements gets shown because they belong to a page
+and to a column.</P>
+<P CLASS="western">In TemplaVoila content elements should still
+<I>belong</I> to the page they are shown on <I>but the relation goes
+from the page (or higher level content element) to the content
+element inserted!</I> This is the inverse direction of what you are
+used to, since normally content elements refer to their parent page
+and column! We'll add a little more details to this later. For now,
+just lean back and enjoy the new Page module:</P>
+<P CLASS="western"><B>WARNING: At this point the page module is under
+construction. Therefore screenshots are far from finished!</B></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">To create content a page page, just click the new
+icon:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m78dab2f1.png" NAME="Graphic42" ALIGN=LEFT WIDTH=669 HEIGHT=149 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This inserts a new content element. Edit that:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_128ba089.png" NAME="Graphic43" ALIGN=LEFT WIDTH=449 HEIGHT=146 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Here we added some of the dummy text from the
+template file:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6f33a17.png" NAME="Graphic44" ALIGN=LEFT WIDTH=547 HEIGHT=361 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Close, and you will see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m76b053db.png" NAME="Graphic45" ALIGN=LEFT WIDTH=553 HEIGHT=218 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This is the way to add content to the page with
+TemplaVoila. You can insert more elements, you can copy/cut/paste
+them around, even make references to elements on other pages and you
+can also nest elements - this is shown later.</P>
+<P CLASS="western">You can click the “View” icon to see the site
+now:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_4e864ee1.png" NAME="Graphic47" ALIGN=LEFT WIDTH=669 HEIGHT=472 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Still not that pretty - we clearly miss the
+stylesheet. Well...</P>
+<H4 CLASS="western">Behind-the-scenes of TemplaVoila's new Content
+Element management</H4>
+<P CLASS="western">This is for the interested developers; how does
+TemplaVoila manage the relations <I>from</I> pages <I>to </I>content
+elements?</P>
+<P CLASS="western">Well, first of on a user level all that should be
+taken care solely by the new “Web &gt; Page” module you have just
+used. But behind the scenes you can look into the page header and see
+that a new field has been added which allows you to add content
+elements to the page:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7dec621d.png" NAME="Graphic48" ALIGN=LEFT WIDTH=500 HEIGHT=111 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">You can in fact modify the structure shown
+visually by the Web &gt; Page module by adding relations to content
+elements manually with this form! But... that is <I>not</I> what you
+want to try and explain the average user!</P>
+<P CLASS="western"><B>FlexForm and the Data Structure behind</B></P>
+<P CLASS="western">Another note on this is that the contents of this
+form is not going into a dedicated table cell - it is going into an
+<I>XML structure</I> in a database field of the page record
+(tx_templavoila_flex) which can potentially contain many more fields
+defined by the Page Template Data structure you have just created.
+This is one of the really thrilling and brilliant features of Data
+Structures. The concept is called “FlexForms” and this field is
+just one of those. Very beautiful stuff.</P>
+<P CLASS="western">Basically the Data Structure we created along with
+the Template Object defines this. If you go to the “Storage Folder”
+page with the List module, click the DS records icon, in the context
+menu select “TemplaVoila” you will have a chance to see the XML
+of the DS:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m37de323e.png" NAME="Graphic49" ALIGN=LEFT WIDTH=477 HEIGHT=406 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If you study this XML code you will find that for
+the field name “field_content” there is a section defining some
+“TCEforms” values (lines 35-46) - in fact this is what rendered
+the field with relations to the Content Elements:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:</FONT> <B>&lt;T3DataStructure&gt;</B>
+<FONT COLOR="#000000">   2:</FONT>   <FONT COLOR="#008080"><B>&lt;ROOT&gt;</B></FONT>
+<FONT COLOR="#000000">   3:</FONT>           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000"><I>....</I></FONT>
+<FONT COLOR="#000000">  20:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_menu&gt;</B></FONT>
+<FONT COLOR="#000000">  21:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_content&gt;</B></FONT>
+<FONT COLOR="#000000"><B>....</B></FONT>
+<FONT COLOR="#000000">  35:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  36:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+<FONT COLOR="#000000">  37:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>group<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+<FONT COLOR="#000000">  38:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;internal_type&gt;</I></FONT>db<FONT COLOR="#c29336"><I>&lt;/internal_type&gt;</I></FONT>
+<FONT COLOR="#000000">  39:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;allowed&gt;</I></FONT>tt_content<FONT COLOR="#c29336"><I>&lt;/allowed&gt;</I></FONT>
+<FONT COLOR="#000000">  40:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>5<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+<FONT COLOR="#000000">  41:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;maxitems&gt;</I></FONT>200<FONT COLOR="#c29336"><I>&lt;/maxitems&gt;</I></FONT>
+<FONT COLOR="#000000">  42:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;minitems&gt;</I></FONT>0<FONT COLOR="#c29336"><I>&lt;/minitems&gt;</I></FONT>
+<FONT COLOR="#000000">  43:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;show_thumbs&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/show_thumbs&gt;</I></FONT>
+<FONT COLOR="#000000">  44:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+<FONT COLOR="#000000">  45:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Page content<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+<FONT COLOR="#000000">  46:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  47:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_content&gt;</B></FONT>
+<FONT COLOR="#000000">  48:</FONT>           <FONT COLOR="#800000"><B>&lt;/el&gt;</B></FONT>
+<FONT COLOR="#000000">  49:</FONT>   <FONT COLOR="#008080"><B>&lt;/ROOT&gt;</B></FONT>
+<FONT COLOR="#000000">  50:</FONT> <B>&lt;/T3DataStructure&gt;</B></PRE><P CLASS="western">
+Peaking into the value of the “tx_templavoila_flex” field of the
+page record also reveals an XML structure - &lt;T3FlexForm&gt;. It
+looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:</FONT> &lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; standalone=&quot;yes&quot; ?&gt;
+<FONT COLOR="#000000">   2:</FONT> <B>&lt;T3FlexForms&gt;</B>
+<FONT COLOR="#000000">   3:</FONT>   <FONT COLOR="#800080"><B>&lt;meta&gt;</B></FONT>
+<FONT COLOR="#000000">   4:</FONT>           <FONT COLOR="#000080">&lt;currentSheetId&gt;</FONT>sDEF<FONT COLOR="#000080">&lt;/currentSheetId&gt;</FONT>
+<FONT COLOR="#000000">   5:</FONT>   <FONT COLOR="#800080"><B>&lt;/meta&gt;</B></FONT>
+<FONT COLOR="#000000">   6:</FONT>   <FONT COLOR="#800080"><B>&lt;data&gt;</B></FONT>
+<FONT COLOR="#000000">   7:</FONT>           <FONT COLOR="#008000"><B>&lt;sDEF&gt;</B></FONT>
+<FONT COLOR="#000000">   8:</FONT>                   <FONT COLOR="#000080"><B>&lt;lDEF&gt;</B></FONT>
+<FONT COLOR="#000000">   9:</FONT>                           <FONT COLOR="#666666"><B>&lt;field_content&gt;</B></FONT>
+<FONT COLOR="#000000">  10:</FONT>                                   <FONT COLOR="#800000"><B>&lt;vDEF&gt;</B></FONT>1<FONT COLOR="#800000"><B>&lt;/vDEF&gt;</B></FONT>
+<FONT COLOR="#000000">  11:</FONT>                           <FONT COLOR="#666666"><B>&lt;/field_content&gt;</B></FONT>
+<FONT COLOR="#000000">  12:</FONT>                   <FONT COLOR="#000080"><B>&lt;/lDEF&gt;</B></FONT>
+<FONT COLOR="#000000">  13:</FONT>           <FONT COLOR="#008000"><B>&lt;/sDEF&gt;</B></FONT>
+<FONT COLOR="#000000">  14:</FONT>   <FONT COLOR="#800080"><B>&lt;/data&gt;</B></FONT>
+<FONT COLOR="#000000">  15:</FONT> <B>&lt;/T3FlexForms&gt;</B></PRE><P CLASS="western">
+Notice the value between the &lt;vDEF&gt; tags - that is the uid of
+the content element “Buy PaperShredder(tm) Gizmo with 30-days
+money-... ”</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Rendering the content elements</B></P>
+<P CLASS="western">One thing is to create the relations to the
+content elements. Another thing is how they are rendered. Apparently
+the good old static TypoScript templates like “CSS Styled Content”
+are still used - but how? 
+</P>
+<P CLASS="western">The answer is also in the Data Structure created.
+Look at the lines 29-33 (gray background):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000"><B>....</B></FONT>
+<FONT COLOR="#000000">  21:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_content&gt;</B></FONT>
+<FONT COLOR="#000000">  22:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  23:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Page content<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000">  24:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;description&gt;</I></FONT>Map this to the container element for page content<FONT COLOR="#c29336"><I>&lt;/description&gt;</I></FONT>
+<FONT COLOR="#000000">  25:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+<FONT COLOR="#000000">  26:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;n0&gt;</I></FONT>[Here goes my page content. Here goes my page content. Here goes my page content. Here goes my page content. Here goes my page content. Here goes my page content. Here goes my page content. ]<FONT COLOR="#c29336"><I>&lt;/n0&gt;</I></FONT>
+<FONT COLOR="#000000">  27:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+<FONT COLOR="#000000">  28:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>ce<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+<SPAN STYLE="background: #b3b3b3"><FONT COLOR="#000000">  29:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT></SPAN>
+<SPAN STYLE="background: #b3b3b3"><FONT COLOR="#000000">  30:</FONT> 10= RECORDS</SPAN>
+<SPAN STYLE="background: #b3b3b3"><FONT COLOR="#000000">  31:</FONT> 10.source.current=1</SPAN>
+<SPAN STYLE="background: #b3b3b3"><FONT COLOR="#000000">  32:</FONT> 10.tables = tt_content</SPAN>
+<SPAN STYLE="background: #b3b3b3"><FONT COLOR="#000000">  33:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT></SPAN>
+<FONT COLOR="#000000">  34:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000"><B>....</B></FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Those lines contains TypoScript code which looks
+quite as we have seen it before: It's a RECORD cObject, rendering
+elements from the “tt_content” table, taking the uids from the
+“current value” - which seems to be loaded with the content of
+&lt;vDEF&gt; tag in the scope where this TypoScript is used for
+processing (which is inside the “tx_templavoila_pi1” plugin as
+you might be able to figure out from previous code listing).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Want to know more:</B></P>
+<P CLASS="western">FlexForms, Data Structures and all that is
+documented fully in the <A CLASS="western" HREF="/home/doc_core_api/doc/manual.sxw#%3CT3DataStructure%3E%7Coutline">“TYPO3
+Core API”</A> document.</P>
+<H3 CLASS="western">Creating the dynamic menu</H3>
+<P CLASS="western">The menu we want in the left table cell will be
+done with exactly the same TypoScript code as used for the MTB/1
+tutorial. Nothing is different here; TypoScript turns out to be quite
+effective for configuring menus and image generation.</P>
+<P CLASS="western">So, basically lets copy and paste the code listing
+from MTB/1 <I><B>with one exception</B></I>; “temp.menu_1”  is
+changed to “lib.menu_1”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I># Menu 1 cObject</I></FONT>
+<FONT COLOR="#0000cc">lib.menu_1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">HMENU</FONT>
+<FONT COLOR="#666666">  <I># First level menu-object, textual</I></FONT>
+<FONT COLOR="#0000cc">lib.menu_1.1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TMENU</FONT>
+<FONT COLOR="#0000cc">lib.menu_1.1</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<FONT COLOR="#666666">    <I># Normal state properties</I></FONT>
+  <FONT COLOR="#0000cc">NO.allWrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;div class=&quot;menu1-level1-no&quot;&gt; | &lt;/div&gt;</FONT>
+  <FONT COLOR="#0000cc">NO.stdWrap.htmlSpecialChars</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+<FONT COLOR="#666666">    <I># Enable active state and set properties:</I></FONT>
+  <FONT COLOR="#0000cc">ACT</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">ACT.stdWrap.htmlSpecialChars</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">ACT.allWrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;div class=&quot;menu1-level1-act&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT>
+<FONT COLOR="#666666">  <I># Second level menu-object, textual</I></FONT>
+<FONT COLOR="#0000cc">lib.menu_1.2</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TMENU</FONT>
+<FONT COLOR="#0000cc">lib.menu_1.2</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+<FONT COLOR="#666666">    <I># Normal state properties</I></FONT>
+  <FONT COLOR="#0000cc">NO.allWrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;div class=&quot;menu1-level2-no&quot;&gt; | &lt;/div&gt;</FONT>
+  <FONT COLOR="#0000cc">NO.stdWrap.htmlSpecialChars</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+<FONT COLOR="#666666">    <I># Enable active state and set properties:</I></FONT>
+  <FONT COLOR="#0000cc">ACT</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">ACT.stdWrap.htmlSpecialChars</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+  <FONT COLOR="#0000cc">ACT.allWrap</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">&lt;div class=&quot;menu1-level2-act&quot;&gt; | &lt;/div&gt;</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western">
+(Taken from the chapter “Adding XHTML compliancy”)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Copy this listing into the Setup field of the
+Template Record:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m26fb6aa7.png" NAME="Graphic50" ALIGN=LEFT WIDTH=473 HEIGHT=388 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In MTB/1 we have to refer to or copy this
+definition of a HMENU object. In this case we need to do the same in
+principle - but the reference must be set in the Data Structure we
+just created! Here there will already be a dummy-pointer to
+“lib.myObject” - but we will change that!</P>
+<P CLASS="western">So what you do is click the DS records icon,
+select “Edit”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_257c3c10.png" NAME="Graphic51" ALIGN=LEFT WIDTH=303 HEIGHT=87 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In the field “Data Structure XML” you will
+find the DS XML and for the element “&lt;field_menu&gt;” there is
+“application” configuration for TemplaVoila which contains a
+default reference to “lib.myObject” - this is the object path
+from the TypoScript Template record which will render the contents
+for this field. So just change this to “lib.menu_1” and you are
+set!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6946af38.png" NAME="Graphic52" ALIGN=LEFT WIDTH=669 HEIGHT=276 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">You may look at the page again:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m5ff8f3db.png" NAME="Graphic53" ALIGN=LEFT WIDTH=669 HEIGHT=566 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">It hasn't become nicer but at least the menu is
+there!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Setting the stylesheet and &lt;body&gt; tag</H3>
+<P CLASS="western">The final step is to edit the Template Object
+which we were not able to do when we created the DS and TO;
+configuring inclusions from the header and &lt;body&gt; tag!</P>
+<P CLASS="western">This is a walk in the park - just like most other
+things with TemplaVoila. Simply click the icon of the TO record,
+select “TemplaVoila”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m13d8307f.png" NAME="Graphic54" ALIGN=LEFT WIDTH=288 HEIGHT=201 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then select the option “Select HTML header
+part”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_5e184060.png" NAME="Graphic55" ALIGN=LEFT WIDTH=669 HEIGHT=450 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then you select to include the two stylesheet
+definitions and the body tag. We don't want the charset definitions
+since TYPO3 will automatically render that for us (which is the case
+with most &lt;meta&gt; tags). As a rule of thumb you should include
+all &lt;style&gt;, &lt;link&gt; and &lt;script&gt; sections you
+encounter here!</P>
+<P CLASS="western">Finally, press save. 
+</P>
+<P CLASS="western">And if you dare - look at your website after
+clearing the cache:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_782ee8be.png" NAME="Graphic56" ALIGN=LEFT WIDTH=136 HEIGHT=115 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_2015a57f.png" NAME="Graphic57" ALIGN=LEFT WIDTH=271 HEIGHT=116 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">And... Voila!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_mf2a55c.png" NAME="Graphic58" ALIGN=LEFT WIDTH=669 HEIGHT=587 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For the curious souls you can also see how nicely
+this works by looking into the HTML source:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m94369b3.png" NAME="Graphic60" ALIGN=LEFT WIDTH=669 HEIGHT=677 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This demonstrates how cleanly the selected header
+parts and the body tag from the template file has been included into
+the header which TYPO3 always has to control for purposes like
+automated charset, title tag value and JavaScript sections which
+might depend on such as dynamic menus etc.</P>
+<H3 CLASS="western">Summary</H3>
+<P CLASS="western">Let's summarize the steps involved in this
+process, rearranging them in optimum order:</P>
+<UL>
+	<LI VALUE=1><P CLASS="western"><B>Template Files:</B> Placed
+	pre-made HTML files from a designer in
+	“fileadmin/template/main/”<BR>You can ask an HTML designer to
+	create basically any design he likes as long as it is valid HTML,
+	nested correctly and generally clean (otherwise the mapper will have
+	its problems).</P>
+	<LI><P CLASS="western"><B>Extensions:</B> Installed TemplaVoila and
+	CSS Styled Content<BR>No problem, GPL is here to serve us!</P>
+	<LI><P CLASS="western"><B>Storage Folder:</B> Configured a storage
+	folder for the website.<BR>Nice thing to have anyways - use it for
+	your frontend users as well! This is recommended “best-practice”.</P>
+	<LI><P CLASS="western"><B>TypoScript Template record:</B> We created
+	a simple TypoScript Template record in the root of the website;</P>
+	<UL>
+		<LI><P CLASS="western">Contained a basic call to a USER cObject
+		triggering TemplaVoila's plugin “tx_templavoila_pi1”</P>
+		<LI><P CLASS="western">Including the static template “CSS Styled
+		Content”</P>
+		<LI><P CLASS="western">Included a HMENU definition in object path
+		“lib.menu_1”</P>
+	</UL>
+	<LI><P CLASS="western"><B>Create DS/TO:</B> Creating a Data
+	Structure (DS) and Template Object (TO) for the main page template</P>
+	<UL>
+		<LI><P CLASS="western">First step: Create the DS and TO records</P>
+		<LI><P CLASS="western">Second step: Include certain &lt;head&gt;
+		parts and &lt;body&gt; tag.</P>
+	</UL>
+	<LI><P CLASS="western"><B>Setting page template:</B> Edited the
+	header of the root page, setting the Page Template Data Structure
+	and Template Object.</P>
+	<LI><P CLASS="western"><B>Added dummy page content:</B> Created page
+	content elements with TemplaVoilas “Web &gt; Page” module - just
+	for testing purpose.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Creating
+additional page templates</H2>
+<P CLASS="western">With the method shown in the previous section of
+this tutorial the next question is; how can we define more templates
+for alternative purposes? 
+</P>
+<P CLASS="western">This could include:</P>
+<UL>
+	<LI><P CLASS="western">Templates for print-versions or other
+	languages?</P>
+	<LI><P CLASS="western">Templates for sub sections of the website?</P>
+	<LI><P CLASS="western">Templates with 2 columns (other Data
+	Structures)? 
+	</P>
+</UL>
+<P CLASS="western">All these problems are easy to solve and they
+follow the same principles as used for the main template. Therefore
+in the coming chapters we will focus on what is different and assume
+that you can handle what has already been explained earlier without
+further introduction.</P>
+<H3 CLASS="western">Modifying a formerly made DS/TO</H3>
+<P CLASS="western">The first step we want to take is to create a
+print-version template based on the HTML file
+“template_page_print.html”. However it suddenly strikes us that
+the link “Back to normal version” (see buttom of file) has a
+counterpart in the main template, “Print version” - and we didn't
+map this field before! D'oh.</P>
+<P CLASS="western">So, we have to take a little detour now since we
+would like to have that link mapped to a dynamic destination value of
+course.</P>
+<P CLASS="western">In a situation like this what you want to do first
+and foremost is to <I>modify the Data Structure</I> to include the
+capability to map the href-attribute of a link. You have two options:</P>
+<UL>
+	<LI><P CLASS="western">Modify the DS XML inside the DS record by
+	hand. This is hard and requires knowledge of the Data Structure
+	format, but can be done at any time you like regardless of other
+	custom modifications.</P>
+	<LI><P CLASS="western">Modify the DS by “re-creating” the DS/TO
+	we made earlier. This is fun - but will remove all custom changes
+	made to the DS XML - in our case the TypoScript Object path
+	“lib.menu_1”!</P>
+</UL>
+<P CLASS="western">We choose the fun option.</P>
+<P CLASS="western">So, click the icon of the TO record, select
+TemplaVoila and then click the button “Modify DS / TO”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_145b4b6d.png" NAME="Graphic61" ALIGN=LEFT WIDTH=445 HEIGHT=125 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After clicking “Yes” to a warning box you will
+see this screen:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_69f4c834.png" NAME="Graphic62" ALIGN=LEFT WIDTH=308 HEIGHT=152 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Enter the fieldname (here “field_printVersionUrl”)
+and press “Add”. Then fill in the form. In particular set the
+Mapping Type to “Attribute” since we want to set a value in an
+HTML element attribute (&lt;a <B>href</B>=”...”&gt;), selecting
+Editing Type to “TypoScript Object Path” (we will have to
+dynamically set the link value) and if you like, you can set the
+Mapping rules to “a:attr:href” - meaning “map this DS element
+only to an “href” attribute of an &lt;a&gt;-tag!”</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_625000cf.png" NAME="Graphic63" ALIGN=LEFT WIDTH=430 HEIGHT=203 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Add the DS element and map it:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6a52c231.png" NAME="Graphic64" ALIGN=LEFT WIDTH=569 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The only choice is “ATTRIBUTE “href” (= #)”
+so you will select that:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6a98e7a8.png" NAME="Graphic65" ALIGN=LEFT WIDTH=251 HEIGHT=140 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then, press the “Set” button and in the next
+screen you will <I>update</I> the original DS/TO set:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3c57b8ed.png" NAME="Graphic66" ALIGN=LEFT WIDTH=464 HEIGHT=112 BORDER=0><BR CLEAR=LEFT>This
+has saved the modified Data Structure and Template Object back. Now,
+there are two things to remember:</P>
+<UL>
+	<LI><P CLASS="western">Any custom modifications to the DS XML will
+	have to be redone most likely. (In our case that is the change of
+	the TypoScript object path from “lib.myObject” to “lib.menu_1”)</P>
+	<LI><P CLASS="western">Any mappings of header parts or body tag in
+	the TO will be lost. Redo them.</P>
+	<LI><P CLASS="western">Any other Template Objects pointing to this
+	DS might also have to have the new field mapped to the “Print
+	version” link they might contain.</P>
+</UL>
+<H4 CLASS="western">Fixing the DS XML and TO:</H4>
+<P CLASS="western">Edit the DS record and change in the XML the
+values for &lt;TypoScriptObjPath&gt;:</P>
+<UL>
+	<LI><P CLASS="western">lib.myObject  to lib.menu_1 (for
+	&lt;field_menu&gt;)</P>
+	<LI><P CLASS="western">lib.myObject  to lib.print_url (for
+	&lt;field_printversionurl&gt;)</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_dc15fda.png" NAME="Graphic67" ALIGN=LEFT WIDTH=444 HEIGHT=253 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">After fixing the DS record, open the TO record
+with TemplaVoila and map the header parts and body tag again. See
+former chapter.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then save - and maybe clear cache / preview that
+you site is still working...</P>
+<H4 CLASS="western">Rendering the Print Version URL</H4>
+<P CLASS="western">In order to insert the URL to the Print Version
+all we have to do is to render it with a cObject in the TypoScript
+template, object path “lib.print_url”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I>#Print Version URL:</I></FONT>
+<FONT COLOR="#0000cc">lib.print_url</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">TEXT</FONT>
+<FONT COLOR="#0000cc">lib.print_url.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">index.php?id={page:uid}&amp;print=1&amp;no_cache=1</FONT>
+<FONT COLOR="#0000cc">lib.print_url.htmlSpecialChars</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+<FONT COLOR="#0000cc">lib.print_url.insertData</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">1</FONT>
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[globalVar = GP:print &gt; 0]</SPAN></B></FONT>
+<FONT COLOR="#0000cc">lib.print_url.value</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">index.php?id={page:uid}</FONT>
+<FONT COLOR="#ffffff"><B><SPAN STYLE="background: #800000">[global]</SPAN></B></FONT></PRE><P CLASS="western">
+This code will insert a link pointing to the current page but with
+the “&amp;print=1” parameter. Further, <I>if</I> the
+&amp;print-parameter is set and a print template presumably is used
+the link will point back to the non-print page - thus working in the
+other direction as well!</P>
+<H3 CLASS="western">A print version</H3>
+<P CLASS="western">For the print version of our website we have a
+template prepared from the designer. This is found in the file
+“template_page_print.html”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_15f25376.png" NAME="Graphic59" ALIGN=LEFT WIDTH=669 HEIGHT=451 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This print template is supposed to be compatible
+with the main template, “template_page.html”, although the menu
+field will not be mapped then. Therefore we will use the <I>same</I>
+DS as for the main template. This means we will not be creating a new
+DS and TO like previously done - only create a new TO pointing to the
+same DS but to a new file!</P>
+<P CLASS="western">To complete the integration of a print version we
+have to 
+</P>
+<UL>
+	<LI><P CLASS="western">Create a TO record, pointing to the template
+	file and DS needed. Set it as a child to the main template.</P>
+	<LI><P CLASS="western">Map the TO record with TemplaVoila.</P>
+</UL>
+<H4 CLASS="western">Create the TO</H4>
+<P CLASS="western">Create a new TO:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_b7227b4.png" NAME="Graphic68" ALIGN=LEFT WIDTH=430 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then enter the information for the TO:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6c707103.png" NAME="Graphic69" ALIGN=LEFT WIDTH=385 HEIGHT=227 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Please notice:</P>
+<UL>
+	<LI><P CLASS="western">Make sure to make the template a <I>sub-template</I>
+	of the main template! This means that this template in it self
+	cannot be selected in TYPO3 at other places since it is a <I>special
+	version</I> of another template and automatically selected for its
+	purpose by TemplaVoila.</P>
+	<LI><P CLASS="western">Set the file reference to the print version
+	available.</P>
+	<LI><P CLASS="western">Select the type of rendering to “Printer
+	Friendly” - this will instruct TemplaVoila to use <I>this</I> TO
+	record if the “&amp;print=1” parameter is set and the main
+	template will be used otherwise.</P>
+</UL>
+<P CLASS="western">Then save and close.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m559917f.png" NAME="Graphic70" ALIGN=LEFT WIDTH=391 HEIGHT=68 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, click the icon of the new TO record again and
+select TemplaVoila:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m54564b56.png" NAME="Graphic71" ALIGN=LEFT WIDTH=151 HEIGHT=190 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then you will see that the DS from the main
+template is indeed selected but no mapping information has been
+collected as of yet - obviously, since the TO is brand new and we are
+going to <I>do the mapping</I> now!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m27a4fd11.png" NAME="Graphic72" ALIGN=LEFT WIDTH=511 HEIGHT=314 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, do the mapping, just like you did with the
+main template, just leave the “Main menu” element out. When you
+are done, press the “Preview” button - this will show you that
+the “Page content” sample data is inserted:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3736c972.png" NAME="Graphic73" ALIGN=LEFT WIDTH=669 HEIGHT=496 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can even click the “Back to normal version”
+link and a little JavaScript Alert will pop up!</P>
+<P CLASS="western">Before you are done, enable “Select HTML header
+parts” and do your selection there:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_688eb91.png" NAME="Graphic74" ALIGN=LEFT WIDTH=669 HEIGHT=405 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then press “Save”.</P>
+<P CLASS="western">You are done! When you click the link in the
+bottom of the frontpage you will see the print version right away!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m28412da3.png" NAME="Graphic75" ALIGN=LEFT WIDTH=669 HEIGHT=406 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">(If you don't see this, make sure that you didn't
+forget to paste in the TypoScript code in the previous chapter!)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Alternative template for a sub section</H3>
+<P CLASS="western">In this example we want to create an alternative
+template for a sub section of the website:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m428a6340.png" NAME="Graphic76" ALIGN=LEFT WIDTH=669 HEIGHT=646 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(This template is the file
+“template_page_xtra.html”)</P>
+<P CLASS="western">The section will be an extranet for customers and
+password protected as well - but that is not relevant here. All we
+want to know is - how can we enable TYPO3 to select an alternative
+template for a section of the website?</P>
+<P CLASS="western">In this case it is very easy - it turns out that
+this template design can use the same Data Structure as the main
+template.</P>
+<H4 CLASS="western">Create a new TO</H4>
+<P CLASS="western">Basically the steps are the same as for the print
+version template; create a new TO. But there are some different
+settings:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m731c2078.png" NAME="Graphic77" ALIGN=LEFT WIDTH=459 HEIGHT=241 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Notice:</P>
+<UL>
+	<LI><P CLASS="western">The main Data Structure has been selected for
+	the TO</P>
+	<LI><P CLASS="western">This is <I>not</I> a sub-template of any
+	other - thus it will be a fully valid alternative to the main
+	template for pages!</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, save and close. Then click the TO records
+icon and select “TemplaVoila”. You should now begin mapping the
+elements:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_mee741ad.png" NAME="Graphic78" ALIGN=LEFT WIDTH=669 HEIGHT=551 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">When you are done the Data Structure listing
+should look like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_53f24768.png" NAME="Graphic79" ALIGN=LEFT WIDTH=669 HEIGHT=164 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can see that the “Print version link URL”
+has not been mapped - since there was no such link in the template
+file.</P>
+<P CLASS="western">Remember to also select the appropriate header
+parts to include:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m73ac680.png" NAME="Graphic80" ALIGN=LEFT WIDTH=404 HEIGHT=349 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and Save.</P>
+<H4 CLASS="western">Select the alternative templates for a sub
+section</H4>
+<P CLASS="western">You want to apply this template to all subpages of
+“Licensing” page - basically those marked here:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3efd58df.png" NAME="Graphic81" ALIGN=LEFT WIDTH=236 HEIGHT=150 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">To do so, edit the page header of the “Licensing”
+page:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m50bec79a.png" NAME="Graphic82" ALIGN=LEFT WIDTH=214 HEIGHT=193 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In the page header, set “Subpages - Page
+Template Structure” to “Page - Main” (which it basically
+already is, inheriting from the root page, but...:-)</P>
+<P CLASS="western">Then select the Template Design (TO record)
+labeled “Page - Extranet”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6ab827c.png" NAME="Graphic83" ALIGN=LEFT WIDTH=250 HEIGHT=125 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Thats all!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_1b746769.png" NAME="Graphic84" ALIGN=LEFT WIDTH=669 HEIGHT=375 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If you wanted to include the page “Licensing”
+in the section having the alternative template design you could have
+done so by setting the value of the “Page Template Selector”
+rather than “Subpages - Page Template Selector”.</P>
+<H4 CLASS="western">Dummy content on the page?</H4>
+<P CLASS="western">Well, maybe we were a little hasty. What about
+putting some content elements on the page to test?</P>
+<P CLASS="western">See, in this case you cannot just copy/paste
+elements as you are used to. Remember, for TemplaVoila it is <I>not</I>
+enough to just copy a content element onto a page - you have to bring
+it into the hierarchy of references going <I>from</I> the page <I>to</I>
+the elements. But this is easily done. Just use the new Web &gt; Page
+module that TemplaVoila provides:</P>
+<P CLASS="western">With that module, go to the root page and click
+the “Reference” icon:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m2d602d35.png" NAME="Graphic85" ALIGN=LEFT WIDTH=669 HEIGHT=290 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then go to the “License A” page and click the
+paste icon:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_68c7277f.png" NAME="Graphic86" ALIGN=LEFT WIDTH=396 HEIGHT=149 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">What you will see now is a reference created to
+the element on the root page - thus the two pages are sharing a
+content element! The reference is yellow because the content element
+is located <I>externally</I> from this page - namely on the root
+page!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7ded835d.png" NAME="Graphic87" ALIGN=LEFT WIDTH=669 HEIGHT=262 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Testing the frontend again brings even better
+results:</P>
+<P CLASS="western"><IMG SRC="4_html_26c4e48e.png" NAME="Graphic88" ALIGN=LEFT WIDTH=547 HEIGHT=441 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Creating a two-column page?</H3>
+<P CLASS="western">What about that? Two columns on a page. Or even
+more. Or “zones”. Or... you name it!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">None of this is a problem for TemplaVoila - rather
+it is the very reason for its existence - the need for this kind of
+extreme flexibility. 
+</P>
+<P CLASS="western">In the case of a two-column layout there is a
+template file, “template_page_left_col.html”, which contains an
+additional left column under the menu. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6639c967.png" NAME="Graphic89" ALIGN=LEFT WIDTH=545 HEIGHT=397 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">We are now going to create a new DS and TO after
+the same principles by which we made the main template:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m7958fe45.png" NAME="Graphic90" ALIGN=LEFT WIDTH=212 HEIGHT=149 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, you do the mapping of the ROOT, Page content
+and Menu element just like with the main template. No changes. 
+</P>
+<P CLASS="western">During the mapping process we find that the old
+way of mapping to the menu is not possible anymore without wiping out
+the &lt;div&gt; tag which is surrounding the left column. The reason
+is that both the menu and the left column &lt;div&gt; sections are in
+the same &lt;td&gt; tag. This is illustrated in this screenshot.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m682c83fb.png" NAME="Graphic91" ALIGN=LEFT WIDTH=190 HEIGHT=307 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">We could now change the template HTML to yield a
+better structure for our mapping needs. In some cases that is needed.
+However, we can in fact map this anyways using a mapping mode known
+as “range”. To map the menu you simply click the first &lt;div&gt;
+element and in the mapping mode selector you select the second-last
+&lt;div&gt; tag - thereby indicating that you want to grab all the
+&lt;div&gt; tags from the one you clicked and to the one selected. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6fa88c62.png" NAME="Graphic92" ALIGN=LEFT WIDTH=345 HEIGHT=251 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For the left column &lt;div&gt; its just trivial
+mapping, no adventurous features to use there, sorry...</P>
+<H4 CLASS="western">Result DS</H4>
+<P CLASS="western">The resulting DS looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m556b109e.png" NAME="Graphic93" ALIGN=LEFT WIDTH=669 HEIGHT=122 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In this case we were too lazy to add mapping
+instructions and mapping rules etc. However what was very important
+is the settings for the “Left content” field (field_left) and the
+“Page content” field (field_content). There are two major points:</P>
+<UL>
+	<LI><P CLASS="western">“Page content” and “Left content”
+	should both have the Editing type “Content elements”. This is
+	necessary if you want TemplaVoila to allow content into the cells!</P>
+	<LI><P CLASS="western">You should use “field_content” for the
+	“Page content” field name (while for the “new” column, “Left
+	content” you can choose any you like). The reason is that you gain
+	compatibility between this data structure and the main data
+	structure if you use the same field name - otherwise reference
+	information to content elements will be lost! Obviously.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally, you create the DS and TO:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m78c326e7.png" NAME="Graphic94" ALIGN=LEFT WIDTH=302 HEIGHT=129 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Before you are done with the DS / TO work you have
+to 
+</P>
+<UL>
+	<LI><P CLASS="western">Set which header parts to include for the TO</P>
+	<LI><P CLASS="western">Modify the DS XML so “lib.menu_1” is
+	referred to.</P>
+</UL>
+<P CLASS="western">You can do that now.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Setting the new Page Template Structure</H4>
+<P CLASS="western">We want to apply the two-column design to this
+section of the website:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m70a80dbe.png" NAME="Graphic95" ALIGN=LEFT WIDTH=184 HEIGHT=143 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Just like with the Extranet template we edit the
+page header of “Terms &amp; Conditions”. Notice how we have <I>two</I>
+possibilities for Page Template Structures:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_b5c9063.png" NAME="Graphic96" ALIGN=LEFT WIDTH=281 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As soon as you select the Template Structure “Page
+- 2Col” and save you will see that the FlexForm field called
+“Content:” changed to include <I>two</I> content element fields!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m45c2e078.png" NAME="Graphic97" ALIGN=LEFT WIDTH=448 HEIGHT=239 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This shows a glimpse of what FlexForms can offer
+since the content of these two fields are stored in an XML data
+structure in a <I>single </I>database field rather than two separate
+- thus there are no limits to how many fields you can have in a form
+and how much nesting you can apply to them. Anyways, more about this
+later.</P>
+<P CLASS="western">Before you exit the page header you must also
+select the template on the second pass:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3962087f.png" NAME="Graphic98" ALIGN=LEFT WIDTH=287 HEIGHT=45 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Adding dummy content again</H4>
+<P CLASS="western">Before we test our solution we will create a few
+references (or copies if you like) of the dummy content element on
+the frontpage. We notice how the Web &gt; Page module has
+automatically reflected the reality of two content columns which is
+now the case for the section “Terms &amp; Conditions” on the
+website:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_22a78128.png" NAME="Graphic99" ALIGN=LEFT WIDTH=591 HEIGHT=252 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, we can preview:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_69710a52.png" NAME="Graphic100" ALIGN=LEFT WIDTH=582 HEIGHT=621 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Precisely as it should be... :-)</P>
+<H3 CLASS="western">Icons for TOs and DSs</H3>
+<P CLASS="western">A really nice touch of DS and TO records is that
+you can attach icons to them which and used in the forms where people
+select them as templates/data structures. 
+</P>
+<P CLASS="western">Consider this example:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m6ce82337.png" NAME="Graphic101" ALIGN=LEFT WIDTH=511 HEIGHT=231 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This is the root page of the website we are
+working on here. All that is done to it is that the DS and TO records
+has got icons attached to them - which are in turn shown here. 
+</P>
+<P CLASS="western">By using icons for the Data Structure you can
+easily describe the abstract mode of a Data Structure; basically what
+possibilities there are. And for Template Object you can show people
+which designs are available for the selected Data Structures.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">For both TO and DS record there are fields for the
+icons in their records. Just make sure to prepare the icons first;
+they are not automatically rescaled by the system:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m765f0424.png" NAME="Graphic102" ALIGN=LEFT WIDTH=669 HEIGHT=432 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">“Flexible
+Content Elements”</H2>
+<P CLASS="western">Now you have seen how TemplaVoila provides a
+point'n'click interface to templating the overall structure of a
+TYPO3 based website. And why not take this concept to other levels!</P>
+<P CLASS="western">A natural extension is that a new kind of content
+element is born - a content element of the type “Flexible Content”
+- or “Flexible Content Element” (FCE).</P>
+<P CLASS="western">This kind of element has an arbitrary amount of
+data fields using FlexForms and Data Structures. On top of it all it
+is  rendered in the frontend using Template Objects. 
+</P>
+<P CLASS="western">For our example here there is a template file
+which contains a set of templates for such “Flexible Content
+Elements”; template_ce.html. It looks like this inside:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m40182eda.png" NAME="Graphic103" ALIGN=LEFT WIDTH=576 HEIGHT=745 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The idea is that a single file contains small
+templates for numerous Flexible Content Elements - this is to save
+space and present them in a “natural environment”.</P>
+<H3 CLASS="western">Creating a basic Flexible Content Element (FCE)</H3>
+<P CLASS="western">First we will create a Flexible Content Element
+(FCE) with a Header, Text, Image and a link.</P>
+<P CLASS="western">The first step is - like with the page template -
+to go to the File &gt; Filelist module, click the template file,
+select “TemplaVoila” and then begin to build the Data Structure
+that fits our needs. We will do so here as well.</P>
+<P CLASS="western"><B>Hint: </B>If you experience that old mapping
+information is shown to you in the module, then just press “Clear
+all” and it will be gone.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">The ROOT element</H4>
+<P CLASS="western">When mapping the ROOT element you will have to
+choose differently than the &lt;body&gt; tag for once. Because in
+this case the container element is not the &lt;body&gt; tag but the
+&lt;div&gt; tag which has been wrapped around each FCE for
+convenience and order:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7fe33d1e.png" NAME="Graphic104" ALIGN=LEFT WIDTH=518 HEIGHT=340 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Child elements</H4>
+<P CLASS="western">Then you create the fields you need in the DS:</P>
+<P CLASS="western"><IMG SRC="4_html_247dd02c.png" NAME="Graphic105" ALIGN=LEFT WIDTH=669 HEIGHT=176 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For each of these we have been a bit too lazy to
+supply good mapping instructions, rules and sample data. This is what
+happens... :-) 
+</P>
+<P CLASS="western">We have a few comments though:</P>
+<UL>
+	<LI><P CLASS="western"><B>Fieldnames:</B> Notice the “Link Title”
+	field - that has become a field name “field_94bd82” which is
+	random. AVOID THIS! Rather delete such an entry and use carefully
+	designed names. In particular, REUSE those fieldnames across your
+	collections of FCEs since that enhances the internal compatibility.</P>
+	<LI><P CLASS="western"><B>Editing Types: </B>For each fieldname we
+	have selected an Editing Type. The Editing Types are presets which
+	defines what default configuration the element will get in the DS.
+	An example we already know was how to set editing type to “Content
+	Element” or “TypoScript Object Path”. <BR>We want to comment
+	on those we have set here:</P>
+	<UL>
+		<LI><P CLASS="western"><B>Header:</B> The Editing Type is “Header
+		field” - this will be the same as plain input although it might
+		allow for a typolink</P>
+		<LI><P CLASS="western"><B>Bodytext:</B> The Editing Type is “Text
+		area for bodytext”</P>
+		<LI><P CLASS="western"><B>Image:</B> The Editing Type is “Image
+		field”. Another option was “Image field, fixed W+H” but
+		selecting “Image field” will allow us to insert an image and if
+		TemplaVoila's logic can figure it out it will detect the current
+		width of the image and use that as fixed width - that is nice!</P>
+		<LI><P CLASS="western"><B>Link title:</B> Plain input.</P>
+		<LI><P CLASS="western"><B>Link URL:</B> The Editing Type is “Link
+		field” - this will make a little box with a link selector wizard
+		which lets us select a link as usual. It will also preset the
+		TypoScript needed to make the link.</P>
+	</UL>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After mapping is in place it looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m43344a6c.png" NAME="Graphic106" ALIGN=LEFT WIDTH=538 HEIGHT=208 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then click “Save” and press “Create TO and
+DS” button:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_1ca96288.png" NAME="Graphic107" ALIGN=LEFT WIDTH=329 HEIGHT=138 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Adding a Flexible Content Element to a page</H4>
+<P CLASS="western">This is done by Web &gt; Page of course by
+clicking the “New” icon. At some point this will lead you to a
+wizard! For now you will just get a plain element created straight
+away:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_edf9ff6.png" NAME="Graphic108" ALIGN=LEFT WIDTH=504 HEIGHT=160 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, edit this element, select the Type “Flexible
+Content”. This will ask you to save which you do. Now you can
+select a Data Structure. When that is done you save again and you
+will see this form:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7b97546c.png" NAME="Graphic109" ALIGN=LEFT WIDTH=512 HEIGHT=368 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, select the Template Object used for the Data
+Structure - as you did for page templates! - and fill in the form
+with content. You can preview immediately with “Save Document and
+View”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_meedfe4e.png" NAME="Graphic110" ALIGN=LEFT WIDTH=535 HEIGHT=555 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_579e6ae1.png" NAME="Graphic111" ALIGN=LEFT WIDTH=514 HEIGHT=526 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Something we forgot</H4>
+<P CLASS="western">It turns out that we forgot to add possible header
+parts to the TO record. Lets do that:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m76683c75.png" NAME="Graphic112" ALIGN=LEFT WIDTH=605 HEIGHT=347 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This time we avoid the two first stylesheet
+definitions because they are just a part of the main template which
+happens to wrap these examples of elements; no need to select them
+again - even though it wouldn't make any difference since they are
+automatically detected as included if they are <I>exactly</I> the
+same.</P>
+<P CLASS="western">Then, the last stylesheet is not included either -
+we happen to know that it contains styles which are <I>only </I>active
+for the last template.</P>
+<H4 CLASS="western">Adding image parameters</H4>
+<P CLASS="western">Another problem is that the image tag of the image
+has <I>not </I>been preserved but re-generated by TYPO3. And in that
+process we lost a few attributes, in particular ' align=&quot;right&quot;
+style=&quot;margin-left: 10px; margin-right: 5px;&quot;'</P>
+<P CLASS="western">These can be added again by editing the Data
+Structure - which will reveal something - to us very appealing -
+namely, TypoScript:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_5668e105.png" NAME="Graphic113" ALIGN=LEFT WIDTH=494 HEIGHT=209 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Here we just modify the code listing with a single
+line (the one highlighted above):</P>
+<PRE CLASS="western">10.params = align=&quot;right&quot; style=&quot;margin-left: 10px; margin-right: 5px;&quot;		</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">That does it and the image is now displayed
+correctly:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_539f348f.png" NAME="Graphic114" ALIGN=LEFT WIDTH=467 HEIGHT=314 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">The link</H4>
+<P CLASS="western">Another note to this example is that the header
+and the image has automatically picked up the data from the link URL
+field as link source - this is just the default behavior, you can of
+course remove and customize it all - in the Data Structure of this
+FCE:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><B>&lt;T3DataStructure&gt;</B></PRE>
+<DIV ID="c-dsxml" DIR="LTR">
+	<PRE CLASS="western">        <FONT COLOR="#008080"><B>&lt;ROOT&gt;</B></FONT>
+                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>ROOT<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                        <FONT COLOR="#c29336"><I>&lt;description&gt;</I></FONT>Select the HTML element on the page which you want to be the overall container element for the template.<FONT COLOR="#c29336"><I>&lt;/description&gt;</I></FONT>
+                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                <FONT COLOR="#000080"><B>&lt;type&gt;</B></FONT>array<FONT COLOR="#000080"><B>&lt;/type&gt;</B></FONT>
+                <FONT COLOR="#800000"><B>&lt;el&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;field_header&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Header<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;n0&gt;</I></FONT>This is a header...<FONT COLOR="#c29336"><I>&lt;/n0&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>input_h<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+10 = TEXT
+10.current = 1
+10.typolink.parameter.field = field_linkurl
+                                                                        <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>48<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;eval&gt;</I></FONT>trim<FONT COLOR="#c29336"><I>&lt;/eval&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Header<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;/field_header&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;field_bodytext&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Bodytext<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;n0&gt;</I></FONT>Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text Body text <FONT COLOR="#c29336"><I>&lt;/n0&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>text<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;proc&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;HSC&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/HSC&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/proc&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>text<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;cols&gt;</I></FONT>48<FONT COLOR="#c29336"><I>&lt;/cols&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;rows&gt;</I></FONT>5<FONT COLOR="#c29336"><I>&lt;/rows&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Bodytext<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;/field_bodytext&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;field_image&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Image<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;n0&gt;&lt;/n0&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>image<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+10 = IMAGE
+10.file.import = uploads/tx_templavoila/
+10.file.import.current = 1
+10.file.import.listNum = 0
+10.file.maxW = 200
+10.params = align=&amp;quot;right&amp;quot; style=&amp;quot;margin-left: 10px; margin-right: 5px;&amp;quot;                                             
+10.stdWrap.typolink.parameter.field = field_linkurl
+                                                                <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>group<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;internal_type&gt;</I></FONT>file<FONT COLOR="#c29336"><I>&lt;/internal_type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;allowed&gt;</I></FONT>gif,png,jpg,jpeg<FONT COLOR="#c29336"><I>&lt;/allowed&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;max_size&gt;</I></FONT>1000<FONT COLOR="#c29336"><I>&lt;/max_size&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;uploadfolder&gt;</I></FONT>uploads/tx_templavoila<FONT COLOR="#c29336"><I>&lt;/uploadfolder&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;show_thumbs&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/show_thumbs&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;maxitems&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/maxitems&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;minitems&gt;</I></FONT>0<FONT COLOR="#c29336"><I>&lt;/minitems&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Image<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;/field_image&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;field_94bd82&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Link Title<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;n0&gt;</I></FONT>My Link<FONT COLOR="#c29336"><I>&lt;/n0&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;tags&gt;</I></FONT>a<FONT COLOR="#c29336"><I>&lt;/tags&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;proc&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;HSC&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/HSC&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/proc&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>48<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;eval&gt;</I></FONT>trim<FONT COLOR="#c29336"><I>&lt;/eval&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Link Title<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;/field_94bd82&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;field_linkurl&gt;</B></FONT>
+                                <FONT COLOR="#000080"><B>&lt;type&gt;</B></FONT>attr<FONT COLOR="#000080"><B>&lt;/type&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Link URL<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;n0&gt;&lt;/n0&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>link<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+10 = TEXT
+10.typolink.parameter.current = 1
+10.typolink.returnLast = url
+                                                <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;proc&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;HSC&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/HSC&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/proc&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>15<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;max&gt;</I></FONT>256<FONT COLOR="#c29336"><I>&lt;/max&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;checkbox&gt;&lt;/checkbox&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;eval&gt;</I></FONT>trim<FONT COLOR="#c29336"><I>&lt;/eval&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;wizards&gt;</I></FONT>
+                                                        <FONT COLOR="#c29336"><I>&lt;_PADDING&gt;</I></FONT>2<FONT COLOR="#c29336"><I>&lt;/_PADDING&gt;</I></FONT>
+                                                        <FONT COLOR="#c29336"><I>&lt;link&gt;</I></FONT>
+                                                                <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>popup<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+                                                                <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Link<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+                                                                <FONT COLOR="#c29336"><I>&lt;icon&gt;</I></FONT>link_popup.gif<FONT COLOR="#c29336"><I>&lt;/icon&gt;</I></FONT>
+                                                                <FONT COLOR="#c29336"><I>&lt;script&gt;</I></FONT>browse_links.php?mode=wizard<FONT COLOR="#c29336"><I>&lt;/script&gt;</I></FONT>
+                                                                <FONT COLOR="#c29336"><I>&lt;JSopenParams&gt;</I></FONT>height=300,width=500,status=0,menubar=0,scrollbars=1<FONT COLOR="#c29336"><I>&lt;/JSopenParams&gt;</I></FONT>
+                                                        <FONT COLOR="#c29336"><I>&lt;/link&gt;</I></FONT>
+                                                <FONT COLOR="#c29336"><I>&lt;/wizards&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+                                        <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Link URL<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+                                <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+                        <FONT COLOR="#008080"><B>&lt;/field_linkurl&gt;</B></FONT>
+                <FONT COLOR="#800000"><B>&lt;/el&gt;</B></FONT>
+        <FONT COLOR="#008080"><B>&lt;/ROOT&gt;</B></FONT>
+<B>&lt;/T3DataStructure&gt;</B>
+                                                </PRE>
+</DIV>
+<H3 CLASS="western">Creating a “grid” Content Element</H3>
+<P CLASS="western">With TemplaVoila you might not even need to
+consider a two-column layout of a page for something you add on the
+page template level - you can just as well integrate it with a
+content element being the placeholder for two columns. This is the
+case in the next example:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7f38d89.png" NAME="Graphic115" ALIGN=LEFT WIDTH=467 HEIGHT=297 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The mapping process is the same as above, just
+remember to clear the old mapping first...:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3d4e6708.png" NAME="Graphic116" ALIGN=LEFT WIDTH=669 HEIGHT=157 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For each field we chose  “Content Element” for
+Editing type.</P>
+<P CLASS="western">Then we save:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_424c2711.png" NAME="Graphic117" ALIGN=LEFT WIDTH=302 HEIGHT=121 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">On the page from before we can now create a new
+FCE based on the DS “FCE - 2 Columns”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m554e4ea6.png" NAME="Graphic118" ALIGN=LEFT WIDTH=502 HEIGHT=194 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Of course this will yield a form like this with
+two form fields ...</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3ce5ed3c.png" NAME="Graphic119" ALIGN=LEFT WIDTH=510 HEIGHT=309 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... which we will leave over to the Web &gt; Page
+module to fill in:</P>
+<P CLASS="western">(BUT remember to set the “Template Object”
+field!!!)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_5682d365.png" NAME="Graphic120" ALIGN=LEFT WIDTH=596 HEIGHT=314 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Of course we will move the current element into
+one of the columns as shown above (Click #1, then #2) and the result
+is:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6a42635f.png" NAME="Graphic121" ALIGN=LEFT WIDTH=599 HEIGHT=346 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">NOTICE: Forgetting the Template?</H4>
+<P CLASS="western">One thing on the ToDo list is enhancement of the
+DS / TO selection. There are some ideas. For now, just be warned - it
+is very easy to forget to set the TO value after having set the DS
+value. If you forget it you just get a blank spot - which is rather
+confusing... will change soon...</P>
+<H3 CLASS="western">Creating an alternative template for the
+2-columns FCE</H3>
+<P CLASS="western">You have done this before with the main page
+template - created an alternative TO. This basically works by
+creating just a TO and not a DS along. So instead of going to the
+File &gt; Filelist module and starting TemplaVoila's mapping engine
+from there you should just go to the sysFolder, create a TO record,
+set the template filename and map it:</P>
+<P CLASS="western"><IMG SRC="4_html_afb25d0.png" NAME="Graphic122" ALIGN=LEFT WIDTH=446 HEIGHT=222 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then to and map the TO:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_dce1108.png" NAME="Graphic123" ALIGN=LEFT WIDTH=669 HEIGHT=230 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Don't forget to include the custom style section:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m2edd6e7b.png" NAME="Graphic124" ALIGN=LEFT WIDTH=523 HEIGHT=314 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then, press “Save”.</P>
+<P CLASS="western">You might want to add icons for the TO and DS just
+like you did for the page templates.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Using the Alternative template</H4>
+<P CLASS="western">Now, edit the “2 Column” content element you
+have created:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_5631d409.png" NAME="Graphic125" ALIGN=LEFT WIDTH=669 HEIGHT=110 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then you see that there are now two templates for
+the “FCE - 2 columns” data structure:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m61e11cbd.png" NAME="Graphic127" ALIGN=LEFT WIDTH=241 HEIGHT=74 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_e18a127.png" NAME="Graphic126" ALIGN=LEFT WIDTH=493 HEIGHT=230 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">We have also added DS and TO icons here. The DS
+icons still convey the overall concept of the possibilities of the
+element while we have communicated the difference in the background
+color of the two templates for the TOs.</P>
+<H3 CLASS="western">Content Element with repetitive data objects</H3>
+<P CLASS="western">The next example is a little more advanced. The
+most trivial thing is basically the two images and the bodytext. But
+the header is a <I>graphical header</I> and below the two fixed
+images you see a list of links <I>repeated</I>, even with optional
+titles in between:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m195957c0.png" NAME="Graphic128" ALIGN=LEFT WIDTH=468 HEIGHT=691 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">So we can express the data structure that is
+needed like this:</P>
+<UL>
+	<LI><P CLASS="western">1 Header - graphical</P>
+	<LI><P CLASS="western">1 Bodytext</P>
+	<LI><P CLASS="western">2 Images</P>
+	<LI><P CLASS="western">? number of a) Title text <I>or</I> b)
+	text-link with image bullet</P>
+</UL>
+<H4 CLASS="western">Mapping the DS and TO</H4>
+<P CLASS="western">In the File &gt; Filelist module you select
+TemplaVoila for the template file “template_ce.html” and for the
+ROOT element you map to the &lt;div&gt; tag of the block:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m7e1516.png" NAME="Graphic129" ALIGN=LEFT WIDTH=416 HEIGHT=432 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Then you create the Header element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_2f607bd5.png" NAME="Graphic130" ALIGN=LEFT WIDTH=581 HEIGHT=207 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice that the header DS element has two
+significant attributes:</P>
+<UL>
+	<LI><P CLASS="western"><B>Fieldname:</B> It (re-)uses the field name
+	“field_header” - thus striving for compliance with other
+	Flexible Content Elements (so you can change type of Data Structure
+	without loosing the current header information)</P>
+	<LI><P CLASS="western"><B>Editing Type:</B> It uses “Header field,
+	Graphical” - and it will try to read image information about the
+	current graphical title for the template and use as much information
+	from that as possible in order to provide some default GIFBUILDER
+	configuration. More details later...</P>
+	<LI><P CLASS="western"><B>Mapping rules:</B> Maps only to &lt;img&gt;
+	tags.</P>
+</UL>
+<P CLASS="western">Do the mapping and you should see:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7fda8e12.png" NAME="Graphic131" ALIGN=LEFT WIDTH=669 HEIGHT=98 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, create the elements for bodytext and the two
+images (fieldnames could be “image1” and “image2”) by
+following the way you did with the cases in previous chapters:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m24889699.png" NAME="Graphic132" ALIGN=LEFT WIDTH=669 HEIGHT=185 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Creating the repeatable data objects</H4>
+<P CLASS="western">For the list of links you have to think a few
+minutes about what is required to create this; We have <I>two basic
+kinds</I>; a Title element (#1)  and a Link element (#2). We want to
+be able to create <I>any number</I> of these elements in <I>any
+order:</I></P>
+<P CLASS="western"><IMG SRC="4_html_mc144e73.png" NAME="Graphic133" ALIGN=LEFT WIDTH=258 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In order to realize the involved complexity of
+templating look at this screenshot:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m70f65904.png" NAME="Graphic134" ALIGN=LEFT WIDTH=420 HEIGHT=124 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western"><B>The two inner data objects:</B> When we
+	are going to do templating for the <I>inner data objects</I> (Title
+	and Link elements) we will map templates from only <I>one</I> of the
+	examples provided for each (#2 and #3 above) - the additional
+	examples below play no role.</P>
+	<LI><P CLASS="western"><B>Structure of each inner data object:</B>
+	Obviously the Title element will have at least a “Title” field.
+	Likewise the Link element will have at least a “Link title” and
+	“Link URL” field - ergo, we have to define each data object as a
+	<I>collection</I> of fields which go together - this is handled by
+	the DS element type called “container”.</P>
+	<P CLASS="western"><IMG SRC="4_html_4d8515dd.gif" NAME="Graphic136" ALIGN=LEFT WIDTH=24 HEIGHT=16 BORDER=0><BR CLEAR=LEFT></P>
+	<LI><P CLASS="western"><B>The container element:</B> Finally, we
+	have to remember that the dynamic content has to go into the overall
+	container element of this section (#1). This means we have to create
+	an element for this container element so such a substitution can
+	occur. This is handled by the DS element type called “section”
+	(array + section flag set).</P>
+	<P CLASS="western"><IMG SRC="4_html_62fd2548.gif" NAME="Graphic137" ALIGN=LEFT WIDTH=24 HEIGHT=16 BORDER=0><BR CLEAR=LEFT></P>
+</UL>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western"><B>Creating the “section” DS element:</B></P>
+<P CLASS="western">In the mapping process we first create a “section”
+DS element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m32833532.png" NAME="Graphic135" ALIGN=LEFT WIDTH=608 HEIGHT=136 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Notice that such a “Section” element (SC) must
+be created by first creating a “Container”  element (CO) and then
+re-editing and selecting the flag “Make this container a SECTION!”.
+See above.</P>
+<P CLASS="western">Now, do the mapping by clicking the &lt;div&gt;
+tag which the designer has gently wrapped the link list in:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m37831331.png" NAME="Graphic138" ALIGN=LEFT WIDTH=455 HEIGHT=207 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Select the “INNER” mapping mode. After doing
+that you will see the Link container section and a field to add DS
+elements on a <I>new level</I> in the structure!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_6dc6638.png" NAME="Graphic139" ALIGN=LEFT WIDTH=615 HEIGHT=123 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Create the field “field_do_title” (“do”
+for “Data Object”). This time, make it a “Container for
+elements” (but do <I>not</I> re-edit and check the section flag of
+course).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3f18bbab.png" NAME="Graphic140" ALIGN=LEFT WIDTH=468 HEIGHT=112 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And the same for “field_do_link”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m1c159c07.png" NAME="Graphic141" ALIGN=LEFT WIDTH=543 HEIGHT=141 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The result should be:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_mdd77102.png" NAME="Graphic142" ALIGN=LEFT WIDTH=669 HEIGHT=150 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, for each of the two “data objects” - or
+“Containers for elements” - you create a Title field (for the
+“Title element”) and Link title / Link URL fields for the “Link
+element”. In the case of the Link URL field you should select the
+DS Element type “Attribute” (since you want to map it to the
+attribute of an &lt;a&gt;tag; &lt;a href=””&gt;). The result will
+be:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m52012dd9.png" NAME="Graphic143" ALIGN=LEFT WIDTH=669 HEIGHT=195 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Mapping the hierarchical structure</H4>
+<P CLASS="western">Then you begin to map. For the “[CO] Title
+element” you map it into the &lt;p&gt; tag which apparently is the
+“container” tag for the text:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m5f8a53fc.png" NAME="Graphic144" ALIGN=LEFT WIDTH=280 HEIGHT=86 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice: In this case you want to make an “OUTER”
+mode mapping - since you want to include the &lt;p&gt; tags in the
+Title element container:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_2de000f9.png" NAME="Graphic145" ALIGN=LEFT WIDTH=195 HEIGHT=146 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, you do the same for the Link element, also
+clicking the &lt;p&gt; tag which contains the whole data object:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m51b07563.png" NAME="Graphic147" ALIGN=LEFT WIDTH=266 HEIGHT=89 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Do the same as for the Title element regarding
+mapping mode; make sure to select “OUTER” (which includes the &lt;p&gt;
+tag as a part of the section.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally, map the header, titles and links
+attributes (as you have done before):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m2d6734a9.png" NAME="Graphic148" ALIGN=LEFT WIDTH=669 HEIGHT=200 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">For “Link header”, click the &lt;p&gt; tag:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m2b8608c2.png" NAME="Graphic149" ALIGN=LEFT WIDTH=288 HEIGHT=75 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For “Link title”, click the &lt;a&gt; tag:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3f991b09.png" NAME="Graphic150" ALIGN=LEFT WIDTH=220 HEIGHT=95 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For “Link URL” click the &lt;a&gt; (like
+above) and select the “ATTRIBUTE href”:</P>
+<P CLASS="western"><IMG SRC="4_html_741a4265.png" NAME="Graphic151" ALIGN=LEFT WIDTH=273 HEIGHT=125 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The mapping is complete and you should see this
+result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3c57d8a7.png" NAME="Graphic152" ALIGN=LEFT WIDTH=669 HEIGHT=188 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, save the DS and TO you have build. Click the
+Save button and then enter a new name:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_3126c08.png" NAME="Graphic153" ALIGN=LEFT WIDTH=343 HEIGHT=142 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Creating a content element using the new DS / TO</H4>
+<P CLASS="western">Well, create a Flexible Content Elements with the
+Data Structure “Header/Text/2xImage/XxLinks” (you might have
+found a better name by now!):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m47e03d35.png" NAME="Graphic154" ALIGN=LEFT WIDTH=436 HEIGHT=197 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">After saving the element you will see this form:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m239149b0.png" NAME="Graphic155" ALIGN=LEFT WIDTH=669 HEIGHT=646 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">We have filled in the form with dummy content as
+you can see. For the Header, Bodytext and the two image fields you
+see nothing new really - except the amazing fact that this totally
+improvised data structure is impossible without adding fields to the
+database but solely with a Data Structure definition saving the
+content into XML... :-)</P>
+<P CLASS="western">But there are two things you should notice
+especially;</P>
+<UL>
+	<LI><P CLASS="western">#1: <I>Make sure </I>to select the Template
+	Object - as always!</P>
+	<LI><P CLASS="western">#2: At the bottom of the form you will see a
+	selector box representing our “Section” element - the overall
+	container for the link section.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Creating multiple data objects in random order
+and amount</H4>
+<P CLASS="western">Open the “Link section container” selector.
+What you see is the two  “data objects”; “Title element” and
+“Link element”:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_7e01dbc6.png" NAME="Graphic156" ALIGN=LEFT WIDTH=381 HEIGHT=84 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For each time you add one of these elements you
+have to save the form. And unfortunately the handling of the order is
+not that flexible at the moment; you are currently working on beta
+version of FlexForms.</P>
+<P CLASS="western">After creating some elements you will see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m68cabab2.png" NAME="Graphic157" ALIGN=LEFT WIDTH=669 HEIGHT=228 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The interface is still a little confusing visually
+but we will soon improve it. Anyways, you can clearly see that we
+have created a link header and two links.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">All you need now is to view the element in the
+frontend. Should look like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_4c84a53f.png" NAME="Graphic158" ALIGN=LEFT WIDTH=512 HEIGHT=583 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see the links are there... :-)</P>
+<H3 CLASS="western">Creating a “pseudo-record” list</H3>
+<P CLASS="western">This example is basically another example of
+hierarchical data structures. This is your second chance to practice
+and understand the principles from the former case with “repetitive
+data objects”.</P>
+<P CLASS="western">In this case we will implement this design as a
+single content element:</P>
+<P CLASS="western"><IMG SRC="4_html_m308418f4.png" NAME="Graphic159" ALIGN=LEFT WIDTH=560 HEIGHT=544 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">We can express the data structure that is needed
+like this:</P>
+<UL>
+	<LI VALUE=1><P CLASS="western">1 Header</P>
+	<LI><P CLASS="western">1 Description</P>
+	<LI><P CLASS="western">? number of “movie-element” consisting of</P>
+	<UL>
+		<LI><P CLASS="western">Title</P>
+		<LI><P CLASS="western">Description</P>
+		<LI><P CLASS="western">Link URL</P>
+		<LI><P CLASS="western">Image (fixed dimensions)</P>
+	</UL>
+</UL>
+<P CLASS="western">Contrary to the former element where we had either
+a title or a link as data objects we have only one type here; the
+“movie-element”.</P>
+<P CLASS="western">Let's begin the creating of the Data Structure
+(DS) / first Template Object (TO).</P>
+<H4 CLASS="western">Creating the DS / TO</H4>
+<P CLASS="western">The ROOT element of the DS is mapped to the DIV
+tag which has been placed there for that purpose. The header and
+description fields are mapped to the &lt;h1&gt; and &lt;em&gt; tags
+respectively.</P>
+<P CLASS="western"><IMG SRC="4_html_329adc20.png" NAME="Graphic160" ALIGN=LEFT WIDTH=271 HEIGHT=167 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The DS looks like this now:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m1645ca01.png" NAME="Graphic161" ALIGN=LEFT WIDTH=669 HEIGHT=107 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(Notice, the all have INNER mode which is the most
+typical when mapping content into HTML).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Next steps is to create a new Section element in
+the data structure. Remember the process; First create a “Container”
+type element, then edit the settings and check the “Section”
+flag. The Data Structure should look like this now:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m680bcb51.png" NAME="Graphic162" ALIGN=LEFT WIDTH=669 HEIGHT=139 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, map the two elements. The Section element
+(field_list) must be mapped to the inside of the HTML element which
+should wrap around the repeated movie elements inside. When we click
+the Map button we see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m2d685727.png" NAME="Graphic163" ALIGN=LEFT WIDTH=304 HEIGHT=284 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Normally, mapping to  the &lt;table&gt; tag would
+be a good choice (#1) since that wraps the table rows which are
+repeatable. However we would loose the header row then! Bummer! So
+instead you map the Section element to the <I>second</I> &lt;tr&gt;
+tag (#2 - first content row) and in the Action selector you select
+the last of the RANGE types:</P>
+<P CLASS="western"><IMG SRC="4_html_3cd3a870.png" NAME="Graphic164" ALIGN=LEFT WIDTH=220 HEIGHT=177 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This actually means that your mapping will span
+over several HTML elements on the same level effectively cutting out
+all the table rows except the header row! Cool, eh!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Next, you are going to map the movie element
+(field_movie_el) and again you will have to use the RANGE action for
+mapping since each movie element must contain two table rows; the
+spacer row above the element and the element row itself. That is no
+problem though, using the technique from before:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m3c6dbaf2.png" NAME="Graphic165" ALIGN=LEFT WIDTH=522 HEIGHT=238 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">After clicking the first row, you select the range
+to be the next row:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_8f2a8d8.png" NAME="Graphic166" ALIGN=LEFT WIDTH=204 HEIGHT=153 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The result of the mapping looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m562249df.png" NAME="Graphic167" ALIGN=LEFT WIDTH=669 HEIGHT=82 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Finally, you create the four field types inside
+the movie element:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_c3e0cc1.png" NAME="Graphic168" ALIGN=LEFT WIDTH=626 HEIGHT=156 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Editing Types used:</P>
+<OL>
+	<LI><P CLASS="western">The Title element (field_title) was a “Plain
+	input field”</P>
+	<LI><P CLASS="western">The Description element (field_description)
+	was a “Text area for bodytext“</P>
+	<LI><P CLASS="western">The Link URL field (field_linkurl) was a
+	“Link field” (and notice the DS element type is “Attribute”!)</P>
+	<LI><P CLASS="western">The Icon Image field (field_image) was a
+	“Image field, fixed WxH”</P>
+</OL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Each element should be mapped according to this
+(match the numbers with above list!):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_4fbaf531.png" NAME="Graphic169" ALIGN=LEFT WIDTH=568 HEIGHT=319 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Mapping #1 and #2 is the INNER type (content
+should go INTO the tag), mapping #3 is fixed to OUTER (no other
+options for an image tag) and mapping #4 is an attribute, should be
+the “href” of the &lt;a&gt; tag. Result looks like:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_1defae5d.png" NAME="Graphic170" ALIGN=LEFT WIDTH=628 HEIGHT=264 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Except the fact that I have been too lazy to
+provide mapping instructions (important information for someone who
+is going to map a second TO) and sample data this looks good. Now
+click “Save”, give it a name and that's it.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_1d81949f.png" NAME="Graphic171" ALIGN=LEFT WIDTH=365 HEIGHT=164 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Testing the new Content Element</H4>
+<P CLASS="western">Create a new content element of the “Flexible
+Content” type and select “Movie listing” as Data Structure.
+Then fill it in with content - and don't forget to select the
+template object as well!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m57567d6.png" NAME="Graphic172" ALIGN=LEFT WIDTH=605 HEIGHT=661 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In the frontend you will see something like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_62ae26c3.png" NAME="Graphic173" ALIGN=LEFT WIDTH=429 HEIGHT=344 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Fixing the stylesheet</H4>
+<P CLASS="western">One final thing - we forgot to include any special
+parts of the header for this element - apparently the styles does not
+match the ones in the template file. So enter TemplaVoila by clicking
+the icon of the Template Object:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m11e71664.png" NAME="Graphic174" ALIGN=LEFT WIDTH=285 HEIGHT=212 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then select “Select HTML header parts” and
+click the checkbox at the last stylesheet (which apparently is
+specially designed for this particular content element!)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_64d76fad.png" NAME="Graphic175" ALIGN=LEFT WIDTH=664 HEIGHT=227 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Clear cache and check the frontend again; this
+fixes the problem... :-)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_30c35585.png" NAME="Graphic176" ALIGN=LEFT WIDTH=527 HEIGHT=461 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Miscellaneous</H2>
+<H3 CLASS="western">Working with TypoScript inside of Data Structures</H3>
+<P CLASS="western">When you map an element from a Data Structure to a
+position in HTML it is expect that some dynamic content is inserted
+in that position at render time. There are various ways of determine
+the output:</P>
+<UL>
+	<LI><P CLASS="western">By default the field content is inserted
+	directly. Possibly configured with a few available flags like
+	“htmlspecialchars()” processing, integer conversion or passing
+	to stdWrap function (known from TypoScript)</P>
+	<LI><P CLASS="western">Alternatively, you can enter a TypoScript
+	content object array (COA) which will be executed. This can be used
+	for building menus, graphics or just plain processing if you please.
+	In this way you work with TypoScript in the context where it is
+	used.</P>
+	<LI><P CLASS="western">Alternatively, you can also call a TypoScript
+	object path from the main TypoScript Template of your website. This
+	means you keep your TypoScript at a central place.</P>
+</UL>
+<H4 CLASS="western">Default pass-through of content</H4>
+<P CLASS="western">In this example the content of the field
+“field_paragraph” is processed only by htmlspecialchars() because
+the &lt;HSC&gt; tag is set in line 106:</P>
+<PRE CLASS="western"><FONT COLOR="#000000">  98:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_paragraph&gt;</B></FONT>
+<FONT COLOR="#000000">  99:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000"> 100:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Paragraph<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000"> 101:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+<FONT COLOR="#000000"> 102:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;n0&gt;&lt;/n0&gt;</I></FONT>
+<FONT COLOR="#000000"> 103:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+<FONT COLOR="#000000"> 104:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;eType&gt;</I></FONT>text<FONT COLOR="#c29336"><I>&lt;/eType&gt;</I></FONT>
+<FONT COLOR="#000000"> 105:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;proc&gt;</I></FONT>
+<FONT COLOR="#000000"> 106:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;HSC&gt;</I></FONT>1<FONT COLOR="#c29336"><I>&lt;/HSC&gt;</I></FONT>
+<FONT COLOR="#000000"> 107:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/proc&gt;</I></FONT>
+<FONT COLOR="#000000"> 108:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#ff6600"><B>...</B></FONT>
+<FONT COLOR="#000000"> 117:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_paragraph&gt;</B></FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The options for default processing in the &lt;proc&gt;
+tag applies to all content (even that coming from TypoScript or
+TypoScript Object path tags) outputted and the options are:</P>
+<UL>
+	<LI><P CLASS="western">&lt;int&gt; (boolean) - Forcing to integer
+	before output</P>
+	<LI><P CLASS="western">&lt;HSC&gt; (boolean) - Passing through the
+	PHP function “htmlspecialchars()” which will provide protection
+	for use of HTML and XSS attacks.</P>
+	<LI><P CLASS="western">&lt;stdWrap&gt; (array) - stdWrap processing</P>
+</UL>
+<H4 CLASS="western">TypoScript object path</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Image processing</H4>
+<P CLASS="western">You can also use the &lt;TypoScript&gt; tag to
+perform processing on the values.</P>
+<P CLASS="western">Before writing TypoScript you will need to know
+that</P>
+<UL>
+	<LI><P CLASS="western">The value of the tag in the context of that
+	TypoScript is found as the “current value” in TypoScript.</P>
+	<LI><P CLASS="western">The value of all tags in the Data Structure
+	from the same level is found in the internal data array and can be
+	addressed with the “.field” attribute of stdWrap</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   9:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_image&gt;</B></FONT>
+<FONT COLOR="#000000">  10:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  11:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Image<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000">  12:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;tags&gt;</I></FONT>img<FONT COLOR="#c29336"><I>&lt;/tags&gt;</I></FONT>
+<FONT COLOR="#000000">  13:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  14:</FONT> 10 = IMAGE
+<FONT COLOR="#000000">  15:</FONT> 10.file.import = uploads/tx_templavoila/
+<FONT COLOR="#000000">  16:</FONT> 10.file.import.current = 1
+<FONT COLOR="#000000">  17:</FONT> 10.file.import.listNum = 0
+<FONT COLOR="#000000">  18:</FONT> 10.file.maxW = 266
+<FONT COLOR="#000000">  19:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  20:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000"><B>...</B></FONT><FONT COLOR="#ff6600"><B><BR></B></FONT><FONT COLOR="#000000">  35:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_image&gt;</B></FONT></PRE><P CLASS="western">
+In the example above you can see how the field “field_image” from
+the Data Structure is processed as if it contains an image. The
+TypoScript configures the path of the image (line 15), loads the
+“current” value (line 16) and selects the first image in the list
+(should there be more than one) (line 17) and finally the maximum
+width is set to 266 (line 18)</P>
+<P CLASS="western">When you select “Editing Types” during the
+kickstarting process of DS/TOs this kind of default TypoScript
+configurations is what you get! You can always edit the Data
+Structure and change them to whatever you need them to do!</P>
+<H4 CLASS="western">Graphical headers</H4>
+<P CLASS="western">Now comes a more complicated example. The code
+here combines two fields into one rendering of a graphical headline
+where the content of both fields will show up. 
+</P>
+<P CLASS="western">Lets look at the code listing:</P>
+<PRE CLASS="western"><FONT COLOR="#000000">  36:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_header&gt;</B></FONT>
+<FONT COLOR="#000000">  37:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  38:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Header1<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000">  39:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;sample_data&gt;</I></FONT>
+<FONT COLOR="#000000">  40:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;n0&gt;</I></FONT>Lorem Ipsum Dolor<FONT COLOR="#c29336"><I>&lt;/n0&gt;</I></FONT>
+<FONT COLOR="#000000">  41:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/sample_data&gt;</I></FONT>
+<FONT COLOR="#000000">  42:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;tags&gt;</I></FONT>img<FONT COLOR="#c29336"><I>&lt;/tags&gt;</I></FONT>
+<FONT COLOR="#000000">  43:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript_constants&gt;</I></FONT>
+<FONT COLOR="#000000">  44:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;textColor&gt;</I></FONT>black<FONT COLOR="#c29336"><I>&lt;/textColor&gt;</I></FONT>
+<FONT COLOR="#000000">  45:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;text2Color&gt;</I></FONT>{$_CONSTANTS.colorSet.gray7}<FONT COLOR="#c29336"><I>&lt;/text2Color&gt;</I></FONT>
+<FONT COLOR="#000000">  46:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;backColor&gt;</I></FONT>{$_CONSTANTS.colorSet.white}<FONT COLOR="#c29336"><I>&lt;/backColor&gt;</I></FONT>
+<FONT COLOR="#000000">  47:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript_constants&gt;</I></FONT>
+<FONT COLOR="#000000">  48:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  49:</FONT> 10 = IMAGE
+<FONT COLOR="#000000">  50:</FONT> 10.file = GIFBUILDER
+<FONT COLOR="#000000">  51:</FONT> 10.file {                           
+<FONT COLOR="#000000">  52:</FONT>   XY = 200,45
+<FONT COLOR="#000000">  53:</FONT>   backColor = {$backColor}
+<FONT COLOR="#000000">  54:</FONT> 
+<FONT COLOR="#000000">  55:</FONT>   10 = TEXT
+<FONT COLOR="#000000">  56:</FONT>   10.text.current = 1
+<FONT COLOR="#000000">  57:</FONT>   10.text.case = upper
+<FONT COLOR="#000000">  58:</FONT>   10.fontColor = {$textColor}
+<FONT COLOR="#000000">  59:</FONT>   10.fontFile =  {$TSconst.font_bold}
+<FONT COLOR="#000000">  60:</FONT>   10.niceText = 1
+<FONT COLOR="#000000">  61:</FONT>   10.offset = {$textPosition}
+<FONT COLOR="#000000">  62:</FONT>   10.fontSize = 20        
+<FONT COLOR="#000000">  63:</FONT> 
+<FONT COLOR="#000000">  64:</FONT>   20 = TEXT
+<FONT COLOR="#000000">  65:</FONT>   20.text.field = field_header2
+<FONT COLOR="#000000">  66:</FONT>   20.text.case = upper
+<FONT COLOR="#000000">  67:</FONT>   20.fontColor = {$text2Color}
+<FONT COLOR="#000000">  68:</FONT>   20.fontFile =  {$TSconst.font_light}
+<FONT COLOR="#000000">  69:</FONT>   20.niceText = 1
+<FONT COLOR="#000000">  70:</FONT>   20.offset = {$text2Position}
+<FONT COLOR="#000000">  71:</FONT>   20.fontSize = 18
+<FONT COLOR="#000000">  72:</FONT> }
+<FONT COLOR="#000000">  73:</FONT>                                                           <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  74:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  75:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  76:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+<FONT COLOR="#000000">  77:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+<FONT COLOR="#000000">  78:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>48<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+<FONT COLOR="#000000">  79:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;eval&gt;</I></FONT>trim<FONT COLOR="#c29336"><I>&lt;/eval&gt;</I></FONT>
+<FONT COLOR="#000000">  80:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+<FONT COLOR="#000000">  81:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Header (colored)<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+<FONT COLOR="#000000">  82:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  83:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_header&gt;</B></FONT>
+<FONT COLOR="#000000">  84:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_header2&gt;</B></FONT>
+<FONT COLOR="#000000">  85:</FONT>                           <FONT COLOR="#000080"><B>&lt;type&gt;</B></FONT>no_map<FONT COLOR="#000080"><B>&lt;/type&gt;</B></FONT>
+<FONT COLOR="#000000">  86:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  87:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Header2<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000">  88:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  89:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  90:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;config&gt;</I></FONT>
+<FONT COLOR="#000000">  91:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;type&gt;</I></FONT>input<FONT COLOR="#c29336"><I>&lt;/type&gt;</I></FONT>
+<FONT COLOR="#000000">  92:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;size&gt;</I></FONT>48<FONT COLOR="#c29336"><I>&lt;/size&gt;</I></FONT>
+<FONT COLOR="#000000">  93:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;eval&gt;</I></FONT>trim<FONT COLOR="#c29336"><I>&lt;/eval&gt;</I></FONT>
+<FONT COLOR="#000000">  94:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/config&gt;</I></FONT>
+<FONT COLOR="#000000">  95:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;label&gt;</I></FONT>Subheader (gray)<FONT COLOR="#c29336"><I>&lt;/label&gt;</I></FONT>
+<FONT COLOR="#000000">  96:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/TCEforms&gt;</B></FONT>
+<FONT COLOR="#000000">  97:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_header2&gt;</B></FONT></PRE><P CLASS="western">
+The two fields are “field_header” and “field_header2”.</P>
+<UL>
+	<LI><P CLASS="western">Notice how the “&lt;type&gt;” of
+	“field_header2” is set to “no_map” - this is done because
+	this field in the Data Structure exists only for backend input to
+	support the rendering of “field_header” which is mapped to the
+	HTML template!</P>
+	<LI><P CLASS="western">In line 55 and 64 a “TEXT” GIFBUILDER is
+	created, one for each field.</P>
+	<LI><P CLASS="western">In line 56 the “current value” is loaded
+	for the first TEXT object - thus getting the value of “field_header”</P>
+	<LI><P CLASS="western">In line 65 the value of the field
+	“field_header2” is fetched by the “.field” attribute of
+	TypoScript - we can do that because all values of the tags on the
+	same level as “field_header” is found internally in cObj-&gt;data
+	array</P>
+</UL>
+<H4 CLASS="western">TypoScript Constants in Data Structures</H4>
+<P CLASS="western">In the above example you can also see how certain
+values in the TypoScript code comes from <I>constants</I><SPAN STYLE="font-style: normal">
+(lines 53, 58, 59, 61, 67, 68 and 70)</SPAN>. This is as we know it
+from TypoScript Template records - but the constants are coming from
+the <I>local scope</I> of this TypoScript code! That means only the
+constants defined by the tags in line 44-46 can be used! That means
+{$textColor}, {$text2Color}, {$backColor}</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>Constants in Constants</B></P>
+<P CLASS="western">In line 43-47 you can also see that some of these
+constants are referring back to other values, for example
+“{$_CONSTANTS.colorSet.white}” - these values are object paths
+pointing to the TypoScript Template <I>Setup field</I> (<I>not</I>
+the Constants field!)</P>
+<P CLASS="western">In this case those value would be found in the
+TypoScript Object Tree at these positions:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_17768b5a.png" NAME="Graphic177" ALIGN=LEFT WIDTH=353 HEIGHT=341 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">These values are set by first setting this in the
+Constants field of the TypoScript Template record:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I># Define color sets:</I></FONT>
+<FONT COLOR="#0000cc">colorSet.gray1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#B4B3B3</FONT>
+<FONT COLOR="#0000cc">colorSet.gray2</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#333333</FONT>
+<FONT COLOR="#0000cc">colorSet.gray3</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#eeeeee</FONT>
+<FONT COLOR="#0000cc">colorSet.gray4</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#F7F7F7</FONT>
+<FONT COLOR="#0000cc">colorSet.gray5</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#555555</FONT>
+<FONT COLOR="#0000cc">colorSet.gray6</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#444444</FONT>
+<FONT COLOR="#0000cc">colorSet.gray7</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#828282</FONT>
+
+<FONT COLOR="#0000cc">colorSet.red</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#E80C0E</FONT>
+<FONT COLOR="#0000cc">colorSet.orange</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#FF7200</FONT>
+<FONT COLOR="#0000cc">colorSet.TO1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#BA3957</FONT>
+<FONT COLOR="#0000cc">colorSet.TO2</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#217EA1</FONT>
+<FONT COLOR="#0000cc">colorSet.TO3</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#849724</FONT>
+<FONT COLOR="#0000cc">colorSet.TO4</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#608375</FONT>
+<FONT COLOR="#0000cc">colorSet.TO5</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#7469A4</FONT>
+<FONT COLOR="#0000cc">colorSet.TO6</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#96AA00</FONT>
+<FONT COLOR="#0000cc">colorSet.white</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">#FFFFFF</FONT>
+
+<FONT COLOR="#666666"><I># Define font sets:</I></FONT>
+<FONT COLOR="#0000cc">font.light</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">EXT:user_3dsplm/fonts/FRANGWC_.TTF</FONT>
+<FONT COLOR="#0000cc">font.medium</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">EXT:user_3dsplm/fonts/FRANGMC_.TTF</FONT>
+<FONT COLOR="#0000cc">font.bold</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">EXT:user_3dsplm/fonts/FRANGDC_.TTF</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Then in the Setup field of the Template Record you
+will find these lines:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#666666"><I># Moving constants into the Setup scope (for use from PHP scripts and Template Objects)</I></FONT>
+<FONT COLOR="#0000cc">_CONSTANTS.colorSet</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">gray1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray1}</FONT>
+  <FONT COLOR="#0000cc">gray2</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray2}</FONT>
+  <FONT COLOR="#0000cc">gray3</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray3}</FONT>
+  <FONT COLOR="#0000cc">gray4</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray4}</FONT>
+  <FONT COLOR="#0000cc">gray5</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray5}</FONT>
+  <FONT COLOR="#0000cc">gray6</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray6}</FONT>
+  <FONT COLOR="#0000cc">gray7</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray7}</FONT>
+  <FONT COLOR="#0000cc">red</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.red}</FONT>
+  <FONT COLOR="#0000cc">orange</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.orange}</FONT>
+  <FONT COLOR="#0000cc">TO1</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO1}</FONT>
+  <FONT COLOR="#0000cc">TO2</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO2}</FONT>
+  <FONT COLOR="#0000cc">TO3</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO3}</FONT>
+  <FONT COLOR="#0000cc">TO4</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO4}</FONT>
+  <FONT COLOR="#0000cc">TO5</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO5}</FONT>
+  <FONT COLOR="#0000cc">TO6</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.TO6}</FONT>
+  <FONT COLOR="#0000cc">white</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.white}</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT>
+<FONT COLOR="#0000cc">_CONSTANTS.font</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">light</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.light}</FONT>
+  <FONT COLOR="#0000cc">medium</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.medium}</FONT>
+  <FONT COLOR="#0000cc">bold</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.bold}</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><B>Constants directly from the Setup field</B></P>
+<P CLASS="western">Finally in line 59 and 68 the constant has a
+special prefix, “TSconst.” and when that is found the constant is
+a reference to the object path
+“plugin.tx_templavoila_pi1.[constant]”, thus in this case
+“plugin.tx_templavoila_pi1.TSconst.font_bold”</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="4_html_m1160ab46.png" NAME="Graphic178" ALIGN=LEFT WIDTH=484 HEIGHT=246 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">These values were also set from constants in the
+TypoScript Template record (see above):</P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">plugin.tx_templavoila_pi1.TSconst</FONT> <FONT COLOR="#000000"><B>{</B></FONT>
+  <FONT COLOR="#0000cc">font_light</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.light}</FONT>
+  <FONT COLOR="#0000cc">font_medium</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.medium}</FONT>
+  <FONT COLOR="#0000cc">font_bold</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$font.bold}</FONT>
+  <FONT COLOR="#0000cc">color_red</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.red}</FONT>
+  <FONT COLOR="#0000cc">color_white</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.white}</FONT>
+  <FONT COLOR="#0000cc">color_gray4</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">{$colorSet.gray4}</FONT>
+<FONT COLOR="#000000"><B>}</B></FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">These options might seem a bit confusing but the
+implementation is like this for performance reasons. You will most
+likely think that the logic is to set object paths from the
+TypoScript Constants field, not the Setup field. However this is not
+possible at render-time since constants are substituted in TypoScript
+at parse time (and that result is cached).</P>
+<P CLASS="western">Therefore if you want  to channel TypoScript
+Constants into your Data Structures you should set the constants in
+object paths (like “_CONSTANTS.colorSet.white”) from where you
+can insert them into the constants defined in &lt;TypoScript_constants&gt;
+</P>
+<H4 CLASS="western">Overriding values from Template Objects</H4>
+<P CLASS="western">Mainly, processing instructions of all kinds are
+stored in the Data Structures. However if can be necessary to
+override some of these values from the Template Objects. That is
+easily done by setting alternative values for the tags inside the
+&lt;tx_templavoila&gt; tag of a Data Structure using the “Local
+Processing (XML)” field of Template Objects:</P>
+<P CLASS="western"><IMG SRC="4_html_m42334a0f.png" NAME="Graphic179" ALIGN=LEFT WIDTH=432 HEIGHT=446 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The XML content looks like this in color markup:</P>
+<PRE CLASS="western"><FONT COLOR="#000000">   1:</FONT> <B>&lt;T3DataStructure&gt;</B>
+<FONT COLOR="#000000">   2:</FONT>   <FONT COLOR="#008080"><B>&lt;ROOT&gt;</B></FONT>
+<FONT COLOR="#000000">   3:</FONT>           <FONT COLOR="#800000"><B>&lt;el&gt;</B></FONT>
+<FONT COLOR="#000000">   4:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_header&gt;</B></FONT>
+<FONT COLOR="#000000">   5:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">   6:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript_constants&gt;</I></FONT>
+<FONT COLOR="#000000">   7:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;textXY&gt;</I></FONT>266,50<FONT COLOR="#c29336"><I>&lt;/textXY&gt;</I></FONT>
+<FONT COLOR="#000000">   8:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;textColor&gt;</I></FONT>{$_CONSTANTS.colorSet.TO3}<FONT COLOR="#c29336"><I>&lt;/textColor&gt;</I></FONT>
+<FONT COLOR="#000000">   9:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;textPosition&gt;</I></FONT>0,21<FONT COLOR="#c29336"><I>&lt;/textPosition&gt;</I></FONT>
+<FONT COLOR="#000000">  10:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;text2Position&gt;</I></FONT>0,42<FONT COLOR="#c29336"><I>&lt;/text2Position&gt;</I></FONT>
+<FONT COLOR="#000000">  11:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript_constants&gt;</I></FONT>
+<FONT COLOR="#000000">  12:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  13:</FONT> 10 = IMAGE
+<FONT COLOR="#000000">  14:</FONT> 10.file = GIFBUILDER
+<FONT COLOR="#000000">  15:</FONT> 10.file {                           
+<FONT COLOR="#000000">  16:</FONT>   XY = {$textXY}
+<FONT COLOR="#000000">  17:</FONT>   backColor = {$backColor}
+<FONT COLOR="#000000">  18:</FONT> 
+<FONT COLOR="#000000">  19:</FONT>   10 = TEXT
+<FONT COLOR="#000000">  20:</FONT>   10.text.current = 1
+<FONT COLOR="#000000">  21:</FONT>   10.text.case = upper
+<FONT COLOR="#000000">  22:</FONT>   10.fontColor = {$textColor}
+<FONT COLOR="#000000">  23:</FONT>   10.fontFile =  EXT:user_3dsplm/fonts/FRANGDC_.TTF
+<FONT COLOR="#000000">  24:</FONT>   10.niceText = 1
+<FONT COLOR="#000000">  25:</FONT>   10.offset = {$textPosition}
+<FONT COLOR="#000000">  26:</FONT>   10.fontSize = 18
+<FONT COLOR="#000000">  27:</FONT> 
+<FONT COLOR="#000000">  28:</FONT>   20 = TEXT
+<FONT COLOR="#000000">  29:</FONT>   20.text.field = field_header2
+<FONT COLOR="#000000">  30:</FONT>   20.text.case = upper
+<FONT COLOR="#000000">  31:</FONT>   20.fontColor = {$text2Color}
+<FONT COLOR="#000000">  32:</FONT>   20.fontFile =  EXT:user_3dsplm/fonts/FRANGWC_.TTF
+<FONT COLOR="#000000">  33:</FONT>   20.niceText = 1
+<FONT COLOR="#000000">  34:</FONT>   20.offset = {$text2Position}
+<FONT COLOR="#000000">  35:</FONT>   20.fontSize = 18
+<FONT COLOR="#000000">  36:</FONT> }
+<FONT COLOR="#000000">  37:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  38:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  39:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_header&gt;</B></FONT>
+<FONT COLOR="#000000">  40:</FONT>           <FONT COLOR="#800000"><B>&lt;/el&gt;</B></FONT>
+<FONT COLOR="#000000">  41:</FONT>   <FONT COLOR="#008080"><B>&lt;/ROOT&gt;</B></FONT>
+<FONT COLOR="#000000">  42:</FONT> <B>&lt;/T3DataStructure&gt;</B></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice that all values overriding the Data
+Structure is at the <I>exact same location</I> of the XML structure
+as they are in the Data Structure XML!</P>
+<P CLASS="western">In this example lines 7- 10 overrides the
+constants with other colors.</P>
+<P CLASS="western">Further the TypoScript is even changed (although
+that is usually not needed if you use constants correctly) in lines
+13 - 36</P>
+<H4 CLASS="western">Loading and restoring TypoScript register values</H4>
+<P CLASS="western">Assume that you are creating a page template with
+two areas of content of differing width. Normally you set one global
+setting for the maximum image width in the Constants setup of your
+templates:</P>
+<PRE CLASS="western"><FONT COLOR="#0000cc">styles.content.imgtext.maxW</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">600</FONT>
+<FONT COLOR="#0000cc">styles.content.imgtext.maxWInText</FONT> <FONT COLOR="#000000"><B>=</B></FONT> <FONT COLOR="#cc0000">300</FONT></PRE><P CLASS="western">
+However, you want to override this value when content is rendered
+inside the smaller of the two columns (since that was designed for
+secondary content. 
+</P>
+<P CLASS="western">This is easily done by a small modification to the
+field in the Data Structure which renders the content elements
+inside:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"><FONT COLOR="#000000">  13:</FONT>                   <FONT COLOR="#008080"><B>&lt;field_ce_right&gt;</B></FONT>
+<FONT COLOR="#000000">  14:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000">  15:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;title&gt;</I></FONT>Right Column<FONT COLOR="#c29336"><I>&lt;/title&gt;</I></FONT>
+<FONT COLOR="#000000"><I>...</I></FONT>
+<FONT COLOR="#000000">  20:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  21:</FONT> 
+<FONT COLOR="#000000">  22:</FONT> 5 = LOAD_REGISTER
+<FONT COLOR="#000000">  23:</FONT> 5.maxImageWidthInText = 100
+<FONT COLOR="#000000">  24:</FONT> 5.maxImageWidth = 180
+<FONT COLOR="#000000">  25:</FONT> 
+<FONT COLOR="#000000">  26:</FONT> 10= RECORDS
+<FONT COLOR="#000000">  27:</FONT> 10.source.current=1
+<FONT COLOR="#000000">  28:</FONT> 10.tables = tt_content
+<FONT COLOR="#000000">  29:</FONT> 
+<FONT COLOR="#000000">  30:</FONT> 15 = RESTORE_REGISTER
+<FONT COLOR="#000000">  31:</FONT> 
+<FONT COLOR="#000000">  32:</FONT>                                           <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  33:</FONT>                           <FONT COLOR="#ff6600"><B>&lt;/tx_templavoila&gt;</B></FONT>
+<FONT COLOR="#000000"><B>...</B></FONT>
+<FONT COLOR="#000000">  46:</FONT>                   <FONT COLOR="#008080"><B>&lt;/field_ce_right&gt;</B></FONT></PRE><P CLASS="western">
+In this example line 26-28 is what you normally find as preset
+TypoScript rendering when you select the Editing Type “Content
+Elements”. Line 22-24 on the other hand is manually inserted and
+will load the internal registers with values that will override the
+settings from the Constants while rendering content inside this
+column. Line 30 makes sure to restore the old state again.</P>
+<H4 CLASS="western">Using CDATA</H4>
+<P CLASS="western">When editing TypoScript in Data Structures you
+might quickly find it very useful to wrap the content in CDATA tags
+to avoid parsing of the content. This is true especially when you
+enter HTML codes for wrapping etc.</P>
+<P CLASS="western">Using the CDATA tags looks like this (line 13 and
+17):</P>
+<PRE CLASS="western"><FONT COLOR="#000000">  12:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  13: &lt;![CDATA[</FONT>
+<FONT COLOR="#000000">  14: 10 = TEXT</FONT>
+<FONT COLOR="#000000">  15: 10.current = 1</FONT>
+<FONT COLOR="#000000">  16: 10.wrap = &lt;b&gt; | &lt;/b&gt;</FONT>
+<FONT COLOR="#000000">  17: ]]&gt;</FONT>
+<FONT COLOR="#000000">  18:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT></PRE><P CLASS="western">
+The alternative looks like this (using the HTML entities &amp;lt; and
+&amp;gt; for &lt; and &gt;):</P>
+<PRE CLASS="western"><FONT COLOR="#000000">  12:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;TypoScript&gt;</I></FONT>
+<FONT COLOR="#000000">  13:</FONT> 10 = TEXT
+<FONT COLOR="#000000">  14:</FONT> 10.current = 1
+<FONT COLOR="#000000">  15:</FONT> 10.wrap = &amp;gt;b&amp;lt; | &amp;gt;/b&amp;lt;
+<FONT COLOR="#000000">  16:</FONT>                                   <FONT COLOR="#c29336"><I>&lt;/TypoScript&gt;</I></FONT></PRE><H3 CLASS="western">
+Hints about mapping</H3>
+<P CLASS="western">The mapping from TemplaVoila is designed to work
+without anything but pure HTML. However if you rearrange elements in
+the HTML source and wants to do a re-mapping you might find that
+everything fails. Therefore it is a good idea to “tag”
+cornerstone elements with an “id” attribute or class attribute.
+These are a part of the “HTML-path” which is used to identify an
+element in a template. And if you use ids at strategically good
+places (like the wrapping &lt;div&gt; elements in the
+template_ce.html) you will come a long way.</P>
+<H4 CLASS="western">Cached templates</H4>
+<P CLASS="western">Also notice; if a template file changes or even is
+deleted, the Template Objects will still work since they <I>cache</I>
+a parsed version of the mapped template in the moment you save them!
+Therefore they are very robust and only missing images, stylesheets
+etc. used by the templates will break.</P>
+<P CLASS="western">Other features than mandatory caching will come
+later.</P>
+<H2 CLASS="western" STYLE="page-break-before: always">ToDo of
+TemplaVoila</H2>
+<P CLASS="western">The todo list is in the extension, doc/TODO.txt</P>
+<P CLASS="western">However here are a few major things which does not
+work fully yet:</P>
+<UL>
+	<LI><P CLASS="western">Web &gt; Page module - lots to do. Ask
+	Robert.</P>
+	<LI><P CLASS="western">Mapping will fail if you map an attribute
+	which is in a tag containing others. There might be other bugs as
+	well, slightly confusing.</P>
+	<LI><P CLASS="western">Mapping may fail if you map ANY HTML file -
+	the file should be nested correctly etc. Generally, the HTML must be
+	clean. But we want to improve those parts so it can accept more
+	“lousy” HTML as well...</P>
+	<LI><P CLASS="western">Documentation!</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="4_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Futuristic Template Building (FTB)</SDFIELD>
+	- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>67</SDFIELD></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

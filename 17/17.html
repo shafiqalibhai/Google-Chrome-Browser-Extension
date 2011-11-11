@@ -1,0 +1,1488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>TYPO3 Services</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="TYPO3 Core Development Team">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGED" CONTENT="20090302;15323900">
+	<META NAME="CLASSIFICATION" CONTENT="doc_core_services">
+	<META NAME="KEYWORDS" CONTENT="services, development, extension, auth, reference, forDevelopers, forAdvanced">
+	<META NAME="Author" CONTENT="TYPO3 Core Development Team">
+	<META NAME="Email" CONTENT="info@typo3.org">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="language (en, de, fr, nl, dk, es, ... )" CONTENT="en">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Tahoma", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #69a550; text-align: left; text-decoration: none; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Tahoma", sans-serif; font-size: 20pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #666666; text-align: left; page-break-before: always }
+		H2.western { font-family: "Tahoma", sans-serif; font-size: 20pt; font-style: normal; font-weight: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0.1cm; color: #69a550; text-align: left; page-break-before: auto; page-break-after: auto }
+		H3.western { font-family: "Tahoma", sans-serif; font-size: 15pt; font-weight: normal }
+		H3.cjk { font-family: "HG Mincho Light J" }
+		H3.ctl { font-family: "Arial Unicode MS" }
+		H4 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #ff950e; text-align: left; page-break-before: auto; page-break-after: auto }
+		H4.western { font-family: "Tahoma", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { margin-bottom: 0.21cm; font-family: "Tahoma", sans-serif; font-size: 8pt; font-weight: normal; line-height: 100%; page-break-before: auto }
+		P.footer-cjk { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		P.footer-ctl { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Tahoma", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Tahoma", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		H2.contents-heading-western { color: #4c4c4c; font-family: "Tahoma", sans-serif; font-size: 16pt; font-style: normal; font-weight: normal }
+		H2.contents-heading-cjk { color: #4c4c4c; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #4c4c4c; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Courier New", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		A:link { color: #333366; text-decoration: none }
+		CODE.western { font-family: "Courier New", monospace; so-language: zxx }
+		CODE.cjk { font-family: "Courier New", monospace }
+		CODE.ctl { font-family: "Courier New", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#333366" BGCOLOR="#ffffff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P CLASS="footer-western" ALIGN=LEFT STYLE="margin-bottom: 0.5cm; font-style: normal">
+	<IMG SRC="17_html_4f41537f.gif" ALIGN=LEFT><IMG SRC="17_html_3c9c2593.png" NAME="Grafik2" HSPACE=9 WIDTH=87 HEIGHT=21 BORDER=0>
+	<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TYPO3 Services</SDFIELD> <SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+	</SPAN></SPAN><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_services</SDFIELD></SPAN></SPAN><B>	</B><SPAN STYLE="font-weight: normal"></SPAN><SPAN STYLE="font-weight: normal">
+	</SPAN><SPAN STYLE="font-weight: normal">Developer's Guide</SPAN></P>
+</DIV>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H1 CLASS="western" ALIGN=LEFT STYLE="page-break-before: auto; page-break-after: auto"><A NAME="1.TYPO3 Services|outline"></A>
+</SPAN><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TYPO3 Services</SDFIELD></H1>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Extension
+Key: <SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_services</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Language:
+<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="language (en, de, fr, nl, dk, es, ... )">en</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Keywords:
+<SDFIELD TYPE=DOCINFO SUBTYPE=KEYS>services, development, extension, auth, reference, forDevelopers, forAdvanced</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Copyright
+2000-2008, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">TYPO3 Core Development Team</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">info@typo3.org</SDFIELD>&gt;</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+document is published under the Open Content License</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">available
+from http://www.opencontent.org/opl.shtml</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+content of this document is related to TYPO3 </FONT>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">-
+a GNU/GPL CMS/Framework available from www.typo3.org<BR></FONT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Revised
+for TYPO3 4.2, March 2009</FONT></P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm; font-weight: normal"><FONT SIZE=3><A HREF="#1.TYPO3 Services|outline">TYPO3
+	Services	1</A></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.1.Introduction|outline">Introduction	3</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.1.Two reasons to use services|outline">Two
+	reasons to use services	3</A></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.1.1.1.1. Freedom of implementation|outline">1.
+	Freedom of implementation	3</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.1.1.2.2. Extend functionality with extensions|outline">2.
+	Extend functionality with extensions	3</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.2.Using services|outline">Using
+	services	4</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.1.Service precedence|outline">Service
+	precedence	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.2.Simple use|outline">Simple
+	use	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.3.Use with subtypes|outline">Use
+	with subtypes	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.4.Calling a chain of services|outline">Calling
+	a chain of services	4</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.3.Configuration|outline">Configuration	6</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.1.Registration changes|outline">Registration
+	changes	6</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.2.Service configuration|outline">Service
+	configuration	6</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.3.Service type configuration|outline">Service
+	type configuration	6</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.4.Developer's Guide|outline">Developer's
+	Guide	7</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.1.Introducing a new service type|outline">Introducing
+	a new service type	7</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.2.Implementing a service|outline">Implementing
+	a service	7</A></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.2.1.Service registration|outline">Service
+	registration	8</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.2.2.Skeleton service class|outline">Skeleton
+	service class	10</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.3.Service API|outline">Service
+	API	11</A></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.1.Getter methods for service information|outline">Getter
+	methods for service information	11</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.2.Error handling|outline">Error
+	handling	11</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.3.General service functions|outline">General
+	service functions	12</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.4.I/O tools|outline">I/O
+	tools	12</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.5.I/O Input and I/O output|outline">I/O
+	Input and I/O output	12</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.3.6.Service implementation|outline">Service
+	implementation	13</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.4.Service-related API|outline">Service-related
+	API	13</A></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.4.1.t3lib_extMgm|outline">t3lib_extMgm	13</A></FONT></FONT></FONT></P>
+	<P STYLE="margin-left: 1.5cm; margin-bottom: 0.21cm"><FONT COLOR="#800000"><FONT FACE="Verdana, sans-serif"><FONT SIZE=1 STYLE="font-size: 8pt"><A HREF="#1.4.4.2.t3lib_div|outline">t3lib_div	14</A></FONT></FONT></FONT></P>
+</MULTICOL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.1.Introduction|outline"></A>Introduction</H2>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+document describes the services functionality included in the TYPO3
+core since version 3.6.0.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Services
+are designed to be overridden so that you can extend, improve or –
+in general – modify the behavior of the TYPO3 or any extension that
+uses services without having to change the original code of TYPO3 or
+of the extension.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Services
+are PHP classes inside of an extension similar to FE-plugins (or
+inside the core of TYPO3, for some base services). Usually when you
+use a class, you address it directly by creating an instance:</FONT></P>
+<PRE CLASS="western">require_once(t3lib_extMgm::extPath('some_extension').'class.tx_some_extension_class.php');
+$obj = t3lib_div::makeInstance('tx_some_extension_class');
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Using a service class is done by calling a
+function which chooses the right service automatically by passing
+only the requested service type name and not the class name:</FONT></P>
+<PRE CLASS="western">$serviceObj = t3lib_div::makeInstanceService('my_service_type');
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The difference is that the class name itself
+and its usage is not hardcoded. The same service can be provided by
+different extensions. The service with the highest priority and
+quality is chosen automatically.</FONT></P>
+<H3 CLASS="western"><A NAME="1.1.1.Two reasons to use services|outline"></A>
+Two reasons to use services</H3>
+<H4 CLASS="western">1. Freedom of implementation</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+service may be implemented multiple times to take into account
+different environments like operating systems (Unix, Windows, Mac),
+available PHP extensions or other third-party dependencies (other
+programming languages, binaries, etc.).</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Imagine
+an extension which could rely on a Perl script for very good results.
+Another implementation could exist, that relies only on PHP, but
+gives results of lesser quality. With a service you could switch
+automatically between the two implementations just by testing the
+availability or not of Perl on the server.</FONT></P>
+<H4 CLASS="western">2. Extend functionality with extensions</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Services
+are able to handle subtypes. Take the service of the type “fileMeta”
+which extracts meta data from files. It provides information
+depending on the file type for which it is implemented.</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#2a6097"><B>if</B></FONT><FONT COLOR="#000000"> (</FONT><FONT COLOR="#7438c1">is_object</FONT><FONT COLOR="#000000">(</FONT><FONT COLOR="#3c6b43">$serviceObj</FONT><FONT COLOR="#000000"> = t3lib_div::makeInstanceService(</FONT><FONT COLOR="#9a0720">'fileMeta'</FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#3c6b43">$fileExtension</FONT><FONT COLOR="#000000">))) {</FONT>
+<FONT COLOR="#000000">	</FONT><FONT COLOR="#3c6b43">$meta</FONT><FONT COLOR="#000000"> = serviceObj-&gt;getFileMeta(</FONT><FONT COLOR="#3c6b43">$filename</FONT><FONT COLOR="#000000">);</FONT>
+}
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Here you can define a common API that doesn't
+vary whatever the type of file you are trying to read, greatly
+simplifying the implementation of code relying on such services. Any
+extension can add new subtypes handling, say 'mp3' for example, and
+this subtype will automatically be available to code that uses the
+“fileMeta” service.</FONT></P>
+<H2 CLASS="western"><A NAME="1.2.Using services|outline"></A>Using
+services</H2>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There
+are different ways to use services, which are described below. But
+first a word about precedence.</FONT></P>
+<H3 CLASS="western"><A NAME="1.2.1.Service precedence|outline"></A>Service
+precedence</H3>
+<P CLASS="western">Several services may be declared to do the same
+job. What will distinguish them is two intrinsic properties of
+services: priority and quality. Priority tells TYPO3 which service
+should be called first. Normal priorities vary between 0 and 100, but
+can be exceptionally set to higher values (no maximum). When two
+services of equal priority are found, the system will use the service
+with the best quality.</P>
+<P CLASS="western">The priority is used to define a call order for
+services. The default priority is 50. The service with the highest
+priority is called first. The priority of a service is defined by its
+developer, but may be reconfigured (see “Configuration” below).
+It is thus very easy to add a new service that comes before or after
+an existing service, or to change the call order of already
+registered services.</P>
+<P CLASS="western">The quality should be a measure of the worthiness
+of the job performed by the service. There may be several services
+who can perform the same task (e.g. extracting meta data from a
+file), but one may be able to do that much better than the other
+because it is able to use a third-party application. However if that
+third-party application is not available, neither will this service.
+In this case TYPO3 can fall back on the lower quality service which
+will still be better than nothing. Quality varies between 0-100.</P>
+<P CLASS="western">More considerations about priority and quality can
+be found in the “Developer's Guide” below.</P>
+<H3 CLASS="western"><A NAME="1.2.2.Simple use|outline"></A>Simple use</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+most basic use is when you just want an object that handles a given
+service type:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#2a6097"><B>if</B></FONT><FONT COLOR="#000000"> (</FONT><FONT COLOR="#7438c1">is_object</FONT><FONT COLOR="#000000">(</FONT><FONT COLOR="#3c6b43">$serviceObj</FONT><FONT COLOR="#000000"> = t3lib_div::makeInstanceService(</FONT><FONT COLOR="#9a0720">'textLang'</FONT><FONT COLOR="#000000">))) {</FONT>
+<FONT COLOR="#000000">	</FONT><FONT COLOR="#3c6b43">$language</FONT><FONT COLOR="#000000"> = </FONT><FONT COLOR="#3c6b43">$serviceObj</FONT><FONT COLOR="#000000">-&gt;guessLanguage(</FONT><FONT COLOR="#3c6b43">$text</FONT><FONT COLOR="#000000">);</FONT>
+}
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">In this example a service of type 'textLang' is
+requested. If such a service is indeed available an object will be
+returned. Then the service type 'textLang' has a function
+guessLanguage() which is used.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">There's
+no certainty that an object will be returned, for a number of
+reasons:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">there
+	might be no service of the requested type installed</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">the
+	service deactivated itself during registration because it recognized
+	it can't run on your platform</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">the
+	service was deactivated by the system because of certain checks</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">during
+	initialization the service checked that it can't run and deactivated
+	itself</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Note
+that when a service is requested, the instance created is stored in a
+global registry. If that service is requested again during the same
+code run, the stored instance will be returned instead of a new one.
+More details in “Service API” below.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">If
+several services are available, the one with the highest priority (or
+quality if priority are equals) will be used.</FONT></P>
+<H3 CLASS="western"><A NAME="1.2.3.Use with subtypes|outline"></A>Use
+with subtypes</H3>
+<P CLASS="western">A service can also be requested for not just a
+type, but a subtype too:</P>
+<PRE CLASS="western">	<FONT COLOR="#7f7f7f">// find a service for a file type</FONT>
+<FONT COLOR="#2a6097"><B>if</B></FONT> (<FONT COLOR="#7438c1">is_object</FONT>(<FONT COLOR="#3c6b43">$serviceObj</FONT> = <FONT COLOR="#000000">t3lib_div</FONT>::<FONT COLOR="#000000">makeInstanceService</FONT>(<FONT COLOR="#9a0720">'metaExtract'</FONT>,<FONT COLOR="#3c6b43">$fileType</FONT>))) {
+	<FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">setInputFile</FONT>(<FONT COLOR="#3c6b43">$absFile</FONT>, <FONT COLOR="#3c6b43">$fileType</FONT>);
+	<FONT COLOR="#2a6097"><B>if</B></FONT> (<FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">process</FONT>(<FONT COLOR="#9a0720">''</FONT>, <FONT COLOR="#9a0720">''</FONT>, <FONT COLOR="#7f0055">array</FONT>(<FONT COLOR="#9a0720">'meta' </FONT>=&gt; <FONT COLOR="#3c6b43">$meta</FONT>)) &gt; 0 
+			<FONT COLOR="#000000">&amp;&amp;</FONT> (<FONT COLOR="#7438c1">is_array</FONT>(<FONT COLOR="#3c6b43">$svmeta</FONT> = <FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">getOutput</FONT>()))) {
+		<FONT COLOR="#3c6b43">$meta</FONT> = <FONT COLOR="#3c6b43">$svmeta</FONT>;
+	}
+<FONT FACE="Andale Mono"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT>
+</PRE><P CLASS="western">
+In this example a service type “metaExtract” is requested for a
+specific subtype corresponding some file's type. With the returned
+instance, it then proceeds to retrieving whatever possible meta data
+from the file.</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">If
+several services are available for the same subtype, the one with the
+highest priority (or quality if priority are equals) will be used.</FONT></P>
+<H3 CLASS="western"><A NAME="1.2.4.Calling a chain of services|outline"></A>
+Calling a chain of services</H3>
+<P CLASS="western">It is also possible to use services in a “chain”.
+This means using all the available services of a type instead of just
+one.</P>
+<P CLASS="western">The method <CODE CLASS="western">t3lib_div::makeInstanceService()</CODE>
+accepts a third parameter to exclude a number of services, using a
+comma-separated list of service keys. This way you can walk through
+all available services of a type by passing the already used service
+keys. Services will be called in order of decreasing priority and
+quality.</P>
+<P CLASS="western">The following example is an extract of the user
+authentication process:</P>
+<PRE CLASS="western">	<FONT COLOR="#7f7f7f">// use 'auth' service to find the user</FONT>
+	<FONT COLOR="#7f7f7f">// first found user will be used</FONT>
+<FONT COLOR="#3c6b43">$serviceChain</FONT>=<FONT COLOR="#9a0720">''</FONT>;
+<FONT COLOR="#2a6097"><B>while</B></FONT> (<FONT COLOR="#7438c1">is_object</FONT>(<FONT COLOR="#3c6b43">$serviceObj</FONT> = <FONT COLOR="#000000">t3lib_div</FONT>::<FONT COLOR="#000000">makeInstanceService</FONT>(<FONT COLOR="#9a0720">'auth'</FONT>, <FONT COLOR="#3c6b43">$subType</FONT>, <FONT COLOR="#3c6b43">$serviceChain</FONT>))) {
+	<FONT COLOR="#3c6b43">$serviceChain </FONT>.= <FONT COLOR="#9a0720">',' </FONT>. <FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">getServiceKey</FONT>();
+
+	<FONT COLOR="#2a6097"><B>if</B></FONT> (<FONT COLOR="#3c6b43">$tempuser </FONT>= <FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">getUser</FONT>(<FONT COLOR="#3c6b43">$info</FONT>, <FONT COLOR="#3c6b43">$subType</FONT>, <FONT COLOR="#3c6b43">$this</FONT>)) {
+			<FONT COLOR="#7f7f7f">// user found, do something and exit the chain</FONT>
+<FONT COLOR="#7f7f7f">		</FONT><FONT COLOR="#2a6097"><B>...</B></FONT>
+		<FONT COLOR="#2a6097"><B>break</B></FONT>;
+	}
+<FONT FACE="Andale Mono"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT>
+</PRE><P CLASS="western">
+As you see the while loop is exited when a service gives a result.
+More sophisticated mechanisms can be imagined. In this next example –
+also taken from the authentication process – the loop is exited
+only when a certain value is returned by the method called:</P>
+<PRE CLASS="western"><FONT COLOR="#7f7f7f">	// use 'auth' service to authenticate the user</FONT>
+<FONT COLOR="#7f7f7f">	// if one service returns FALSE then authentication failed</FONT>
+<FONT COLOR="#7f7f7f">	// a service might return 100 which means there's no reason to stop</FONT>
+<FONT COLOR="#7f7f7f">	// but the user can't be authenticated by that service</FONT>
+<FONT COLOR="#3c6b43">$serviceChain</FONT>=<FONT COLOR="#9a0720">''</FONT>;
+<FONT COLOR="#2a6097"><B>while</B></FONT> (<FONT COLOR="#7438c1">is_object</FONT>(<FONT COLOR="#3c6b43">$serviceObj</FONT> = <FONT COLOR="#000000">t3lib_div</FONT>::<FONT COLOR="#000000">makeInstanceService</FONT>(<FONT COLOR="#9a0720">'auth'</FONT>, <FONT COLOR="#3c6b43">$subType</FONT>, <FONT COLOR="#3c6b43">$serviceChain</FONT>))) {
+	<FONT COLOR="#3c6b43">$serviceChain </FONT>.= <FONT COLOR="#9a0720">',' </FONT>. <FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">getServiceKey</FONT>();
+	$serviceObj-&gt;initAuth($subType, $loginData, $authInfo, $this);
+	<FONT COLOR="#2a6097"><B>if</B></FONT> ((<FONT COLOR="#3c6b43">$ret </FONT>= <FONT COLOR="#3c6b43">$serviceObj</FONT>-&gt;<FONT COLOR="#000000">authUser</FONT>(<FONT COLOR="#3c6b43">$tempuser</FONT>))&gt;0) {
+			<FONT COLOR="#7f7f7f">// if the service returns &gt;=200 then no more checking is needed </FONT>
+<FONT COLOR="#7f7f7f">			// useful for IP checking without password</FONT>
+		<FONT COLOR="#2a6097"><B>if</B></FONT> (<FONT COLOR="#7438c1">intval</FONT>(<FONT COLOR="#3c6b43">$ret</FONT>) &gt;= 200) {
+			<FONT COLOR="#3c6b43">$authenticated</FONT> = <FONT COLOR="#7f0055">true</FONT>;
+			<FONT COLOR="#2a6097"><B>break</B></FONT>;
+		} elseif (intval($ret) &gt;= 100) {
+			// Just go on. User is still not authenticated but there's no reason to stop now.
+		} else {
+			$authenticated = <FONT COLOR="#7f0055">true</FONT>;
+		}
+	} <FONT COLOR="#2a6097"><B>else</B></FONT> {
+		<FONT COLOR="#3c6b43">$authenticated</FONT> = <FONT COLOR="#7f0055">false</FONT>;
+		<FONT COLOR="#2a6097"><B>break</B></FONT>;
+	}
+<FONT FACE="Andale Mono"><FONT SIZE=1 STYLE="font-size: 8pt">}</FONT></FONT>
+</PRE><P CLASS="western">
+In the above example the loop will walk through all services of the
+given type except if one service returns false or a value larger than
+or equals to 200, in which case the chain is interrupted.</P>
+<H2 CLASS="western"><A NAME="1.3.Configuration|outline"></A>Configuration</H2>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Each
+service will have its own configuration which should be documented in
+their manual. There are however properties common to all services as
+well as generic mechanisms which are described below.</FONT></P>
+<H3 CLASS="western"><A NAME="1.3.1.Registration changes|outline"></A>Registration
+changes</H3>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+priority and other values of the services registration can be
+overridden in <CODE CLASS="western">typo3conf/localconf.php</CODE>.
+Example:</FONT></P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#000000">    </FONT></CODE><CODE CLASS="western"><FONT COLOR="#7f7f7f"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">// raise priority of service 'tx_example_sv1' to 110</FONT></FONT></FONT></CODE>
+<CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'T3_SERVICES'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'auth'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'tx_example_sv1'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'priority'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">] = 110;</FONT></FONT></FONT></CODE>
+
+<FONT COLOR="#000000">    </FONT><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT COLOR="#7f7f7f">// disable service 'tx_example_sv1'</FONT></FONT></FONT>
+<FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><FONT COLOR="#3c6b43">$TYPO3_CONF_VARS</FONT><FONT COLOR="#000000">[</FONT><FONT COLOR="#9a0720">'T3_SERVICES'</FONT><FONT COLOR="#000000">][</FONT><FONT COLOR="#9a0720">'auth'</FONT><FONT COLOR="#000000">][</FONT><FONT COLOR="#9a0720">'tx_example_sv1'</FONT><FONT COLOR="#000000">][</FONT><FONT COLOR="#9a0720">'enable'</FONT><FONT COLOR="#000000">] = </FONT><FONT COLOR="#7f0055">false</FONT><FONT COLOR="#000000">;</FONT></FONT></FONT>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The syntax is:</FONT></P>
+<PRE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></FONT><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'T3_SERVICES'</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">]</FONT></FONT></FONT>[<I>service type</I>][<I>service key</I>][<I>option key</I>] = <I>value</I>;
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">Registration options are described in more
+details in “Implementing a service” below. Any of these options
+may be overridden using the above syntax. However caution should be
+used depending on the options. “className” and “classFile”
+should not be overridden in such a way. Instead a new service should
+be implemented using this alternate class.</FONT></P>
+<H3 CLASS="western"><A NAME="1.3.2.Service configuration|outline"></A>
+Service configuration</H3>
+<P CLASS="western">Some services will not need additional
+configuration. Others may have some options that can be set in the
+Extension Manager. Yet others may be configured via local
+configuration files (either <CODE CLASS="western">typo3conf/localconf.php</CODE>
+or some extension's <CODE CLASS="western">ext_localconf.php</CODE>).
+Example:</P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'SVCONF'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'auth'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'tx_example_sv1'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'foo'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">] = </FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'bar'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">;</FONT></FONT></FONT></CODE>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The syntax is:</FONT></P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'SVCONF'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>service type</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>service key</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>config key</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">] = </FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>value</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">;</FONT></FONT></FONT></CODE>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">A configuration can also be set for all
+services belonging to the same service type by using the keyword
+“default” instead of a service key:</FONT></P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">[</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'SVCONF'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>service type</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#9a0720"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">'default'</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">][</FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>config key</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">] = </FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt"><I>value</I></FONT></FONT></FONT></CODE><CODE CLASS="western"><FONT COLOR="#000000"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">;</FONT></FONT></FONT></CODE>
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The available configuration settings should be
+described in the service's documentation. See <FONT COLOR="#000000">“Service
+API” below to see how you can read these values properly inside
+your service.</FONT></FONT></P>
+<H3 CLASS="western"><A NAME="1.3.3.Service type configuration|outline"></A>
+Service type configuration</H3>
+<P CLASS="western">It may also be necessary to provide configuration
+options for the code that uses the services (and not for usage inside
+the services themselves). It is recommended to make use of the
+following syntax:</P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE><FONT COLOR="#000000">[</FONT><FONT COLOR="#9a0720">'SVCONF'</FONT><FONT COLOR="#000000">][</FONT><I>service type</I><FONT COLOR="#000000">][</FONT><FONT COLOR="#9a0720">'setup'</FONT><FONT COLOR="#000000">][</FONT><I>config key</I><FONT COLOR="#000000">] = </FONT><FONT COLOR="#000000"><I>value</I></FONT><FONT COLOR="#000000">;</FONT>
+</PRE><P CLASS="western">
+Example:</P>
+<PRE CLASS="western"><CODE CLASS="western"><FONT COLOR="#3c6b43"><FONT FACE="Cumberland"><FONT SIZE=1 STYLE="font-size: 8pt">$TYPO3_CONF_VARS</FONT></FONT></FONT></CODE>[<FONT COLOR="#9a0720">'SVCONF'</FONT>][<FONT COLOR="#9a0720">'auth'</FONT>][<FONT COLOR="#9a0720">'setup'</FONT>][<FONT COLOR="#9a0720">'FE_alwaysFetchUser'</FONT>] = <FONT COLOR="#7f0055"><FONT FACE="Cumberland">true</FONT></FONT>;
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This configuration can be placed in any
+configuration file (either <CODE CLASS="western">typo3conf/localconf.php</CODE>
+or some extension's <CODE CLASS="western">ext_localconf.php</CODE>).
+There's no API for retrieving these values. It's just a best practice
+recommendation.</FONT></P>
+<H2 CLASS="western"><A NAME="1.4.Developer's Guide|outline"></A>Developer's
+Guide</H2>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+chapter describes all you need to know to develop a new service,
+including advice to developing good services.</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.1.Introducing a new service type|outline"></A>
+Introducing a new service type</H3>
+<P CLASS="western">Every service belongs to a given service type. A
+service type is represented by a key, just like an extension key. In
+the examples above there was mention of the “auth” and
+“metaExtract” service types.</P>
+<P CLASS="western">Each service type will implement its own API
+corresponding to the task it is designed to handle. For example the
+“auth” service type requires the two methods <CODE CLASS="western">getUser()</CODE>
+and <CODE CLASS="western">authUser()</CODE>. If you introduce a new
+service type you should think well about its API before starting
+development. Ideally you should discuss with other developers.
+Services are meant to be reusable. A badly designed service that is
+used only once is a failed service. The development mailing list
+(typo3.dev) is a good place to discuss new service types.</P>
+<P CLASS="western">You should plan to provide a base class for your
+new service type. It is then easier to develop services based on this
+type as you can start by extending the base class. You should also
+provide a documentation, that describes the API. It should be clear
+to other developers what each method of the API is supposed to do.</P>
+<H3 CLASS="western"><A NAME="1.4.2.Implementing a service|outline"></A>
+Implementing a service</H3>
+<P CLASS="western">The best way to get started when implementing a
+service is to use the Extension Kickstarter. It will help you create
+the skeleton of your service. In the Kickstarter you start by setting
+the general information and declaring that your extension is of type
+“Service”:</P>
+<P CLASS="western"><IMG SRC="17_html_m2232d1b1.png" NAME="graphics1" ALIGN=LEFT VSPACE=8 WIDTH=669 HEIGHT=521 BORDER=0><BR CLEAR=LEFT>Then
+move to the “Services” section if the left-hand menu and define a
+first service. Your screen might look something like this:</P>
+<P CLASS="western"><IMG SRC="17_html_m1073d585.png" NAME="graphics2" ALIGN=LEFT VSPACE=8 WIDTH=669 HEIGHT=657 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Apart from the standard extension declaration file
+(<CODE CLASS="western">ext_emconf.php</CODE>) and extension's icon
+(<CODE CLASS="western">ext_icon.gif</CODE>), the Kickstarter will
+create the following files:</P>
+<UL>
+	<LI><P CLASS="western"><CODE CLASS="western">ext_localconf.php</CODE>
+	where the service is declared</P>
+	<LI><P CLASS="western"><CODE CLASS="western">sv1/class.tx_myext_sv1.php</CODE>
+	where the code of the service resides</P>
+</UL>
+<P CLASS="western">As can be seen the naming convention for services
+is very close to the one used for FE plug-ins, using “sv” instead
+of “pi”.</P>
+<H4 CLASS="western"><A NAME="1.4.2.1.Service registration|outline"></A>
+Service registration</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Registering
+a service is done inside the <CODE CLASS="western">ext_localconf.php</CODE>
+file. Let's look at what is inside.</FONT></P>
+<PRE CLASS="western">&lt;?php
+if (!defined ('TYPO3_MODE')) {
+ 	die ('Access denied.');
+}
+
+t3lib_extMgm::addService($_EXTKEY, 'textLang' /* sv type */, 'tx_babelfish_sv1' /* sv key */,
+		array(
+			'title' =&gt; 'Babelfish',
+			'description' =&gt; 'Guess alien languages by using a babelfish',
+
+			'subtype' =&gt; '',
+
+			'available' =&gt; true,
+			'priority' =&gt; 60,
+			'quality' =&gt; 80,
+
+			'os' =&gt; '',
+			'exec' =&gt; '',
+
+			'classFile' =&gt; t3lib_extMgm::extPath($_EXTKEY).'sv1/class.tx_babelfish_sv1.php',
+			'className' =&gt; 'tx_babelfish_sv1',
+		)
+	);
+?&gt;
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">A service is registered with TYPO3 by calling
+<CODE CLASS="western">t3lib_extMgm::addService()</CODE>. This method
+takes the following parameters:</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=85>
+	<COL WIDTH=90>
+	<COL WIDTH=468>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=85>
+				<P CLASS="western">Parameter:</P>
+			</TH>
+			<TH WIDTH=90>
+				<P CLASS="western">Data type:</P>
+			</TH>
+			<TH WIDTH=468>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">$extKey</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=468 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">The key of the extension containing the
+				service.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">$serviceType</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=468 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Service type of the service.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">$serviceKey</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=468 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Unique key for the service. By
+				default, the Kickstarter creates the key as “tx_myext_sv1”
+				for the first service, “tx_myext_sv2” for the second service,
+				etc. This may be changed freely, but the key should be explicit
+				of the service's function.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">$info</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">array</P>
+			</TD>
+			<TD WIDTH=468 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Additional information about the
+				service. This is described below.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+additional information array defines the main properties of a
+service:</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=85>
+	<COL WIDTH=90>
+	<COL WIDTH=394>
+	<COL WIDTH=67>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=85>
+				<P CLASS="western">Property:</P>
+			</TH>
+			<TH WIDTH=90>
+				<P CLASS="western">Data type:</P>
+			</TH>
+			<TH WIDTH=394>
+				<P CLASS="western">Description:</P>
+			</TH>
+			<TH WIDTH=67>
+				<P CLASS="western">Default:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">title</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">The title of the service.</P>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">description</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">The description. If it makes sense it should
+				contain information about</P>
+				<UL>
+					<LI><P CLASS="western">the quality of the service (if it's
+					better or not than normal)</P>
+					<LI><P CLASS="western">the OS dependency</P>
+					<LI><P CLASS="western">the dependency on external programs
+					(perl, pdftotext, etc.)</P>
+				</UL>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">subtype</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string / comma list</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>The subtype is not predefined.
+				Its usage is defined by the API of the service type.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Example:</B></P>
+				<PRE CLASS="western" STYLE="font-weight: normal; text-align: justify">'subtype' =&gt; 'jpg,tif',</PRE>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">available</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">boolean</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Defines if the service is
+				available or not. This means that the service will be ignored if
+				available is set to false.</P>
+				<P CLASS="western" ALIGN=JUSTIFY>It makes no sense to set this to
+				false, but it can be used to make a quick check if the service
+				works on the system it installed:</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Examples:</B></P>
+				<PRE CLASS="western">  // is the curl extension available we need
+'available' =&gt; is_function('curl_exec'),
+</PRE><P CLASS="western">
+				Only quick checks are appropriate here. More extensive checks
+				should be performed when the service is requested and the service
+				class is initialized.</P>
+			</TD>
+			<TD WIDTH=67 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">true</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">priority</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">integer</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>The priority of the service. A
+				service of higher priority will be selected first. <BR>Can be
+				reconfigured with <CODE CLASS="western">$TYPO3_CONF_VARS</CODE>.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY>Use a value from 0 to 100.
+				Higher values are reserved for reconfiguration by
+				<CODE CLASS="western">$TYPO3_CONF_VARS</CODE>. The default value
+				is 50 which means that the service is well implemented and gives
+				normal (good) results.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY>Imagine that you have two
+				solutions, a pure PHP one and another that depends on an external
+				program. The PHP solution should have a priority of 50 and the
+				other solution a lower one. PHP-only solutions should have a
+				higher priority since they are more convenient in terms of server
+				setup. But if the external solution gives better results you
+				should set both to 50 and set the quality value to a higher
+				value.</P>
+			</TD>
+			<TD WIDTH=67 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">50 (0-100)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">quality</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">integer/float</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Among services with the same
+				priority, the service with the highest quality by the same
+				priority will be preferred.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY>The use of the quality range is
+				defined by the service type. Integer or floats can be used. The
+				default range is 0-100 and the default value for a normal (good)
+				quality service is 50. 
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY>The value of the quality should
+				represent the capacities of the services. Consider a service type
+				that implements the detection of a language used in a text. Let's
+				say that one service can detect 67 languages and another one only
+				25. These values could be used directly as quality values.</P>
+			</TD>
+			<TD WIDTH=67 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">50 (0-100)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">os</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Defines which operating system
+				is needed to run this service.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Examples:</B></P>
+				<PRE CLASS="western">  // runs only on UNIX
+'os' =&gt; 'UNIX',<B><BR></B>
+  // runs only on Windows
+'os' =&gt; 'WIN',<B><BR></B>
+  // no special dependency
+'os' =&gt; '',</PRE>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">exec</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string / comma list</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>List of external programs which
+				are needed to run the service. Absolute paths are allowed but not
+				recommended, because the programs are searched for automatically
+				by t3lib_exec. Leave empty if no external programs are needed.</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Examples:</B></P>
+				<PRE CLASS="western" STYLE="text-align: justify">'exec' =&gt; 'perl',
+
+'exec' =&gt; 'pdftotext',</PRE>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">classFile</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Created by the kickstarter</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Example:</B></P>
+				<PRE CLASS="western" STYLE="text-align: justify">t3lib_extMgm::extPath($_EXTKEY).'sv1/class.tx_myextkey_sv1.php'</PRE>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=85 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">className</P>
+			</TD>
+			<TD WIDTH=90 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">string</P>
+			</TD>
+			<TD WIDTH=394 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western" ALIGN=JUSTIFY>Created by the kickstarter</P>
+				<P CLASS="western" ALIGN=JUSTIFY><BR>
+				</P>
+				<P CLASS="western" ALIGN=JUSTIFY><B>Example:</B></P>
+				<PRE CLASS="western" STYLE="text-align: justify">'tx_myextkey_sv1'</PRE>
+			</TD>
+			<TD WIDTH=67 SDNUM="16393;0;@">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.2.2.Skeleton service class|outline"></A>
+Skeleton service class</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+Kickstarter will generate a skeleton PHP class for each service
+defined. The example above will generate file
+<CODE CLASS="western">sv1/class.tx_babelfish_sv1.php</CODE>, which
+contains the following sample code:</FONT></P>
+<PRE CLASS="western">/**
+ * Service &quot;Babelfish&quot; for the &quot;babelfish&quot; extension.
+ *
+ * @author	Zaphod Beeblebrox &lt;zaphod@goldenheart.com&gt;
+ * @package	TYPO3
+ * @subpackage	tx_babelfish
+ */
+class tx_babelfish_sv1 extends t3lib_svbase {
+	var $prefixId = 'tx_babelfish_sv1';		// Same as class name
+	var $scriptRelPath = 'sv1/class.tx_babelfish_sv1.php';	// Path to this script relative to the extension dir.
+	var $extKey = 'babelfish';	// The extension key.
+
+	/**
+	 * [Put your description here]
+	 *
+	 * @return	[type]		...
+	 */
+	function init()	{
+		$available = parent::init();
+
+		// Here you can initialize your class.
+
+		// The class have to do a strict check if the service is available.
+		// The needed external programs are already checked in the parent class.
+
+		// If there's no reason for initialization you can remove this function.
+
+		return $available;
+	}
+
+	/**
+	 * [Put your description here]
+	 * performs the service processing
+	 *
+	 * @param	string		Content which should be processed.
+	 * @param	string		Content type
+	 * @param	array		Configuration array
+	 * @return	boolean
+	 */
+	function process($content='', $type='', $conf=array())	{
+
+		// Depending on the service type there's not a process() function.
+		// You have to implement the API of that service type.
+
+		return false;
+	}
+}
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This sample code shows how a service class must
+inherit from the <CODE CLASS="western">t3lib_svbase</CODE> base
+class, which is described in more details below. It provides a
+skeleton for the <CODE CLASS="western">init()</CODE> method which is
+the single most important method for a service, as it defines – at
+runtime – whether a given service is really available or not. This
+method is also discussed in more details below.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+skeleton <CODE CLASS="western">process()</CODE> method is just an
+example of what you might want to implement in your service depending
+on the API of the service type. In the example Kickstarter input
+above, the “babelfish” service was declared as a “textLang”
+type of service. In this case the specific service type API indeed
+consists of just the <CODE CLASS="western">process()</CODE> method.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+sample code generated by the Kickstarter may change in the future.</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.3.Service API|outline"></A>Service
+API</H3>
+<P CLASS="western">All service classes must inherit from the base
+service class <CODE CLASS="western">t3lib_svbase</CODE>, unless the
+service type provides a specific base class (authentication services,
+for example, inherit from <CODE CLASS="western">tx_sv_authbase</CODE>
+instead). These specific classes should normally themselves extend
+<CODE CLASS="western">t3lib_svbase</CODE>. This class provides a
+large number of important or useful methods which are described
+below, grouped by type of usage.</P>
+<H4 CLASS="western"><A NAME="1.4.3.1.Getter methods for service information|outline"></A>
+Getter methods for service information</H4>
+<P CLASS="western">Most of the below methods are quite obvious,
+except for <CODE CLASS="western">getServiceOption()</CODE>.</P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getServiceInfo</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns the array containing the service's
+				properties</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getServiceKey</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns the service's key</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getServiceTitle</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns the service's title</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getServiceOption</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method is used to retrieve the value of a
+				service option, as defined in the <CODE CLASS="western">$TYPO3_CONF_VARS['SVCONF']</CODE>
+				array. It will take into account possible default values as
+				described in the “Service configuration” chapter above.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+<CODE CLASS="western">getServiceOption()</CODE> method requires more
+explanations. Imagine your service has an option called “ignoreBozo”.
+To retrieve it in a proper way, you should not access
+<CODE CLASS="western">$TYPO3_CONF_VARS['SVCONF']</CODE> directly, but
+use <CODE CLASS="western">getServiceOption()</CODE> instead. In its
+simplest form, it will look like this (inside your service's code):</FONT></P>
+<PRE CLASS="western">$ignoreBozo = $this-&gt;getServiceOption('ignoreBozo');
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">This will retrieve the value of the
+“ignoreBozo” option for your specific service, if defined. If
+not, it will try to find a value in the default configuration.
+Additional call parameters can be added:</FONT></P>
+<UL>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">the
+	second parameter is a default value to be used if no value was found
+	at all (including in the default configuration)</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">the
+	third parameter can be used to temporarily switch off the usage of
+	the default configuration.</FONT></P>
+</UL>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+allows for a lot of flexibility.</FONT></P>
+<H4 CLASS="western"><A NAME="1.4.3.2.Error handling|outline"></A>Error
+handling</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+set of methods handles the error reporting and manages the error
+queue. The error queue works as a stack. New errors are added on top
+of the previous ones. When an error is read from the queue it is the
+last one in that is taken (last in, first out). An error is actually
+a short array comprised of an error number and an error message.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+error queue exists only at run-time. It is not stored into session or
+any other form of permanence.</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">devLog</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Writes a message to the devlog, implicitly
+				using the service key as a log key. Depends on the member
+				variable “writeDevLog” being set to true (it's set to false
+				by default).</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">errorPush</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Puts a new error on top of the queue stack.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">errorPull</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Removes the latest (topmost) error in the
+				queue stack.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getLastError</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns the error number from the latest error
+				in the queue, or true if queue is empty.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getLastErrorMsg</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Same as above, but returns the error message.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getErrorMsgArray</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns an array with the error messages of
+				all errors in the queue.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getLastErrorArray</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Returns the latest error as an array (number
+				and message).</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">resetErrors</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Empties the error queue.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.3.3.General service functions|outline"></A>
+General service functions</H4>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">checkExec</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method checks the availability of one or
+				more executables on the server. A comma-separated list of
+				excutables names is provided as a parameter. The method returns
+				true if <B>all</B> executables are available.</P>
+				<P CLASS="western">The method relies on
+				<CODE CLASS="western">t3lib_exec::checkCommand()</CODE> to find
+				the executables, so it will search through the paths
+				defined/allowed by the TYPO3 configuration.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">deactivateService</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Internal method to temporarily deactivate a
+				service at run-time, if it suddenly fails for some reason.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.3.4.I/O tools|outline"></A>I/O tools</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">A
+lot of early services were designed to handle files, like those used
+by the DAM. Hence the base service class provides a number of methods
+to simplify the service developer's life when it comes to read and
+write files. In particular it provides an easy way of creating and
+cleaning up temporary files.</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">checkInputFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Checks if a file exists and is readable within
+				the paths allowed by the TYPO3 configuration.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">readFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Reads the content of a file and returns it as
+				a string. Calls on <CODE CLASS="western">checkInputFile()</CODE>
+				first.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">writeFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Writes a string to a file, if writable and
+				within allowed paths. If no file name is provided, the data is
+				written to a temporary file, as created by <CODE CLASS="western">tempFile()</CODE>
+				below. The file path is returned.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">tempFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Creates a temporary file and keeps its name in
+				an internal registry of temp files.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">registerTempFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Adds a given file name to the registry of
+				temporary files.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">unlinkTempFiles</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Deletes all the registered temporary files.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.3.5.I/O Input and I/O output|outline"></A>
+I/O Input and I/O output</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">These
+methods provide a standard way of defining or getting the content
+that needs to be processed – if this is the kind of operation that
+the service provides – and the processed output after that.</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">setInput</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Sets the content (and optionally the type of
+				content) to be processed.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">setInputFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Sets the input file from which to get the
+				content (and optionally the type).</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getInput</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Gets the input to process. If the content is
+				currently empty, tries to read it from the input file.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getInputFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Gets the name of the input file, after putting
+				it through <CODE CLASS="western">checkInputFile()</CODE>. If no
+				file is defined, but some content is, the method writes the
+				content to a temporary file and returns the path to that file.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">setOutputFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Sets the output file name.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getOutput</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Gets the output content. If an output file
+				name is defined, the content is gotten from that file.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">getOutputFile</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Gets the name of the output file. If such file
+				is not defined, a temporary file is created with the output
+				content and that file's path is returned.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.3.6.Service implementation|outline"></A>
+Service implementation</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">These
+methods are related to the general functioning of services. <CODE CLASS="western"><B>init()</B></CODE><B>
+and </B><CODE CLASS="western"><B>reset()</B></CODE><B> are the most
+important methods to implement when developing your own services.</B></FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">init</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method is expected to perform any
+				necessary initialization for the service. Its return value is
+				critical. It should return false if the service is not available
+				for whatever reason. Otherwise it should return true.</P>
+				<P CLASS="western">Note that's it's not necessary to check for OS
+				compatibility, as this will already have been done by
+				<CODE CLASS="western">t3lib_extMgm::addService()</CODE> when the
+				service is registered.</P>
+				<P CLASS="western">Executables should be checked, though, if any.</P>
+				<P CLASS="western">The init() method is automatically called by
+				<CODE CLASS="western">t3lib_div::makeInstanceService()</CODE>
+				when requesting a service.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">reset</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">When a service is requested by a call to
+				<CODE CLASS="western">t3lib_div::makeInstanceService()</CODE>,
+				the generated instance of the service class is kept in a registry
+				(<CODE CLASS="western">$GLOBALS['T3_VAR']['makeInstanceService']</CODE>).
+				When the same service is requested again during the same code
+				run, a new instance is <B>not</B><SPAN STYLE="font-weight: normal">
+				created. Instead the stored instance is returned. At that point
+				the </SPAN><CODE CLASS="western"><SPAN STYLE="font-weight: normal">reset()</SPAN></CODE><SPAN STYLE="font-weight: normal">
+				method is called.</SPAN></P>
+				<P CLASS="western" STYLE="font-weight: normal">This method can be
+				used to clean up data that may have been set during the previous
+				use of that instance.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">__destruct</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Clean up method. The base implementation calls
+				on <CODE CLASS="western">unlinkTempFiles()</CODE> to delete all
+				temporary files.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+little schema below summarizes the process of getting a service
+instance and when each of <CODE CLASS="western">init()</CODE> and
+<CODE CLASS="western">reset()</CODE> are called.</FONT></P>
+<H3 CLASS="western"><A NAME="1.4.4.Service-related API|outline"></A><IMG SRC="17_html_m43928415.png" NAME="graphics3" ALIGN=LEFT VSPACE=8 WIDTH=322 HEIGHT=447 BORDER=0><BR CLEAR=LEFT>Service-related
+API</H3>
+<P CLASS="western">This section describes the methods of the TYPO3
+core that are related to the use of services.</P>
+<H4 CLASS="western"><A NAME="1.4.4.1.t3lib_extMgm|outline"></A>t3lib_extMgm</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+extension management class contains three methods related to
+services:</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">addService</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method is used to register services with
+				TYPO3. It checks for availability of service with regards to OS
+				dependency (if any) and fills the <CODE CLASS="western">$GLOBALS['T3_SERVICES']</CODE>
+				array, where information about all registered services is kept.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">findService</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method is used to find the appropriate
+				service given a type and a subtype. It handles priority and
+				quality rankings. It also checks for availability based on
+				executables dependencies, if any.</P>
+				<P CLASS="western">This method is normally called by
+				<CODE CLASS="western">t3lib_div::makeInstanceService()</CODE>, so
+				you shouldn't have to worry about calling it directly, but it can
+				be useful to check if there's at least one service available.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">deactivateService</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">Marks a service as unavailable. It is called
+				internally by <CODE CLASS="western">addService()</CODE> and
+				<CODE CLASS="western">findService()</CODE> and should probably
+				not be called directly unless you're sure of what you're doing.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H4 CLASS="western"><A NAME="1.4.4.2.t3lib_div|outline"></A>t3lib_div</H4>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+class contains a single method related to services, but the most
+useful one, used to get an instance of a service.</FONT></P>
+<TABLE WIDTH=669 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=133>
+	<COL WIDTH=517>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=133>
+				<P CLASS="western">Method:</P>
+			</TH>
+			<TH WIDTH=517>
+				<P CLASS="western">Description:</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=133 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">makeInstanceService</P>
+			</TD>
+			<TD WIDTH=517 SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">This method is used to get an instance of a
+				service class of a given type and subtype. It calls on
+				<CODE CLASS="western">t3lib_extMgm::findService()</CODE> to find
+				the best possible service (in terms of priority and quality).</P>
+				<P CLASS="western">As described above it keeps a registry of all
+				instantiated service classes and uses existing instances whenever
+				possible, in effect turning service classes into singletons.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>14</SDFIELD></P>
+</DIV>
+</BODY>
+</HTML>

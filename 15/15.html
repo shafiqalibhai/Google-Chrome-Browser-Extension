@@ -1,0 +1,1147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Server Compatibility Chart</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Donald Duck">
+	<META NAME="CHANGED" CONTENT="20030917;13364000">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: landscape; margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Arial", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Arial Narrow", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Server Compatibility Chart</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER>Extension Key: <B>doc_core_compserv</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2000-2003, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<H2 CLASS="western">Server Compatibility Chart</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">This matrix shows the results of a analysis of
+system variables from different server OS /win/unix) / server Types
+(Apache / ISS) and PHP modes (CGI / Module).</P>
+<H3 CLASS="western">Matrix</H3>
+<TABLE WIDTH=998 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=82>
+	<COL WIDTH=64>
+	<COL WIDTH=68>
+	<COL WIDTH=76>
+	<COL WIDTH=66>
+	<COL WIDTH=67>
+	<COL WIDTH=79>
+	<COL WIDTH=71>
+	<COL WIDTH=58>
+	<COL WIDTH=54>
+	<COL WIDTH=57>
+	<COL WIDTH=159>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=82>
+				<P CLASS="western">Test:</P>
+			</TH>
+			<TH WIDTH=64>
+				<P CLASS="western">WA13CGI 
+				</P>
+			</TH>
+			<TH WIDTH=68>
+				<P CLASS="western">WA2CGI</P>
+			</TH>
+			<TH WIDTH=76>
+				<P CLASS="western">WA13ISAPI 
+				</P>
+			</TH>
+			<TH WIDTH=66>
+				<P CLASS="western">WA2ISAPI 
+				</P>
+			</TH>
+			<TH WIDTH=67>
+				<P CLASS="western">WISS_CGI 
+				</P>
+			</TH>
+			<TH WIDTH=79>
+				<P CLASS="western">WISS_ISAPI 
+				</P>
+			</TH>
+			<TH WIDTH=71>
+				<P CLASS="western">MA13MOD</P>
+			</TH>
+			<TH WIDTH=58>
+				<P CLASS="western">LA13CGI 
+				</P>
+			</TH>
+			<TH WIDTH=54>
+				<P CLASS="western">LA2CGI 
+				</P>
+			</TH>
+			<TH WIDTH=57>
+				<P CLASS="western">LA2MOD</P>
+			</TH>
+			<TH WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">LA13MOD </SPAN>
+				</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">REQUEST_URI</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[path]?[query]</SPAN></P>
+				<P CLASS="western">Eg.
+				“/typo3/32/temp/phpcheck/index.php/arg1/arg2/arg3/?arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value”</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">REMOTE_ADDR</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Eg.
+				“192.168.1.180”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western"><FONT COLOR="#999999">REMOTE_HOST</FONT></P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><FONT COLOR="#999999"><SPAN STYLE="background: #e6e6e6">Eg.
+				“my_computer” or the IP address or blank. Depends. Well, this
+				value is only used informational, so it doesn't matter too much.</SPAN></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">PATH_INFO, regular</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">[path_script]</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">[path_script]</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">[path_script]</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">(OK - coundn't see)</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">[path_script]</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">[path_script]</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[Empty],
+				Test: “index.php?p1=parameter1”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">PATH_INFO, active</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">N/A (!! ikke-cgi!)</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[path_info],
+				Eg. “/arg1/arg2/”</SPAN></P>
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Test:
+				“index.php/arg1/arg2/?p1=parameter1”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">SCRIPT_NAME</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">/php/php.exe</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">/php/php.exe</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK 
+				</P>
+				<P CLASS="western">(=PATH_INFO)</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">/cgi-bin/php</P>
+				<P CLASS="western">JW: OK!!! (strange)</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">/php-bin/php</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[path_script],
+				Eg. “/phpcheck/index.php”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">SCRIPT_FILENAME</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">c:/php/php.exe</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">C:/wampp2c/php/php.exe</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">/home/doms/knoell.org/cgi/php</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">/usr/php-4.2.3/php</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Abs. path to
+				file on server (also if symlinked), Eg. “/www/htdocs/index.php”
+				or “c:/www/htdocs/index.php” </SPAN>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">HTTP_HOST</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[host][:[port]],
+				Eg. “192.168.1.4:8080”</SPAN></P>
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[Std.
+				Hostname/IP number]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">HTTP_USER_AGENT</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[Std. User
+				agent]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">HTTP_ACCEPT_ENC.</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[Std.
+				Encoding]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">HTTP_REFERER</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[scheme]://[host][:[port]][path]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">QUERY_STRING</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[query]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western"><FONT COLOR="#999999">DOCUMENT_ROOT</FONT></P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western"><FONT COLOR="#999999">Empty</FONT></P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western"><FONT COLOR="#999999">Exists</FONT></P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western"><FONT COLOR="#999999">Exists</FONT></P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western"><FONT COLOR="#999999">OK</FONT></P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><FONT COLOR="#999999"><SPAN STYLE="background: #e6e6e6">Document
+				root of site as configured in apache, eg.
+				“/www/htdocs/typo3/32/cgi_directory” or “c:/www/htdocs/”</SPAN></FONT></P>
+				<P CLASS="western"><FONT COLOR="#999999"><SPAN STYLE="background: #e6e6e6">DOCUMENT_ROOT
+				depends very much on stuff like virtual directories, aliases etc.
+				so we should not use it and depend on it. Rather use
+				TYPO3_DOCUMENT_ROOT which is calculated based on SCRIPT_FILENAME
+				and SCRIPT_NAME</SPAN></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">PATH_TRANSLATED</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">Abs path to file (like SCRIPT_FILENAME for
+				LA13MOD). With double-backslash.</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">Abs path to file (like SCRIPT_FILENAME for
+				LA13MOD). With double-backslash.</P>
+				<P CLASS="western">Eg. “C:\\htdocs\\php_cgi\\phpcheck\\index.php”</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western"><I>See WA2CGI</I></P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western"><I>See WA2CGI</I></P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">Abs path to file?</P>
+				<P CLASS="western">“/home/doms/knoell.org/subs/kasper/index.php”</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">Abs path to file?</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">[Empty /
+				nonsense with PATH_INFO]</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">REDIRECT_URL</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">Empty!</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">Empty</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">equals
+				REQUEST_URI but without QUERY_STRING [path_script]</SPAN></P>
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Not used
+				anyways.</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">Cookie</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">OK</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">PATH_thisScript</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">?</P>
+				<P CLASS="western">/home/doms/knoell.org/subs/kasper/index.php</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Points to
+				absolute script path with forward unix style single slash. On
+				windows, with “x:/” as start of path.</SPAN></P>
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">Eg:
+				“/www/htdocs/index.php” or “c:/www/htdocs/index.php”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">php_sapi_name()</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">cgi</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">cgi</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">apache</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">cgi</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">isapi</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">apache</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">cgi</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">cgi</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">apache2filter</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">“apache”</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">TYPO3_OS/PHP_OS</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">WIN/WINNT</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">WIN/WINNT</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">WIN/WINNT</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">WIN/WINNT</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">WIN/WINNT</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">/Darwin</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">/Linux</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">/Linux</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">/Linux</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">/Linux</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82>
+				<P CLASS="western">TESTERS</P>
+			</TD>
+			<TD WIDTH=64>
+				<P CLASS="western">SELF</P>
+			</TD>
+			<TD WIDTH=68>
+				<P CLASS="western">SELF</P>
+			</TD>
+			<TD WIDTH=76>
+				<P CLASS="western">SELF, MS, JR</P>
+			</TD>
+			<TD WIDTH=66>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67>
+				<P CLASS="western">SELF (ISS+PWS), MS</P>
+			</TD>
+			<TD WIDTH=79>
+				<P CLASS="western">SELF (PWS on WinNT4)</P>
+			</TD>
+			<TD WIDTH=71>
+				<P CLASS="western">Axel Jindra &lt;mail@jindra.de&gt;</P>
+			</TD>
+			<TD WIDTH=58>
+				<P CLASS="western">SELF, Peter Knoell &lt;pknoell@gmx.de&gt;,
+				Jochen Weiland</P>
+			</TD>
+			<TD WIDTH=54>
+				<P CLASS="western">SELF</P>
+			</TD>
+			<TD WIDTH=57>
+				<P CLASS="western">SELF</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6e6">
+				<P CLASS="western"><SPAN STYLE="background: #e6e6e6">SELF, JR</SPAN></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82 BGCOLOR="#e6e6ff">
+				<P CLASS="western">Action to take:</P>
+			</TD>
+			<TD WIDTH=64 BGCOLOR="#e6e6ff">
+				<P CLASS="western">“CGI-syndrome”</P>
+			</TD>
+			<TD WIDTH=68 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=76 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=66 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67 BGCOLOR="#e6e6ff">
+				<P CLASS="western">“CGI-syndrome”</P>
+				<P CLASS="western">REQUEST_URI must be constructed from
+				HTTP_HOST, SCRIPT_NAME/PATH_INFO and QUERY_STRING.</P>
+			</TD>
+			<TD WIDTH=79 BGCOLOR="#e6e6ff">
+				<P CLASS="western">ENV-vars (+getenv()) is totally empty. Only
+				server-vars are available.</P>
+				<P CLASS="western">REQUEST_URI must be constructed from
+				HTTP_HOST, SCRIPT_NAME/PATH_INFO and QUERY_STRING.</P>
+			</TD>
+			<TD WIDTH=71 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=58 BGCOLOR="#e6e6ff">
+				<P CLASS="western">“CGI-syndrome”</P>
+			</TD>
+			<TD WIDTH=54 BGCOLOR="#e6e6ff">
+				<P CLASS="western">“CGI-syndrome”</P>
+			</TD>
+			<TD WIDTH=57 BGCOLOR="#e6e6ff">
+				<P CLASS="western">ENV-vars (+getenv()) is totally empty. Only
+				server-vars are available.</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=82 BGCOLOR="#e6e6ff">
+				<P CLASS="western">COMPENSATED</P>
+			</TD>
+			<TD WIDTH=64 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=68 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=76 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=66 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=67 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=79 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=71 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+			<TD WIDTH=58 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=54 BGCOLOR="#e6e6ff">
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=57 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+				<P CLASS="western">(Memory limit of more than 8 MB was needed,
+				otherwise there were blank screens. Seen in EM, InstallTool,
+				Photomarathon, TipAFriend etc)</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=159 BGCOLOR="#e6e6ff">
+				<P CLASS="western">OK</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western">Notes: 
+</P>
+<UL>
+	<LI><P CLASS="western">“WISS” - Windows IIS - may also be tested
+	as “Windows PWS” (Personal Web Server). They are expected to
+	yield similar behaviour. If this is not true, please let me know
+	(kasper@typo3.com).</P>
+	<LI><P CLASS="western">https://  - port 443, was seen in URLS.</P>
+	<LI><P CLASS="western">“CGI-syndrome” above means:</P>
+	<UL>
+		<LI><P CLASS="western">1) PATH_TRANSLATED seems to be
+		SCRIPT_FILENAME. On windows the path is with double-backslashes
+		also!</P>
+		<LI><P CLASS="western">2) PATH_INFO seems to be SCRIPT_NAME</P>
+		<LI><P CLASS="western">3) PATH_INFO contains a value on normal
+		requests (SCRIPT_NAME) and seems to NOT work with the “/arg1/arg2”
+		trick</P>
+	</UL>
+	<LI><P CLASS="western">“PATH_INFO” is not empty for any CGI
+	versions and the “PATH_INFO-trick” does not work for any of
+	those either. So PATH_INFO should probably be forced to zero for all
+	CGI-servers.</P>
+</UL>
+<PRE CLASS="western">
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">Fra t3lib_div:</FONT></FONT>
+
+/* 
+Conventions:
+output from parse_url():
+URL:	http://username:password@192.168.1.4:8080/typo3/32/temp/phpcheck/index.php/arg1/arg2/arg3/?arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value#link1
+    [scheme] =&gt; 'http'
+    [user] =&gt; 'username'
+    [pass] =&gt; 'password'
+    [host] =&gt; '192.168.1.4'
+	[port] =&gt; '8080'
+    [path] =&gt; '/typo3/32/temp/phpcheck/index.php/arg1/arg2/arg3/'
+    [query] =&gt; 'arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value'
+    [fragment] =&gt; 'link1'
+	
+	Further definition: [path_script] = '/typo3/32/temp/phpcheck/index.php'
+			[path_dir] = '/typo3/32/temp/phpcheck/'
+			[path_info] = '/arg1/arg2/arg3/'
+			[path] = [path_script/path_dir][path_info]
+							
+
+Keys supported:
+
+URI______:
+	REQUEST_URI		=	[path]?[query]		= /typo3/32/temp/phpcheck/index.php/arg1/arg2/arg3/?arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value
+	HTTP_HOST		=	[host][:[port]]		= 192.168.1.4:8080
+	SCRIPT_NAME		=	[path_script]++		= /typo3/32/temp/phpcheck/index.php		// NOTICE THAT SCRIPT_NAME will return the php-script name ALSO. [path_script] may not do that (eg. &quot;/somedir/&quot; may result in SCRIPT_NAME &quot;/somedir/index.php&quot;)!
+	PATH_INFO		=	[path_info]			= /arg1/arg2/arg3/
+	QUERY_STRING	=	[query]				= arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value
+	HTTP_REFERER	=	[scheme]://[host][:[port]][path]	= http://192.168.1.4:8080/typo3/32/temp/phpcheck/index.php/arg1/arg2/arg3/?arg1,arg2,arg3&amp;p1=parameter1&amp;p2[key]=value
+							(Notice: NO username/password + NO fragment)
+
+CLIENT____:
+	REMOTE_ADDR		=	(client IP)
+	REMOTE_HOST		=	(client host)
+	HTTP_USER_AGENT	=	(client user agent)
+	HTTP_ACCEPT_LANGUAGE	= (client accept language)
+
+SERVER____:
+	SCRIPT_FILENAME	=	Absolute filename of script		(Differs between windows/unix). On windows &quot;C:\\blabla\\blabl\\&quot; will be converted to &quot;C:/blabla/blabl/&quot;
+	DOCUMENT_ROOT	=	Absolute path of root of documents:	DOCUMENT_ROOT.SCRIPT_NAME = SCRIPT_FILENAME
+	
+Special extras:
+	TYPO3_HOST_ONLY	=		[host]			= 192.168.1.4
+	TYPO3_PORT		=		[port]			= 8080 (blank if 80, taken from host value)
+	TYPO3_REQUEST_URL =		[scheme]://[host][:[port]][path]?[query]	(sheme will by default be &quot;http&quot; until we can detect if it's https - 
+	TYPO3_REQUEST_SCRIPT =  [scheme]://[host][:[port]][path_script]
+	TYPO3_REQUEST_DIR =		[scheme]://[host][:[port]][path_dir]
+	TYPO3_SITE_URL = 		[scheme]://[host][:[port]][path_dir] of the Typo3 website 
+
+Notice: [fragment] is apparently NEVER available to the script!
+
+
+Testing suggestions:
+- Output all the values.
+- In the script, make a link to the script it self, maybe add some parameters and click the link a few times so HTTP_REFERER is seen
+- ALSO TRY the script from the ROOT of a site (like &quot;http://www.mytest.com/&quot; and not &quot;http://www.mytest.com/test/&quot; !!)
+
+*/
+</PRE>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="15_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Server Compatibility Chart</SDFIELD>
+	<B>- </B><B><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>5</SDFIELD></B></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

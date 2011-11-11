@@ -1,0 +1,2257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Modern Template Building, Part 1 (MTB/1)</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Kasper Skårhøj">
+	<META NAME="CHANGED" CONTENT="20031229;12495600">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0cm; color: #333366; text-align: left; page-break-before: auto }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		H2.contents-heading-western { color: #000000; font-family: "Arial Narrow", sans-serif; font-size: 16pt; font-style: normal }
+		H2.contents-heading-cjk { color: #000000; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #000000; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Modern Template Building, Part 1 (MTB/1)</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER>Extension key: <B>doc_tut_templselect</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2003-2004, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Modern Template
+	Building, Part 1 (MTB/1)	1</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	1</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">What does it do?	1</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>The Basics	4</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Getting started -
+	install the &quot;dummy&quot; package	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating a page
+	structure	5</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Page Tree and
+	Template Records explained	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Basics of
+	&quot;Setup-field&quot; instructions	10</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">More examples of
+	PAGE and cObjects	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">PAGE object
+	revisited	16</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Part 1:
+	Integration of an HTML template 	20</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Implementation of a
+	CMS	20</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The HTML template	21</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Basics of the
+	TEMPLATE cObject	24</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The Template
+	Auto-parser Extension	26</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Putting it all
+	together	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Creating the menu	33</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Inserting page
+	content	37</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Adding XHTML
+	compliancy	43</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Cleaning everything
+	up a bit	45</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Some HTML-design
+	considerations	46</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>End note	50</B></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Introduction</H2>
+<H3 CLASS="western">What does it do?</H3>
+<P CLASS="western">This extension is a from-scratch tutorial about
+how to build a CMS-powered website with TYPO3 based on a
+HTML-template. 
+</P>
+<P CLASS="western">For developers on beginner level.</P>
+<P CLASS="western">The website you will be guided to build will look
+like this:</P>
+<P CLASS="western"><IMG SRC="3_html_m2a56f020.png" NAME="Graphic146" ALIGN=LEFT WIDTH=458 HEIGHT=526 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The site consists of an area for a dynamic menu
+(left) and dynamic page content (right) - the rest is static design
+from the HTML template.</P>
+<H4 CLASS="western">Goal</H4>
+<P CLASS="western">The goal of the tutorial is to equipt you with the
+state-of-the-art techniques for creating TYPO3 powered websites. It
+will allow you a quick hands-on experience with the system and
+provide you with a overall understanding of the factors involved in
+website production with TYPO3. 
+</P>
+<P CLASS="western">If you think this tutorial is too long and want
+something shorter, please just find another CMS because nothing as
+powerful and complex a tool as TYPO3 can be described in less space.
+And even this tutorial is just outlining the over all picture. 
+</P>
+<P CLASS="western">Just because TYPO3 costs <I>no money</I> it will
+<I>not </I>take <I>no time </I>to learn for a developer! It takes a
+serious time investment and dedication - just like <I>any</I>
+commercial alternative on its level. So be forewarned. Flying
+aircrafts takes skills and therefore time to learn. Hopefully this
+tutorial will get you as quickly as possible onto the launch ramp.</P>
+<H4 CLASS="western">Skill levels</H4>
+<P CLASS="western">The tutorial is divided into four sections:</P>
+<P CLASS="western"><B>The Basics</B> - a newbee introduction to
+building websites with TYPO3, template records, TypoScript and
+Content Objects (cObjects). Any person who wants to develop with
+TYPO3 should be familiar with the concepts described here.</P>
+<P CLASS="western"><B>Part 1: Integration of an HTML template</B> -
+this part aims specifically at intermediate HTML-webdesigners with a
+limited amount of technical knowledge.</P>
+<P CLASS="western"><B>Part 2: Creating a Template Selector </B>- this
+part aims at intermediate web developer with good knowledge of PHP,
+SQL and programming concepts in general.</P>
+<P CLASS="western"><B>Part 3: Extending the Built-In Access Scheme</B>
+- for advanced TYPO3/PHP-developers.</P>
+<P CLASS="western"><I>Notice: Part 2 and Part 3 are found in <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=490&amp;cHash=27f9c79d25">another
+document, in the extension &quot;</A><A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=490&amp;cHash=27f9c79d25"><SPAN STYLE="font-weight: normal">doc_tut_templselect2</SPAN></A><A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=490&amp;cHash=27f9c79d25">&quot;</A></I></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">You can jump onto any part you like directly.
+However if you follow the tutorial from the first to the last section
+you will find the sections to be sequential and that may give you the
+best step-by-step experience. However the step <I>between</I> the
+tutorials may require that you gain some experience first!</P>
+<H4 CLASS="western">The extension</H4>
+<P CLASS="western">This tutorial has all its files contained in a
+TYPO3 extension. Extensions normally contain scripts and resources
+that extend the capabilities of TYPO3. However this tutorial
+extension does not interact with TYPO3s core if you install it - it
+merely serves as a vehicle for transporting the tutorial files to
+your server and for presenting the tutorial document online on
+typo3.org.</P>
+<P CLASS="western">Therefore to follow this tutorial, first install
+the dummy-package (see The Basics section) and then import the
+extension &quot;doc_tut_templselect&quot; from TER (TYPO3 Extension
+Repository) with the EM (Extension Manager) and you will have all
+files at hand on your server when you need them.</P>
+<P CLASS="western">This tutorial document can either be read online
+or you can download it as a SXW file from typo3.org for your
+convenience.</P>
+<H4 CLASS="western">Price</H4>
+<P CLASS="western">You don't have to pay for reading this document.
+However it has taken the author, Kasper Skårhøj, a full week to
+prepare, write and complete. None of this work was paid. If you or
+your company find it useful and it makes you better fit for serving
+powerful websites to your customers, please consider a donation! You
+cannot feed me by shoulder padding alone. Otherwise this tutorial
+could be the last one...</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western" STYLE="page-break-before: always">The Basics</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">This section will quickly introduce the newbee to
+how TYPO3's frontend works. What are TypoScript Templates, what are
+content objects, what are HTML-templates. If you know these basics
+well already, you can skip ahead to the next section, &quot;Integration
+of an HTML template&quot;. However you will need to install the
+dummy-package and create a set of pages inside. This is discussed
+below.</P>
+<H4 CLASS="western">Skill level</H4>
+<P CLASS="western"><I>All developer newbees to TYPO3 regardless of
+experience in other fields. </I>
+</P>
+<P CLASS="western">Some parts will refer to technologies like SQL,
+HTML, CSS and PHP. The content is generally of a technical sort since
+it takes you through the installation of the dummy-package and
+explains the basics of the frontend template engine in TYPO3.</P>
+<H3 CLASS="western">Getting started - install the &quot;dummy&quot;
+package</H3>
+<P CLASS="western">To get started real quickly we will install a
+blank file framework and database for TYPO3 and the best way to do
+this is by using the &quot;dummy&quot; package. A &quot;package&quot;
+consists of the general TYPO3 source code mixed with local site
+related files and possibly database content - altogether comprising a
+full website. In the case of the dummy-package this will be a empty
+website with no content. But that is highly useful for starting up
+new projects.</P>
+<P CLASS="western">So get the dummy-package and install it on your
+webserver. After unzipping the package you just hit the index.php
+file and you will be guided through these steps.</P>
+<H4 CLASS="western">Enter database information:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m286210b4.png" NAME="Graphic4" ALIGN=LEFT WIDTH=299 HEIGHT=247 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Create a new table:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_7bb9f328.png" NAME="Graphic5" ALIGN=LEFT WIDTH=414 HEIGHT=180 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Import the dummy database, &quot;database.sql&quot;:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_mefafbaf.png" NAME="Graphic6" ALIGN=LEFT WIDTH=417 HEIGHT=230 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Go to the backend:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6c87705c.png" NAME="Graphic7" ALIGN=LEFT WIDTH=421 HEIGHT=287 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For these steps to complete nicely you will have
+to make localconf.php writable (you will be told if it isn't!) and
+have the database username and password at hand.</P>
+<H3 CLASS="western">Creating a page structure</H3>
+<P CLASS="western">The first thing to do now is to create a page
+structure we can use for this tutorial. A good page structure
+contains pages on at least two levels. However we must start with a
+root page in any case:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_21ec3920.png" NAME="Graphic8" ALIGN=LEFT WIDTH=669 HEIGHT=224 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Enter a page title, unhide the page and save it:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m7a5403aa.png" NAME="Graphic9" ALIGN=LEFT WIDTH=669 HEIGHT=192 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You could proceed in this way to create your page
+structure. However there is a great wizard for doing this much
+easier. Just go to the &quot;Functions&quot; module, select wizards
+and the &quot;Create multiple pages&quot; wizard, enter a bunch of
+page titles and press the &quot;Create pages&quot; button.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_1187669.png" NAME="Graphic10" ALIGN=LEFT WIDTH=669 HEIGHT=323 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(The &quot;Create multiple pages&quot; wizard
+requires the extension &quot;wizard_crpages&quot; to be installed.)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This should result in this nice page tree:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_39221475.png" NAME="Graphic11" ALIGN=LEFT WIDTH=234 HEIGHT=166 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, create a new more pages so you have something
+like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m684fe2ba.png" NAME="Graphic12" ALIGN=LEFT WIDTH=242 HEIGHT=276 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Page Tree and Template Records explained</H3>
+<P CLASS="western">Click a page icon and select &quot;Show&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_457c0b19.png" NAME="Graphic13" ALIGN=LEFT WIDTH=245 HEIGHT=154 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The result from viewing the &quot;Licensing&quot;
+page will be a screen something like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_2e0e1dc9.png" NAME="Graphic14" ALIGN=LEFT WIDTH=369 HEIGHT=208 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The page &quot;Licensing&quot; had the uid &quot;5&quot;
+and viewing the content of that page is done by sending the &quot;id=5&quot;
+parameter to the index.php script of the frontend.</P>
+<P CLASS="western">Now, the message is &quot;No template found&quot;.
+This means that the frontend engine did not find any <I>template
+record</I> in the <I>rootline</I> of the page tree from the page with
+id 5. This calls for a little theory to explain:</P>
+<P CLASS="western">TYPO3 is a multi-site CMS which means that you can
+have any number of separate websites contained in the same page
+structure. Each website in the page tree must have a <I>root page</I>
+which is indicated by placing a <I>template record</I> on that page.
+This template record must have the &quot;Rootlevel&quot; flag set. So
+when a template record with the &quot;Rootlevel&quot; flag set is
+attached to a page it simply means that &quot;from this point and
+outwards starts a new website in the page tree&quot;.</P>
+<P CLASS="western">The <I>root line</I> is another word for &quot;path&quot;.
+For instance you might say that the page &quot;License A&quot; in my
+page structure has the path &quot;TYPO3 &gt; Root page &gt; Licensing
+&gt; License A&quot;. And if we send the id of the &quot;License A&quot;
+page to the index.php script, the frontend template engine will
+search the root line from the &quot;License A&quot; back to the page
+tree root for a template record that will define how this branch of
+the page tree should be rendered.</P>
+<H4 CLASS="western">Creating a Template Record</H4>
+<P CLASS="western">So what we will do now is to create a template
+record on the page &quot;Root page&quot;. The most easy way is to use
+the &quot;Template&quot; module:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_4343edf1.png" NAME="Graphic15" ALIGN=LEFT WIDTH=669 HEIGHT=206 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The next screen will show you this view from the
+&quot;Template&quot; module. You will use this for editing the
+template record later:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m4eb6582c.png" NAME="Graphic16" ALIGN=LEFT WIDTH=440 HEIGHT=231 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">For now, look at the &quot;Root page&quot; with
+the &quot;List&quot; module instead:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m52ccfc1b.png" NAME="Graphic17" ALIGN=LEFT WIDTH=669 HEIGHT=206 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see there is a &quot;Template&quot;
+record located on the page &quot;Root page&quot;. 
+</P>
+<P CLASS="western">This template record will contain the <I>basic
+instructions</I> to the <I>frontend engine</I> about how the website
+beginning from this point should be rendered, which features it has,
+how it is configured, etc. A template record is <I>always</I> needed
+to start any new website in TYPO3 (using the default frontend
+engine). However you can personally balance how much of your website
+design the template record will control directly; you can program a
+whole website directly inside a template record. You could also
+instruct the template record to immediately call a PHP function you
+have created which will render and return all the page content (based
+on XML, XSLT or other databases - whatever you fancy). You can also
+choose a middleway mixing the best of both worlds. This is what we do
+in this tutorial.</P>
+<P CLASS="western">Looking at the content you will see these fields
+of specific interest:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6511d4cd.png" NAME="Graphic18" ALIGN=LEFT WIDTH=449 HEIGHT=301 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The &quot;Template title&quot; is just the title
+of your template record - not displayed anywhere. 
+</P>
+<P CLASS="western">The &quot;Website title&quot; will be a prefix of
+the page title as found between the &lt;title&gt; tags of any page.</P>
+<P CLASS="western">The &quot;Setup&quot; field is where you enter the
+<I>instructions</I> that make the frontend engine react in a certain
+way. These instructions are contained in a hierarchical information
+structure defined by the TypoScript syntax. Since the instructions
+from the &quot;Setup&quot; field is defined by the TypoScript syntax
+you will often find template records referred to as &quot;TypoScript
+templates&quot;.</P>
+<P CLASS="western">The &quot;Clear constants&quot; and &quot;Clear
+setup&quot; flags means that no TypoScript configuration code is
+inherited from template records earlier in the tree (closer to the
+root), if any. These flags should always be set for template records
+serving as main templates (&quot;Rootlevel&quot;).</P>
+<P CLASS="western">The &quot;Rootlevel&quot; flag simply means: &quot;This
+template records marks the start of a new website&quot;.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, back to the viewing of the page &quot;Licensing&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m5d93a6cc.png" NAME="Graphic19" ALIGN=LEFT WIDTH=519 HEIGHT=172 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, something different popped up. This is what
+happend:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m34753ed4.png" NAME="Graphic20" ALIGN=LEFT WIDTH=328 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<UL>
+	<LI><P CLASS="western">Request page with uid &quot;5&quot; (#1)</P>
+	<LI><P CLASS="western">Select the first template record on this page
+	(pid=5); Nothing found!</P>
+	<LI><P CLASS="western">Since no template record on page with uid &quot;5&quot;
+	was found, check the previous page in the root line.... (#2)</P>
+	<LI><P CLASS="western">Select the first template record on this
+	page, &quot;Root page&quot;, (pid=1); A template record was found!</P>
+	<LI><P CLASS="western">Since a template record <I>was found </I>on
+	page with uid &quot;1&quot;, check if the &quot;Rootlevel&quot; flag
+	was set...</P>
+	<LI><P CLASS="western">Yes, the &quot;Rootlevel&quot; flag was set.
+	Fine, this is the start of a website. So...</P>
+	<UL>
+		<LI><P CLASS="western">Parse the TypoScript configuration of the
+		Setup field.</P>
+		<LI><P CLASS="western">Begin executing the instructions from the
+		Setup field.</P>
+	</UL>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Basics of &quot;Setup-field&quot; instructions</H3>
+<P CLASS="western">When a template record is in place the main point
+of interest now is the &quot;Setup&quot; field of that template. In
+this field you enter a set of instructions that will determine what
+happens when we hit a page in the frontend. 
+</P>
+<P CLASS="western">The best way editing this field is by the Template
+module using the Info/Modify view:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m4f176154.png" NAME="Graphic21" ALIGN=LEFT WIDTH=407 HEIGHT=212 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Click the edit icon and lets go:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_4ce1a1c5.png" NAME="Graphic22" ALIGN=LEFT WIDTH=436 HEIGHT=200 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Here comes a short explanation:</P>
+<H4 CLASS="western">The PAGE object (#1)</H4>
+<P CLASS="western">First we define a new <I>&quot;Toplevel Object&quot;</I>
+(TLO) called &quot;page&quot;. Object type is &quot;PAGE&quot; (you
+can also define a FRAMESET, see TSref). Instead of &quot;page&quot;
+you could use other strings except a list of reserved TLO's, see
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=336&amp;cHash=cd45190206">TSref
+about Toplevel Objects</A>.<BR>As a property for the <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=340&amp;cHash=cf79f79f93">&quot;page&quot;
+object</A> we define the obligatory property, &quot;typeNum&quot;,
+and set its value to 0 (zero).</P>
+<P CLASS="western">What all this means is that the Toplevel Object
+&quot;page&quot; will now be the <I>default handler</I> of any
+request sent to a page within the branch of the page tree where our
+template record marks the beginning of a website.</P>
+<P CLASS="western">Now we want to <I>instruct</I> the &quot;page&quot;
+object what to do. Basically we need to look up the <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=340&amp;cHash=cf79f79f93">possible
+properties for PAGE objects in the TSref</A>. Some properties are
+meta properties like the &quot;config&quot; or &quot;includeLibs&quot;
+property. Others are there to define what HTML output this PAGE
+object will generate.</P>
+<P CLASS="western">The most significant set of properties for PAGE
+objects is the <I>numerical array</I> of <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=348&amp;cHash=7f5f10e6bc">content
+objects (cObjects)</A>. Each of these content objects can render a
+string of HTML-content which altogether makes up the content between
+the body-tags of the page.</P>
+<H4 CLASS="western">The Content Object (#2)</H4>
+<P CLASS="western">In the example above there is a very simple
+content object  - TEXT - defined for the index &quot;10&quot; of the
+numerical array of content objects  in the PAGE object, &quot;page&quot;.
+This cObject has the property &quot;value&quot; set to &quot;HELLO
+WORLD!&quot;. The effect is that this string is returned from the
+cObject and becomes the content between the page bodytags:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_2adda116.png" NAME="Graphic23" ALIGN=LEFT WIDTH=263 HEIGHT=101 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You can see the <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=350&amp;cHash=b49de28f83">set
+of properties for the TEXT cObject here</A>.</P>
+<H4 CLASS="western">TypoScript - no programming language</H4>
+<P CLASS="western">Before we move on; please notice that TypoScript
+is not a procedural programming language. You might easily be lead to
+think this and if you have experience with other programming
+languages and how they work this is a dangerous cocktail since you
+will be quite confused. In reality, TypoScript merely <I>configures</I>
+the system to act in a certain way.</P>
+<P CLASS="western">In order to explain what TypoScript really is and
+point you to the difference between this and how it is used in TYPO3,
+you can look in <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=264&amp;cHash=3553a3af05">this
+document explaining the basics</A>.</P>
+<H3 CLASS="western">More examples of PAGE and cObjects</H3>
+<P CLASS="western">This section will just take a few more examples of
+PAGE and cObjects in order to let you grasp the concept fully.
+Understanding this allows you to understand &quot;TypoScript
+templates&quot; when the structures become more complex.</P>
+<H4 CLASS="western">Two cObjects?</H4>
+<P CLASS="western">What happens if you enter another content object:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Content object one:
+page.<FONT COLOR="#ff0000">10</FONT> = TEXT
+page.<FONT COLOR="#ff0000">10</FONT>.value = HELLO WORLD!
+
+# Content object two:
+page.<FONT COLOR="#ff0000">20</FONT> = TEXT
+page.<FONT COLOR="#ff0000">20</FONT>.value = HELLO UNIVERSE!
+</PRE><P CLASS="western">
+(BTW, lines starting with &quot;#&quot; or &quot;/&quot; are
+comments.)</P>
+<P CLASS="western"><B>Output:</B></P>
+<PRE CLASS="western">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+HELLO WORLD!HELLO UNIVERSE!
+&lt;/body&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">So - as expected more content objects will just be
+concatenated!</P>
+<H4 CLASS="western">Changing order?</H4>
+<P CLASS="western">What if the order of definition is changed?</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Content object two:
+page.<FONT COLOR="#ff0000">20</FONT> = TEXT
+page.<FONT COLOR="#ff0000">20</FONT>.value = HELLO UNIVERSE!
+
+# Content object one:
+page.<FONT COLOR="#ff0000">10</FONT> = TEXT
+page.<FONT COLOR="#ff0000">10</FONT>.value = HELLO WORLD!
+</PRE><P CLASS="western">
+<B>Output:</B></P>
+<PRE CLASS="western">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+HELLO WORLD!HELLO UNIVERSE!
+&lt;/body&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The same - the order of rendering is according to
+the index in the array.</P>
+<H4 CLASS="western">Dynamic content?</H4>
+<P CLASS="western">What if we want the TEXT cObject to insert the
+page title?</P>
+<P CLASS="western">Then you will have to <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=350&amp;cHash=b49de28f83">look
+up in the TSref to see if the TEXT cObject</A> has any properties
+that allows you to instruct it to do so. It seems that it has. Apart
+from the &quot;value&quot; property on the same level the TEXT object
+also has <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=314&amp;cHash=02ab044c7b">&quot;stdWrap&quot;
+properties (click here)</A> which can be used to fetch and process
+data dynamically.</P>
+<P CLASS="western">Since the rendering of the cObject TEXT is done in
+the main scope of the PAGE Object the <I>current record</I> will be
+the current page record. So referring to a fieldname with the stdWrap
+property &quot;field&quot; will fetch content from the current page's
+record. Here the field named &quot;title&quot; will carry the page
+name (this of course requires knowledge about what fields are
+available in the pages table!):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Content object outputting current page title:
+page.<FONT COLOR="#ff0000">10</FONT> = TEXT
+page.<FONT COLOR="#ff0000">10</FONT>.field = title
+</PRE><P CLASS="western">
+<B>Output:</B></P>
+<PRE CLASS="western">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+Licensing
+&lt;/body&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Since the current page was the &quot;Licensing&quot;
+page, that was the title in the output!</P>
+<H4 CLASS="western">stdWrap properties</H4>
+<P CLASS="western">Now that we are playing with the &quot;stdWrap&quot;
+properties we can wrap the value, process it in different ways etc:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Content object outputting current page title:
+page.10 = TEXT
+page.10 {
+  field = title
+  crop = 8 | ...
+  case = upper
+  wrap = This is the truncated page title: &lt;b&gt; | &lt;/b&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(<B>Notice</B> how I changed the formatting in
+TypoScript so the properties was encapsulated in curly braces. This
+syntax of TypoScript makes it easier to assign many properties on the
+same level but the end result is no different from prefixing all the
+properties with the full object path &quot;page.10&quot;.)</P>
+<P CLASS="western"><B>Output:</B></P>
+<PRE CLASS="western">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+This is the truncated page title: &lt;b&gt;LICENSIN...&lt;/b&gt;
+&lt;/body&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice how the wrapping string was wrapped around
+the page title which was further set in uppercase and truncated to
+max. 8 chars with &quot;...&quot; appended!</P>
+<P CLASS="western">We could have achieved the same output by another
+cObject called &quot;HTML&quot; - the only difference is that all the
+stdWrap properties are properties to the &quot;value&quot; property
+of the HTML cObject - not properties of the cObject itself:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Content object outputting current page title:
+page.10 = <FONT COLOR="#ff0000">HTML</FONT>
+page.10<FONT COLOR="#ff0000">.value</FONT> {
+  field = title
+  crop = 8 | ...
+  case = upper
+  wrap = This is the truncated page title: &lt;b&gt; | &lt;/b&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">It's a question of personal preference and style
+whether you use TEXT or HTML cObjects.</P>
+<H4 CLASS="western">Content from PHP scripts</H4>
+<P CLASS="western">You can easily insert content from PHP scripts if
+you like to. This is a <I>very recommended</I> practice if you need
+conditional output just a little above the most basic level since the
+cObjects and their properties doesn't offer &quot;procedural
+programming&quot; at all - remember they are just pre-programmed
+objects reacting on a set of properties, nothing more. 
+</P>
+<P CLASS="western">So the USER cObject is what you need.</P>
+<P CLASS="western">First, lets create a PHP-file in
+<B>fileadmin/userfunctions.php</B>:</P>
+<PRE CLASS="western">&lt;?php
+
+class user_functions {
+
+	/**
+	 * Multiplies the current page ID with $conf[&quot;factor&quot;]
+	 */
+	function multiplyTest($content,$conf)	{
+		$currentPageUid = $GLOBALS['TSFE']-&gt;id;
+		$factor = intval($conf['factor']);
+		
+		return $currentPageUid * $factor;
+	}
+}
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Then lets configure a <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=369&amp;cHash=b623aca0a9">cObject
+of the type USER</A> to call this function with a single parameter,
+&quot;factor&quot;:</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+<FONT COLOR="#ff0000">page.includeLibs.some_random_id_string = fileadmin/userfunctions.php</FONT>
+page.config.admPanel = 1
+
+# Content object outputting current page title:
+page.10 = HTML
+page.10.value = The page ID, {field:uid}, multiplied with 15 is:
+page.10.value.insertData = 1
+page.10.value.wrap = &lt;b&gt; |&lt;/b&gt; &lt;br /&gt;
+
+<FONT COLOR="#ff0000">page.20 = USER</FONT>
+<FONT COLOR="#ff0000">page.20.userFunc = user_functions-&gt;multiplyTest</FONT>
+<FONT COLOR="#ff0000">page.20.factor = 15</FONT>
+</PRE><P CLASS="western">
+And the output should be:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_3c1ce4ed.png" NAME="Graphic24" ALIGN=LEFT WIDTH=251 HEIGHT=159 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see we defined a few &quot;meta-properties&quot;
+not directly related to content output:</P>
+<PRE CLASS="western">page.includeLibs.some_random_id_string = fileadmin/userfunctions.php
+page.config.admPanel = 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">&quot;includeLibs&quot; is a property that allows
+you to configure a list of PHP-files (classes and function
+libraries!) to be included before starting the rendering of the page.
+&quot;config&quot; allows for a whole <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=338&amp;cHash=6a7c6eecbb">lot
+of configuration options</A> about general behaviour of this PAGE
+object. In this case the Admin Panel was added in the bottom of the
+page.</P>
+<P CLASS="western">You really should take a few minutes to look at
+this example. Notice how the property &quot;factor&quot; of the USER
+object was available in the PHP-function. Notice how the PHP-function
+retrieves the page ID. Notice how the &quot;admin panel&quot; was
+included. You can learn a lot from playing a little with this
+example. Let your fantasy loose for a while since this can give you a
+good feeling of control.</P>
+<H4 CLASS="western">The Object Browser</H4>
+<P CLASS="western">The Object Browser in the Template module is an
+indispensable tool for verifying the hierarchical information
+structure of your template records:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_78b09d62.png" NAME="Graphic25" ALIGN=LEFT WIDTH=361 HEIGHT=414 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see the TypoScript values are parsed
+into this nicely organized tree. This lets you verify if every
+property you have set is at the correct place and even allows you to
+edit a single value if you make sure &quot;Enable object links&quot;
+is checked:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m39f834e4.png" NAME="Graphic26" ALIGN=LEFT WIDTH=368 HEIGHT=73 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m51a2dd33.png" NAME="Graphic27" ALIGN=LEFT WIDTH=555 HEIGHT=70 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_7b4f03ef.png" NAME="Graphic28" ALIGN=LEFT WIDTH=466 HEIGHT=242 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Going back to &quot;Info/Modify&quot; you can see
+that the template Setup field has been modified:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_38b73be6.png" NAME="Graphic29" ALIGN=LEFT WIDTH=468 HEIGHT=258 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The Object Browser is not intelligent enough to go
+and change the line with &quot;page.20.factor = 15&quot; - it just
+inserts a new line in the end which will override any previously set
+value. You can clean it up manually. The whole point is that the
+Object Browser provides a fool-proof way of setting these values
+since the correct object path will always be used.</P>
+<H4 CLASS="western">Try a condition?</H4>
+<P CLASS="western">We could in fact use this situation to demonstrate
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=293&amp;cHash=e7edb998fd">&quot;conditions&quot;</A>.
+A very basic condition is to check for the browser:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Default PAGE object:
+page = PAGE
+page.typeNum = 0
+page.includeLibs.some_random_id_string = fileadmin/userfunctions.php
+page.config.admPanel = 1
+
+# Content object outputting current page title:
+page.10 = HTML
+page.10.value = The page ID, {field:uid}, multiplied with 15 is:
+page.10.value.insertData = 1
+page.10.value.wrap = &lt;b&gt; |&lt;/b&gt; &lt;br /&gt;
+
+page.20 = USER
+page.20.userFunc = user_functions-&gt;multiplyTest
+page.20.factor = 15
+
+<FONT COLOR="#ff0000">[browser = msie]</FONT>
+
+<FONT COLOR="#ff0000">page.20.factor = 30</FONT>
+<FONT COLOR="#ff0000">page.10.value = The page ID, {field:uid}, multiplied with 30 is:</FONT>
+
+<FONT COLOR="#ff0000">[global]</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In Microsoft Internet Explorer this will look
+like:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m81eeec0.png" NAME="Graphic30" ALIGN=LEFT WIDTH=403 HEIGHT=183 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In all other browsers it looks like:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_47471ad1.png" NAME="Graphic31" ALIGN=LEFT WIDTH=302 HEIGHT=148 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">PAGE object revisited</H3>
+<P CLASS="western">Well, this should not be a full fledged course in
+making template solely by cObjects - in this manual we will mainly
+use the TEMPLATE, USER and HMENU cObjects and combine them with
+predefined TypoScript code from static templates to meet our
+objectives. The final autority on <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;cHash=4ad9d7acb4">objects
+and properties is the TSref</A> and if you want examples of usage for
+each object-type please look in <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=269&amp;cHash=39e3faa590">TypoScript
+by Example</A>.</P>
+<P CLASS="western">However I would like to finish off with two
+points:</P>
+<H4 CLASS="western">The significance of &quot;&amp;type=&quot;</H4>
+<P CLASS="western">In this example below there is not only one PAGE
+object defined. Also the TLO &quot;another_page&quot; is defined as a
+PAGE object but the &quot;typeNum&quot; property is set to &quot;1&quot;.
+This means that the &quot;page&quot; PAGE object is the handler of
+<I>default page requests</I> while the &quot;another_page&quot; PAGE
+object becomes the handler of page requests where the &quot;&amp;type=1&quot;
+parameter is set in addition to the id-parameter:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum = 0
+page.10 = TEXT
+page.10.value = HELLO WORLD!
+
+another_page = PAGE
+another_page.typeNum = 1
+another_page.10 = TEXT
+another_page.10.value = HELLO UNIVERSE
+</PRE><P CLASS="western">
+The output will be:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m3af1beae.png" NAME="Graphic32" ALIGN=LEFT WIDTH=445 HEIGHT=331 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And the object tree:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_7d7d201e.png" NAME="Graphic33" ALIGN=LEFT WIDTH=505 HEIGHT=180 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Copying objects</H4>
+<P CLASS="western">Quickly it becomes very practical to divide the
+TypoScript configuration code of your templates into related units
+and then assemble them all in the end of the template by copying them
+into the right positions. This might even include separation of the
+units into a hierarchy of included template records or static
+templates thus allowing for reuse of TypoScript. You will learn about
+that later.</P>
+<P CLASS="western">The main feature of TypoScript that allows this is
+the syntax for copying one branch of the object tree to another.
+Consider this example:</P>
+<PRE CLASS="western">
+# Make temporary version of the first cObject:
+<FONT COLOR="#ff0000">temp.world</FONT> = TEXT
+temp.world.value = HELLO WORLD!
+
+
+# Make temporary version of the second cObject:
+<FONT COLOR="#ff0000">temp.universe</FONT> = TEXT
+temp.universe.value = HELLO UNIVERSE!
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+page.<FONT COLOR="#ff0000">10 &lt; temp.world</FONT>
+page.<FONT COLOR="#ff0000">20 &lt; temp.universe</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The result is - of course - this:</P>
+<PRE CLASS="western">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+HELLO WORLD!HELLO UNIVERSE!
+&lt;/body&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">If you look in the object browser you can see,
+that the objects from &quot;temp. ...&quot; has been copied to the
+paths &quot;page.10&quot; and &quot;page.20&quot;. However we might
+expect seeing the &quot;temp.&quot; TLO in the tree, but we don't.
+The reason is that the TLOs named &quot;temp.&quot; and &quot;styles.&quot;
+are <I>unset</I> again after parsing the TypoScript since they are
+reserved as <I>temporary object spaces</I> available only during
+parsing - not after parsing.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6938601.png" NAME="Graphic34" ALIGN=LEFT WIDTH=413 HEIGHT=203 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If we wanted our objects to stay in the tree we
+could do that by using another TLO:</P>
+<PRE CLASS="western"># Make temporary version of the first cObject:
+<FONT COLOR="#ff0000">MY_TLO</FONT>.world = TEXT
+MY_TLO.world.value = HELLO WORLD!
+
+
+# Make temporary version of the second cObject:
+<FONT COLOR="#ff0000">MY_TLO</FONT>.universe = TEXT
+MY_TLO.universe.value = HELLO UNIVERSE!
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+page.10 &lt; <FONT COLOR="#ff0000">MY_TLO</FONT>.world
+page.20 &lt; <FONT COLOR="#ff0000">MY_TLO</FONT>.universe</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and the TLO &quot;MY_TLO&quot; is still there:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m6fa64db7.png" NAME="Graphic35" ALIGN=LEFT WIDTH=435 HEIGHT=252 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">References - not copies</H4>
+<P CLASS="western">This also means that we can create a reference to
+the objects at MY_TLO.* since references to cObjects requires them to
+exist in the structure during after parsing is done (opposite to the
+&quot;temp&quot; and &quot;styles&quot; TLOs). Thus the script can be
+rewritten to this:</P>
+<PRE CLASS="western"># Make temporary version of the first cObject:
+MY_TLO.world = TEXT
+MY_TLO.world.value = HELLO WORLD!
+
+
+# Make temporary version of the second cObject:
+MY_TLO.universe = TEXT
+MY_TLO.universe.value = HELLO UNIVERSE!
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+page.10 <FONT COLOR="#ff0000">=&lt; </FONT>MY_TLO.world
+page.20 <FONT COLOR="#ff0000">=&lt;</FONT> MY_TLO.universe</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">It seems like a little change but the impact is
+huge since objects are NOT copied, merely referered to:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_4de5d928.png" NAME="Graphic36" ALIGN=LEFT WIDTH=447 HEIGHT=236 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">There are some practical consequences and
+drawbacks to this method. However the upside to references is that a
+cObject defined at one path in the object tree can be used multiple
+times by references from within the structure without spending memory
+on duplicates - which also becomes hard to manage if you want to
+override properties of all duplicates in the tree. An example of this
+problem is found in the end of Part 2 in this tutorial.</P>
+<P CLASS="western"><B>Notice:</B> References like this are <I>not</I>
+a part of the TypoScript syntax as such. It's a feature provided
+internally by the cObjects and thus references can be used <I>only</I>
+when refering to cObjects, <I>not </I>any other kind of objects or
+properties (unless noted).</P>
+<H4 CLASS="western">Clearing the cache</H4>
+<P CLASS="western">Finally you must be aware that when you make
+changes to a template record through the Template module the
+&quot;Cache-all&quot; is cleared. This must be done because when
+TYPO3 parses a TypoScript template the resulting structure is saved
+in the cache so it can be quickly fetched again for the next page
+delivery. However this means that changes made to template records
+<I>directly</I> through the List module for instance will <I>not
+</I>clear the cache - and then you must do it <I>manually </I>with
+the link under the menu in the left frame.</P>
+<P CLASS="western">Generally, before you announce any strange
+behavior as a bug, please make sure that it wasn't caching of either
+templates or extension files that bugged you!</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Part 1:
+Integration of an HTML template 
+</H2>
+<H3 CLASS="western">Implementation of a CMS</H3>
+<P CLASS="western">The production of a website with a CMS requires
+the involvement of more components than if the website was made of
+pure, static HTML files. The inherent idea of a CMS is that content
+is stored separately from the presentation markup. Some CMSs store
+content in XML files, other CMSs use a relational database. The
+difference has technical pros and cons but the main idea is the same:
+&quot;content separated from colors&quot;.</P>
+<P CLASS="western">When TYPO3 generates webpages the <I>frontend
+engine</I> combines unformatted content from the data source
+(database) with a HTML template defining all the formatting. In this
+process the <I>template record</I> is the <I>control element</I> that
+instructs the frontend engine on how to do this work of combining.</P>
+<P CLASS="western">On this drawing you can see how the template
+record is the control element - the &quot;program&quot; - to the
+frontend engine which in turn finds the content in the database,
+reads the template, inserts the content in the designated
+placeholders of the template and outputs a nice webpage!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_47a73f39.png" NAME="Graphic37" ALIGN=LEFT WIDTH=446 HEIGHT=348 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In most web agencies a group of people is working
+together on the creation of a website. In this group we will find a
+graphic designer, a developer and a content contributer (at least for
+the initial content). Each of these persons have different skills and
+will thus work with the production of the site in different areas:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_5cb62025.png" NAME="Graphic38" ALIGN=LEFT WIDTH=521 HEIGHT=394 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">In the illustration above the various components
+of the CMS controlled website is assigned to a person each from the
+web team:</P>
+<UL>
+	<LI><P CLASS="western"><B>Mr. Raphael</B> is the artist. Raphael has
+	great skills for visual design, he knows Photoshop, he knows his
+	Dreamweaver, CSS stylesheets, HTML etc. Raphael juggles with flash
+	movies. But Raphael doesn't juggle with PHP, TypoScript, SQL and
+	other technical issues. So Raphael makes the HTML-templates for us!</P>
+	<LI><P CLASS="western"><B>Mr. Benoit</B> is a developer. He likes
+	bits and bytes, he likes compiler directives, regular expressions,
+	logic, PHP, SQL - and he will soon love TypoScript as well. However
+	Mr. Benoit trusts a pair of good, blue jeans like every other
+	programmer since hyped design, typography, combining colors and
+	usability is really not written is his stars. Therefore Benoit is in
+	charge of TypoScript configuration in the Template Records.</P>
+	<LI><P CLASS="western"><B>Mr. Picouto</B> is concerned with the
+	content. He is the marketing guy and he is dazzled by the work of
+	both Raphael and Benoit who work wonders in his eyes, bringing ideas
+	from paper to screen. Picouto himself is neither a programmer nor a
+	designer, but he has a message to communicate. And through TYPO3s
+	backend he can create the content he desires with no need for
+	technical skills beyond that of a word processor.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">So we have three characters with unique skills
+which leads to the conclusion that the production of a CMS based
+website is <I>not a walk in the park</I> unless you possess skills in
+all three areas mentioned above: Visual, Technical and Marketing.
+This is usually the case in a web team, but more unusual for
+individuals. So be forewarned. (If you are less qualified than this
+you will need to either learn a lot or simply use Standard Templates
+which are fixed designs you can deploy with only a little
+configuration. Not covered in this tutorial.)</P>
+<P CLASS="western">In this tutorial I will show you how Raphael,
+Benoit and Picouto have to cooperate in order to produce modern
+websites where each member of the team can roam freely in his own
+domain, using the tools he loves the most to produce easily
+maintained websites implemented to fit any conceivable design you can
+dream of. With TYPO3.</P>
+<H4 CLASS="western">Skill level</H4>
+<P CLASS="western"><I>Intermediate webdesigner from HTML/CSS
+background, not necessarily a web programmer.</I></P>
+<P CLASS="western">In order to complete this section of the tutorial
+you should have a good knowledge of HTML and CSS. Further you must
+have a working TYPO3 database  with the page tree created in an
+earlier chapter of this tutorial. Finally you might need an
+understanding of programming concepts in order to understand
+everything fully. But don't worry - you are clearly told everything
+you need to do - just pay attention and take time to understand the
+examples.</P>
+<H3 CLASS="western">The HTML template</H3>
+<P CLASS="western">The web team has just got a new customer - Main
+Dish &amp; Son - and Raphael, the artist on the team, has produced
+the website template as a regular HTML file:</P>
+<P CLASS="western"><IMG SRC="3_html_m2a56f020.png" NAME="Graphic39" ALIGN=LEFT WIDTH=458 HEIGHT=526 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always"><BR><BR>
+</P>
+<P CLASS="western">This HTML file is put into the directory
+&quot;fileadmin/template/main/&quot; relative to the TYPO3
+installation (the dummy-package).</P>
+<P CLASS="western"><I>To follow this tutorial you should now copy the
+contents of the folder &quot;part1/&quot; from this tutorial
+extension into the folder &quot;fileadmin/template/main/&quot;. If
+you didn't import the tutorial extension &quot;doc_tut_templselect&quot;
+from TER you should do that now!</I></P>
+<P CLASS="western"><I>Further, if you bypassed the previous section
+about TypoScript, make sure to at least create the page tree as
+described in the chapter “Creating a page structure” and possibly
+a blank template record.</I></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m8f11e0d.png" NAME="Graphic40" ALIGN=LEFT WIDTH=427 HEIGHT=199 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Well, back to Raphaels work; the template HTML
+file is really just a regular HTML page. But when TYPO3 imports this
+file as a template the point is to make <I>certain parts</I> dynamic.
+This includes the menu to the left and also the section with dummy
+content to the middle/right.</P>
+<P CLASS="western">Looking into the source code of the HTML template
+reveals a simple XHTML compliant document referring to a stylesheet
+and using a single table to position various elements on the page:</P>
+<P CLASS="western"><IMG SRC="3_html_7303e8d3.png" NAME="Graphic41" ALIGN=LEFT WIDTH=669 HEIGHT=614 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Here follows some commentary on this HTML template
+and the challenges we are facing:</P>
+<OL>
+	<LI><P CLASS="western">This section from the header of the document
+	must go into our webpage since it refers to the stylesheet
+	used.<BR>Challenge: We must make sure to extract this part of the
+	document into the header section generated by the frontend engine!</P>
+	<LI><P CLASS="western">The menu on the left is made by a
+	&lt;div&gt;-section per menu item. Each of these &lt;div&gt;-elements
+	has a class assigned to it. By this class name the design of the
+	element is controlled in the CSS stylesheet. <BR>This is a very
+	clever way to create a menu since each element consists of a minimum
+	amount of HTML-code (good for TypoScript implementation), they are
+	easily repeatable (necessary when the menu will be dynamic).
+	<BR>Challenge: We must substitute the dummy-menu here with a
+	dynamically generated one!</P>
+	<LI><P CLASS="western">This is dummy content that Raphael put into
+	the template file just to get the visual impression right. Notice
+	how it is formatted with &lt;h1&gt; and &lt;p&gt; tags (using the
+	class &quot;bodytext&quot;) - this is clever since the dynamic
+	content inserted by TYPO3 later on will use those tags / classes for
+	formatting as well! (Raphael must have cheated with some TYPO3
+	experience on beforehand, eh?) <BR>Challenge: We must substitute the
+	dummy-content with dynamically generated page content.</P>
+	<LI><P CLASS="western">This break tag just puts a little space
+	underneath the content so the footer is not too close to the
+	bodytext of the page.</P>
+</OL>
+<P CLASS="western">Finally you should notice how the table cells
+where the menu and content is positioned has been <I>tagged with an
+id-attribute</I>. This is not only used by the stylesheet! There is a
+clever point to the use of these id-attributes! But first some theory
+about HTML templates:</P>
+<H3 CLASS="western">Basics of the TEMPLATE cObject</H3>
+<P CLASS="western">First create a new file,
+fileadmin/template/test.html, with this content:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+
+&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;Untitled&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;!-- ###DOCUMENT_BODY### --&gt;
+	&lt;h1&gt;
+		&lt;!-- ###INSIDE_HEADER### --&gt;
+			Header of the page
+		&lt;!-- ###INSIDE_HEADER### --&gt;
+
+	&lt;/h1&gt;
+&lt;!-- ###DOCUMENT_BODY### --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(Can be found in the tutorial extension directory
+as &quot;misc/test.html&quot;)</P>
+<P CLASS="western">Then put this into the Setup field of your
+template record:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Template content object:
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+  template = FILE
+  template.file = fileadmin/template/test.html
+}
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+page.10 &lt; temp.mainTemplate</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This will put a cObject of the type &quot;TEMPLATE&quot;
+at position &quot;page.10&quot;. The &quot;template&quot; property of
+the TEMPLATE cObject is defined to be another cObject of the type
+&quot;FILE&quot; which reads the newly created file,
+&quot;fileadmin/template/test.html&quot;. <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=373&amp;cHash=109a171b1e">Properties
+of the TEMPLATE cObject can be explored here</A>.</P>
+<P CLASS="western">Now, if you save the changes to the Setup field
+and hit the frontend you should see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_5d091091.png" NAME="Graphic43" ALIGN=LEFT WIDTH=351 HEIGHT=170 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And looking in the source code tells us that
+basically the TEMPLATE cObject just read the file and returned it
+raw:</P>
+<P CLASS="western"><IMG SRC="3_html_6c8c4e15.png" NAME="Graphic44" ALIGN=LEFT WIDTH=440 HEIGHT=315 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now comes the point of the TEMPLATE cObject; It
+not only reads in a HTML-file - it also allows us to extract <I>subparts</I>
+inside of it and replace them with dynamic content!</P>
+<P CLASS="western">A subpart is defined as the content between two
+similar marker strings wrapped in ### and encapsulated in an
+HTML-comment (although optional). The &quot;test.html&quot; file has
+two subparts, the &quot;DOCUMENT_BODY&quot; subpart and the
+&quot;INSIDE_HEADER&quot; subpart. As you can see the <I>subpart
+markers</I> are encapsulated in HTML-comment tags so that they are
+not visible.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_1a03d37b.png" NAME="Graphic42" ALIGN=LEFT WIDTH=412 HEIGHT=296 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, try to change the Setup field of the template
+record to this:</P>
+<PRE CLASS="western"># Template content object:
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+  template = FILE
+  template.file = fileadmin/template/test.html
+<FONT COLOR="#ff0000">  workOnSubpart = DOCUMENT_BODY</FONT>
+<FONT COLOR="#ff0000">  subparts.INSIDE_HEADER = TEXT</FONT>
+<FONT COLOR="#ff0000">  subparts.INSIDE_HEADER.value = HELLO WORLD!</FONT>
+}
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+page.10 &lt; temp.mainTemplate</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Hit the frontend and the HTML source should be
+like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m6a21998e.png" NAME="Graphic45" ALIGN=LEFT WIDTH=337 HEIGHT=140 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The changes we made to the TEMPLATE cObjects
+properties has done this: 
+</P>
+<UL>
+	<LI><P CLASS="western">First and foremost the TEMPLATE cObject was
+	instructed to work on the subpart marked with &quot;###DOCUMENT_BODY###&quot;
+	only - thus the redundant header and body-tags were cut away! 
+	</P>
+	<LI><P CLASS="western">Then secondly the subpart marked with
+	&quot;###INSIDE_HEADER###&quot; was <I><SPAN STYLE="text-decoration: none">replaced</SPAN></I>
+	with the content rendered by the TEXT cObject defined for the
+	property &quot;subparts.INSIDE_HEADER&quot; of the TEMPLATE cObject.</P>
+</UL>
+<P CLASS="western">This should be fairly easy to understand. From
+here all we need to do is point the source file to Raphaels template,
+fileadmin/template/main/template_1.html, insert similar subpart
+markers and then replace the dummy menu and dummy content with
+dynamically generated menus and real page content elements! 
+</P>
+<H3 CLASS="western">The Template Auto-parser Extension</H3>
+<P CLASS="western">The obvious to do might seem to just edit Raphaels
+template. However in my experience you can't trust that HTML-editors
+broadly speaking does not remove or rearrange HTML-comments inside
+the document if Raphael should change the template file later on.
+Just imagine that Raphael did some changes to the template with
+DreamWeaver and the subpart markers were silently removed - the
+template would seize to work instantly! Further the paths pointing to
+the stylesheet and images inside of Raphaels template are <I>relative</I>
+to the folder [domain]/fileadmin/template/main/ - not [domain]/ which
+is where the HTML content will be displayed by TYPO3s frontend
+engine! So all the paths would need to be prefixed!</P>
+<P CLASS="western">This calls for a better solution. Now, please
+import and install the Template Auto-parser extension - that is the
+answer to all your dreams...</P>
+<H4 CLASS="western">Installing the extension</H4>
+<P CLASS="western">Go to the Extension Manager, import extension from
+online repository:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_34822057.png" NAME="Graphic46" ALIGN=LEFT WIDTH=439 HEIGHT=178 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Find the extension &quot;automaketemplate&quot;,
+click the import icon:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_5b38c36a.png" NAME="Graphic47" ALIGN=LEFT WIDTH=464 HEIGHT=38 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This should be the result on success:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m34490010.png" NAME="Graphic48" ALIGN=LEFT WIDTH=487 HEIGHT=132 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Go back, select &quot;Available Extensions to
+Install&quot; and install the extension:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_492d27b6.png" NAME="Graphic49" ALIGN=LEFT WIDTH=476 HEIGHT=61 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">After pressing the &quot;Make updates&quot;
+button, go back to the Template module and check the Object Browser:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_3bc9d757.png" NAME="Graphic50" ALIGN=LEFT WIDTH=465 HEIGHT=260 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The extension should have added a USER cObject at
+the object path &quot;plugin.tx_automaketemplate_pi1&quot; as you see
+above. This cObject can now be used by us instead of the FILE cObject
+to read Raphaels template file and have it automatically marked up
+and relative paths corrected!</P>
+<H4 CLASS="western">Configuring the Template Auto-parser</H4>
+<P CLASS="western">As with any extension for which we want to know
+anything we should consult the manual for the extension on typo3.org.
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=154&amp;tx_extrepmgm_pi1[tocEl]=501&amp;cHash=2bbdf1c6ca">Click
+this link and you will see the table with properties for the cObject</A>.</P>
+<P CLASS="western">To make it very clear to you what the Template
+Auto-parser does I'll simply insert the output from the plugin as the
+only content on the page and further I will configure the PAGE object
+&quot;page&quot; to <I>not</I> output the usual header and footer
+content.</P>
+<P CLASS="western">This is the Setup field content of the template
+record:</P>
+<PRE CLASS="western"># Configuring the Auto-Parser:
+plugin.tx_automaketemplate_pi1 {
+    # Read the template file:
+  content = FILE
+  content.file = fileadmin/template/main/template_1.html
+
+    # Here we define which elements in the HTML that 
+    # should be wrapped in subpart-comments:
+  elements {
+    BODY.all = 1
+    BODY.all.subpartMarker = DOCUMENT_BODY
+
+    HEAD.all = 1
+    HEAD.all.subpartMarker = DOCUMENT_HEADER
+    HEAD.rmTagSections = title
+
+    TD.all = 1
+  }
+
+    # Prefix all relative paths with this value:
+  relPathPrefix = fileadmin/template/main/
+}
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+page.config.disableAllHeaderCode=1
+
+page.10 =&lt; plugin.tx_automaketemplate_pi1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Save template and hit the frontend. You should see
+<I>exactly</I> what the fileadmin/template/main/template_1.html would
+look like by itself:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m537b0fb8.png" NAME="Graphic51" ALIGN=LEFT WIDTH=618 HEIGHT=657 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_5237283d.png" NAME="Graphic52" ALIGN=LEFT WIDTH=669 HEIGHT=692 BORDER=0><BR CLEAR=LEFT>And
+so...? - you think. But this is rather cool and when you look inside
+the source code of this page you will see why:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Now, as you can see two main things has happend:</P>
+<UL>
+	<LI><P CLASS="western">A lot of blocks in the template file has
+	automatically been wrapped in subparts! (1+2)</P>
+	<LI><P CLASS="western">All relative links/references has been
+	prefixed with the path &quot;fileadmin/template/main/&quot; (3)</P>
+</UL>
+<P CLASS="western">This is because the Template Auto-parser was
+configured to handle &quot;elements&quot; like this:</P>
+<PRE CLASS="western">...
+  elements {
+    BODY.all = 1
+    BODY.all.subpartMarker = DOCUMENT_BODY
+
+    HEAD.all = 1
+    HEAD.all.subpartMarker = DOCUMENT_HEADER
+    HEAD.rmTagSections = title
+
+    TD.all = 1
+  }
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(&quot;Elements&quot; are all tags having a start
+and end tag separately from each other, fx. the &lt;td&gt; tag. Tags
+with no end tag, fx. &lt;img&gt;, must be defined by the &quot;single&quot;
+property of the Template Auto-parser)</P>
+<P CLASS="western">So the configuration of the elements says that 
+</P>
+<UL>
+	<LI><P CLASS="western">a) the element &lt;body&gt; should be wrapped
+	with the subpart marker &quot;###DOCUMENT_BODY###&quot;</P>
+	<LI><P CLASS="western">b) the element &lt;head&gt; should be wrapped
+	with the subpart marker &quot;###DOCUMENT_HEADER###&quot;. Further
+	any &lt;title&gt; sections should be removed. (We don't want the
+	&lt;title&gt; tag from Raphaels template replicated in our TYPO3
+	pages...)</P>
+	<LI><P CLASS="western">c) All &lt;td&gt; elements found should be
+	wrapped - but since no .subpartMarker value was defined only
+	&lt;td&gt;-tags with a &quot;id&quot; or &quot;class&quot; attribute
+	will be wrapped and then in a subpart marker corresponding to the
+	id/class value. Thus the tag &lt;td id=&quot;menu_1&quot;&gt; will
+	have the content <I>inside of it</I> wrapped in the subpart markers
+	&quot;&lt;!--###menu_1###--&gt;...&lt;!--###menu_1###--&gt;&quot;.</P>
+</UL>
+<P CLASS="western">Now, how can we use this?</P>
+<P CLASS="western">Well, the answer is that the Auto-parser allows
+Raphael to create templates based on modern CSS styling techniques
+with a <I>conscious use of id and class attributes</I> in the
+HTML-elements, <I>and at the same time</I> those attributes will
+serve as the &quot;markers&quot; that TYPO3 uses to replace portions
+of the template with the dynamic content! Easy for Raphael (the
+designer), less hazzle for Benoit (the developer) and good for
+Picouto's finances since less time is used on conversions and manual
+markup of templates with subpart markers!</P>
+<H3 CLASS="western">Putting it all together</H3>
+<P CLASS="western">Consider this illustation below. This is what we
+want to do:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m3cfc86c8.png" NAME="Graphic53" ALIGN=LEFT WIDTH=669 HEIGHT=550 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The template file is read by the Auto-parser, the
+output is passed on to the TEMPLATE cObjects which substitutes
+subparts and finally inserted into the body and header sections of
+the TYPO3 page. 
+</P>
+<P CLASS="western">This will be done by the TypoScript below entered
+in the Setup field of your template record. It's a long listing, but
+try to spend a little time to understand it:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Configuring the Auto-Parser for main template:
+plugin.tx_automaketemplate_pi1 {
+    # Read the template file:
+  content = FILE
+  content.file = fileadmin/template/main/template_1.html
+
+    # Here we define which elements in the HTML that 
+    # should be wrapped in subpart-comments:
+  elements {
+    BODY.all = 1
+    BODY.all.subpartMarker = DOCUMENT_BODY
+
+    HEAD.all = 1
+    HEAD.all.subpartMarker = DOCUMENT_HEADER
+    HEAD.rmTagSections = title
+
+    TD.all = 1
+  }
+
+    # Prefix all relative paths with this value:
+  relPathPrefix = fileadmin/template/main/
+}
+
+
+# Main TEMPLATE cObject for the BODY
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;body&gt;-tags
+  workOnSubpart = DOCUMENT_BODY
+
+    # Substitute the ###menu_1### subpart with some example content:
+  subparts.menu_1 = TEXT
+  subparts.menu_1.value = HELLO WORLD - MENU
+
+    # Substitute the ###content### subpart with some example content:
+  subparts.content = TEXT
+  subparts.content.value = HELLO WORLD - CONTENT
+}
+
+
+# Main TEMPLATE cObject for the HEAD
+temp.headTemplate = TEMPLATE
+temp.headTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;head&gt;-tags
+  workOnSubpart = DOCUMENT_HEADER
+}
+
+
+
+
+# Default PAGE object:
+page = PAGE
+page.typeNum = 0
+
+# Copying the content from TEMPLATE for &lt;body&gt;-section:
+page.10 &lt; temp.mainTemplate
+
+# Copying the content from TEMPLATE for &lt;head&gt;-section:
+page.headerData.10  &lt; temp.headTemplate</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m54b781ff.png" NAME="Graphic54" ALIGN=LEFT WIDTH=429 HEIGHT=439 BORDER=0><BR CLEAR=LEFT>All
+this leads to the following tree structure:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see the &quot;temp.mainTemplate&quot;
+and &quot;temp.headTemplate&quot; cObjects were copied to their
+respective positions in the object tree. For each of them they carry
+a reference to the USER cObject of the Template Auto-parser plugin.</P>
+<P CLASS="western">Notice that the object path &quot;page.headerData&quot;
+is a numerical array of content objects defining the content for the
+&lt;head&gt; section of the page. This is how you add content between
+the &lt;head&gt; tags of the TYPO3 generated pages.</P>
+<H4 CLASS="western">Result</H4>
+<P CLASS="western">The result looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6f5115e3.png" NAME="Graphic55" ALIGN=LEFT WIDTH=524 HEIGHT=223 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice that the menu and content areas have been
+substituted with content from the TEXT cObjects which were just there
+as a test!</P>
+<P CLASS="western">The HTML-source looks like this:</P>
+<P CLASS="western"><IMG SRC="3_html_mfccc9f1.png" NAME="Graphic56" ALIGN=LEFT WIDTH=494 HEIGHT=530 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western">The &lt;head&gt; section without the &lt;title&gt;
+	tag is inserted</P>
+	<LI><P CLASS="western">The &lt;body&gt; section inserted, content
+	substitutions performed</P>
+	<LI><P CLASS="western">The ###header_1### and ###footer### subparts
+	were <I>not</I> substituted since they were not defined at all in
+	the &quot;temp.mainTemplate&quot; TEMPLATE cObject! So this is no
+	error.</P>
+	<LI><P CLASS="western">The ###menu_1### and ###content### subparts
+	were correctly substituted as we expected since the
+	&quot;temp.mainTemplate&quot; TEMPLATE cObject was in fact
+	configured to do so.</P>
+</OL>
+<H4 CLASS="western">Summary</H4>
+<P CLASS="western">So from Raphaels template TYPO3 automatically
+extracts the &lt;head&gt; and &lt;body&gt; content, corrects relative
+paths to images, links, forms and stylesheets, makes substitutions
+for dynamic content, and inserts each part in the &lt;head&gt; and
+&lt;body&gt; section of the output page from TYPO3. 
+</P>
+<P CLASS="western">The basic framework is now up and running - we
+just need to add some dynamic content to the menu and content areas!
+This is most effectively done by TypoScript cObjects for rendering
+menus and content elements.</P>
+<H3 CLASS="western">Creating the menu</H3>
+<P CLASS="western">The 2-level menu in the left side of the template
+must be generated dynamically to reflect the page structure from the
+backend. Although Raphael designed us a nice, clean template with a
+very simple markup for the menu items it is <I>not</I> the best
+solution to try and extract these parts by Auto-parser subparts; we
+should instead hard code it! This means that Mr. Benoit must manually
+look into Raphaels template, carefully identify what <I>a single menu
+item</I> consists of and then extract the parts and use them inside
+the template record to build up the object for generation of the
+menu. It also means that Raphael cannot change the basic construction
+of the menu without having Benoit reflecting the same changes in the
+template record! But if Raphael did his work cleverly it will not be
+needed either; CSS styling should be used for all visual effects.</P>
+<H4 CLASS="western">Menu objects and item states</H4>
+<P CLASS="western">First of all the cObject we will use to generate
+menus is the HMENU object. This object calls &quot;menu objects&quot;
+of the type TMENU or GMENU or GMENU_LAYERS etc. for each menu level
+we want (which one you use depends on the kind of menu you would like
+to render - textual, graphic, cascading layers etc.).</P>
+<P CLASS="western">For each &quot;menu-object&quot; (that was fx. a
+TMENU or GMENU) you define general properties for the level it
+represents and in addition item-specific properties (eg. width and
+height of a GMENU graphical item). The item-specific properties are
+always defined for a specific <I>state</I> of the item. The normal
+state (NO) must always be defined, but in addition to this we could
+fx. define an active state of the item (ACT) - that means &quot;how
+should the menu item look, if we are on a page equal to or below that
+page&quot;.</P>
+<P CLASS="western">Well, the point of this tutorial is not to teach
+the details of the HMENU cObject and all derived issues. You should
+<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=269&amp;tx_extrepmgm_pi1[tocEl]=780&amp;cHash=c746a46653">refer
+to the TypoScript by Example </A>for that.</P>
+<P CLASS="western">Now, take a look at the HTML source of Raphaels
+template:</P>
+<P CLASS="western"><IMG SRC="3_html_m71ea7adf.png" NAME="Graphic2" ALIGN=LEFT WIDTH=669 HEIGHT=158 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see he has used a &lt;div&gt; tag for
+each menu item regardless of level or state. The whole difference
+lies in the value of the class attribute! This is <I>clever</I>
+design since the markup becomes so simple that Benoit saves even more
+time on the implementation! :-) And the full, visual control lies
+outside of TYPO3 - in the CSS stylesheet.</P>
+<P CLASS="western">Also notice how Raphael has provided a design for
+&quot;active&quot; menu items.</P>
+<P CLASS="western">The implementation of this menu is extremely easy.
+It just goes like this:</P>
+<P CLASS="western">First, define a temporary object somewhere in the
+top of the template record (before the definition of
+&quot;temp.mainTemplate&quot;):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Menu 1 cObject
+temp.menu_1 = HMENU
+  # First level menu-object, textual
+temp.menu_1.1 = TMENU
+temp.menu_1.1 {
+    # Normal state properties
+  NO.allWrap = <FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level1-no&quot;&gt; | &lt;/div&gt;</FONT>
+    # Enable active state and set properties:
+  ACT = 1
+  ACT.allWrap = <FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level1-act&quot;&gt; | &lt;/div&gt;</FONT>
+}
+  # Second level menu-object, textual
+temp.menu_1.2 = TMENU
+temp.menu_1.2 {
+    # Normal state properties
+  NO.allWrap = <FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level2-no&quot;&gt; | &lt;/div&gt;</FONT>
+    # Enable active state and set properties:
+  ACT = 1
+  ACT.allWrap = <FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level2-act&quot;&gt; | &lt;/div&gt;</FONT>
+}
+</PRE><P CLASS="western">
+Notice how the red lines contain the extracted HTML-markup that Mr.
+Benoit clipped from Mr. Raphaels template. Now it's hardcoded in the
+template record.</P>
+<P CLASS="western">The only thing you need to do now is to copy this
+object to be the cObject of the &quot;menu_1&quot; subpart of the
+&quot;temp.mainTemplate&quot; cObject:</P>
+<PRE CLASS="western">
+...
+# Main TEMPLATE cObject for the BODY
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;body&gt;-tags
+  workOnSubpart = DOCUMENT_BODY
+
+<FONT COLOR="#ff0000">    # Substitute the ###menu_1### subpart with dynamic menu:</FONT>
+<FONT COLOR="#ff0000">  subparts.menu_1 &lt; temp.menu_1</FONT>
+
+    # Substitute the ###content### subpart with some example content:
+  subparts.content = TEXT
+  subparts.content.value = HELLO WORLD - CONTENT
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(The red lines represent the change!)</P>
+<P CLASS="western">... and the result speaks for it self:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_172f86f7.png" NAME="Graphic3" ALIGN=LEFT WIDTH=493 HEIGHT=295 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Clearly the page structure (below) is reflected in
+the menu above!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m583651fb.png" NAME="Graphic57" ALIGN=LEFT WIDTH=220 HEIGHT=203 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And exactly how easy will it be to change the menu
+design? Well, try and edit the stylesheet in
+&quot;fileadmin/template/main/res/stylesheet.css&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_47474f91.png" NAME="Graphic58" ALIGN=LEFT WIDTH=449 HEIGHT=845 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">See! This whole approch allows you to put the
+<I>major factors</I> controlling the visual design - HTML template
+and stylesheet - <I>outside</I> of TYPO3 for direct and incredibly
+convenient access for the Mr. Raphael, the HTML/CSS-designer. And Mr.
+Benoit was required to perform only a minor job of TypoScript
+programming inside the template record - he simply configured the
+frontend engine to use Raphaels design work in the way that fits
+their preferred development style best!</P>
+<P CLASS="western">Please refer to TypoScript by Example if you want
+to <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=269&amp;tx_extrepmgm_pi1[tocEl]=780&amp;cHash=c746a46653">play
+more with the HMENU object and related stuff</A>.</P>
+<H3 CLASS="western">Inserting page content</H3>
+<P CLASS="western">The most popular way of managing page content in
+TYPO3 is to create <I>content elements</I> on a page in the table
+<I>tt_content</I>. In fact I don't know of anybody <I>not</I> using
+this concept since it's so flexible, powerful and straight forward to
+implement. However it may break a bit with your preconceived ideas
+about encapsulating structured content in HTML-templates.</P>
+<P CLASS="western">Content elements have numerous predefined types
+(Text, Text w/image, Bulletlist, Table, Login box, etc) and a <I>static
+template</I> with predefined TypoScript will usually render the
+elements for you out-of-the-box. This is really a treat! Since
+<I>content elements</I> has a type and for each type many additional
+options it's impossible to render content elements by the fixed
+concept of a HTML-template per element type. It just doesn't fit and
+you will know that when you have played a little with this. Therefore
+cObjects combined with PHP-functions are invoked to render the
+content with complex conditions.</P>
+<P CLASS="western">So if we can't design content elements with
+HTML-templates, what can we do then? Well, if you use the most recent
+approach to rendering content elements - that will be the extension
+&quot;css_styled_content&quot; - then all content will be wrapped in
+primitive HTML-elements - which comfortably leaves the design
+decisions to your external CSS stylesheet!</P>
+<P CLASS="western">Lets see how it works. First, let us create a
+content element:</P>
+<H4 CLASS="western">A content element</H4>
+<P CLASS="western">In the List module, click the page icon of the
+page &quot;License C&quot;, then select &quot;New&quot; and then in
+the right frame, click the content wizard link:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m26ab58c7.png" NAME="Graphic59" ALIGN=LEFT WIDTH=669 HEIGHT=177 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Select &quot;Text with image to the right&quot;
+and then the &quot;Normal&quot; column:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_349bb7ff.png" NAME="Graphic60" ALIGN=LEFT WIDTH=456 HEIGHT=259 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">After entering the content in the element and
+saving it you should see something like this:</P>
+<P CLASS="western"><IMG SRC="3_html_m569ce502.png" NAME="Graphic61" ALIGN=LEFT WIDTH=459 HEIGHT=644 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">So we now have a content element in place on the
+page &quot;License C&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_635ae9b9.png" NAME="Graphic62" ALIGN=LEFT WIDTH=453 HEIGHT=137 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Including a static template</H4>
+<P CLASS="western">To display the content element we need to include
+a <I>static template</I> which will provide all the many hundred
+lines of TypoScript code which will perform the rendering for us.
+This is done by editing the whole template record.</P>
+<P CLASS="western">However the first thing you have to do is to
+install the extension, &quot;css_styled_content&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6498eb2b.png" NAME="Graphic64" ALIGN=LEFT WIDTH=484 HEIGHT=55 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Just click the Install button and press the
+accept-button on the next page.</P>
+<P CLASS="western"><B>(NOTICE: At the time of this writing (january
+2004) the &quot;CSS styled content&quot; plugin is NOT complete! It
+is on the top-3 of Kaspers todo list and is scheduled for development
+immediately after the snowboard tour.)</B></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Back to the template: In the Template module,
+click this link:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_425c6150.png" NAME="Graphic63" ALIGN=LEFT WIDTH=475 HEIGHT=75 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Then you should see the &quot;CSS Styled Content&quot;
+static file available in the box &quot;Include Static (from
+extensions)&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_365cfefa.png" NAME="Graphic65" ALIGN=LEFT WIDTH=558 HEIGHT=172 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Click it, save the template and look in the
+Template Analyzer:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_1d223009.png" NAME="Graphic66" ALIGN=LEFT WIDTH=454 HEIGHT=209 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The Template Analyzer shows the hierarchy of
+template records and static templates which may be attached to the
+current &quot;main template record&quot;. By selecting the static
+template for inclusion it will simply be included before the
+rendering of the TypoScript code inside the template record &quot;NEW
+SITE&quot;. This means that any object defined inside the
+&quot;EXT:css_styled_content/.....&quot; static template can be
+copied and used in the NEW SITE template record. This is what we will
+do now since the included static template contains an object,
+&quot;styles.content.get&quot; which is a content object that selects
+all content elements from the &quot;Normal&quot; column of the
+current page:</P>
+<P CLASS="western">So in the template record, change this part of the
+definition of the &quot;temp.mainTemplate&quot; object:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">...
+# Main TEMPLATE cObject for the BODY
+temp.mainTemplate = TEMPLATE
+temp.mainTemplate {
+    # Feeding the content from the Auto-parser to the TEMPLATE cObject:
+  template =&lt; plugin.tx_automaketemplate_pi1
+    # Select only the content between the &lt;body&gt;-tags
+  workOnSubpart = DOCUMENT_BODY
+
+    # Substitute the ###menu_1### subpart with dynamic menu:
+  subparts.menu_1 &lt; temp.menu_1
+
+<FONT COLOR="#ff0000">    # Substitute the ###content### subpart with some example content:</FONT>
+<FONT COLOR="#ff0000">  subparts.content &lt; styles.content.get</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">If you refresh the frontend for the page &quot;License
+C&quot; you should now see this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_2947bd7e.png" NAME="Graphic67" ALIGN=LEFT WIDTH=514 HEIGHT=564 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In the HTML source code we see this:</P>
+<P CLASS="western"><IMG SRC="3_html_mda0c32f.png" NAME="Graphic68" ALIGN=LEFT WIDTH=669 HEIGHT=277 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western">Apparently the header of the content element
+	was rendered in &lt;h1&gt; tags. If you select other &quot;Layout&quot;
+	types for the header you will get the rendering in fx. &lt;h2&gt;
+	instead (for Layout 2).</P>
+	<LI><P CLASS="western">Each line of bodytext is wrapped in &lt;p&gt;
+	tags with the class set to &quot;bodytext&quot;. Thus you can
+	specifically address the style of page content from content elements
+	in your stylesheet! Notice how Raphael cleverly already designed the
+	dummy content in the template files to use &lt;p class=&quot;bodytext&quot;&gt;
+	tags!</P>
+	<LI><P CLASS="western">Every content element inserted will have a
+	&lt;a&gt;-tag with the name value set to the uid of the content
+	element. This is anchor points which can be used in the URL to go
+	directly to a certain position on a page.</P>
+	<LI><P CLASS="western">This is from the HMENU objects rendering of
+	the 2-level menu. Just notice how the link is automatically pointing
+	to the right page and even an additional onFocus handler is set.</P>
+</OL>
+<H4 CLASS="western">The Object Tree?</H4>
+<P CLASS="western">Now, by copying this supposed content element,
+&quot;styles.content.get&quot;, what is it really we are inserting in
+the object tree? Lets look with the Object Browser:</P>
+<P CLASS="western"><IMG SRC="3_html_221eee1b.png" NAME="Graphic69" ALIGN=LEFT WIDTH=443 HEIGHT=533 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">We find two interesting things:</P>
+<OL>
+	<LI><P CLASS="western">The object path &quot;styles.content.get&quot;
+	obviously contained a cObject of the type CONTENT. By looking at the
+	attributes it seems reasonable to conclude that it selects records
+	from the table &quot;tt_content&quot; ordering them by the field,
+	&quot;sorting&quot;. For more information <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=270&amp;tx_extrepmgm_pi1[tocEl]=356&amp;cHash=9f3b5c6ba2">look
+	up the CONTENT cObject here</A>.</P>
+	<LI><P CLASS="western">Secondly a whole new TLO (Toplevel Object)
+	was defined - &quot;tt_content&quot;. By default the CONTENT cObject
+	selecting records from &quot;tt_content&quot; (#1) will use this TLO
+	(also defined to be a cObject) for rendering each record found! <BR>As
+	we can see the &quot;tt_content&quot; TLO is defined as a USER
+	cObject invoking a PHP function from the &quot;css_styled_content&quot;
+	extension - seems correct to me since that is the extension we
+	installed to be in charge of this! For details about that you should
+	<A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=170&amp;cHash=97866c2553">consult
+	the documentation for the &quot;css_styled_content&quot; extension</A>.</P>
+</OL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">For the really curious we might even look inside
+the class &quot;tx_cssstyledcontent_pi1&quot; and check out the logic
+in there. Here is a snippet from the function main():</P>
+<PRE CLASS="western">	function main($content,$conf)	{
+		$this-&gt;conf = $conf;
+		
+		// This value is the Content Element Type - determines WHAT kind of element to render...
+		$CTypeValue = (string)$this-&gt;cObj-&gt;data[&quot;CType&quot;];	
+		$content=&quot;&quot;;
+		switch($CTypeValue)	{
+			case &quot;header&quot;:
+				$content = $this-&gt;getHeader().$this-&gt;render_subheader();
+			break;
+			case &quot;bullets&quot;:
+				$content = $this-&gt;getHeader().$this-&gt;render_bullets();
+			break;
+			case &quot;table&quot;:
+				$content = $this-&gt;getHeader().$this-&gt;render_table();
+			break;
+			case &quot;text&quot;:
+				$content = $this-&gt;getHeader().$this-&gt;render_text();
+			break;
+			case &quot;image&quot;:
+				$content = $this-&gt;getHeader().$this-&gt;render_image();
+			break;
+			case &quot;textpic&quot;:
+				$content = $this-&gt;render_textpic();
+			break;
+...</PRE><H3 CLASS="western">
+Adding XHTML compliancy</H3>
+<P CLASS="western">If you want to create XHTML compliant websites you
+can also do that with TYPO3. Version 3.6.0 of TYPO3 is dedicated to
+XHTML compliance as far as possible (level: XHTML transitional).</P>
+<P CLASS="western">For this tutorial you need to make sure that the
+HTML templates used are XHTML compliant. That is step one of course
+and something <I>you</I> have to ensure.</P>
+<P CLASS="western">Next step is to make TYPO3 generate an XHTML
+doctype in the output. This is easily done by this simply TypoScript
+line put into the main template records Setup field:</P>
+<PRE CLASS="western">page.config.doctype = xhtml_trans</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Further, the menus should also be compliant. At
+this point special characters like “&amp;” is just outputted as
+is. This should be avoided. So the menu TypoScript code should be
+changed with four additional lines (here highlighted with red):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Menu 1 cObject
+temp.menu_1 = HMENU
+  # First level menu-object, textual
+temp.menu_1.1 = TMENU
+temp.menu_1.1 {
+    # Normal state properties
+  NO.allWrap = &lt;div class=&quot;menu1-level1-no&quot;&gt; | &lt;/div&gt;
+<FONT COLOR="#ff0000">  NO.stdWrap.htmlSpecialChars = 1</FONT>
+    # Enable active state and set properties:
+  ACT = 1
+<FONT COLOR="#ff0000">  ACT.stdWrap.htmlSpecialChars = 1</FONT>
+  ACT.allWrap = &lt;div class=&quot;menu1-level1-act&quot;&gt; | &lt;/div&gt;
+}
+  # Second level menu-object, textual
+temp.menu_1.2 = TMENU
+temp.menu_1.2 {
+    # Normal state properties
+  NO.allWrap = &lt;div class=&quot;menu1-level2-no&quot;&gt; | &lt;/div&gt;
+<FONT COLOR="#ff0000">  NO.stdWrap.htmlSpecialChars = 1</FONT>
+    # Enable active state and set properties:
+  ACT = 1
+<FONT COLOR="#ff0000">  ACT.stdWrap.htmlSpecialChars = 1</FONT>
+  ACT.allWrap = &lt;div class=&quot;menu1-level2-act&quot;&gt; | &lt;/div&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This will make sure that the menu labels will be
+passed through the PHP function htmlspecialchars() which will convert
+eg. “&amp;” to “&amp;amp;”</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">After doing this you can test the site with eg.
+Opera 7 which has a very convenient shortcut for compliance testing:</P>
+<P CLASS="western">Just rightclick the HTML page, select “Frame”,
+then “Validate source”:</P>
+<P CLASS="western"><IMG SRC="3_html_m5e58a09.png" NAME="Graphic74" ALIGN=LEFT WIDTH=509 HEIGHT=439 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Opera will send the sourcecode of the page to
+“http://validator.w3.org/” automatically for you and on success
+you should see this screen:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_6dd9c9c3.png" NAME="Graphic75" ALIGN=LEFT WIDTH=590 HEIGHT=481 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Cleaning everything up a bit</H3>
+<P CLASS="western">We have now completed our website. Mr. Benoit and
+Mr. Raphael have done their jobs to the end and in the meantime Mr.
+Picouto might even have filled in all the content elements for each
+page in the tree? We don't know, but the basic website is in place,
+based on a totally regular HTML-file put into the folder
+&quot;fileadmin/template/main/&quot; with only the menu and content
+areas dynamically replaced as needed.</P>
+<H4 CLASS="western">Better template structure</H4>
+<P CLASS="western">The only thing left is to organize the template
+record a little better. Even though the amount of TypoScript used is
+kept to an absolute minimum we can easily see that such a template
+record becomes large and unhandy very quickly. The solution is to
+create a series of template records for inclusion:</P>
+<P CLASS="western">First you might create a whole new page on the
+root level of the page tree. Select the type &quot;sysFolder&quot;
+(means &quot;storage space for any database element you want&quot;)
+and name it Template Storage.</P>
+<P CLASS="western">Then create three template records there as seen
+here:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_79a5487e.png" NAME="Graphic70" ALIGN=LEFT WIDTH=669 HEIGHT=168 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Don't set any of the &quot;Clear&quot; flags! Just
+copy the appropriate &quot;temp.xxxx&quot; object definitions from
+the &quot;NEW SITE&quot; template into these. The order is also
+insignificant in this list.</P>
+<P CLASS="western">The next step is to include these three templates
+in the &quot;NEW SITE&quot; main template. So edit the &quot;NEW
+SITE&quot; template:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="3_html_m12535e7d.png" NAME="Graphic71" ALIGN=LEFT WIDTH=499 HEIGHT=241 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The order is important: the first listed template
+is included first and since the template record &quot;ext: Main
+TEMPLATE cObject&quot; makes copies of fx. the &quot;temp.menu_1&quot;
+object it must be included as the last one.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Save the template record and view the new
+structure with the Template Analyzer:</P>
+<P CLASS="western"><IMG SRC="3_html_m7d63eeed.png" NAME="Graphic72" ALIGN=LEFT WIDTH=408 HEIGHT=465 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you can see, first the static template is
+included, then the three &quot;base templates&quot; from our storage
+folder and finally the main template record. For each one you can
+click the title and look at the content below.</P>
+<H3 CLASS="western">Some HTML-design considerations</H3>
+<P CLASS="western">As you can see from this section of the tutorial
+implementing a HTML-template from a graphic designer is possible in a
+very comfortable manner, securing full <I>backwards compatibility</I>
+with his original work (since no markers need to be inserted manually
+in his HTML-template). Further it involves only familiar technologies
+like HTML and CSS - no confusing XLST stylesheets need to be build
+(although XSLT as renderer can be deployed on PHP-level by Mr.
+Benoit, should he desire to do so).</P>
+<P CLASS="western">But although the freedom to Mr. Raphael, the
+designer, is almost total he still needs to understand the basics of
+dynamic and static content.</P>
+<H4 CLASS="western">Make clear which parts are dynamic, which are
+static</H4>
+<P CLASS="western">Mr. Raphael needs first and foremost to understand
+- probably together with the whole web team - which parts of the page
+are static parts and which are dynamic. Static parts are everything
+that TYPO3 does NOT touch. The dynamic parts are however supposed to
+be substituted with content coming from the data sources inside
+TYPO3.</P>
+<P CLASS="western">When dynamic areas are identified, Raphael needs
+to make sure two things:</P>
+<UL>
+	<LI><P CLASS="western">The part must be encapsulated in a single
+	HTML-element. This could be a &lt;div&gt;-element, a &lt;td&gt;-element,
+	a &lt;span&gt; element .</P>
+	<LI><P CLASS="western">The encapsulating element must have either an
+	id or class attribute which the Template Auto-parser plugin is
+	configured to find and wrap in subpart markers. Fx. &lt;td
+	id=&quot;content&quot;&gt; for the table cell which must contain the
+	content.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always"><IMG SRC="3_html_m5910a8a8.png" NAME="Graphic73" ALIGN=LEFT WIDTH=501 HEIGHT=571 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">It's totally OK to let dummy content remain in the
+template file - after all it is just substituted with the dynamic
+counterparts.</P>
+<H4 CLASS="western">Simplify the markup, use CSS stylesheets</H4>
+<P CLASS="western">We are in year 2004 now and it really is the time
+to say good bye to the &lt;font&gt;-tag, bgcolor-attributes and put
+it all into an external stylesheet. For a CMS implementation this
+technique serves the goal to keep using as many external technologies
+as possible and only utilize a necessary amount of CMS-specific
+technology (like TypoScript template records).</P>
+<P CLASS="western">In this section of the tutorial the best example
+has been the 2-level menu:</P>
+<PRE CLASS="western">		&lt;!-- Menu table cell: --&gt;
+		&lt;td id=&quot;menu_1&quot;&gt;
+			<FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 1&lt;/a&gt;&lt;/div&gt;</FONT>
+			&lt;div class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/div&gt;
+			&lt;div class=&quot;menu1-level1-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 3 (act)&lt;/a&gt;&lt;/div&gt;
+			&lt;div class=&quot;menu1-level2-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item&lt;/a&gt;&lt;/div&gt;
+			&lt;div class=&quot;menu1-level2-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item&lt;/a&gt;&lt;/div&gt;
+			&lt;div class=&quot;menu1-level2-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item (act)&lt;/a&gt;&lt;/div&gt;
+			&lt;div class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/div&gt;
+		&lt;/td&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Lets just look at a single element here (the red
+one above). This could also have been implemented something like
+this:</P>
+<PRE CLASS="western">		&lt;!-- Menu table cell: --&gt;
+		&lt;td id=&quot;menu_1&quot;&gt;
+				&lt;!-- Menu item level 1, begin --&gt;
+			<FONT COLOR="#ff0000">&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;95%&quot;&gt;&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;td bgcolor=&quot;#eeeeee&quot;&gt;&lt;font face=&quot;verdana&quot; size=&quot;2&quot;&gt;</FONT>
+<FONT COLOR="#ff0000">					&lt;a href=&quot;#&quot; class=&quot;menu1-items&quot;&gt;Menu item 1&lt;/a&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;/font&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;td&gt;&lt;img src=&quot;gray_dotted_line.gif&quot; width=&quot;180&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/table&gt;</FONT>
+				&lt;!-- Menu item level 1, end --&gt;
+			...			
+		&lt;/td&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, remember that our TMENUITEM object inside the
+template record was defined to wrap the elements with this simple
+&lt;div&gt;-section:</P>
+<PRE CLASS="western">temp.menu_1.1 {
+    # Normal state properties
+  NO.allWrap = <FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level1-no&quot;&gt; | &lt;/div&gt;</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and yes, you guessed it; with the above
+implementation we would need to wrap the elements something like
+this:</P>
+<PRE CLASS="western">temp.menu_1.1 {
+    # Normal state properties
+  NO.allWrap (
+		 	<FONT COLOR="#ff0000">&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;95%&quot;&gt;&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;td bgcolor=&quot;#eeeeee&quot;&gt;&lt;font face=&quot;verdana&quot; size=&quot;2&quot;&gt;</FONT>
+<FONT COLOR="#ff0000">					 | </FONT>
+<FONT COLOR="#ff0000">				&lt;/font&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;td&gt;&lt;img src=&quot;gray_dotted_line.gif&quot; width=&quot;180&quot; height=&quot;1&quot; alt=&quot;&quot;/&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;/table&gt;</FONT>
+<FONT COLOR="#000000">)</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">And this wouldn't even be enough: You would also
+have to add the class name of the A-tag by another property of the NO
+state object and the &quot;gray_dotted_line.gif&quot; file would need
+to be prefixed with the correct file path - something like
+&quot;fileadmin/template/main/&quot;.</P>
+<H4 CLASS="western">Don't use class attributes for dynamic links</H4>
+<P CLASS="western">Many designers might think that the best way to
+mark up their menu elements and other links would be to use a class
+attribute for the &lt;A&gt;-tag. Example:</P>
+<PRE CLASS="western">		&lt;!-- Menu table cell: --&gt;
+		&lt;td id=&quot;menu_1&quot;&gt;
+			&lt;div&gt;&lt;a href=&quot;#&quot;<FONT COLOR="#ff0000"> class=&quot;menu1-level1-no&quot;</FONT>&gt;Menu item 1&lt;/a&gt;&lt;/div&gt;
+			...
+		&lt;/td&gt;		</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">However this is not the case since the &lt;A&gt;
+tag is <I>precisely</I> what is automatically generated by TYPO3! So
+to make this work for our TMENUITEM we would need additional
+TypoScript properties:</P>
+<PRE CLASS="western">temp.menu_1.1 {
+    # Normal state properties
+  NO.allWrap = &lt;div&gt; |&lt;/div&gt;
+<FONT COLOR="#ff0000">  NO.ATagParams = class=&quot;menu1-level1-no&quot;</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Adds more complex TypoScript properties and gives
+less flexibiliy in the stylesheet. For instance if you want to
+control the appearance of the link from CSS in this case you can use 
+</P>
+<PRE CLASS="western">	A.menu1-level1-no { color: navy; }
+	A.menu1-level1-no:hover { color: red; }</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... but you cannot control the wrapping
+&lt;div&gt;-element since that is <I>not</I> tagged with the any
+class or id! If you just stuck to the original way where the
+&lt;a&gt;-element had no class attribute, but the &lt;div&gt;-element
+had, then you could control <I>both </I>the &lt;div&gt;-layer <I>and</I>
+all links inside of it:</P>
+<PRE CLASS="western">	DIV.menu1-level1-no  { padding: 2px 2px 2px 2px; }
+	DIV.menu1-level1-no  A { color: navy; }
+	DIV.menu1-level1-no  A:hover { color: red; }</PRE><H4 CLASS="western">
+Stay clear of row/colspans!</H4>
+<P CLASS="western">This is most likely the number one killer for
+dynamic content - using colspan in the making of a dynamic object!
+That just leaves it out of question. For instance consider this
+alternative implementation of the menu:</P>
+<PRE CLASS="western">	&lt;tr&gt;
+
+		&lt;!-- Menu table cell: --&gt;
+		<FONT COLOR="#ff0000">&lt;td class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 1&lt;/a&gt;&lt;/td&gt;</FONT>
+
+		&lt;!-- Page Content Area table cell: --&gt;
+		&lt;td id=&quot;content&quot; <FONT COLOR="#008000">rowspan=&quot;7&quot;</FONT>&gt;
+			. . . 
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	<FONT COLOR="#ff0000">&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level1-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 3 (act)&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level2-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level2-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level2-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Level 2 item (act)&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;tr&gt;</FONT>
+<FONT COLOR="#ff0000">		&lt;td class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/td&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;/tr&gt;</FONT>
+	</PRE><P CLASS="western">
+This is almost impossible to implement! The first menu item is in a
+table row with the content cell, the other 6 menu items has separate
+table rows. Further the table cell with the content needs a
+colspan=&quot;7&quot; attribute so that it spans all the rows for the
+menu!</P>
+<P CLASS="western">This is clearly a very bad design from the
+technical viewpoint since:</P>
+<OL>
+	<LI><P CLASS="western">the mark-up for the menu is scattered over
+	different locations in the HTML-code</P>
+	<LI><P CLASS="western">there is a dependency between the
+	colspan-attribute and the number of menu items (which is dynamic!)</P>
+</OL>
+<P CLASS="western">So designers should stay clear of such designs.
+Instead designers like Mr. Raphael should learn to create markup for
+dynamic elements like menu in a manner so they are <I>easily
+repeatable</I>. These are good examples:</P>
+<P CLASS="western"><B>The one from our current template:</B></P>
+<PRE CLASS="western">		&lt;!-- Menu table cell: --&gt;
+		&lt;td id=&quot;menu_1&quot;&gt;
+			<FONT COLOR="#ff0000">&lt;div class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 1&lt;/a&gt;&lt;/div&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;div class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/div&gt;</FONT>
+<FONT COLOR="#ff0000">			&lt;div class=&quot;menu1-level1-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 3 (act)&lt;/a&gt;&lt;/div&gt;</FONT>
+			...
+		&lt;/td&gt;
+</PRE><P CLASS="western">
+<B>Alternative implementation with a table:</B></P>
+<PRE CLASS="western">		&lt;!-- Menu table cell: --&gt;
+		&lt;td id=&quot;menu_1&quot;&gt;
+			&lt;table border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+				<FONT COLOR="#ff0000">&lt;tr&gt;&lt;td class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 1&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;tr&gt;&lt;td class=&quot;menu1-level1-no&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 2&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</FONT>
+<FONT COLOR="#ff0000">				&lt;tr&gt;&lt;td class=&quot;menu1-level1-act&quot;&gt;&lt;a href=&quot;#&quot;&gt;Menu item 3 (act)&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;</FONT>
+				  ...
+			&lt;/table&gt;
+		&lt;/td&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The examples could be even more complex like the
+one from earlier which wrapped the element in a table <I>each</I>!
+The point is not the amount of HTML per item - the point is the
+<I>repetitive nature of the markup</I>!</P>
+<P CLASS="western">Mr. Raphael should understand these issues so that
+Mr. Benoit doesn't have to spend hours implementing a flawed
+HTML-structure - and eventually Mr. Picouto might even be so happy
+with the speedy development resulting from Raphael and Benoits
+symbiotic coorperation that he buys them a lunch!</P>
+<H2 CLASS="western">End note</H2>
+<P CLASS="western">This tutorial has a <A HREF="http://typo3.org/doc.0.html?&amp;tx_extrepmgm_pi1[extUid]=490&amp;cHash=27f9c79d25">part
+2 and 3 in another document</A>. Those parts - in particular Part 2 -
+are sequels to this (Part 1) and based on the same &quot;casestory&quot;
+with the webteam of Raphael, Benoit and Picouto. But before you
+continue with those please notice that you might need additional
+skills before you can go on with those! So in between it might be a
+good idea to train with your current knowledge, read other tutorials
+and get on to a higher level, especially in the technical, developer
+minded areas.</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="3_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Modern Template Building, Part 1 (MTB/1)</SDFIELD>
+	- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>49</SDFIELD></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

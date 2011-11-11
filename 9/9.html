@@ -1,0 +1,1392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>TYPO3 Coding Guidelines</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Francois Suter">
+	<META NAME="CHANGED" CONTENT="20091004;13043100">
+	<META NAME="CLASSIFICATION" CONTENT="doc_core_cgl">
+	<META NAME="KEYWORDS" CONTENT="cgl, development, reference, forDevelopers, forAdvanced">
+	<META NAME="Author" CONTENT="TYPO3 Core Development Team">
+	<META NAME="Email" CONTENT="info@typo3.org">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="language (en, de, fr, nl, dk, es, ... )" CONTENT="en">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Tahoma", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #69a550; text-align: left; text-decoration: none; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Tahoma", sans-serif; font-size: 20pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #666666; text-align: left; page-break-before: always }
+		H2.western { font-family: "Tahoma", sans-serif; font-size: 20pt; font-style: normal; font-weight: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0.1cm; color: #69a550; text-align: left; page-break-before: auto; page-break-after: auto }
+		H3.western { font-family: "Tahoma", sans-serif; font-size: 15pt; font-style: normal; font-weight: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0.1cm; color: #ff950e; text-align: left; page-break-before: auto; page-break-after: auto }
+		H4.western { font-family: "Tahoma", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { margin-bottom: 0.21cm; font-family: "Tahoma", sans-serif; font-size: 8pt; font-weight: normal; line-height: 100%; page-break-before: auto }
+		P.footer-cjk { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		P.footer-ctl { margin-bottom: 0.21cm; line-height: 100%; page-break-before: auto }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Tahoma", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Tahoma", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+		H2.contents-heading-western { color: #4c4c4c; font-family: "Tahoma", sans-serif; font-size: 16pt; font-style: normal; font-weight: normal }
+		H2.contents-heading-cjk { color: #4c4c4c; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #4c4c4c; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Courier New", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+		PRE.table-contents/pre-western { font-family: "Courier New", monospace; font-size: 8pt }
+		PRE.table-contents/pre-cjk { font-family: "Cumberland", monospace }
+		PRE.table-contents/pre-ctl { font-family: "Cumberland", monospace }
+		A:link { color: #333366; text-decoration: none }
+		CODE { font-family: "Courier New", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#333366" BGCOLOR="#ffffff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P CLASS="footer-western" ALIGN=LEFT STYLE="margin-bottom: 0.5cm; font-style: normal">
+	<IMG SRC="9_html_4f41537f.gif" ALIGN=LEFT><IMG SRC="9_html_3c9c2593.png" NAME="Grafik2" HSPACE=9 WIDTH=87 HEIGHT=21 BORDER=0>
+	<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TYPO3 Coding Guidelines</SDFIELD>
+	<SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+	</SPAN></SPAN><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_cgl</SDFIELD></SPAN></SPAN><B>	</B><SPAN STYLE="font-weight: normal"></SPAN><SPAN STYLE="font-weight: normal">
+	</SPAN><SPAN STYLE="font-weight: normal">ChangeLog</SPAN></P>
+</DIV>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" ALIGN=LEFT STYLE="page-break-before: auto; page-break-after: auto"><A NAME="1.TYPO3 Coding Guidelines|outline"></A>
+</SPAN><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TYPO3 Coding Guidelines</SDFIELD></H1>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Extension
+Key: <SDFIELD TYPE=DOCINFO SUBTYPE=THEME>doc_core_cgl</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Language:
+<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="language (en, de, fr, nl, dk, es, ... )">en</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Keywords:
+<SDFIELD TYPE=DOCINFO SUBTYPE=KEYS>cgl, development, reference, forDevelopers, forAdvanced</SDFIELD></FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">Copyright
+2000-2008, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">TYPO3 Core Development Team</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">info@typo3.org</SDFIELD>&gt;</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">This
+document is published under the Open Content License</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">available
+from http://www.opencontent.org/opl.shtml</FONT></P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+content of this document is related to TYPO3 </FONT>
+</P>
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">-
+a GNU/GPL CMS/Framework available from www.typo3.org<BR></FONT><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm; font-weight: normal"><FONT SIZE=3><A HREF="#1.TYPO3 Coding Guidelines|outline">TYPO3
+	Coding Guidelines	1</A></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.1.Introduction|outline">Introduction	3</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.1.About this document|outline">About
+	this document	3</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.2.Conventions used in this document|outline">Conventions
+	used in this document	3</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.1.3.Credits|outline">Credits	3</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.2.File system conventions|outline">File
+	system conventions	4</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.1.TYPO3 directory structure|outline">TYPO3
+	directory structure	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.2.TYPO3 files and user files|outline">TYPO3
+	files and user files	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.3.Extension directory structure|outline">Extension
+	directory structure	4</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.4.File names|outline">File
+	names	5</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.2.5.Namespaces|outline">Namespaces	5</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.3.PHP file formatting|outline">PHP
+	file formatting	7</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.1.General requirements to PHP files|outline">General
+	requirements to PHP files	7</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.2.File structure|outline">File
+	structure	7</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.3.PHP syntax formatting|outline">PHP
+	syntax formatting	9</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.4.Using phpDoc|outline">Using
+	phpDoc	13</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.3.5.The ChangeLog file|outline">The
+	ChangeLog file	14</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.4.Coding: best practices|outline">Coding:
+	best practices	15</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.1.Accessing the database|outline">Accessing
+	the database	15</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.2.Singletons|outline">Singletons	15</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.4.3.Localization|outline">Localization	15</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.5.Settings for editors|outline">Settings
+	for editors	16</A></B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.1.Eclipse (PDT, Zend Studio, phpEclipse, etc)|outline">Eclipse
+	(PDT, Zend Studio, phpEclipse, etc)	16</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.2.Komodo IDE|outline">Komodo
+	IDE	16</A></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0.21cm"><A HREF="#1.5.3.NetBeans|outline">NetBeans	16</A></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0.21cm"><B><A HREF="#1.6.ChangeLog|outline">ChangeLog	17</A></B></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western"><A NAME="1.1.Introduction|outline"></A>Introduction</H2>
+<H3 CLASS="western"><A NAME="1.1.1.About this document|outline"></A>About
+this document</H3>
+<P CLASS="western">This document defines coding guidelines for the
+TYPO3 project. Following these guidelines is mandatory for TYPO3 core
+developers and contributors to the TYPO3 core.</P>
+<P CLASS="western">Extension authors are strongly encouraged to
+follow these guidelines when developing extensions for TYPO3.
+Following these guidelines makes it easier to read the code, analyze
+it for learning or perform code reviews. These guidelines also help
+to prevent typical errors in the TYPO3 code.</P>
+<P CLASS="western">This document defines how TYPO3 code, files and
+directories should be structured and formatted. It does not teach how
+to program for TYPO3 and does not provide technical information about
+TYPO3.</P>
+<P CLASS="western">Page numbers in this document refer to its
+printable version (available from the typo3.org web site).</P>
+<H3 CLASS="western"><A NAME="1.1.2.Conventions used in this document|outline"></A>
+Conventions used in this document</H3>
+<P CLASS="western"><CODE>Monospace</CODE> font is used for:</P>
+<UL>
+	<LI><P CLASS="western">File names and directories. Directories have
+	slash (<CODE>/</CODE>) in the end of the directory name.</P>
+	<LI><P CLASS="western">Code examples</P>
+	<LI><P CLASS="western">TYPO3 module names</P>
+	<LI><P CLASS="western">Extension keys</P>
+	<LI><P CLASS="western">TYPO3 namespaces (see page 5)</P>
+</UL>
+<P CLASS="western">TYPO3 Frontend and Backend are spelled with the
+first letter in the uppercase because they are seen as subsystems.</P>
+<H3 CLASS="western"><A NAME="1.1.3.Credits|outline"></A>Credits</H3>
+<P CLASS="western">The original TYPO3 coding guidelines document was
+written by Kasper Skårhøj. This document is written from scratch
+and based on the discussion between developers held at TYPO3
+Developer Days in May 2008.</P>
+<P CLASS="western">The information for this document was collected by
+Ingo Renner (TYPO3 core team member, release manager for TYPO3&nbsp;4.2).
+The initial draft was produced by Dmitry Dulepov (TYPO3 core team
+member). The document is approved by the TYPO3 Core Team.</P>
+<H2 CLASS="western"><A NAME="1.2.File system conventions|outline"></A>
+File system conventions</H2>
+<P CLASS="western">There are certain conventions about naming files
+and directories in the TYPO3 core and extensions. Some of them are
+historical and do not follow other formal rules. They will be
+described separately. New core classes and extensions are required to
+follow formal rules outlined below.</P>
+<H3 CLASS="western"><A NAME="1.2.1.TYPO3 directory structure|outline"></A>
+TYPO3 directory structure</H3>
+<P CLASS="western">By default a TYPO3 installation consists from the
+following directories:</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=79*>
+	<COL WIDTH=177*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=31%>
+				<P CLASS="western">Directory</P>
+			</TH>
+			<TH WIDTH=69%>
+				<P CLASS="western">Description</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>fileadmin/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This is a directory where users can store
+				files. Typically images or HTML files appear in this directory
+				and/or its subdirectories.</P>
+				<P CLASS="western">Often this directory is used for downloadable
+				files. This directory is the only one accessible using the TYPO3
+				<CODE>File</CODE> module.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>t3lib/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">TYPO3 library directory</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>typo3/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">TYPO3 Backend directory. This directory
+				contains the Backend files.</P>
+				<P CLASS="western">Additionally, it contains some extensions in
+				the <CODE>ext/</CODE> (not used by the TYPO3 core) and <CODE>sysext/</CODE>
+				directories. For example, the &quot;<CODE>cms</CODE>&quot;
+				extension contains the code for generating the Frontend website.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>typo3conf/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">TYPO3 configuration directory</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>typo3conf/ext/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">Directory for TYPO3 extensions</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>typo3temp/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">Directory for temporary files. It contains
+				subdirectories for temporary files of extensions and TYPO3
+				components.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>uploads/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">Default upload directory. For example, all
+				images uploaded with “Image with text” content element will
+				be in this directory. Extensions can use <CODE>uploadfolder</CODE>
+				setting in the <CODE>ext_emconf.php</CODE> to specify extension's
+				own upload directory inside this directory.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western">This structure is default for TYPO3 installation.
+Other non-TYPO3 applications can add their own directories.</P>
+<H3 CLASS="western"><A NAME="1.2.2.TYPO3 files and user files|outline"></A>
+TYPO3 files and user files</H3>
+<P CLASS="western">All files in the TYPO3 web site directory
+hierarchy are divided to TYPO3 files and user files. TYPO3 files are
+files that come with the TYPO3 source package released by the TYPO3
+core team. This includes files inside <CODE>t3lib/</CODE> and <CODE>typo3/</CODE>
+directories and the file named <CODE>index.php</CODE> in the root of
+TYPO3 installation</P>
+<P CLASS="western">All other files are user files. This includes
+extensions, files in the <CODE>fileadmin/</CODE> directory or files
+generated by TYPO3 (like thumbnails or temporary CSS files).</P>
+<H3 CLASS="western"><A NAME="1.2.3.Extension directory structure|outline"></A>
+Extension directory structure</H3>
+<P CLASS="western">An extension directory contains the following
+files and directories:</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=79*>
+	<COL WIDTH=177*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=31%>
+				<P CLASS="western">Name</P>
+			</TH>
+			<TH WIDTH=69%>
+				<P CLASS="western">Description</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>ext_emconf.php</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This is the only mandatory file in the
+				extension. It describes extension to the rest of TYPO3.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>ext_icon.gif</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This is icon of the extension. The name may
+				not be changed.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>ext_localconf.php</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This file contains hook definitions and plugin
+				configuration. The name may not be changed.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>ext_tables.php</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This file contains table declarations. For
+				more information about table declarations and definitions see the
+				“TYPO3 Core API” document. The name may not be changed.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>ext_tables.sql</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This files contains definitions for extension
+				tables. The name may not be changed.</P>
+				<P CLASS="western">The file may contain either a full table
+				definition or a partial table. The full table definition declares
+				extension's tables. It looks like a normal SQL <CODE>CREATE TABLE</CODE>
+				statement.</P>
+				<P CLASS="western">The partial table definition contains a list
+				of the fields that will be added to the existing table. Here is
+				an example:</P>
+				<PRE CLASS="table-contents/pre-western">CREATE TABLE pages (<BR>  tx_myext_field int(11) DEFAULT '0' NOT NULL,
+);</PRE><P CLASS="western">
+				Notice the comma after the field. In the full table definition it
+				will be a error but in the partial table definition it is
+				required. TYPO3 will merge this table definition to the existing
+				table definition when comparing expected and actual table
+				definitions. Partial definitions can also contain indexes and
+				other directives. They can also change existing table fields
+				though it is not recommended because it may create problems with
+				the TYPO3 core and/or other extensions.</P>
+				<P CLASS="western">TYPO3 parses <CODE>ext_tables.sql</CODE>
+				files. TYPO3 expects that all table definitions in this file look
+				like the ones produced by the <CODE>mysqldump</CODE> utility.
+				Incorrect definitions may not be recognized by the TYPO3 SQL
+				parser.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>tca.php</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This file contains full table definitions for
+				extension tables.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>locallang*.xml</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">These files contains localizable labels. They
+				can also appear in subdirectories.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>doc/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This directory contains the extension manual.
+				The name may not be changed.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>doc/manual.sxw</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">This file contains extension manual in
+				OpenOffice 1.0 format. The name or file format may not be
+				changed. See the “Documentation template” document on the
+				<CODE>typo3.org</CODE> for more information about extension
+				manuals.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>pi</CODE><CODE><I>X</I></CODE><CODE>/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">These directories contain Frontend plugins. If
+				extension is generated by the Kickstarter, <CODE><I>X</I></CODE>
+				will be a number. It is recommended to give more meaningful names
+				to Frontend plugin directories.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>sv</CODE><CODE><I>X</I></CODE><CODE>/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">These directories contain TYPO3 services. If
+				extension is generated by the Kickstarter, <CODE><I>X</I></CODE>
+				will be a number. It is recommended to give more meaningful names
+				to service directories.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>mod</CODE><CODE><I>X</I></CODE><CODE>/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">These directories commonly contain Backend
+				modules. If extension is generated by the Kickstarter, <CODE><I>X</I></CODE>
+				will be substituted with a number. It is recommended to give more
+				meaningful names to Backend module directories.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>modfunc</CODE><CODE><I>X</I></CODE><CODE>/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">These directories commonly contain Backend
+				submodules (embedded into other modules). If extension is
+				generated by the Kickstarter, <CODE><I>X</I></CODE> will be a
+				number. It is recommended to give more meaningful names to these
+				directories.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=31%>
+				<P CLASS="western"><CODE>lib/</CODE></P>
+			</TD>
+			<TD WIDTH=69%>
+				<P CLASS="western">Directory for non–TYPO3 files supplied with
+				extension. TYPO3 is licensed under GPL version or 2 or any later
+				version. Any non–TYPO3 code must be compatible with GPL version
+				2 or any later version. Note: this name is not mandatory but
+				recommended.</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western">This directory structure is strongly <I>recommended.
+Extensions may create their own directories (for example, move all
+language files into other directories).</I></P>
+<H3 CLASS="western"><A NAME="1.2.4.File names|outline"></A>File names</H3>
+<P CLASS="western">TYPO3 requires all PHP class file names to start
+with <CODE>class.</CODE> prefix followed by a namespace prefix,
+underscore character, class name, underscore character and extension.
+For information on namespaces and namespace prefix, see the next
+section of this document. Extension for PHP files is always <CODE>php</CODE>.</P>
+<P CLASS="western">Non-class files must not start with <CODE>class.</CODE>
+prefix. It is recommended to use only PHP classes and avoid non-class
+files.</P>
+<P CLASS="western">Classes that contain PHP interfaces must have
+<CODE>interface.</CODE> prefix.</P>
+<P CLASS="western">One file can contain only one class or interface.</P>
+<P CLASS="western">File names must be all lower case.</P>
+<H3 CLASS="western"><A NAME="Namespaces"></A><A NAME="1.2.5.Namespaces|outline"></A>
+Namespaces</H3>
+<P CLASS="western">TYPO3 logically separates all files and
+directories into several namespaces. These namespaces serve two
+purposes:</P>
+<OL>
+	<LI><P CLASS="western">They show where a file or directory belongs
+	inside TYPO3 CMS</P>
+	<LI><P CLASS="western">They restrict PHP execution only to files
+	from a certain namespace (for example, TYPO3 expects all callable
+	functions to be in the <CODE>user_</CODE> or <CODE>tx_</CODE>
+	namespace).</P>
+</OL>
+<P CLASS="western">Sections below describe currently defined
+namespaces inside TYPO3.</P>
+<H4 CLASS="western">t3lib</H4>
+<P CLASS="western">The <CODE>t3lib</CODE> namespace is reserved for
+common TYPO3 files. These files are used by both Frontend and
+Backend. Physically this namespace corresponds to the <CODE>t3lib/</CODE>
+directory in the TYPO3 directory hierarchy.</P>
+<P CLASS="western">All PHP class files in <CODE>t3lib</CODE> name
+space start with <CODE>class.t3lib_</CODE> prefix.</P>
+<P CLASS="western">The <CODE>t3lib/</CODE> directory contains
+subdirectories. Class and interface files in these subdirectories
+have directory name appended to the <CODE>t3lib_</CODE> prefix and
+separated from the class name by the underscore character. For
+example, files in the <CODE>t3lib/cache/</CODE> are named like
+<CODE>class.t3lib_cache_exception.php</CODE>. Files inside
+<CODE>t3lib/cache/backend</CODE> are named like
+<CODE>class.t3lib_cache_backend_abstractbackend.php</CODE>.</P>
+<P CLASS="western">User files are not allowed inside this namespace.</P>
+<H4 CLASS="western">typo3</H4>
+<P CLASS="western">This namespace is reserved for TYPO3 Backend
+files. No user files are allowed here.</P>
+<P CLASS="western">Historically files in this namespace have
+different prefixes and do not follow common naming rules.</P>
+<H4 CLASS="western">tslib</H4>
+<P CLASS="western"><CODE>tslib</CODE> historically stands for
+“TypoScript library”. This namespace is part of <CODE>cms
+</CODE>extension. Physically it is located in <CODE>typo3/sysext/cms/tslib/</CODE>
+directory and contains Frontend page and content generation files.</P>
+<P CLASS="western">Files in this namespace historically may not
+follow common naming conventions.</P>
+<P CLASS="western">User files are not allowed in this namespace.</P>
+<H4 CLASS="western"><A NAME="tx_ namespace"></A>tx_</H4>
+<P CLASS="western">This namespace is reserved for extensions.
+Extension PHP class files must start with <CODE>class.tx_</CODE>
+prefix, followed by the extension key without underscores, another
+underscore and the name of the class in lower case. The file name
+ends with <CODE>php</CODE> extension. For example, if extension key
+is <CODE>test_ext</CODE>, the file name will be
+<CODE>class.tx_testext_myclass.php</CODE> and the  name of the class
+will be <CODE>tx_testext_myClass</CODE>.</P>
+<P CLASS="western">User files from this namespace commonly found in
+<CODE>typo3conf/ext/</CODE> directory. Optionally these files can be
+installed to the <CODE>typo3/ext/</CODE> directory to be shared by
+many TYPO3 installations.</P>
+<H4 CLASS="western">user_</H4>
+<P CLASS="western">This namespace is used for PHP files without PHP
+classes or for extensions local to a single installation. It is not
+recommended to create extensions with <CODE>user_</CODE> prefix.</P>
+<P CLASS="western">Non–class files contain PHP functions. These
+functions can be called by TYPO3 only if they have <CODE>user_</CODE>
+prefix (the prefix can be changed by administrator in Install tool).
+All functions inside such files must have <CODE>user_</CODE> prefix
+as well. Usually such files are placed inside <CODE>fileadmin/</CODE>
+directory or its subdirectory.</P>
+<H4 CLASS="western">ux_</H4>
+<P CLASS="western">This names space is reserved for <CODE>XCLASS</CODE>
+files. These files usually appear in extensions.</P>
+<H2 CLASS="western"><A NAME="1.3.PHP file formatting|outline"></A>PHP
+file formatting</H2>
+<H3 CLASS="western"><A NAME="1.3.1.General requirements to PHP files|outline"></A>
+General requirements to PHP files</H3>
+<H4 CLASS="western">PHP tags</H4>
+<P CLASS="western">Each PHP file in TYPO3 must use full PHP tags.
+There must be exactly one pair of opening and closing tags (no
+closing and opening tags in the middle of the file). Example:</P>
+<PRE CLASS="western">&lt;?php
+	// File content goes here
+?&gt;</PRE><P CLASS="western">
+There must be no empty lines after the closing PHP tag. Empty lines
+after closing tags break output compression in PHP and/or result in
+AJAX errors.</P>
+<H4 CLASS="western">Line breaks</H4>
+<P CLASS="western">TYPO3 uses Unix line endings (<CODE>\n</CODE>, PHP
+<CODE>chr(10)</CODE>). If a developer uses Windows or Mac OS X
+platform, the editor must be configured to use Unix line endings.</P>
+<H4 CLASS="western">Line length</H4>
+<P CLASS="western">Line length is limited to 80 characters. Longer
+lines should be split to several lines. Each line fragment starting
+from the second must be indented with one or more tab characters.
+Example:</P>
+<PRE CLASS="western">	$rows = $GLOBALS['TYPO3_DB']-&gt;exec_SELECTgetRows('uid, title', 'pages',
+			'pid=' . $this-&gt;fullQuoteStr($this-&gt;pid, 'pages') .
+			$this-&gt;cObj-&gt;enableFields('pages'), '', 'title');
+</PRE><P CLASS="western">
+In certain cases splitting lines exactly at 80 characters is not
+feasible. In this case lines can be longer but such practice is
+discouraged.</P>
+<H4 CLASS="western"><A NAME="Whitespaces and indents"></A>Whitespace
+and indentation</H4>
+<P CLASS="western">TYPO3 uses tab characters to indent source code.
+One indentation level is one tab.</P>
+<P CLASS="western">There must be no white spaces in the end of a
+line. This can be done manually or using a text editor that takes
+care of this (see section “Settings for editors” on page 16).</P>
+<P CLASS="western">Spaces must be added:</P>
+<UL>
+	<LI><P CLASS="western">on both sides of string, arithmetic,
+	assignment and other similar operators (for example, <CODE>.</CODE>,
+	<CODE>=</CODE>, <CODE>+</CODE>, <CODE>-</CODE>, <CODE>?</CODE>, <CODE>:</CODE>,
+	<CODE>*</CODE>, etc)</P>
+	<LI><P CLASS="western">after commas</P>
+	<LI><P CLASS="western">in single line comments after the comment
+	sign (double slash)</P>
+	<LI><P CLASS="western">after asterisks in multiline comments</P>
+</UL>
+<H4 CLASS="western">Character set</H4>
+<P CLASS="western">TYPO3 PHP files use iso-8859-1 character set.</P>
+<P CLASS="western">All XML files use UTF-8 character set.</P>
+<H3 CLASS="western"><A NAME="1.3.2.File structure|outline"></A>File
+structure</H3>
+<P CLASS="western">TYPO3 files use the following structure:</P>
+<OL>
+	<LI><P CLASS="western">Opening PHP tag</P>
+	<LI><P CLASS="western">Copyright notice</P>
+	<LI><P CLASS="western">File information block (with optional
+	function index) in phpDoc format</P>
+	<LI><P CLASS="western">Included files</P>
+	<LI><P CLASS="western">Class information block in phpDoc format</P>
+	<LI><P CLASS="western">PHP class</P>
+	<LI><P CLASS="western">XCLASS declaration</P>
+	<LI><P CLASS="western">Optional module execution code (for example,
+	in eID classes)</P>
+	<LI><P CLASS="western">Closing PHP tag</P>
+</OL>
+<P CLASS="western">The following sections discuss each of these
+parts.</P>
+<H4 CLASS="western">Copyright notice</H4>
+<P CLASS="western">TYPO3 is released under the terms of GNU General
+Public License version 2 or any later version. The copyright notice
+with a reference to the GPL must be included at the top of every
+TYPO3 PHP class file. <CODE>user_</CODE> files must have this
+copyright notice as well. Example:</P>
+<PRE CLASS="western">&lt;?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) <B>YYYY</B> Your name here (<A HREF="mailto:your@email.here">your@email.here</A>)
+*  All rights reserved
+*
+*  This script is part of the TYPO3 project. The TYPO3 project is
+*  free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 2 of the License, or
+*  (at your option) any later version.
+*
+*  The GNU General Public License can be found at
+*  <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>.
+*  A copy is found in the textfile GPL.txt and important notices to the license
+*  from the author is found in LICENSE.txt distributed with these scripts.
+*
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+</PRE><P CLASS="western">
+This notice may not be altered except for the year, author name and
+author e-mail.</P>
+<H4 CLASS="western">File information block</H4>
+<P CLASS="western">File information block follows the copyright
+statement and provides basic information about the file. It should
+include file name, description of the file and information about the
+author (or authors). Example:</P>
+<PRE CLASS="western">/**
+ * class.tx_myext_pi1.php
+ *
+ * Provides XYZ plugin implementation.
+ *
+ * $Id: class.tx_myext_pi1.php 9514 2008-07-23 17:06:12Z john_doe $
+ *
+ * @author John Doe &lt;<A HREF="mailto:john.doe@example.com">john.doe@example.com</A>&gt;
+ */
+</PRE><P CLASS="western" STYLE="margin-bottom: 0.21cm">
+<FONT COLOR="#000000">The example above uses SVN <CODE>$Id$</CODE>
+meta keyword. SVN will expand it to a full version string when the
+file is committed.</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0.21cm"><FONT COLOR="#000000">The
+file information block can also contain the optional function index.
+This index is created and updated by the <CODE>extdeveval</CODE>
+extension.</FONT></P>
+<H4 CLASS="western">Included files</H4>
+<P CLASS="western">Files are included using <CODE>require_once</CODE>
+function. All TYPO3 files must use absolute paths in calls to
+<CODE>require_once</CODE>. There are two ways to obtain the path to
+the included file:</P>
+<OL>
+	<LI><P CLASS="western">Use one of the predefined TYPO3 constants:
+	<CODE>PATH_tslib</CODE>, <CODE>PATH_t3lib</CODE>, <CODE>PATH_typo3</CODE>,
+	<CODE>PATH_site</CODE>. The first three contain absolute paths to
+	the corresponding TYPO3 directories. The last constant contains
+	absolute path to the TYPO3 root directory. Example:</P>
+</OL>
+<PRE CLASS="western" STYLE="margin-left: 2.2cm">require_once(PATH_tslib . 'class.tslib_pibase.php');</PRE>
+<OL START=2>
+	<LI><P CLASS="western">Use <CODE>t3lib_extMgm::extPath()</CODE>
+	function. This function accepts two arguments: extension key and
+	path to the included file. The second argument is optional but
+	recommended to use. Examples:</P>
+</OL>
+<PRE CLASS="western" STYLE="margin-left: 2.2cm">require_once(t3lib_extMgm::extPath('lang', 'lang.php'));
+require_once(t3lib_extMgm::extPath('lang') . 'lang.php');</PRE><P CLASS="western">
+Always use one of these two ways to include files. This is required
+to include files even from the current directory. Some installations
+do not have the current directory in the PHP include path and
+<CODE>require_once</CODE> without a proper path will result in fatal
+PHP error.</P>
+<H4 CLASS="western"><A NAME="class info block"></A>Class information
+block</H4>
+<P CLASS="western">Class information block is similar to the file
+information block and describes the class in the file. Example:</P>
+<PRE CLASS="western">/**
+ * This class provides XYZ plugin implementation.
+ *
+ * @author John Doe &lt;<A HREF="mailto:john.doe@example.com">john.doe@example.com</A>&gt;
+ * @author Jane Doe &lt;<A HREF="mailto:jane.doe@example.com">jane.doe@example.com</A>&gt;
+ */</PRE><H4 CLASS="western">
+PHP class</H4>
+<P CLASS="western">PHP class follows the Class information block. PHP
+code must be formatted as described in chapter “PHP syntax
+formatting” on page 9.</P>
+<P CLASS="western">The class name is expected to follow some
+conventions. The namespace and path parts (see “Namespaces” on
+page 5) are all lowercase and separated by underscores (“_”). At
+the end comes the “true” class name which must be written in
+upper camel case.</P>
+<P CLASS="western">Taking again the example of file
+<CODE>class.t3lib_cache_backend_abstractbackend.php</CODE>, the PHP
+class declaration will look like:</P>
+<PRE CLASS="western">class t3lib_cache_backend_AbstractBackend {
+	…
+}</PRE><H4 CLASS="western">
+XCLASS declaration</H4>
+<P CLASS="western">The XCLASS declaration must follow the PHP class.
+The format of the XCLASS is very important. No spaces can be added or
+removed, no reformatting can be done to the declaration. If the
+formatting is changed, the TYPO3 Extension Manager will complain
+about a missing XCLASS declaration.</P>
+<P CLASS="western">The XCLASS declaration must include proper path to
+the current class file. The following example assumes that extension
+key is <CODE>myext</CODE>, file name is <CODE>class.tx_myext_pi1.php</CODE>
+and file is located in the <CODE>pi1</CODE> subdirectory of the
+extension:</P>
+<PRE CLASS="western">if (defined('TYPO3_MODE') &amp;&amp; $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/myext/pi1/class.tx_myext_pi1.php'])	{
+	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/myext/pi1/class.tx_myext_pi1.php']);
+}</PRE><H4 CLASS="western">
+Optional module execution code</H4>
+<P CLASS="western">Module execution code instantiates the class and
+runs its method(s). Typically this code can be found in eID scripts
+and old Backend modules. Here is how it may look like:</P>
+<PRE CLASS="western">$controller = t3lib_div::makeInstance('tx_myext_ajaxcontroller');
+$controller-&gt;main();
+</PRE><P CLASS="western">
+This code must appear <B>after</B> the XCLASS declaration. <CODE>$SOBE</CODE>
+is traditional but not required name.</P>
+<H3 CLASS="western"><A NAME="1.3.3.PHP syntax formatting|outline"></A>
+PHP syntax formatting</H3>
+<H4 CLASS="western">Identifiers</H4>
+<P CLASS="western">All identifiers must use <CODE>camelCase</CODE>
+and start with a lower case letter. Underscore characters are not
+allowed. Abbreviations should be avoided. Examples of good
+identifiers:</P>
+<PRE CLASS="western">$goodName
+$anotherGoodName
+</PRE><P CLASS="western">
+Examples of bad identifiers:</P>
+<PRE CLASS="western">$BAD_name
+$unreasonablyLongNamesAreBadToo
+$noAbbrAlwd
+</PRE><P CLASS="western">
+Identifier names must be descriptive. However it is allowed to use
+traditional integer variables like <CODE>$i</CODE>, <CODE>$j</CODE>,
+<CODE>$k</CODE> in <CODE>for</CODE> loops. If such variables are
+used, their meaning must be absolutely clear from the context where
+they are used.</P>
+<P CLASS="western">The same rules apply to functions and class
+methods. Examples:</P>
+<PRE CLASS="western">protected function getFeedbackForm()
+public function processSubmission()
+</PRE><P CLASS="western">
+Class constants should be clear about what they define. Correct:</P>
+<PRE CLASS="western">const USERLEVEL_MEMBER = 1;
+</PRE><P CLASS="western">
+Incorrect:</P>
+<PRE CLASS="western">const UL_MEMBER = 1;
+</PRE><P CLASS="western">
+Variables on the global scope may use upper case and underscore
+characters.</P>
+<P CLASS="western">Examples:</P>
+<PRE CLASS="western">$TYPO3_CONF_VARS
+$TYPO3_DB</PRE><H4 CLASS="western">
+<A NAME="php_syntax_formatting"></A>Comments</H4>
+<P CLASS="western">Comments in the code are highly welcome and
+recommended. Inline comments must precede the commented line and be
+indented by one tab. Example:</P>
+<PRE CLASS="western">protected function processSubmission() {
+<B>		// Check if user is logged in</B>
+<B>	</B>if ($GLOBALS['TSFE']-&gt;fe_user-&gt;user['uid']) {
+		…
+	}<BR>}
+</PRE><P CLASS="western">
+Class constants and variable comments should follow PHP doc style and
+precede the variable. Variable type must be specified for non–trivial
+types and optional for trivial types. Example:</P>
+<PRE CLASS="western">	/** Number of images submitted by user */
+	protected $numberOfImages;
+	/**
+	 * Local instance of tslib_cObj class
+	 *
+	 * @var tslib_cObj
+	 */
+	protected $localCobj;
+</PRE><P CLASS="western">
+Single line comments are allowed when there is no type declaration
+for the class variable or constant.</P>
+<P CLASS="western">If a variable can hold values of different types,
+use <CODE>mixed</CODE> as type.</P>
+<H4 CLASS="western">Debug output</H4>
+<P CLASS="western">During development it is allowed to use <CODE>debug()</CODE>
+or <CODE>t3lib_div::debug()</CODE> function calls to produce debug
+output. However all debug statements must be removed (removed, not
+commented!) before committing the code to the Subversion repository.</P>
+<H4 CLASS="western">Curly braces</H4>
+<P CLASS="western">Usage of opening and closing curly braces is
+mandatory in all cases where they can be used according to PHP syntax
+(except <CODE>case</CODE> statements).</P>
+<P CLASS="western">The opening curly brace is always on the same line
+as the preceding construction. There must be a space (not a tab!)
+before the opening brace. The opening brace is always followed by a
+new line.</P>
+<P CLASS="western">The closing curly brace must start on a new line
+and be indented to the same level as the construct with the opening
+brace. Example:</P>
+<PRE CLASS="western">protected function getForm() {
+	if ($this-&gt;extendedForm) {
+		// generate extended form here
+	} else {
+		// generate simple form here
+	}
+}
+</PRE><P CLASS="western">
+The following is not allowed:</P>
+<PRE CLASS="western">protected function getForm()
+{
+	if ($this-&gt;extendedForm) { // generate extended form here
+	} else {
+		// generate simple form here
+	}
+}</PRE><H4 CLASS="western">
+Conditions</H4>
+<P CLASS="western">Conditions consist from <CODE>if</CODE>, <CODE>elseif</CODE>
+and <CODE>else</CODE> keywords. TYPO3 code must not use the <CODE>else
+if</CODE> construct.</P>
+<P CLASS="western">The following is the correct layout for
+conditions:</P>
+<PRE CLASS="western">	if ($this-&gt;processSubmission) {
+		// Process submission here
+	} elseif ($this-&gt;internalError) {
+		// Handle internal error
+	} else {
+		// Something else here
+	}
+</PRE><P CLASS="western">
+Here is an example of the incorrect layout:</P>
+<PRE CLASS="western">	if ($this-&gt;processSubmission) {
+		// Process submission here
+	}
+	elseif ($this-&gt;internalError) {
+		// Handle internal error
+	} else { // Something else here
+</PRE><P CLASS="western">
+It is recommended to create conditions so that shortest block goes
+first. For example:</P>
+<PRE CLASS="western">	if (!$this-&gt;processSubmission) {
+		// Generate error message, 2 lines
+	} else {
+		// Process submission, 30 lines
+	}
+</PRE><P CLASS="western">
+If the condition is long, it must be split into several lines. Each
+condition on the line starting from the second should be indented
+with a two or more indents relative to the first line of the
+condition:</P>
+<PRE CLASS="western">	if ($this-&gt;getSomeCodition($this-&gt;getSomeValiarble()) &amp;&amp;
+			$this-&gt;getAnotherCondition()) {
+		// Code follows here
+	}
+</PRE><P CLASS="western">
+Ternary conditional operator must be used only if it has two
+outcomes. Example:</P>
+<PRE CLASS="western">$result = ($useComma ? ',' : '.');
+</PRE><P CLASS="western">
+Wrong usage of ternary conditional operator:</P>
+<PRE CLASS="western">$result = ($useComma ? ',' : $useDot ? '.' : ';');
+</PRE><P CLASS="western">
+Assignment in conditions should be avoided. However if it makes sense
+to do assignment in condition, it should be surrounded by the extra
+pair of brackets. Example:</P>
+<PRE CLASS="western">	if (($fields = $GLOBALS['TYPO3_DB']-&gt;sql_fetch_result($res))) {
+		// Do something
+	}
+</PRE><P CLASS="western" STYLE="page-break-before: auto; page-break-after: avoid">
+The following is allowed but not recommended:</P>
+<PRE CLASS="western">	if (false !== ($fields = $GLOBALS['TYPO3_DB']-&gt;sql_fetch_result($res))) {
+		// Do something
+	}
+</PRE><P CLASS="western">
+The following is not allowed (missing the extra pair of brackets):</P>
+<PRE CLASS="western">	while ($fields = $GLOBALS['TYPO3_DB']-&gt;sql_fetch_result($res)) {
+		// Do something
+	}</PRE><H4 CLASS="western">
+Switch</H4>
+<P CLASS="western"><CODE>case</CODE> statements are indented with a
+single indent (tab) inside the <CODE>switch</CODE> statement. The
+code inside the <CODE>case</CODE> statements is further indented with
+a single indent. The <CODE>break</CODE> statement is aligned with the
+code. Only one <CODE>break</CODE> statement is allowed per <CODE>case</CODE>.</P>
+<P CLASS="western">The <CODE>default</CODE> statement must be the
+last in the <CODE>switch</CODE> and must not have a <CODE>break</CODE>
+statement.</P>
+<P CLASS="western">If one <CODE>case</CODE> block has to pass control
+into another <CODE>case</CODE> block without having a <CODE>break</CODE>,
+there must be a comment about it in the code.</P>
+<P CLASS="western">Examples:</P>
+<PRE CLASS="western">	switch ($useType) {
+		case 'extended':
+			$content .= $this-&gt;extendedUse();
+			// Fall through
+		case 'basic':
+			$content .= $this-&gt;basicUse();
+			break;
+		default:
+			$content .= $this-&gt;errorUse();
+	}</PRE><H4 CLASS="western">
+Loops</H4>
+<P CLASS="western">The following loops can be used:</P>
+<UL>
+	<LI><P CLASS="western"><CODE>do</CODE></P>
+	<LI><P CLASS="western"><CODE>while</CODE></P>
+	<LI><P CLASS="western"><CODE>for</CODE></P>
+	<LI><P CLASS="western"><CODE>foreach</CODE></P>
+</UL>
+<P CLASS="western" ALIGN=LEFT>The use of <CODE>each</CODE> is not
+allowed in loops.</P>
+<P CLASS="western" ALIGN=LEFT><CODE>for</CODE> loops must contain
+only variables inside (no function calls). The following is correct:</P>
+<PRE CLASS="western">	$size = count($dataArray);
+	for ($element = 0; $element &lt; $size; $element++) {
+		// Process element here
+	}
+</PRE><P CLASS="western" ALIGN=LEFT>
+The following is not allowed:</P>
+<PRE CLASS="western">	for ($element = 0; $element &lt; count($dataArray); $element++) {
+		// Process element here
+	}
+</PRE><P CLASS="western" ALIGN=LEFT>
+<CODE>do</CODE> and <CODE>while</CODE> loops must use extra brackets
+if assignment happens in the loop:</P>
+<PRE CLASS="western">	while (($fields = $GLOBALS['TYPO3_DB']-&gt;sql_fetch_result($res))) {
+		// Do something
+	}</PRE><H4 CLASS="western">
+Strings</H4>
+<P CLASS="western">All strings must use single quotes. Double quotes
+are allowed only to create the new line character (<CODE>“\n”</CODE>).</P>
+<P CLASS="western">String concatenation operator must be surrounded
+by spaces. Example:</P>
+<PRE CLASS="western">	$content = 'Hello ' . 'world!';
+</PRE><P CLASS="western">
+However the space after the concatenation operator must not be
+present if the operator is the last construction on the line. See the
+section about white spaces on page 7 for more information.</P>
+<P CLASS="western">Variables must not be embedded into strings.
+Correct:</P>
+<PRE CLASS="western">	$content = 'Hello ' . $userName;
+</PRE><P CLASS="western">
+Incorrect:</P>
+<PRE CLASS="western">	$content = “Hello $userName”;
+</PRE><P CLASS="western">
+Multiline string concatenations are allowed. Line concatenation
+operator must be at the end of the line. Lines starting from the
+second must be indented relative to the first line. It is recommended
+to indent lines one level from the start of the string on the first
+level:</P>
+<PRE CLASS="western">	$content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
+				'Donec varius libero non nisi. Proin eros.';</PRE><H4 CLASS="western">
+Booleans</H4>
+<P CLASS="western">Booleans must use PHP's language constructs and
+not explicit integer values like 0 or 1. Furthermore they should be
+written in uppercase, i.e. <CODE>TRUE</CODE> and <CODE>FALSE</CODE>.</P>
+<H4 CLASS="western">PHP5 features</H4>
+<P CLASS="western">The use of PHP5 features is strongly recommended
+for extensions and mandatory for the TYPO3 core versions 4.2 or
+greater.</P>
+<P CLASS="western">Class functions must have access type specifier:
+<CODE>public</CODE>, <CODE>protected</CODE> or <CODE>private</CODE>.
+Notice that <CODE>private</CODE> may prevent XCLASSing of the class.
+Therefore <CODE>private</CODE> can be used only if it is absolutely
+necessary.</P>
+<P CLASS="western">Class variables must use access specifier instead
+of <CODE>var</CODE> keyword.</P>
+<P CLASS="western">Type hinting must be used when function expects
+array or an instance of a certain class. Example:</P>
+<PRE CLASS="western">	protected function executeAction(tx_myext_action&amp; $action, array $extraParameters) {
+		// Do something
+	}
+</PRE><P CLASS="western">
+Static functions must use <CODE>static</CODE> keyword. This keyword
+must be the first keyword in the function definition:</P>
+<PRE CLASS="western">	<B>static </B>public function executeAction(tx_myext_action&amp; $action, array $extraParameters) {
+		// Do something
+	}
+</PRE><P CLASS="western">
+<CODE>abstract</CODE> keyword also must be on the first position in
+the function declaration:</P>
+<PRE CLASS="western">	<B>abstract </B>protected function render();</PRE><H4 CLASS="western">
+Global variables</H4>
+<P CLASS="western">Use of <CODE>global</CODE> is not recommended.
+Always use <CODE>$GLOBALS['variable']</CODE>.</P>
+<H4 CLASS="western">Functions</H4>
+<P CLASS="western">If a function returns a value, it must always
+return it. The following is not allowed:</P>
+<PRE CLASS="western">function extendedUse($enabled) {
+	if ($enabled) {
+		return 'Extended use';
+	}
+}
+</PRE><P CLASS="western">
+The following is the correct behavior:</P>
+<PRE CLASS="western">function extendedUse($enabled) {
+	$content = '';
+	if ($enabled) {
+		$content = 'Extended use';
+	}
+	return $content;
+}
+</PRE><P CLASS="western">
+In general there should be a single return statement in the function
+(see the preceding example). However a function can return during
+parameter validation before it starts its main logic. Example:</P>
+<PRE CLASS="western">function extendedUse($enabled, tx_myext_useparameters $useParameters) {
+	// Validation
+	if (count($useParameters-&gt;urlParts) &lt; 5) {
+		return 'Parameter validation failed';
+	}
+
+	// Main functionality
+	$content = '';
+	if ($enabled) {
+		$content = 'Extended use';
+	} else {
+		$content = 'Only basic use is available to you!';
+	}
+	return $content;
+}
+</PRE><P CLASS="western">
+Functions should not be long. “Long” is not defined in terms of
+lines. General rule is that function should fit into <SUP>2</SUP>/<SUB>3</SUB>
+of the screen. This rule allows small changes in the function without
+splitting the function further.</P>
+<H3 CLASS="western"><A NAME="1.3.4.Using phpDoc|outline"></A>Using
+phpDoc</H3>
+<P CLASS="western">phpDoc is used for documenting source code.
+Typically TYPO3 code uses the following phpDoc keywords:</P>
+<UL>
+	<LI><PRE CLASS="western">@author</PRE>
+	<LI><PRE CLASS="western">@access</PRE>
+	<LI><PRE CLASS="western">@global</PRE>
+	<LI><PRE CLASS="western">@param</PRE>
+	<LI><PRE CLASS="western">@package</PRE>
+	<LI><PRE CLASS="western">@return</PRE>
+	<LI><PRE CLASS="western">@see</PRE>
+	<LI><PRE CLASS="western">@subpackage</PRE>
+	<LI><PRE CLASS="western">@var</PRE>
+</UL>
+<PRE CLASS="western"></PRE><P CLASS="western">
+For more information on phpDoc see the phpDoc web site at
+<A HREF="http://www.phpdoc.org/">http://www.phpdoc.org/</A></P>
+<P CLASS="western">TYPO3 requires that each class, function and
+method is documented with phpDoc. For information on phpDoc with use
+in classes see “Class information block” on page 9.</P>
+<P CLASS="western">Note that the @author tag should <B>not</B><SPAN STYLE="font-weight: normal">
+be used in function or method phpDoc comment blocks – only at class
+level – because it is too liable to change frequently and authors
+would accumulate indefinitely. </SPAN><CODE><SPAN STYLE="font-weight: normal">svn
+blame</SPAN></CODE><SPAN STYLE="font-weight: normal"> is enough for
+tracking changes.</SPAN></P>
+<P CLASS="western" STYLE="page-break-before: auto; page-break-after: avoid">
+Functions should have parameters and return type documented. Example:</P>
+<PRE CLASS="western" STYLE="page-break-inside: avoid; page-break-before: auto">/**
+ * Initializes the plugin. Checks the configuration and substitutes defaults for missing values.
+ * @param	array	$conf	Plugin configuration from TypoScript
+ * @return	void
+ * @see	tx_myext_class:anotherFunc()
+ */
+protected function initialize(array $conf) {
+	// Do something
+}
+</PRE><P CLASS="western">
+Notice the use of <CODE>void</CODE> when function does not return a
+value.</P>
+<H3 CLASS="western"><A NAME="1.3.5.The ChangeLog file|outline"></A>The
+ChangeLog file</H3>
+<P CLASS="western">TYPO3 core has a <CODE>ChangeLog</CODE> file where
+all changes are recorded. This file is committed to the SVN together
+with the change.</P>
+<P CLASS="western">Each entry in the <CODE>ChangeLog</CODE> file has
+the following format:</P>
+<UL>
+	<LI><P CLASS="western">Information about the date of the change
+	(YYYY-mm-dd), author name and author's e-mail address. These three
+	pieces of information are separated strictly by two spaces (no
+	tabs!)</P>
+	<LI><P CLASS="western">Empty line</P>
+	<LI><P CLASS="western">One or more lines describing the change. Each
+	such line is indented by a single tab</P>
+	<LI><P CLASS="western">Empty line</P>
+	<LI><P CLASS="western">Line that describes the change consists from
+	the following parts:</P>
+	<LI><P CLASS="western">Asterisk character</P>
+	<LI><P CLASS="western">Type of the change (“Fixed bug” or “Added
+	feature”)</P>
+	<LI><P CLASS="western">Bug tracker issue id (“#12345”)</P>
+	<LI><P CLASS="western">A colon</P>
+	<LI><P CLASS="western">Bug tracker issue title or, if needed, a more
+	meaningful title that describes the change (“great feature for
+	TYPO3”)</P>
+	<LI><P CLASS="western">Optional “thanks to” message of the patch
+	was submitted by the contributor</P>
+</UL>
+<P CLASS="western">In some cases the line can have free format. This
+applies to non–functional changes, like “Formatting change” or
+“Fixed copyright dates”).</P>
+<P CLASS="western">Here is an example of the <CODE>ChangeLog</CODE>
+entry:</P>
+<PRE CLASS="western">2009-01-06  John Doe  &lt;<A HREF="mailto:john@doe.com">john@doe.com</A>&gt;
+
+	* Fixed bug #12345: typolink does not take XYZ into account
+	* Added feature #12345: Google sitemap in the TYPO3 core (thanks to Jane Doe)
+</PRE><P CLASS="western">
+<CODE>ChangeLog</CODE> file updates are mandatory for every change in
+the TYPO3 core. Extension authors are strongly recommended to use
+such file with the same format in their extensions.</P>
+<H2 CLASS="western"><A NAME="1.4.Coding: best practices|outline"></A>Coding:
+best practices</H2>
+<P CLASS="western">This section documents best practices when
+developing for TYPO3.</P>
+<H3 CLASS="western"><A NAME="1.4.1.Accessing the database|outline"></A>
+Accessing the database</H3>
+<P CLASS="western">The TYPO3 database should be always accessed
+through the use of <CODE>$GLOBALS['TYPO3_DB']</CODE>. This is the
+instance of <CODE>t3lib_db</CODE> class from
+<CODE>t3lib/class.t3lib_db.php</CODE>.</P>
+<P CLASS="western">The same rule applies for accessing non-TYPO3
+databases: they should be accessed by using a different instance of
+the same class. Failing this condition may corrupt TYPO3 database or
+prevent access to TYPO3 database for the rest of the script.</P>
+<H3 CLASS="western"><A NAME="1.4.2.Singletons|outline"></A>Singletons</H3>
+<P CLASS="western">TYPO3 supports singleton pattern for classes.
+Singletons are instantiated only once per HTTP request regardless of
+the number of calls to the <CODE>t3lib_div::makeInstance()</CODE>. To
+use singleton pattern class must implement <CODE>t3lib_Singleton</CODE>
+interface:</P>
+<PRE CLASS="western">require_once(PATH_t3lib . 'interfaces/interface.t3lib_singleton.php');
+
+class tx_myext_mySingletonClass implements t3lib_Singleton {
+	…
+}
+</PRE><P CLASS="western">
+This interface has no methods to implement.</P>
+<H3 CLASS="western"><A NAME="1.4.3.Localization|outline"></A>Localization</H3>
+<P CLASS="western">TYPO3 is designed to be fully localizable.
+Hard-coded strings should thus be avoided unless there are some
+technical limitations (e.g. some early or low-level stuff where a
+<CODE>lang</CODE> object is not available).</P>
+<H4 CLASS="western">Defining the localized strings</H4>
+<P CLASS="western">Here are some rules to respect when working with
+labels in locallang files:</P>
+<UL>
+	<LI><P CLASS="western">always check the existing locallang files to
+	see if a given localized string already exists, in particular
+	<CODE>EXT:lang/locallang_common.xml</CODE> and
+	<CODE>EXT:lang/locallang_core.xml</CODE>.</P>
+	<LI><P CLASS="western">localized strings should never be all
+	uppercase. If this is needed, then appropriate methods to make them
+	uppercase should be used where needed.</P>
+	<LI><P CLASS="western">localized strings must not be split into
+	several parts to include stuff in their middle. Rather use a single
+	string with <CODE>sprintf()</CODE> markers (<CODE>%s</CODE>, <CODE>%d</CODE>,
+	etc.).</P>
+	<LI><P CLASS="western">when a localized string contains several
+	<CODE>sprintf()</CODE> markers, it <B>must</B> use numbered
+	arguments (e.g. <CODE>%1$d</CODE>).</P>
+	<LI><P CLASS="western">localized strings are not supposed to contain
+	HTML tags, except for CSH. They should be avoided whenever possible.</P>
+</UL>
+<P CLASS="western">Once a localized string appears in a released
+version of TYPO3, it cannot be changed (unless it needs grammar or
+spelling fixes). Nor can it be removed. If the label a localized
+string has to be changed, a new one should be introduced instead.</P>
+<H4 CLASS="western">Using the localized strings</H4>
+<P CLASS="western">Localized string are displayed using the available
+API, mostly <CODE>lang::getLL()</CODE> when the corresponding
+locallang file is loaded and <CODE>lang::sL()</CODE> otherwise. In
+both these methods, the second call parameter should be left out,
+unless there's a compelling reason to set it to “true” (which
+triggers the use of <CODE>htmlspecialchars()</CODE>).</P>
+<H2 CLASS="western"><A NAME="1.5.Settings for editors|outline"></A>Settings
+for editors</H2>
+<H3 CLASS="western"><A NAME="1.5.1.Eclipse (PDT, Zend Studio, phpEclipse, etc)|outline"></A>
+Eclipse (PDT, Zend Studio, phpEclipse, etc)</H3>
+<P CLASS="western">Open Eclipse preferences. In the “General”,
+“Editors”, “Text editors”:</P>
+<UL>
+	<LI><P CLASS="western">clear “Insert spaces for tabs”</P>
+	<LI><P CLASS="western">check “Show print margin” and set “Print
+	margin column” to 80</P>
+</UL>
+<P CLASS="western">To clear trailing whitespace on save, install
+“AnyEdit” Eclipse plugin (find it on the Internet using your
+preferred search engine). Then in “General”, “Editors”,
+“AnyEdit tools” check two options: “Remove trailing whitespace”
+and “Convert tabs &lt;-&gt; spaces”. Also select “Spaces to
+tabs”.</P>
+<P CLASS="western">In the “General”, “Workspace” set “New
+text file line delimiter” to “Other” and “Unix”.</P>
+<H3 CLASS="western"><A NAME="1.5.2.Komodo IDE|outline"></A>Komodo IDE</H3>
+<P CLASS="western">Komodo IDE is a product of ActiveState. It is
+available at <CODE>http://www.activestate.com/</CODE></P>
+<P CLASS="western">In the Komodo IDE preferences select the “Editor”
+parameter group and from there select “Indentation”. Set options
+as follows:</P>
+<UL>
+	<LI><P CLASS="western">Auto–indent style: Use Smart Indent</P>
+	<LI><P CLASS="western">“Prefer tab characters over spaces”
+	should be checked (in “Indentation” and “Language
+	settings”/”PHP”)</P>
+	<LI><P CLASS="western">“Number of spaces per indent” is set to 4</P>
+	<LI><P CLASS="western">“Width of each tab character” is set to 4</P>
+</UL>
+<P CLASS="western">In the “Smart editing” group set “Show edge
+line / Highlight characters beyond edge line” and enter “80” in
+the “Eddge line column”.</P>
+<P CLASS="western">In the “Save options” group set “Clean
+trailing whitespace and EOL marker”.</P>
+<P CLASS="western">In the “New files” group set “Specify
+end-of-line (EOL) indicator for newly created files” to “Unix
+(\n)”.</P>
+<H3 CLASS="western"><A NAME="1.5.3.NetBeans|outline"></A>NetBeans</H3>
+<P CLASS="western">NetBeans is an open source IDE developed by Sun
+Inc. It is available at <CODE><A HREF="http://www.netbeans.org/">http://www.netbeans.org/</A></CODE>.</P>
+<P CLASS="western">Open the NetBeans preferences, move to the
+“Editor” preference panel and choose “Formatting”. Set
+options as follows:</P>
+<UL>
+	<LI><P CLASS="western">From the menu “Category”, choose “Tabs
+	And Indents”</P>
+	<LI><P CLASS="western">Make sure the “Expand Tabs to Spaces” box
+	is <B>not</B><SPAN STYLE="font-weight: normal"> checked</SPAN></P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">Set “Number of
+	Spaces per Indent” to 4</P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">Set “Tab Size”
+	to 4</P>
+	<LI><P CLASS="western" STYLE="font-weight: normal">Set the “Right
+	Margin” to 80</P>
+</UL>
+<H2 CLASS="western"><A NAME="1.6.ChangeLog|outline"></A>ChangeLog</H2>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=45*>
+	<COL WIDTH=54*>
+	<COL WIDTH=157*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=18%>
+				<P CLASS="western">Date</P>
+			</TH>
+			<TH WIDTH=21%>
+				<P CLASS="western">Modified by</P>
+			</TH>
+			<TH WIDTH=61%>
+				<P CLASS="western">Description</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18%>
+				<P CLASS="western">2008-08-03</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">Dmitry Dulepov</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Initial draft</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18%>
+				<P CLASS="western">2009-02-16</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">Dmitry Dulepov</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Added information on ext_tables.sql.</P>
+				<P CLASS="western">Removed Komodo IDE screenshot and described
+				each necessary option.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18%>
+				<P CLASS="western">2009-03-04</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">Dmitry Dulepov</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Fixed some errors found by Francois Suter</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18% SDVAL="39997" SDNUM="16393;0;@">
+				<P CLASS="western">2009-07-03</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">François Suter</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Adopted new documentation template</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">2009-09-18</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">François Suter</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Added rules for localization</P>
+				<P CLASS="western">Changed layout of code samples for better HTML
+				rendering (hopefully)</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">2009-09-25</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">François Suter</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Added rules for booleans</P>
+				<P CLASS="western">Added example setup for NetBeans IDE</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=18% SDVAL="0" SDNUM="16393;0;@">
+				<P CLASS="western">2009-10-02</P>
+			</TD>
+			<TD WIDTH=21%>
+				<P CLASS="western">François Suter</P>
+			</TD>
+			<TD WIDTH=61%>
+				<P CLASS="western">Added class name conventions</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>17</SDFIELD></P>
+</DIV>
+</BODY>
+</HTML>

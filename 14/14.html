@@ -1,0 +1,1832 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Browser Compatibility Chart</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Donald Duck">
+	<META NAME="CHANGED" CONTENT="20030917;13333200">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: landscape; margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Arial", sans-serif; font-size: 8pt }
+		TH P { margin-bottom: 0cm; background: #e6e6e6; color: #000000 }
+		TH P.western { font-family: "Arial Narrow", sans-serif; font-size: 9pt; font-style: normal }
+		TH P.cjk { font-style: italic }
+		TH P.ctl { font-style: italic }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western" ALIGN=RIGHT><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Browser Compatibility Chart</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER>Extension Key: <B>doc_core_compclient</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2000-2003, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<H2 CLASS="western">TYPO3 Browser Compatibility</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">This matrix is not yet complete, but some browsers
+has been analyzed for compatibility with TYPO3. 
+</P>
+<P CLASS="western">MSIE 6.x/WinXP is the reference browser for which
+everything should be expected to work correctly.</P>
+<H3 CLASS="western">Notes</H3>
+<P CLASS="western">TYPO3.3b1.9, 5/2002</P>
+<P CLASS="western">All functions tested from the Alternative Backend
+unless they are obvious Classic features.</P>
+<P CLASS="western">General notes/rules for HTML:</P>
+<UL>
+	<LI><P CLASS="western">Submitting a form from a &lt;A&gt; tag should
+	be done with document.[formname].submit() and not just submit() (Mac
+	MSIE/5.1)</P>
+	<LI><P CLASS="western">onClick events in image-submit buttons are
+	ignored by some older browsers (and Konqueror).</P>
+	<LI><P CLASS="western">Opera 7 is supported (for Backend click
+	menus) BUT by default it will not work because it identifies itself
+	as &quot;MSIE 6&quot; - and Opera is obviously not MSIE 6 compliant!
+	So set the identification to &quot;Opera&quot; and it will work.</P>
+</UL>
+<H3 CLASS="western">Matrix</H3>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=23*>
+	<COL WIDTH=18*>
+	<COL WIDTH=18*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<COL WIDTH=20*>
+	<THEAD>
+		<TR VALIGN=TOP>
+			<TH WIDTH=9%>
+				<P CLASS="western">Feature</P>
+			</TH>
+			<TH WIDTH=7%>
+				<P CLASS="western">MSIE5+</P>
+				<P CLASS="western">Win</P>
+			</TH>
+			<TH WIDTH=7%>
+				<P CLASS="western">MSIE4</P>
+				<P CLASS="western">Win</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN6.1</P>
+				<P CLASS="western">Win</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN4.03</P>
+				<P CLASS="western">Win</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">Opera6.01</P>
+				<P CLASS="western">Win</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN6.2</P>
+				<P CLASS="western">Linux</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN4.78</P>
+				<P CLASS="western">Linux</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">Opera6.0b1</P>
+				<P CLASS="western">Linux</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">Konqu. 2.2.2</P>
+				<P CLASS="western">Linux</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN6.??</P>
+				<P CLASS="western">Mac</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">NN4.??</P>
+				<P CLASS="western">Mac</P>
+			</TH>
+			<TH WIDTH=8%>
+				<P CLASS="western">MSIE5.1</P>
+				<P CLASS="western">Mac</P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Classic Backend (CA)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Yes, but very slow</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Yes, but very slow</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: Login</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: AdminPanel (editingmodes, preview, clear
+				cache)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES, but linking from pencil-icons to
+				alt_doc.php seems not to work!?</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: mouseovers/menus</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: JSMENU</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: GMENU_LAYERS</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES, apparently. There may be some minor
+				problems.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Yes, but  some features are not working.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Yes, but no rollovers in the layers.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: GMENU_FOLDOU.</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: Photomarathon Uploads</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Update of multiple selectorboxes not working.
+				Data recieved well though.</P>
+				<P CLASS="western">Other things working fine.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">No, the preview of information does not work.
+				I suspect the JS update-form function to not update the content
+				of hidden fields...</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: Board, Shop, Guest, Poll, Rating,
+				Clickenlarging.</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES (however I have some strange encounters
+				with clickenlarge not working)</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">FE: Default stylesheet working? (Intro and
+				Photomarathon?)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">NO</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Web&gt;List: Clipboard:
+				Remove/Clear/Edit/Delete/Copy/Cut</P>
+				<P CLASS="western">Copy/Cut/Paste/Select</P>
+				<P CLASS="western">Delete/Edit marked</P>
+				<P CLASS="western">Mark duplicates</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Web&gt;List Clickmenus (AB)</P>
+				<P CLASS="western">Both from tree and list, CM of pageicon in the
+				top of eg Web&gt;Access</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">File&gt;List: Test funktioner, specielt rename
+				(save/cancel), edit, upload</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">File&gt;List: Clickmenus (AB)</P>
+				<P CLASS="western">Both from tree and list,  CM of foldericon in
+				the top of File&gt;Image</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Rich Text Editor (RTE)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+				<P CLASS="western">The RTE is not working properly with the
+				Doc-module in MSIE&lt;6, because the onBlur event is not
+				triggered in MSIE5.x browsers.</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">N/A</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">EDIT: Validation: Required, date, datetime,
+				multi-check array</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">EDIT: Selector lists: (be_groups), add,
+				remove, to top?</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">EDIT: Wrapping: sys_template fields correctly
+				wrapped (+ Web&gt;Template)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western" ALIGN=LEFT>YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">EDIT: Element browser: Add files and records,
+				single and multiple</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES, however the selected items will <I>not</I>
+				appear in the list-field of the main form before you close the
+				elementbrowser!</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">EDIT: Selection of tt_content.image_position:
+				Does the icon display work and are values submitted correct?</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">submit-button onClick</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Uploads in Web&gt;File</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES, but File browse button is strange
+				though...</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Uploads in Web&gt;Template (Info&gt;Modify +
+				Constant Editor)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Uploads in element browser</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">All modules / General look and functions
+				(comments not mentioned anywhere else).</P>
+				<P CLASS="western">- Web&gt;Tools advanced query builder?</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">The icons-mode of AB renders the links on
+				User&gt;Setup/Task icons reversed(!) and omits rendering the
+				spacer images between User and Tools section! Does appear ONLY
+				with czech version!! VERY strange.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Edit form buttons? (alt_doc.php/Web&gt;Page/FE
+				edit)  (Correct Return on close, delete, history link etc.,
+				save/view)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">???</P>
+				<P CLASS="western">(Save/View and close (in page-forms) does not
+				work. onClick events in submit images not detected? (onClick on
+				submit buttons in general is working!))</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Install Tool (Install database, set password)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">YES</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">General notes on browser behaviour related to
+				TYPO3</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">Places where the file-upload field has the
+				width set the ”Browse” button might disappear (collapse)</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">onClick events in image-type submit buttons
+				are ignored (like Konqueror 2.2.2)</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">TEXTAREA has no no-wrap property. At least
+				that is NOT working.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Seems slow at login. Suspect the JavaScript
+				MD5() function to be slow.</P>
+				<P CLASS="western">Seems to reload images on each request
+				(although caching is enabled with default settings). This effect
+				makes it appear slow.</P>
+				<P CLASS="western">No IMG-alt/title text showing  as ”tip”
+				when mouseover!</P>
+				<P CLASS="western">&lt;textarea&gt; fields cannot contain</P>
+				<P CLASS="western">onClick events in submit buttons of the
+				image-type ONLY seems to be fired AFTER submission of the form,
+				which means we cannot hold submission back (or change
+				fieldvalues) unless those buttons are ordinary images.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">No borderstyles in the tceforms (that is
+				borderstyles of tables do not work).</P>
+				<P CLASS="western">No IMG-alt/title text showing as ”tip”
+				when mouseover.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Much faster with Alternative Backend.</P>
+				<P CLASS="western">Slow with tables with many columns. Eg.
+				Web&gt;Access and Web&gt;Info (page tree) is slow.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Serious problems</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">Apparently if the GET-param ”&amp;params=”
+				is set, this is recognized as a ”&amp;para;” sign! Thus any
+				url with this parameter will pass wrong parameters!</P>
+				<P CLASS="western">No places in TYPO3 uses &amp;params= anymore,
+				but it should of course be avoided in any future case.</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">(see TEXTAREA problem)</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Even if all data in &lt;textarea&gt;fields are
+				processed through htmlspecialchars() function, a single
+				HTML-comment  (with &amp;gt; and &amp;lt; !!) will simply prevent
+				ANYTHING from being displayed in the &lt;textarea&gt; - it will
+				appear like if it is empty. Using <B>htmlentities()  is no
+				better. The problem is the char sequence ”&amp;lt;!--”</B></P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Blank lines in the beginning of a TEXTAREA
+				field is stripped when content is shown in such a field.
+				Submitted blank lines are stored correctly.</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Test environment</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western">233 MHz Pentium II / 256 MB RAM</P>
+				<P CLASS="western">WinNT 4.0</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">233 MhZ Pentium II / 128 MB RAM</P>
+				<P CLASS="western">RedHat 7.2 / KDE</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">PowerMac 8500/180 MzH, 80 MB RAM</P>
+				<P CLASS="western">Mac OS 9.1</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Previous version notes</P>
+				<P CLASS="western">(Things you should not worry about, because
+				you are of course using the tested browser only...)</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Opera 5.11/Win:</P>
+				<P CLASS="western">- Upload in TS module returns empty, probably
+				because the array link fieldname is not allowed</P>
+				<P CLASS="western">- Wrap=Off does not work in textarea fields.</P>
+				<P CLASS="western">Possibly other things</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Konqueror 2.1.1:</P>
+				<P CLASS="western">md5-hash function returns false md5-hash! So
+				you cannot login at all!</P>
+				<P CLASS="western">Editing: Generally content in ALL &lt;input&gt;
+				fields is submitted but the ORIGINAL value so any changes are not
+				submitted! But this goes ONLY for the input fields in the
+				tceforms-editing.</P>
+				<P CLASS="western">Validation of field content  seems not to work
+				in general...</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TD WIDTH=9%>
+				<P CLASS="western">Things which MUST be fixed</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=7%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western">Web&gt;Access: The  array of permission
+				checkboxes is not updated like they should be!</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+			<TD WIDTH=8%>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="14_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>Browser Compatibility Chart</SDFIELD>
+	<B>- </B><B><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>8</SDFIELD></B></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>

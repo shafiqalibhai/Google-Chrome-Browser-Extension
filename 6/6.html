@@ -1,0 +1,4514 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>TypoScript By Example</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Unix)">
+	<META NAME="AUTHOR" CONTENT="Kasper Skårhøj">
+	<META NAME="CREATED" CONTENT="20021101;320000">
+	<META NAME="CHANGEDBY" CONTENT="Kasper Skårhøj">
+	<META NAME="CHANGED" CONTENT="20021214;2381700">
+	<META NAME="Author" CONTENT="Kasper Skårhøj">
+	<META NAME="Email" CONTENT="kasper@typo3.com">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+	<META NAME="SDFOOTNOTE" CONTENT=";;;;P">
+	<META NAME="SDENDNOTE" CONTENT="ARABIC">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 2cm; margin-right: 1.3cm; margin-top: 1.8cm; margin-bottom: 0.49cm }
+		P { margin-bottom: 0.21cm; color: #000000 }
+		P.western { font-family: "Arial", sans-serif; font-size: 9pt }
+		H1 { margin-top: 2cm; margin-bottom: 1cm; background: transparent; color: #666666; text-align: center; page-break-before: always; page-break-after: auto }
+		H1.western { font-family: "Arial Narrow", sans-serif; font-size: 28pt }
+		H1.cjk { font-family: "HG Mincho Light J"; font-size: 13pt }
+		H1.ctl { font-family: "Arial Unicode MS"; font-size: 13pt }
+		H2 { margin-top: 0.5cm; margin-bottom: 0cm; color: #666666; text-align: left; page-break-before: auto }
+		H2.western { font-family: "Arial Narrow", sans-serif; font-size: 20pt; font-style: normal }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3 { margin-top: 0.4cm; margin-bottom: 0cm; color: #4c4c4c; text-align: left; page-break-before: auto }
+		H3.western { font-family: "Arial Narrow", sans-serif; font-style: normal }
+		H3.cjk { font-family: "HG Mincho Light J"; font-style: italic }
+		H3.ctl { font-family: "Arial Unicode MS"; font-style: italic }
+		H4 { margin-top: 0.5cm; margin-bottom: 0cm; color: #333366; text-align: left; page-break-before: auto }
+		H4.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: normal }
+		H4.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H4.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		H5 { margin-top: 0.5cm; margin-bottom: 0cm; color: #b84747; text-align: left; page-break-before: auto }
+		H5.western { font-family: "Arial", sans-serif; font-size: 11pt; font-style: normal }
+		H5.cjk { font-family: "HG Mincho Light J"; font-size: 11pt; font-style: italic }
+		H5.ctl { font-family: "Arial Unicode MS"; font-size: 11pt; font-style: italic }
+		P.footer-western { font-family: "Arial", sans-serif; font-size: 8pt; font-weight: bold }
+		TD P { margin-bottom: 0cm; background: transparent; color: #000000 }
+		TD P.western { font-family: "Arial", sans-serif; font-size: 8pt }
+		H2.contents-heading-western { color: #000000; font-family: "Arial Narrow", sans-serif; font-size: 16pt; font-style: normal }
+		H2.contents-heading-cjk { color: #000000; font-family: "HG Mincho Light J"; font-size: 16pt; font-style: italic }
+		H2.contents-heading-ctl { color: #000000; font-family: "Arial Unicode MS"; font-size: 16pt; font-style: italic }
+		PRE { color: #333366; page-break-before: auto }
+		PRE.western { font-family: "Cumberland", monospace; font-size: 8pt }
+		PRE.cjk { font-family: "Cumberland", monospace }
+		PRE.ctl { font-family: "Cumberland", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: auto; page-break-after: auto">
+<SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript By Example</SDFIELD></H1>
+<P CLASS="western" ALIGN=CENTER STYLE="font-weight: normal">Revised
+spring 2001</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>Extension Key: <B>doc_core_tsbyex</B></P>
+<P CLASS="western" ALIGN=CENTER>Copyright 2000-2002, <SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Author">Kasper Skårhøj</SDFIELD>,
+&lt;<SDFIELD TYPE=DOCINFO SUBTYPE=CUSTOM NAME="Email">kasper@typo3.com</SDFIELD>&gt;</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>This document is published under the
+Open Content License</P>
+<P CLASS="western" ALIGN=CENTER>available from
+http://www.opencontent.org/opl.shtml</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER>The content of this document is
+related to TYPO3 
+</P>
+<P CLASS="western" ALIGN=CENTER>- a GNU/GPL CMS/Framework available
+from www.typo3.com</P>
+<P CLASS="western" ALIGN=CENTER><BR><BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="page-break-before: always"><BR><BR>
+</P>
+<MULTICOL ID="Table of Contents1" DIR="LTR" COLS=2 GUTTER=19 STYLE="background: #ffffff">
+	<DIV ID="Table of Contents2_Head" DIR="LTR">
+		<H2 CLASS="contents-heading-western">Table of Contents</H2>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>TypoScript By
+	Example	1</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	2</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">This document	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Other
+	documentation	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Do I need it?	2</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>What is a
+	TypoScript template?	2</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Overview	2</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Case: &quot;Include
+	basis template&quot;	4</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Managing the
+	hierarchy of templates	5</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Case: &quot;Extension&quot;	6</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Managing
+	extensions	6</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Read more	7</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Standard
+	templates 	7</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">static_template
+	table	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Content rendering
+	details	8</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Typical setup of a
+	standard template	8</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Basic Tutorial:
+	Start a new website	9</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">A simple website
+	from the ground	9</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">A website with a
+	little menu	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Inserting the
+	graphical menu.	12</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Content on the
+	site	12</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Concepts	14</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>&amp;id  and
+	&amp;type	14</B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Wraps	16</B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Arrays
+	(1,2,3,4...)	17</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Numerical arrays	17</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">String arrays	17</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>styles.content.[xxx]	18</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Example from
+	&quot;content (default)&quot;	18</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Educational
+	sections	21</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	21</B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Code notation
+	conventions:	21</B></P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>stdWrap	23</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>The concept,
+	stdWrap	23</B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>stdWrap
+	properties	24</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Get data	24</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Override /
+	Conditions	26</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Content Objects
+	(cObject)	28</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	28</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">COA	28</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">FILE	29</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">IMAGE	29</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">IMG_RESOURCE	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">CLEARGIF	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">HRULER	30</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">CTABLE and OTABLE	31</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">TEMPLATE	34</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">FORM	37</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">CASE	39</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">LOAD_REGISTER	41</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>imgResource and
+	GIFBUILDER	43</B></FONT></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>Introduction	43</B></P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>A regular file
+	as input	43</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Bitmap masks	44</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Import an image	45</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm"><B>GIFBUILDER	48</B></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">GIFBUILDER basics	50</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">+calc	50</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">.niceText	51</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The GIFBUILDER TEXT
+	object	52</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">The IMAGE object	52</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Navigation	54</B></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">HMENU	54</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">TMENU	54</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">IMGMENU	56</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">optionSplit	58</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">GMENU	58</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Images on GMENUs	59</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">GMENU_LAYER	61</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Extending a
+	background image to the whole menu	62</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>PHP include-scripts	65</B></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">PHP_SCRIPT
+	cObject	65</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Inspiration	65</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Example: Userdefined
+	tags	65</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Content rendering	69</B></FONT></P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">Introduction	69</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">CONTENT	70</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">colPos	71</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">styles.content
+	(default)	73</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">lib.stdheader	74</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">RECORD	75</P>
+	<P STYLE="margin-bottom: 0cm"><FONT SIZE=3><B>Challenge answers	78</B></FONT></P>
+</MULTICOL>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Introduction</H2>
+<H3 CLASS="western">This document</H3>
+<P CLASS="western">This document is an introduction to using
+TypoScript. It tries to get your thoughts aligned with the way
+TypoScript works. A lot of small examples are used to help you grasp
+TypoScript little by little preparing you for bigger adventures.</P>
+<H3 CLASS="western">Other documentation</H3>
+<P CLASS="western"><SPAN STYLE="font-weight: normal">A very important
+document is the </SPAN><B>TypoScript reference (TSref)</B><SPAN STYLE="font-weight: normal">,
+which contains all details on TypoScript. The problem with the
+reference is that very few examples follow it. So therefore this is a
+more reader-friendly way to approach TypoScript.</SPAN></P>
+<P CLASS="western"><B>Tutorials</B></P>
+<P CLASS="western">There's a series of tutorials that are very good
+to follow also.</P>
+<P CLASS="western"><B>Content rendering</B></P>
+<P CLASS="western">A separate PDF-document, content_rendering.pdf, 
+with topic on content rendering is available.</P>
+<H3 CLASS="western">Do I need it?</H3>
+<P CLASS="western" STYLE="font-weight: normal">Yes. If you are
+working in the layers above F1 in the Typo3 Overview. But it's
+certainly up to you how much you want to utilize it. If you find
+TypoScript very confusing, you'll do fine with a very few options and
+then render the content with your own PHP-scripts. You can also base
+your project on a standard template which is a fixed layout but
+extremely easy to configure for different options.</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<H2 CLASS="western">What is a TypoScript template?</H2>
+<H3 CLASS="western">Overview</H3>
+<P CLASS="western">Normally a &quot;template&quot; is a HTML-file
+that describes a layout and certain areas that should be substituted
+with some other content. In Typo3 you can use this approach, even
+with TypoScript. See the tutorials for more information.</P>
+<P CLASS="western">But a &quot;template&quot; or &quot;template
+record&quot; as refered to in these documents is a record from the
+database table &quot;sys_template&quot; in Typo3 and the existence of
+such a record on a certain page defines how the page displays. Thats
+a template.</P>
+<P CLASS="western">In order to understand templates, you should read
+this introduction to TypoScript. You'll also find thorough
+information in the TSref. 
+</P>
+<P CLASS="western">This page is an overview of the fields of the
+template-table: 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_43542c81.png" NAME="Grafik2" ALIGN=LEFT WIDTH=303 HEIGHT=600 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western"> &quot;Template title&quot;: The title of the
+	template. This is shown in the recordlist on the web-tab. Choose
+	whatever you like.  
+	</P>
+	<LI><P CLASS="western"> &quot;Website title&quot;: This is the title
+	of the entire website. This is shown in the HTML-title before the
+	page-titles. Look at this website (typo3): In the titlebar of the
+	browserwindow &quot;Typo3:&quot; is prepended the title of the
+	specific page.  
+	</P>
+	<LI><P CLASS="western"> &quot;Constants&quot;: The
+	&quot;Constants-field&quot;. This is where you put constants that is
+	substituted in the setup-field. Eg. a constant
+	&quot;styles.content.textStyle.size&quot; is inserted in the
+	setup-field as &quot;{$styles.content.textStyle.size}&quot;.
+	Constants are substituted in the order they are introduced in this
+	field. It is important to understand that constants are not used as
+	programming variables. They only substitute constants items in
+	Setup. Note that the Constants-field is &quot;summed-up&quot;
+	(concatenated) with previous templates in the rootline and
+	constants-fields from included templates (see below &quot;Clear&quot;
+	(6)).  
+	</P>
+	<LI><P CLASS="western"> &quot;Setup&quot;: This field contains the
+	TypoScript setup-code. Use constants from the &quot;Constants-field&quot;
+	(3) to insert easily changable properties or global values. Note
+	that the Setup-field is &quot;summed-up&quot; (concatenated) with
+	previous templates in the rootline and Setup-fields from included
+	templates (see below &quot;Clear&quot; (6)).  
+	</P>
+	<LI><P CLASS="western"> &quot;Resources&quot;: This field may
+	contain media like images, masks, truetype-fonts, stylesheets, html-
+	and text-documents. These can be referenced from within TypoScript
+	(Datatype &quot;resource&quot;) and are copied with templates. 
+	</P>
+	<P CLASS="western">When you create a reference to a &quot;resource&quot;
+	do like this: &quot;image*.gif&quot; instead of this: &quot;image.gif&quot;.
+	If you use the asterisk, you prepare your template for duplication
+	as &quot;image*.gif&quot; will also match a filename like
+	&quot;image_01.gif&quot; which will be produced when a template is
+	duplicated.  
+	</P>
+	<LI><P CLASS="western">&quot;Clear&quot; and &quot;Rootlevel&quot;:
+	&quot;Clear&quot; lets you clear the Constants and/or Setup code of
+	template from earlier in the rootline. For a deeper explanation of
+	this, refer to the TSref. 
+	</P>
+	<P CLASS="western">&quot;Rootlevel&quot; defines, that this point in
+	the page-structure should act as the root (the startpage) of a new
+	website.  
+	</P>
+	<LI><P CLASS="western">&quot;Include static&quot;: This lets you
+	include the static templates that comes with Typo3 by default. The
+	order (from top) is the order by which, the templates are included.
+	Static templates are included before the template in the field
+	&quot;Include basis template&quot; (8).  
+	</P>
+	<LI><P CLASS="western">&quot;Include basis template&quot;: Here you
+	can include other templates, which you have made yourself. See the
+	case below.  
+	</P>
+	<LI><P CLASS="western">&quot;Template on next level&quot;: Here you
+	can include a template that will be included for pages on the next
+	level in the tree-structure!  
+	</P>
+	<LI><P CLASS="western"> &quot;Description&quot;: Enter your own
+	notes here. 
+	</P>
+</OL>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Case: &quot;Include basis template&quot;</H3>
+<P CLASS="western">A nice way to use templates is to create libraries
+of TypoScript code in a template and then include that template in
+another template an reuse the TypoScript code. This is the point of
+static templates. 
+</P>
+<P CLASS="western">But static templates cannot be edited. They are
+distributed with Typo3 and are not subject to change. Only subject to
+&quot;expand&quot; (new static templates will be written by time).
+Therefore you have the ability of including templates in templates. 
+</P>
+<P CLASS="western">In this example I'll show you how I made the
+www.typo3.com and www.typo3.dk websites. They are very much alike.
+Therefore I have created a common template to control the design. But
+I have also made individual &quot;extensions&quot; with respect to
+the danish and english language. 
+</P>
+<P CLASS="western">In order to share a template between two or more
+sites, the sites must reside in the same database. This is the case
+of the Typo3 website in the two languages. The advantages of this is
+very obvious: All graphics, pages and layout are easy to copy around
+and maintain when they are accessible from the same Typo3-interface. 
+</P>
+<P CLASS="western">Look at the first picture below (click it for a
+separate window). In the &quot;rootpage&quot; of both the &quot;.com&quot;
+and &quot;.dk&quot; site there's a template (with &quot;Rootlevel&quot;
+clicked). Each template includes the main template, which is found in
+the &quot;Skabeloner&quot;-folder (means &quot;templates&quot; in
+danish...). The main template controls almost the entire layout of
+the sites. And each site share this template!! 
+</P>
+<P CLASS="western">Now look at the second and third picture below.
+These are parts of the content in each of the &quot;.com&quot; and
+&quot;.dk&quot; templates. Here you see some values being overridden.
+For each site the content of the meta-tags &quot;keywords&quot; and
+&quot;description&quot; is different. The proper constants are
+therefore overridden in order to change this. You will also notice
+that the danish template changes a few other parameters. 
+</P>
+<P CLASS="western">This is very interesting. Local changes are
+possible in one branch of the website while the global layout may
+still be changed from the main template. This is pretty much how you
+can utilize the standard templates. They have a set of constants, you
+may alter in order to customize you site.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_2bde9289.png" NAME="Grafik3" ALIGN=LEFT WIDTH=400 HEIGHT=487 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1a7f131c.png" NAME="Graphic7" ALIGN=LEFT WIDTH=412 HEIGHT=236 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Managing the hierarchy of templates</H3>
+<P CLASS="western">You can easyly monitor which templates are
+included for your site by the Template Analyzer function in the
+web_ts module:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_21f0340b.png" NAME="Grafik10" ALIGN=LEFT WIDTH=511 HEIGHT=631 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This shows not only which templates and
+static_template are included but also in which order (read &quot;from
+top&quot;) they are processed and if any of the templates has
+switches set like &quot;Clear constants&quot; and &quot;Clear setup&quot;.
+</P>
+<H3 CLASS="western">Case: &quot;Extension&quot;</H3>
+<P CLASS="western">The above examples indirectly showed the strength
+of extensions; The site-specific changes was extensions (overridden
+TypoScript or constants) of the main template. 
+</P>
+<P CLASS="western">Here I'll show you how the FAQ-pages in the
+developer-section of this website is created: 
+</P>
+<P CLASS="western">First of all I use another kind of header for the
+FAQ-section. This headertype has a grey box around and you may choose
+this header for content-items whereever on the site (&quot;Layout
+2&quot;). But the default header type is &quot;Layout 1&quot;. So for
+the FAQ-section (the &quot;blueish&quot; pages on the first picture
+below) I made an extension, that the default header type should be
+&quot;2&quot; and not &quot;1&quot; for all pages in this section -
+which means &quot;all pages from FAQ and outwards&quot;. 
+</P>
+<P CLASS="western">The task is done by creating a new template on the
+&quot;FAQ&quot;-page. In this template the &quot;Clear&quot;-fields
+and &quot;Rootline&quot; must not be checked. If they are, the whole
+website will &quot;start over&quot; from that point instead of being
+an extension to the original template! 
+</P>
+<P CLASS="western">The content of the template is shown on the second
+picture. As you see the default header type is set to &quot;2&quot;
+and the default bodytext size is set to &quot;1&quot; (normally &quot;2&quot;).
+</P>
+<P CLASS="western">Of course I could change the font-size and
+header-type for each content-item... but frankly, that's a quite
+boring way to do it, if you can fix it like this... 
+</P>
+<P CLASS="western">Check the FAQ-section and see for yourself! It
+works. No hassle. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_64760e5e.png" NAME="Grafik6" ALIGN=LEFT WIDTH=417 HEIGHT=240 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m33d565a.png" NAME="Grafik7" ALIGN=LEFT WIDTH=383 HEIGHT=212 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Managing extensions</H3>
+<P CLASS="western">Again the Template Analyzer comes in handy here:</P>
+<P CLASS="western"><IMG SRC="6_html_m38a8fa4b.png" NAME="Grafik11" ALIGN=LEFT WIDTH=510 HEIGHT=609 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Read more</H3>
+<P CLASS="western">In the TSref there's also an explanation of how
+templates work.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H2 CLASS="western">Standard templates 
+</H2>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western" ALIGN=LEFT>Typo3 offers an easy way to create
+websites and get started with TypoScript. A bunch of standard
+templates is bundled with Typo3.</P>
+<P CLASS="western" ALIGN=LEFT>Most websites based on Typo3 rely on
+TypoScript templates. In order to understand templates, you should
+read this introduction to TypoScript. You'll also find thorough
+information in the TSref. 
+</P>
+<P CLASS="western" ALIGN=LEFT>If you want to test some of the
+standard-templates and study live examples, please refer to the
+demosite at demo.typo3.com. 
+</P>
+<H3 CLASS="western">static_template table</H3>
+<P CLASS="western" ALIGN=LEFT>The static templates are records from
+the table &quot;static_template&quot;. The records are root-level
+records, which means they are always found in the root of the
+pagetree and can only be viewed by administrators. The table is also
+&quot;read only&quot; (setup in tables.php). This is because
+&quot;static_template&quot; contains records which are not meant to
+be changed by anyone. They act as preset chunks of TypoScript code.
+The table &quot;static_template&quot; is distributed in new versions
+(with added records) with every Typo3-version. 
+</P>
+<P CLASS="western" ALIGN=LEFT>Below you see the content of the static
+template as it was in september 2000. This may have changed for the
+current version of Typo3. But it's useful for explain how it works: 
+</P>
+<P CLASS="western" ALIGN=LEFT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT><IMG SRC="6_html_14ea33e7.png" NAME="Graphic3" ALIGN=LEFT WIDTH=283 HEIGHT=452 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT><BR><BR>
+</P>
+<OL>
+	<LI><P CLASS="western" ALIGN=LEFT>&quot;template: ...&quot;: This is
+	the standard templates. When you want to create a website based on a
+	standard-template you add this to the top of the list of included
+	static-templates in your template.</P>
+	<P CLASS="western" ALIGN=LEFT>All standard templates includes the
+	&quot;content (default)&quot; template for content-rendering.  
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT> &quot;content (default)&quot;:
+	This template contains a cObject &quot;tt_content&quot; which is
+	used to render the content-items of a page. Included by all
+	templates so far. Some of the more exotic types (CType) of
+	content-items are not rendered though. &quot;styles.content
+	(default)&quot; is included in this template.  
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT>&quot;styles.content (default)&quot;:
+	This contains a lot of predefined TS-objects for use with eg.
+	content-rendering, &quot;powered-by&quot;-logos, content-inserting
+	and so on. The objects are widely use by &quot;content (default)&quot;
+	and many properties are adjustable as constants for easy change of
+	behavior.  
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT>&quot;cSet (default)&quot;: This
+	is kind of extension to the &quot;styles.content (default)&quot;
+	template. The point is to substitute eg. target-definitions in many
+	objects of the &quot;styles.content (default)&quot;-template with a
+	common constant, which makes it much more convenient to adjust the
+	target through all objects. It also takes care of such as background
+	colors, font-faces/colors. It's a layer on top. Very useful for fast
+	creation of websites based on the standard-templates; Include the
+	standard template. Include &quot;cSet (default)&quot;. Override some
+	parameters of &quot;cSet. ....&quot;. See how it's used in the
+	templates on the demo-site.  
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT>&quot;frameset...&quot;: Different
+	standard framesets. Used by some standard templates.  
+	</P>
+	<LI><P CLASS="western" ALIGN=LEFT>&quot;styles...&quot;: Some
+	standard objects like menus, sitemaps, headers and so on. This
+	section may grow with lots of interesting presets like boards,
+	catalogues, calender-systems and so on. 
+	</P>
+</OL>
+<H3 CLASS="western">Content rendering details</H3>
+<P CLASS="western">Read the PDF-document content_rendering.pdf or
+refer to 
+</P>
+<P CLASS="western">http://www.typo3.com/Content-rendering_an.1102.0.html</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">Typical setup of a standard template</H3>
+<P CLASS="western">This is the hierarchy of a fictive website based
+on the standard tempalte BUG:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT><IMG SRC="6_html_m690c9067.png" NAME="Grafik9" ALIGN=LEFT WIDTH=423 HEIGHT=270 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT>In the Template Analyzer it looks like
+this:</P>
+<P CLASS="western" ALIGN=LEFT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT><IMG SRC="6_html_m74816ffe.png" NAME="Grafik12" ALIGN=LEFT WIDTH=500 HEIGHT=210 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" ALIGN=LEFT><BR><BR>
+</P>
+<H2 CLASS="western">Basic Tutorial: Start a new website</H2>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Here follows some more examples of TypoScript:</P>
+<H3 CLASS="western">A simple website from the ground</H3>
+<P CLASS="western">If you want to start up a website from the ground,
+you must create a template on the first page of the website. This
+page may be refered to as &quot;the root of the website&quot; or more
+commonly the frontpage. The frontpage is <I>not</I> automatically the
+very first page in the Typo3 pagetree but can be any page in the
+tree, you want to act as a startingpoint of a website!</P>
+<P CLASS="western">The initial template must have the checkboxes
+&quot;Clear constants and setup&quot; and &quot;Rootlevel&quot;
+checked. In order to understand this, you must know that templates
+are read from the root of the pagetree and outwards. This is called
+the &quot;rootline&quot;:</P>
+<P CLASS="western"><IMG SRC="6_html_7577cbc2.png" NAME="Grafik141" ALIGN=LEFT WIDTH=418 HEIGHT=165 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In the picture to the right, the rootline from the
+page “Experienced we....” (3) goes all the way down to the page
+“www.typo3.com” (zero). This is <I>because </I>there is a
+template record on page “www.typo3.com” <I>with </I>the rootlevel
+flag set (see below). To the left you see how the rootline is
+represented in a PHP-array internally.</P>
+<P CLASS="western">If you meet an expression like “Is page 730 in
+the rootline?” then the answer is yes in this case, because the
+page with id 730 (“Introduction”) happens to be the second page
+in the rootline (at index 1). Please see TSref for more info.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">&quot;Rootlevel&quot; defines that the template
+signifies a start of a new website from the page the template lies
+on. If you do not set this checkbox, the template acts as an
+extension to any template in the rootline before it.</P>
+<P CLASS="western">&quot;Clear constants&quot; defines that any
+constants from previous templates in the rootline are cleared before
+this template is loaded.</P>
+<P CLASS="western">&quot;Clear setup&quot; defines that any
+TypoScript code from previous templates in the rootline are cleared
+before this template is loaded.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_112fb150.png" NAME="Graphic4" ALIGN=LEFT WIDTH=300 HEIGHT=57 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If you try to look at the page at this point, an
+errormessage appears.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m64cec8a4.png" NAME="Graphic5" ALIGN=LEFT WIDTH=364 HEIGHT=154 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You must write some TypoScript in the fields
+&quot;Constants&quot; and &quot;Setup&quot;. Normally you include
+some of the static templates to start, but for this example we make a
+little template from scratch. Write the following in the field
+&quot;Constants&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">bgCol = red</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">You have now defined a so called constant -
+&quot;bgCol&quot; - to the value &quot;red&quot;. We'll insert this
+constant in the &quot;setup&quot;-field.</P>
+<P CLASS="western">Write the following in the field &quot;Setup&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum = 0
+
+page.bodyTag = &lt;BODY bgColor=&quot;{$bgCol}&quot;&gt;
+page.10 = HTML
+page.10.value = Hello World
+page.10.value.case = upper</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This looks like this in the webbrowser:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m1db5697d.png" NAME="Grafik1" ALIGN=LEFT WIDTH=657 HEIGHT=524 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This example shows a number of things about
+TypoScript. Lets start with the first two lines. Here &quot;page&quot;
+is defined to be a PAGE-object. A required property for a PAGE-object
+is the value typeNum, which is especially used, when a website uses
+frames (in that case typeNum would identify the various frames). If
+typeNum is zero then it just corresponds to a page refered to without
+the type-value, eg. &quot;?id=51&quot;. That's the case for websites
+without frames.</P>
+<P CLASS="western">Another property of a PAGE-object is &quot;bodyTag&quot;.
+Here you enter the body-tag of the page. Please note that the
+background-color is red because we have inserted the constant from
+the &quot;Constants&quot;-field.</P>
+<P CLASS="western">At last a Content-object of the kind &quot;HTML&quot;
+is defined. The value is set to &quot;Hello World&quot;. This is sent
+off to the website. But you'll see, that it's shown in upper case as
+the value and any properties is parsed through the
+&quot;stdWrap&quot;-function. A property for &quot;stdWrap&quot; is
+&quot;case&quot; which can be either &quot;upper&quot; or &quot;lower&quot;.
+Take a wild guess what &quot;lower&quot; does...</P>
+<H3 CLASS="western">A website with a little menu</H3>
+<P CLASS="western">Now we'll add a little menu to the website. This
+menu must be located above the text &quot;Hello World&quot;. Now add
+this in the bottom of the &quot;Setup&quot;-field:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.5 = HMENU 
+page.5.1 = TMENU 
+page.5.1.wrap = | &lt;BR&gt;&lt;BR&gt;
+page.5.1.NO {
+  linkWrap = &amp;nbsp;&lt;font color=yellow&gt; | &lt;/font&gt;&amp;nbsp;
+  ATagBeforeWrap = 1
+} </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Here you define a new content-object at position 5
+in &quot;page&quot;'s content-array. The object-type is HMENU. HMENU
+has a numerical array of menu-objects. Here we use &quot;TMENU&quot;
+as menu-object on the first level. This gives us a textbased menu.
+For the TMENU-object we set the property &quot;wrap&quot;. As you
+might remember &quot;a wrap&quot; means that it'll be split up by the
+character &quot;|&quot; and the first two parts will be placed around
+&quot;something&quot;. In this case (page.5.1.wrap = | &lt;BR&gt;&lt;BR&gt;)
+the whole menu is wrapped so that two new lines appear after the
+menu.</P>
+<P CLASS="western">Then some properties is defined for &quot;.NO&quot;
+under TMENU. &quot;.NO&quot; denotes the setup of menu-items in
+&quot;normal&quot;-condition. Other conditions could be &quot;ACT&quot;
+(Active), which means when a menu-item is somewhere in the &quot;path&quot;
+you're at on the website. For instance you could change the color of
+the item to white if you want to indicate it visually on the
+menu-item that a surfer has entered a certain section on the site.</P>
+<P CLASS="western">Under &quot;.NO&quot; you define that every
+menu-item is wrapped in a font-tag making the link yellow.
+&quot;ATagBeforeWrap&quot; is an option that tells you that the
+link-tag (&lt;A&gt;) must be wrapped around the menu-item <I>before</I>
+the font-tag (or else the yellow color will be overridden by the
+normal tag-color).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_3d320e19.png" NAME="Grafik85" ALIGN=LEFT WIDTH=561 HEIGHT=149 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_20e1e6d9.png" NAME="Grafik86" ALIGN=LEFT WIDTH=210 HEIGHT=100 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_mee13a05.png" NAME="Grafik87" ALIGN=LEFT WIDTH=493 HEIGHT=305 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Inserting the graphical menu.</H3>
+<P CLASS="western">Instead of the textual menu you just defined, you
+could insert the graphical menu from the Typo3 website. This would be
+done by this instead of the previous code:</P>
+<PRE CLASS="western">page.5 &lt; temp.topmenu</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H3 CLASS="western">Content on the site</H3>
+<P CLASS="western">Now you would like to add content to the website.
+In the standard TypoScript solution the main content-table is
+&quot;tt_content&quot;. So you add a new content-object of the type
+CONTENT. You set the property &quot;table&quot; to tt_content.</P>
+<P CLASS="western">To configure the sql-select statement you define
+the property &quot;pidInList&quot; of the &quot;select&quot;-object.
+When you set it to &quot;this&quot; the pid of the content-records
+MUST match the id of the current page! &quot;orderBy&quot; is set to
+&quot;sorting&quot; which is the column in the table tt_content which
+decides the sorting of the elements.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = CONTENT
+page.10 {
+  table = tt_content
+  select {
+    pidInList = this
+    orderBy = sorting
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In order for this to work, you must define how
+each content-record is layouted. As default this is defined by the
+root-object &quot;tt_content&quot;. 
+</P>
+<P CLASS="western">Here is a short example of TypoScript which would
+generate the content for the CTypes &quot;header&quot; and &quot;text&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">tt_content = CASE
+tt_content.key.field = CType
+
+tt_content.header {
+  1 = TEXT
+  1.field = header
+  1.wrap = {$cHeaderWrap}
+  1.space = 3 | 2
+}
+
+tt_content.text &lt; tt_content.header
+tt_content.text {
+  3 = TEXT
+  3.field = bodytext
+  3.fontTag = {$cBodyTextWrap}
+  3.br = 1
+  3.space = | 10
+  3.parseFunc {
+    makelinks = 1
+    makelinks.http.keep = path
+    makelinks.http.wrap = &lt;B&gt;|&lt;/B&gt;
+    makelinks.mailto.keep = path
+    makelinks.mailto.wrap = &lt;FONT color=&quot;blue&quot;&gt;|&lt;/FONT&gt;
+    makelinks.mailto.ATagBeforeWrap = 1
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">There are two constants in this case, 
+cBodyTextWrap and  cHeaderWrap. These would be defined in the
+Constants-field in the template and could be value like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">cHeaderWrap = &lt;FONT face=&quot;Verdana&quot; size=&quot;3&quot; color=&quot;#333333&quot;&gt;&lt;B&gt;|&lt;/B&gt;&lt;/FONT&gt;
+cBodyTextWrap = &lt;FONT face=&quot;verdana&quot; size=&quot;2&quot;&gt; | &lt;/FONT&gt;&lt;BR&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, this would give us a size-3 Verdana header in
+gray and bold. The bodytext would be formatted also with verdana but
+size 2 and with a &lt;BR&gt;-tag after a section.</P>
+<H1 CLASS="western">Concepts</H1>
+<H2 CLASS="western">&amp;id  and &amp;type</H2>
+<P CLASS="western"><B>id</B> refers to the &quot;page-number&quot; in
+Typo3, the &quot;uid&quot; field of the pages-table. Indicates which
+page to show.</P>
+<P CLASS="western"><B>type </B>indicates for a page, which &quot;part&quot;
+of the page to show. This is primarily used when you make framebased
+sites. You could use it for other things also. I'll not explain
+frameset here, but direct you to Tutorial 3, &quot;Frames with
+Typo3&quot;. But I will give you a hint on how the &quot;type&quot;
+parameter of the URL is used:</P>
+<P CLASS="western">Consider the testsite:</P>
+<P CLASS="western"><IMG SRC="6_html_m4c11631d.png" NAME="Grafik13" ALIGN=LEFT WIDTH=347 HEIGHT=273 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">id=10 (&quot;index.php?10&quot;) brings up this
+page. &quot;type&quot; is not defined, but is by default zero, so
+this is the same:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m4c11631d.png" NAME="Grafik14" ALIGN=LEFT WIDTH=351 HEIGHT=276 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Try to change the value of type</P>
+<PRE CLASS="western">&amp;type=1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m4c11631d.png" NAME="Grafik15" ALIGN=LEFT WIDTH=368 HEIGHT=290 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">&amp;type=2</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m4c11631d.png" NAME="Grafik16" ALIGN=LEFT WIDTH=364 HEIGHT=286 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<PRE CLASS="western">&amp;type=3</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m4c11631d.png" NAME="Grafik17" ALIGN=LEFT WIDTH=366 HEIGHT=288 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you can see a type-value of 3 results in a
+non-configured page. Makes sense, because looking at the TypoScript
+in the template, we realize that &quot;typeNum=3&quot; is not
+defined.</P>
+<P CLASS="western">But how does the template look anyway. Peeking in
+the Template Analyzer:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_687a5f17.png" NAME="Grafik18" ALIGN=LEFT WIDTH=503 HEIGHT=443 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">As you see the template includes a lot of
+static_template records and the first of them seems to be a
+static_template with a frameset in.</P>
+<P CLASS="western">Taking a look at this static_template, we see
+this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_4c6d4150.png" NAME="Grafik19" ALIGN=LEFT WIDTH=280 HEIGHT=149 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">3 page-objects are defined, &quot;page&quot;,
+&quot;left&quot; and &quot;frameset&quot;. Each PAGE-object defines
+how the output will look based on the &quot;&amp;type&quot;-value. 
+</P>
+<H2 CLASS="western">Wraps</H2>
+<P CLASS="western">A wrap is a very important concept in many
+TypoScript objects. A &quot;wrap&quot; is a text string, which is
+explode (split in parts) by &quot;|&quot; (the vertical line,
+ALT+0124).</P>
+<P CLASS="western">So this is a wrap:	</P>
+<PRE CLASS="western">	&lt;B&gt;  |  &lt;/B&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">And if the string &quot;World&quot; is being
+wrapped by the wrap, the result is this: 
+</P>
+<PRE CLASS="western">	&lt;B&gt;WORLD&lt;/B&gt;</PRE><P CLASS="western" ALIGN=RIGHT>
+<BR><BR>
+</P>
+<P CLASS="western">Notice that even though there are spaces between
+the wrap-parts and the divider (&quot;|&quot;), each wrap part is
+trimmed (trimming is to remove &quot;whitespace&quot; before and
+after something. &quot;Whitespace&quot; is space, tab and linebreak
+characters)</P>
+<P CLASS="western">As you might have realized this is very, very
+useful because HTML is all about wrapping things into HTML-tags. And
+in this way, it's very easy to control and cope with.</P>
+<P CLASS="western">(BTW: Wrap is listed as a Data type in the TSref)</P>
+<H2 CLASS="western">Arrays (1,2,3,4...)</H2>
+<P CLASS="western">Sometimes you see properties listed as
+&quot;1,2,3,4...&quot; or &quot;<I>Array...&quot;. </I><SPAN STYLE="font-style: normal">Another
+case is the datatype set to &quot;</SPAN><I>array of strings&quot;</I><SPAN STYLE="font-style: normal">.</SPAN></P>
+<H3 CLASS="western">Numerical arrays</H3>
+<P CLASS="western" STYLE="font-style: normal">It's neccessary to
+understand that TypoScript is not a language like javascript.
+TypoScript is more a list of definitions. The order of the
+definitions is set by the array numbers. In fact TypoScript is stored
+in a PHP array. But it's not true that you only store definitions
+with TypoScript. Because some 'definitions' call real PHP functions
+(like stdWrap). They can manipulate or even get data for output.
+That's why TypoScript is much more flexible and powerfull than simple
+HTML templates.</P>
+<P CLASS="western" STYLE="font-style: normal">A good example of
+properties being a numerical array is the PAGE-object. The point of
+the pageobject is that it should return some content. In order for it
+to do so, you must attach some content objects (cObject) to it (see
+later). A simple cObject is &quot;HTML&quot; or &quot;TEXT&quot;.
+They do the same (but not in the same way).</P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = TEXT
+page.10.value = Hello world</PRE><P CLASS="western" STYLE="font-style: normal">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal">This (defines a
+PAGE-object and) outputs the text &quot;hello world&quot; to the
+browser. The position &quot;10&quot; could have been 934290873 or any
+integer number. But why &quot;10&quot; then. For me it's tradition,
+but the point comes now, because if you would like to add some more
+content to the page, how do you do that? Well, you just add another
+cObject to the array!</P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = TEXT
+page.10.value = Hello world
+page.20 = TEXT
+page.20.value = &lt;BR&gt;Are you listening?</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal">Now why use &quot;20&quot;?
+Well, use whatever number greater than 10. But leave some &quot;room&quot;
+for new cObjects  between 10 and 20. You never know...</P>
+<P CLASS="western" STYLE="font-style: normal">An important thing to
+understand is that the numerical arrays are always sorted.
+Non-numerical arrays never have any order attached to them, but
+numerical arrays have. The consequence of numerical arrays being
+sorted by their number is that:</P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = TEXT
+page.10.value = Hello world
+page.<FONT COLOR="#ff0000"><B>5</B></FONT> = TEXT
+page.<FONT COLOR="#ff0000"><B>5</B></FONT>.value = &lt;BR&gt;Are you listening?</PRE><P CLASS="western" STYLE="font-style: normal">
+<BR><BR>
+</P>
+<P CLASS="western"><SPAN STYLE="font-style: normal">... the line
+</SPAN>&quot;&lt;BR&gt;Are you listening?&quot; is now output <I>before</I>
+&quot;Hello world&quot; although they are defined in reversed order.</P>
+<P CLASS="western">Normally you'll see TypoScript which is nicely
+coded in the numerical order, but that's just a good habit of the
+programmer as it's more readable that way.</P>
+<H3 CLASS="western">String arrays</H3>
+<P CLASS="western">Whenever a string-array is defined (like the META
+object in TypoScript) it's because the keys (elements in the array)
+are unique and means something. The example with META is good. If you
+want to put META-tags &quot;description&quot; and &quot;keywords&quot;
+on your page, do this:</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.meta.REFRESH =  60<I>; index.php?id=34</I>
+page.meta.DESCRIPTION = This is the description of the content in this document
+page.meta.KEYWORDS = key, words, ...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This results in this HTML-code in the header of
+the site (which is very, very blank, if you try this in real life...)</P>
+<PRE CLASS="western">&lt;meta http-equiv=&quot;REFRESH&quot; content=&quot;60; index.php?id=34&quot;&gt;
+&lt;meta name=&quot;DESCRIPTION&quot; content=&quot;This is the description of the content in this document&quot;&gt;
+&lt;meta name=&quot;KEYWORDS&quot; content=&quot;key, words, ...&quot;&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H2 CLASS="western">styles.content.[xxx]</H2>
+<P CLASS="western">If you study the static_template, especially
+&quot;content (default)&quot;, you'll see an extensive use of objects
+from &quot;styles.content.[xxx]&quot;. 
+</P>
+<P CLASS="western">First of all you must understand, that the
+toplevels object named &quot;temp&quot; and &quot;styles&quot; are
+totally unset after a template has been parsed and &quot;compiled&quot;
+(by serialize()) for storage in the template-cache (cache_hash). The
+reason why is, that sometimes it's very useful to reuse an object
+many places in a TypoScript. Creating the object somewhere inside
+styles. or temp. has the advantage that the objects can be copied
+from there in your scripts but are finally wiped out to save some
+space in the cached template.</P>
+<P CLASS="western">You should use &quot;temp.&quot; for your own
+common objects. &quot;styles.&quot; is reserved for use by the
+static_templates to provide common used objects.</P>
+<H3 CLASS="western">Example from &quot;content (default)&quot;</H3>
+<PRE CLASS="western"># CType: image
+tt_content.image = COA
+tt_content.image {
+  10 = &lt; lib.stdheader
+  20  &lt; styles.content.imgtext
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In this example a object from the static_template
+&quot;styles.content (default)&quot; is copied to the position
+&quot;tt_content.image.20&quot;. That looks like this in the object
+browser:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m19390332.png" NAME="Grafik20" ALIGN=LEFT WIDTH=251 HEIGHT=430 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Looking in the static_template &quot;styles.content
+(default)&quot; we see that the object &quot;styles.content.imgtext&quot;
+is defined like this:</P>
+<PRE CLASS="western">  # imgtext
+styles.content.imgtext = IMGTEXT
+styles.content.imgtext {
+  imgList.field = image
+  textPos.field = imageorient
+  imgPath = uploads/pics/
+  imgObjNum = 1
+  1 {
+     file.import.current = 1
+     file.width.field = imagewidth
+     params = align=&quot;top&quot;
+     imageLinkWrap = 1
+    ....
+  }
+  maxW = {$styles.content.imgtext.maxW}
+  maxW.override.data = register:maxImageWidth
+....
+}  </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, if I want to change the value of
+&quot;styles.content.imgtext.maxW&quot; to &quot;400&quot;, then I
+have two options. But a very common error here is to try this:</P>
+<PRE CLASS="western">	styles.content.imgtext.maxW = 400</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">See, this will not help you anywhere. The reason
+is that this changes the value in the object &quot;styles.content.imgtext&quot;
+and not in &quot; tt_content.image.20&quot; where it's ultimately
+used in this case. So you can do one of the following.</P>
+<P CLASS="western">1) Because &quot;styles.content.imgtext&quot; is
+copied to &quot;tt_content.image.20&quot; by the &quot;&lt;&quot;
+operator of TypoScript, any properties of  &quot;styles.content.imgtext&quot;
+are now in &quot;tt_content.image.20&quot; also. Therefore you can
+change the value this way:</P>
+<PRE CLASS="western">	tt_content.image.20.maxW = 400</PRE><P CLASS="western" ALIGN=JUSTIFY>
+<BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>This is kind of obvious according to
+the nodetree of the object browser, isn't it?</P>
+<P CLASS="western" ALIGN=JUSTIFY>2) If you change the value of
+&quot;styles.content.imgtext.maxW&quot; directly, you must also
+re-copy it to the proper position of it's use:</P>
+<PRE CLASS="western">	styles.content.imgtext.maxW = 400
+	tt_content.image.20 &lt; styles.content.imgtext</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>This works also, but be aware that
+this clears any previous changes made to &quot;tt_content.image.20&quot;
+(in the manner of method 1 in this example)</P>
+<P CLASS="western" ALIGN=JUSTIFY>I recommend method 1.</P>
+<P CLASS="western" ALIGN=JUSTIFY><BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>Anyway you must be aware that the
+fine advantage of &quot;styles.content.[xxx]&quot; objects is that
+they provide default properties that may be used throughout your
+template. So changing &quot;styles.content.[xxx]&quot; and recopying
+it one place doesn't bring the change to the other objects that has
+been based on &quot;styles.content.[xxx]&quot;. 
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>For an example, consider &quot;
+tt_content.textpic.20&quot; which also uses &quot;styles.content.imgtext&quot;:</P>
+<PRE CLASS="western">tt_content.textpic = COA
+tt_content.textpic {
+  10 = COA  
+  10.if.value = 25
+  10.if.isLessThan.field = imageorient
+  10.10 = &lt; lib.stdheader
+    
+  20  &lt; styles.content.imgtext
+  20.text.10 = COA
+  20.text.10 {
+    if.value = 24
+    if.isGreaterThan.field = imageorient
+    10 = &lt; lib.stdheader
+  }
+  20.text.20 = &lt; tt_content.text.20
+}</PRE><P CLASS="western" ALIGN=JUSTIFY>
+<BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>So in order to change the value here
+also you must add this line:</P>
+<PRE CLASS="western">	tt_content.textpic.20.maxW = 400</PRE><P CLASS="western" ALIGN=JUSTIFY>
+<BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>Now, could you right away do this? 
+</P>
+<PRE CLASS="western">	styles.content.imgtext.maxW = 400
+	tt_content.image.20 &lt; styles.content.imgtext
+	tt_content.textpic.20 &lt; styles.content.imgtext</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The answer is &quot;no&quot; in this case, because
+if you take a look at the TypoScript for tt_content.textpic, the
+properties of styles.content.imgtext is altered after the object is
+copied:</P>
+<PRE CLASS="western">...
+  20  &lt; styles.content.imgtext
+<FONT COLOR="#ff0000">  20.text.10 = COA</FONT>
+<FONT COLOR="#ff0000">  20.text.10 {</FONT>
+<FONT COLOR="#ff0000">    if.value = 24</FONT>
+<FONT COLOR="#ff0000">    if.isGreaterThan.field = imageorient</FONT>
+<FONT COLOR="#ff0000">    10 = &lt; lib.stdheader</FONT>
+<FONT COLOR="#ff0000">  }</FONT>
+<FONT COLOR="#ff0000">  20.text.20 = &lt; tt_content.text.20</FONT>
+...</PRE><P CLASS="western" ALIGN=JUSTIFY>
+<BR><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY>This situation is generally solved
+by using the widely implemented constants, and in this specific case
+you have the opportunity of changing the <I>constant</I>
+&quot;styles.content.imgtext.maxW&quot;.</P>
+<P CLASS="western" ALIGN=JUSTIFY><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_mc82a052.png" NAME="Grafik21" ALIGN=LEFT WIDTH=642 HEIGHT=116 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H1 CLASS="western">Educational sections</H1>
+<H2 CLASS="western">Introduction</H2>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=1 STYLE="font-size: 8pt"><B>From
+this point </B><SPAN STYLE="font-weight: normal">you are encouraged
+to follow the examples using the testsite supplied with Typo3.</SPAN></FONT></P>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=1 STYLE="font-size: 8pt"><SPAN STYLE="font-weight: normal">All
+the time</SPAN>, refer to TSref so you can get acquainted with it. It
+will be your bible when you're working with Typo3. When you're not
+working with Typo3, I can recommend the true God's Word instead. Much
+better in real life.</FONT></P>
+<P CLASS="western" STYLE="font-style: normal"><FONT SIZE=1 STYLE="font-size: 8pt">Use
+the standard testsite with a fresh template in the root of the
+&quot;Startpage&quot; branch.</FONT></P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal"><IMG SRC="6_html_m4c746dbd.png" NAME="Grafik26" ALIGN=LEFT WIDTH=301 HEIGHT=219 BORDER=0><BR CLEAR=LEFT><IMG SRC="6_html_612d4d9c.png" NAME="Grafik27" ALIGN=LEFT WIDTH=312 HEIGHT=349 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-style: normal"><IMG SRC="6_html_m6ded9666.png" NAME="Grafik28" ALIGN=LEFT WIDTH=435 HEIGHT=293 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H2 CLASS="western">Code notation conventions:</H2>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">1) All TypoScript code is written in Courier
+like:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = TEXT
+page.10.value = Hello world</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">2) Most examples omit the first two lines, which
+are assume to be present:</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.value = Hello world</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">3) Code may be shortend if examples are given
+where only a single line is changed. Changes are normally highlighted
+with red.</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.value = Hello world
+<FONT COLOR="#ff0000">page.10.case = upper</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">could also be stated:</P>
+<PRE CLASS="western">...
+<FONT COLOR="#ff0000">page.10.case = upper</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H1 CLASS="western">stdWrap</H1>
+<H2 CLASS="western">The concept, stdWrap</H2>
+<P CLASS="western">(Pronounced &quot;Standard wrap&quot;)</P>
+<P CLASS="western">stdWrap is a wizard in many cases. It's the
+grown-up wrapping-concept.</P>
+<P CLASS="western">To give a very educating example, I'll introduce
+you to the TEXT and HTML content objects (cObjects). Refering to the
+TSref:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1e6e553.png" NAME="Grafik22" ALIGN=LEFT WIDTH=642 HEIGHT=150 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The &quot;TEXT&quot; cObject seems to have a
+.value property. Datatype is &quot;value&quot; which - according to
+the list of datatypes - is something, you decide on your own. (Had
+the datatype been &quot;HTML-color&quot;, then you had to specify an
+HTML-color as value, like &quot;red&quot; or &quot;#FF0000&quot;). 
+</P>
+<P CLASS="western">The &quot;HTML&quot; object also has a .value
+property. This is defined to be &quot;HTML&quot; - which practically
+is the same as the TEXT-object. It's just a string-value.</P>
+<P CLASS="western">The difference of the two cObjects seems to be the
+way stdWrap is implemented. But first take a look at the description
+of the stdWrap object in the TSref.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m79f00c24.png" NAME="Grafik23" ALIGN=LEFT WIDTH=642 HEIGHT=288 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">This is some of the properties of stdWrap.
+Basically the stdWrap-object (also called &quot;function&quot;
+sometimes) does (primarily at least) is processing content in some
+way. One property which has an immediate noticeable function is the
+.case property of the stdWrap object. &quot;case&quot; is not listed
+in this example image, but look it up yourself in the TSref (it's
+about time you open that &quot;book&quot;)</P>
+<P CLASS="western">The .case property is able to convert the case of
+the input. Now, according to the TEXT and HTML cObject description,
+this is how it works:</P>
+<H4 CLASS="western">The TEXT cObject:</H4>
+<P CLASS="western">The stdWrap properties are on the TEXT-object
+itself. This means that 
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = <FONT COLOR="#ff0000">TEXT</FONT>
+page.10.value = Hello world
+page.10.case = upper</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... outputs &quot;HELLO WORLD&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">The HTML cObject:</H4>
+<P CLASS="western">The stdWrap properties are on the .value property
+of the HTML-object. This means that 
+</P>
+<PRE CLASS="western">page = PAGE
+page.typeNum=0
+page.10 = <FONT COLOR="#ff0000">HTML</FONT>
+page.10.value = Hello world
+page.10.value.case = upper</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... outputs &quot;HELLO WORLD&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">(Comment: The stdWrap properties are a bit
+inconsistently implemented on the TEXT-object because the .value
+property is &quot;mixed&quot; with the stdWrap properties. Luckily
+the &quot;value&quot; property is not defined for the stdWrap object
+so in real life it doesn't matter. But anyway, it's 'bad' design -
+maybe even confusing - of the cObject &quot;TEXT&quot;. This
+situation is also the case of a few other objects like CARRAY)</P>
+<P CLASS="western"><B>While you're here...</B></P>
+<P CLASS="western">Try to view the source of the page you just
+created. Notice that Typo3 by default defines an HTML header and
+bodysection for you! By setting properties for the PAGE-object you
+can modify the content of these section though. Even disable them.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><B>General implementation</B></P>
+<P CLASS="western">stdWrap is very powerful and sort of compensates
+for the fact that TypoScript really cannot be programmed to do any
+control structures (except from the &quot;conditions&quot;) because
+you can make stdWrap compare values and based on the result choose to
+return another value and so on. But generally that's taking it too
+far.</P>
+<P CLASS="western">Normally you'll see stdWrap-properties implemented
+like you've seen for the .value property of the HTML cObject. Example
+you acn refer to in the TSref is such as .... well nearly half the
+property-values you can define including many of the properties for
+stdWrap itself!'</P>
+<H2 CLASS="western">stdWrap properties</H2>
+<P CLASS="western">As we've seen above stdWrap is a concept that
+operates - based on it's proerties - on a certain value. But there is
+another important task of stdWrap which may be even more popular (or
+necessary). That is to fetch external content, for instance the title
+of the page, the current date, a cObject, number of rows from a
+select-statement, a filelist from a directory or a global variable.</P>
+<P CLASS="western">Actually stdWrap is a concept divided into three
+parts.</P>
+<OL>
+	<LI><P CLASS="western">Get data</P>
+	<LI><P CLASS="western">Override / Conditions</P>
+	<LI><P CLASS="western">Parse data</P>
+</OL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The example above shows only the parsing
+facilities of stdWrap (3). We're now going to look at &quot;Get data&quot;
+(1) and &quot;Override / Conditions&quot; (2), which provides a way
+to make control structures in Typo3 (although a bit &quot;backwards&quot;
+and complex).</P>
+<H3 CLASS="western">Get data</H3>
+<P CLASS="western">The primary property here is .field. This fetches
+the value of the field given by the property. The very good question
+is, &quot;... value of a field from where, which record?&quot;. 
+</P>
+<P CLASS="western">The answer is &quot;<I>by default, the page
+record...</I>&quot; (here &quot;page&quot; refers to the current
+page, we're on) &quot;<I>... but 'inside of' CONTENT, RECORD and
+HMENU cObjects, it's the 'current record' we're dealing with in that
+particular case</I>&quot;. You'll find notes about this by the object
+descriptions.</P>
+<P CLASS="western">Technically all this is going on in the class
+tslib_cObj in tslib_content and the 'current record' is defined by
+cObj-&gt;data.</P>
+<P CLASS="western"><B>.current - what is that?</B></P>
+<P CLASS="western" STYLE="font-weight: normal">Often the &quot;current
+value&quot; is refered to. Some functions need to pass a single value
+to the &quot;public&quot; (that's us and stdWrap...) and therefore
+sets a &quot;register&quot; called &quot;current&quot;, the value of
+which we can easily get by the stdWrap property &quot;.current = 1&quot;
+(boolean). Whenever the &quot;current&quot; register is used, there
+will be a notice in the TSref.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">Example:</H5>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = <FONT COLOR="#ff0000">TEXT</FONT>
+page.10.value = Hello world
+page.10.field = title</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(After this, the lines &quot;page = PAGE&quot; and
+&quot;page.typeNum=0&quot; is assumed)</P>
+<P CLASS="western"><BR>
+</P>
+<P CLASS="western">The output becomes &quot;Startpage&quot; and not
+&quot;Hello world&quot;. That is because <I>the input value from the
+TEXT cObject is overridden by the value of the field &quot;title&quot;</I>,
+defined by the .field property of stdWrap. Wow!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">If you would like to see, which fields are
+available and what their content is, try to add the property
+&quot;.debugData=1&quot;</P>
+<P CLASS="western">This is what you get. If you examine the
+HTML-code, you'll see that this must truely be &quot;debug-information&quot;
+because it's sent off to the browser before any of the page content. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_5a63e6b4.png" NAME="Grafik25" ALIGN=LEFT WIDTH=211 HEIGHT=522 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, try to hit the page a second time. It didn't
+appear again, because the page got cached after the first rendering!
+Wow. So because the facility only outputs information during
+<I>execution</I> of TypoScript (during the page being rendered), you
+must continually clear the cache (or set a no_cache-option) in order
+to see the output.</P>
+<P CLASS="western"><B>Example: Get another field</B></P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.value = Hello world
+page.10.field = <FONT COLOR="#ff0000">crdate</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This outputs a number, which is UNIX-time since
+1970 (number of seconds since then). 
+</P>
+<H4 CLASS="western">Challenge (stdWrap/1)</H4>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal">Using
+the parsing-properties of stdWrap, are you able to format this date
+to a humanly readable output?</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<H5 CLASS="western">Example: .data</H5>
+<P CLASS="western" STYLE="font-weight: normal">If you would like to
+get other values, the .data property is often more sufficient. You
+can even use that to get your fields like before. So 
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = title</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">and 
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.data = field:title</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">does the same in this case (exception is the TMENU
+object, where the -&gt;)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Getting the value of a global var:</P>
+<P CLASS="western">Before you continue here, please go to
+&quot;index.php?id=5&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.data = global:id</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs &quot;5&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.data = global:HTTP_GET_VARS|id</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs also &quot;5&quot; (but this is from
+HTTP_GET_VARS[id])</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.data = leveltitle:1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs &quot;Content elements&quot; (which is the
+title of the page on level 1 in the rootline - you're currently in
+the branch 'Startpage/Content elements/Insert content')</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (stdWrap/2)</H4>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal">Can
+you make the .data property return the page-titel of the page one
+level before the current page ('parent page')?</P>
+<H3 CLASS="western">Override / Conditions</H3>
+<P CLASS="western" STYLE="font-weight: normal">stdWrap provides
+simple &quot;control structures&quot; by means of comparing
+properties. To mention some of them, they are named override,
+ifEmpty, required, if, fieldRequired.</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.value = Hello world
+<FONT COLOR="#ff0000">page.10.override = Hello heaven</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">outputs &quot;Hello
+heaven&quot; instead becuase if override returns something, the
+original value is substituted.</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.value = Hello world
+page.10.override.field = subtitle</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Better example, because now &quot;Hello world&quot;
+is substituted only if the Subtitle field of the current page record
+is not blank. In most cases this field is blank, but try
+&quot;index.php?id=20&quot;... 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m71d96ce3.png" NAME="Grafik29" ALIGN=LEFT WIDTH=431 HEIGHT=122 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (stdWrap/3)</H4>
+<P CLASS="western">Could you turn it around - using another of the
+comparing properties - so that the default value is the subtitle, but
+in case it's empty, it's replaced with &quot;Hello World&quot;</P>
+<H4 CLASS="western">Challenge (stdWrap/4)</H4>
+<P CLASS="western">With your results from challenge 3, could you wrap
+the whole thing in &lt;h3&gt;...&lt;/h3&gt;-tags? And could you
+replace &quot;Hello world&quot; with the page-title instead, which -
+in case it's present - is wrapped in &lt;font color=&quot;red&quot;&gt;
+... &lt;/font&gt;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H1 CLASS="western">Content Objects (cObject)</H1>
+<H2 CLASS="western">Introduction</H2>
+<P CLASS="western">Content objects (cObjects) are what makes
+TypoScript spin around. They provide chunks of content of various
+kinds from images, text/html input, input from a file, selected
+records from a database or even a PHP-script which you choose to
+write yourself.</P>
+<P CLASS="western">The TEXT and HTML cObjects are explained allready.
+They are widely used, but primarily because of their stdWrap
+properties.</P>
+<H3 CLASS="western">COA</H3>
+<P CLASS="western">An array of cObjects. A quick demonstration:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = COA
+page.10.10 = TEXT
+page.10.10 {
+  value = This is the page title:
+  wrap = &lt;font face=&quot;verdana&quot; size=1&gt;|&lt;/font&gt;
+  wrap2 = | &lt;BR&gt;
+  case = upper
+}
+page.10.20 = TEXT
+page.10.20.field = title</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs this:</P>
+<P CLASS="western"><IMG SRC="6_html_m3ead6956.png" NAME="Grafik30" ALIGN=LEFT WIDTH=170 HEIGHT=68 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">That could fit into one line actually, but whether
+or not that's an advantage depends on your situation. 
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = title
+page.10.wrap = &lt;font face=&quot;verdana&quot; size=1&gt;THIS IS THE PAGE TITLE:&lt;/font&gt;&lt;BR&gt; |</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">So lets take another example:</P>
+<PRE CLASS="western">page.10 = COA
+
+# Header to this section
+page.10.10 = TEXT
+page.10.10 {
+  value = This is the page title:
+  wrap = &lt;font face=&quot;verdana&quot; size=1&gt;|&lt;/font&gt;
+  wrap2 = | &lt;BR&gt;
+  case = upper
+}
+
+# Output page title / subtitle
+page.10.20 = COA
+page.10.20 {
+  10 = TEXT
+  10.field = title
+  10.wrap = Page title: &lt;B&gt; | &lt;/B&gt;&lt;BR&gt;
+  20 = TEXT
+  20.field = subtitle
+  20.wrap = Subtitle: &lt;B&gt; |&lt;/B&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs this:</P>
+<P CLASS="western"><IMG SRC="6_html_m42a434d2.png" NAME="Grafik31" ALIGN=LEFT WIDTH=253 HEIGHT=77 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western" STYLE="page-break-before: always">Challenge
+(cObject/1)</H4>
+<P CLASS="western">I would like that the subtitle is sent off to the
+browser <I>only </I>if it's present. What are you going to do?</P>
+<H4 CLASS="western">Challenge (cObject/2)</H4>
+<P CLASS="western">Make it so that the whole COA (page.10) is sent
+off to the browser <I>only</I> if the subtitle is present.</P>
+<H4 CLASS="western">Challenge (cObject/3)</H4>
+<P CLASS="western">Make it so that the whole COA (page.10) is sent
+off to the browser <I>only</I> if we are on level 2 and forth in the
+rootline (that is, if we're on a subpage to eg. &quot;Content
+elements&quot;)</P>
+<H3 CLASS="western">FILE</H3>
+<P CLASS="western">This is very simple, so I'll just make a short
+example:</P>
+<PRE CLASS="western">page.10 = FILE
+page.10.file = fileadmin/tsbyex/include_me.txt</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs: 
+</P>
+<PRE CLASS="western">	This is a <I>simple</I> textfile with a few HTML-tags in. </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... which is the exact content of the file. Notice
+that the .file property is a &quot;resource&quot; datatype which
+means that files must reside in the media/, fileadmin/, uploads/ or
+typo3temp/ folder. This is a security feature in order to prevent
+TS-programmers from including everything on the server.</P>
+<P CLASS="western">This is technically setup by the array
+$allowedPaths = Array
+(&quot;media/&quot;,&quot;fileadmin/&quot;,&quot;uploads/&quot;,&quot;typo3temp/&quot;);
+from class t3lib_tstemplate</P>
+<P CLASS="western">If you include image-files, they are shown as
+&lt;IMG-tags&gt; instead.</P>
+<H3 CLASS="western">IMAGE</H3>
+<P CLASS="western">Includes an image with &lt;img&gt;-tag.</P>
+<H5 CLASS="western">Example:</H5>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = fileadmin/tsbyex/alligator.jpg</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This inserts a nice picture of a baby alligator
+(courtesy of me, snapshot from Florida).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_32ea6556.jpg" NAME="Graphic2" ALIGN=LEFT WIDTH=387 HEIGHT=252 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The .file property is an &quot;imgResource&quot;
+(pronounced &quot;image resource&quot;) and there are more options
+and possibilities for that than you dream of. So we'll get back to
+that.</P>
+<P CLASS="western">But lets try just a few things with the image.
+This example sets the width to 200 pixels and adds a link to the
+image that shows it in another window in the original size:</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10 {
+  file = fileadmin/tsbyex/alligator.jpg
+<FONT COLOR="#ff0000">  file.width = 200</FONT>
+<FONT COLOR="#ff0000">  imageLinkWrap = 1</FONT>
+<FONT COLOR="#ff0000">  imageLinkWrap.enable = 1</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Reload the page. The image is now 200 pixels wide
+in the browser. Try to click the image, and a new browser window will
+open with the original image in. 
+</P>
+<H4 CLASS="western">Questions (cObject/4)</H4>
+<P CLASS="western">What did Typo3 do to the image when the size was
+set to 200 pixels? Was only the HTML-code changed or was the image
+actually scaled? Look at the filenames of the first example without
+file.width and the current example. What are the names and location?</P>
+<H4 CLASS="western">Challenge (cObject/5)</H4>
+<P CLASS="western">Refering to the -&gt;imageLinkWrap object in
+TSref, can you make the imageLinkWrap open the enlarged image in a
+JavaScript window?</P>
+<H3 CLASS="western">IMG_RESOURCE</H3>
+<P CLASS="western">This does the same as the IMAGE cObject but the
+very important difference is that the &lt;IMG&gt;-tag is not wrapped
+around the file. 
+</P>
+<H5 CLASS="western">Example:</H5>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = IMG_RESOURCE
+page.10 {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width = 200
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs:</P>
+<PRE CLASS="western">typo3temp/3de305c72b.jpg </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now, that's not very exiting in itself, so ...</P>
+<H4 CLASS="western">Challenge (cObject/6)</H4>
+<P CLASS="western">Can you make the image the background image of a
+table?</P>
+<H3 CLASS="western">CLEARGIF</H3>
+<P CLASS="western">Inserts a clear gif-file, clear.gif:</P>
+<PRE CLASS="western">page.10 = CLEARGIF
+page.10.width = 200</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs this <I>HTML</I>-code:</P>
+<PRE CLASS="western">&lt;img src=&quot;clear.gif&quot; width=200 height=1 border=0&gt;&lt;BR&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice the &lt;BR&gt;-tag is always prepended. 
+</P>
+<P CLASS="western">You're always free to use the clear.gif file which
+are found in the root of the site.</P>
+<H3 CLASS="western">HRULER</H3>
+<P CLASS="western">This inserts a horizontal &quot;ruler&quot;. Not
+the HTML-kind, but made with a table and a background color.</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.5 = TEXT
+page.5.value = Before ruler
+
+page.10 = HRULER
+page.10 {
+  lineThickness = 3
+  lineColor = red
+}
+
+page.15 = TEXT
+page.15.value = After ruler</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m18442846.png" NAME="Grafik35" ALIGN=LEFT WIDTH=388 HEIGHT=273 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/7)</H4>
+<P CLASS="western">Play around with the other properties and see what
+they do. Check the source-code. 
+</P>
+<P CLASS="western">Also, are you able to set the space above (10
+pixels) and below (20 pixels) the ruler in order to create space to
+the text?</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">CTABLE and OTABLE</H3>
+<P CLASS="western">These cObjects are meant supply you with quick
+tables to position your content. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">Example of OTABLE:</H5>
+<PRE CLASS="western">page.10 = OTABLE
+page.10 {
+  tableParams = border=1
+  offset = 10,10
+  10 = TEXT
+  10.value = What a cute little alligator! Dear Lord, may it never grow up!
+  10.wrap = |&lt;BR&gt;
+  20 = IMAGE
+  20.file = fileadmin/tsbyex/alligator.jpg
+  20.file.width=200
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs this:</P>
+<P CLASS="western"><IMG SRC="6_html_2ee7c7a6.png" NAME="Grafik37" ALIGN=LEFT WIDTH=423 HEIGHT=279 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">It should be obvious what offset does here. But
+normally you would like some other parameters for the &lt;table&gt;-tag.
+So this might be a better solution:</P>
+<PRE CLASS="western">page.10 = OTABLE
+page.10 {
+  <FONT COLOR="#ff0000">tableParams = border=0 cellpadding=0 cellspacing=0 width=100</FONT>
+  offset = 10,10
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">If you don't specify .tableParams, &quot;&lt;TABLE
+border=0 cellspacing=0 cellpadding=0&gt;&quot; becomes the default
+&lt;TABLE&gt;-start tag.</P>
+<H4 CLASS="western">Challenge (cObject/8)</H4>
+<P CLASS="western">Setup a OTABLE that is able to precisely set the
+offset from upperleft corner to &quot;0, 20&quot; and where the
+content is in a column of 250 pixels. Hint: Setting the bodytag
+margins requires you to look at the properties of the PAGE-object.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H5 CLASS="western">Example of CTABLE:</H5>
+<P CLASS="western" STYLE="font-weight: normal">A CTABLE is a little
+more feature packed than the simple and yet useful OTABLE. It
+features a content column and four surrounding column. These may be
+useful for putting menus in. But lets take a look at a simple example
+first: 
+</P>
+<PRE CLASS="western">page.bodyTagMargins = 0
+page.10 = CTABLE
+page.10 {
+  tableParams = border=1 cellpadding=0 cellspacing=0
+  offset = 0,20
+  c.10 = TEXT
+  c.10.value = CONTENT cell
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs something totally identical to the OTABLE
+setup like this:</P>
+<PRE CLASS="western">page.bodyTagMargins = 0
+page.10 = OTABLE
+page.10 {
+  tableParams = border=1 cellpadding=0 cellspacing=0
+  offset = 0,20
+  10 = TEXT
+  10.value = CONTENT cell
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The same except from the fact that CTABLE adds
+&quot;valign=top&quot; to the &lt;td&gt;-tags. 
+</P>
+<P CLASS="western">Now lets look at a more complex example:</P>
+<PRE CLASS="western">page.bodyTagMargins = 0
+page.10 = CTABLE
+page.10 {
+  tableParams = border=1 cellpadding=0 cellspacing=0
+  offset = 0,20
+  c.10 = TEXT
+  c.10.value = CONTENT cell
+
+  rm.10 = TEXT
+  rm.10.value = RIGHT cell
+
+  lm.10 = TEXT
+  lm.10.value = LEFT cell
+
+  tm.10 = TEXT
+  tm.10.value = TOP cell
+
+  bm.10 = TEXT
+  bm.10.value = BOTTOM cell
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In this case we use all five &quot;content cells&quot;
+of the CTABLE and it looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_4f43b0e0.png" NAME="Grafik38" ALIGN=LEFT WIDTH=245 HEIGHT=99 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now, you can you any cObjects you like  in the
+cells. But there are two features yet to check out. With &quot;.cMargin&quot;
+you can add margins between the cells all the way around and with
+cWidth you can automatically space out the content cell to a certain
+width with a clear-gif.</P>
+<P CLASS="western">Try to add:</P>
+<PRE CLASS="western">...
+  offset = 0,20
+ <FONT COLOR="#ff0000"> cMargins = 10,20,30,40</FONT>
+<FONT COLOR="#ff0000">  cWidth=300</FONT>
+<FONT COLOR="#ff0000">  rm.TDParams = bgcolor=red valign=bottom</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and you'll get:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_mfe36693.png" NAME="Grafik39" ALIGN=LEFT WIDTH=497 HEIGHT=200 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice that the RIGHT cell (rm) had some extra
+parameters specified that made the table-cell red in the background.</P>
+<P CLASS="western">Just for fun, lets take a look at this TypoScript
+in the Object Browser:</P>
+<P CLASS="western"><IMG SRC="6_html_m1a55aed9.png" NAME="Grafik41" ALIGN=LEFT WIDTH=509 HEIGHT=674 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Educading, isn't it...</P>
+<H3 CLASS="western">TEMPLATE</H3>
+<P CLASS="western">Sometimes you may want to use a HTML template
+instead of doing it all in TypoScript. This is what the TEMPLATE
+object is for.</P>
+<H5 CLASS="western">Example:</H5>
+<P CLASS="western">To make the TEMPLATE work, this is all you need:</P>
+<PRE CLASS="western">page.10 = TEMPLATE
+page.10.template = FILE
+page.10.template.file = fileadmin/tsbyex/template.html</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">...and this is apparently what you get:</P>
+<P CLASS="western"><IMG SRC="6_html_f88904c.png" NAME="Grafik40" ALIGN=LEFT WIDTH=428 HEIGHT=281 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">But after a closer inspection of the source-code
+it's revealed that the whole file is inserted:</P>
+<PRE CLASS="western">...
+// End Hiding Script --&gt;
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+
+<FONT COLOR="#ff0000">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;html&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;head&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;title&gt;Untitled&lt;/title&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;/head&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;body&gt;</FONT>
+<FONT COLOR="#ff0000">This is a template that demonstrates the concept of subparts and markers.</FONT>
+<FONT COLOR="#ff0000">&lt;!-- ###DOCUMENT### --&gt;</FONT>
+<FONT COLOR="#ff0000">	This is a &lt;i&gt;###SIMPLE_WORD###&lt;/i&gt; textfile with a few HTML-tags in.&lt;br&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;br&gt;</FONT>
+<FONT COLOR="#ff0000">	Check out the &lt;!--###LINK###--&gt;link to the front page.&lt;!--###LINK###--&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;!-- ###DOCUMENT###--&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;/body&gt;</FONT>
+<FONT COLOR="#ff0000">&lt;/html&gt;</FONT>
+
+
+&lt;/body&gt;&lt;/html&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and that was not the point - unless we wanted
+the whole file to be inserted of course. But that's easily fixed,
+because for the TEMPLATE cObject you can define a &quot;subpart&quot;
+to work on. Subparts are confined by two markers (which by default is
+a- and prepended with &quot;###&quot;) and those markers may or may
+not be in an HTML-comment.</P>
+<P CLASS="western">Our subpart is &quot;###DOCUMENT###&quot;, so try
+this:</P>
+<PRE CLASS="western">page.10 = TEMPLATE
+page.10.template = FILE
+page.10.template.file = fileadmin/tsbyex/template.html
+<FONT COLOR="#ff0000">page.10.workOnSubpart = DOCUMENT</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Much better. The HTML-source now displays this:</P>
+<PRE CLASS="western">...
+<FONT COLOR="#000080">&lt;/head&gt;</FONT>
+<FONT COLOR="#000080">&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;</FONT>
+
+
+<FONT COLOR="#ff0000">	This is a &lt;i&gt;###SIMPLE_WORD###&lt;/i&gt; textfile with a few HTML-tags in.&lt;br&gt;</FONT>
+<FONT COLOR="#ff0000">	&lt;br&gt;</FONT>
+<FONT COLOR="#ff0000">	Check out the &lt;!--###LINK###--&gt;link to the front page.&lt;!--###LINK###--&gt;</FONT>
+
+<FONT COLOR="#000080">&lt;/body&gt;&lt;/html&gt;</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Now the point is to 
+</P>
+<P CLASS="western">substitute ###SIMPLE_WORD### with the page title
+and substitute the ###LINK### subpart with itself, but linked to the
+frontpage of the website (and that's a tough one!)</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = TEMPLATE
+page.10 {
+  template = FILE
+  template.file = fileadmin/tsbyex/template.html
+  workOnSubpart = DOCUMENT
+  marks.SIMPLE_WORD = TEXT
+  marks.SIMPLE_WORD.field = title
+  subparts.LINK = TEXT
+  subparts.LINK.current = 1
+  subparts.LINK.debugFunc = 1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This outputs this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_f88904c.png" NAME="Grafik42" ALIGN=LEFT WIDTH=428 HEIGHT=281 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">And the HTML-source code looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">...
+// End Hiding Script --&gt;
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#FFFFFF&quot;&gt;
+
+
+	This is a &lt;i&gt;<FONT COLOR="#ff0000">Content elements</FONT>&lt;/i&gt; textfile with a few HTML-tags in.&lt;br&gt;
+	&lt;br&gt;
+	Check out the <FONT COLOR="#ff0000">link to the front page.</FONT>
+
+&lt;/body&gt;&lt;/html&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">As you can see the marker SIMPLE_WORDS has been
+correctly substituted. The LINK-subpart also seems to be processed.
+At least the HTML-comments are gone. But the value is not processed
+further than that. But that's on purpose in order to investigate a
+little detail:</P>
+<P CLASS="western">According to the TSref, &quot;<I>In addition the
+current-value is loaded with the content of each subpart just before
+the cObject for the subpart is parsed.</I>&quot; So what the lines
+...</P>
+<PRE CLASS="western">  subparts.LINK = TEXT
+  subparts.LINK.current = 1
+  subparts.LINK.debugFunc = 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... did was to load the TEXT cObject with the
+value of the &quot;current&quot; register (see stdWrap) and because I
+was curious about what content the TEXT-object actually was, I
+investigated it by the &quot;.debugFunc = 1&quot; flag which - just
+like debugData demonstrated earlier (see stdWrap) - outputs the value
+during the &quot;execution&quot; of the TypoScript.</P>
+<P CLASS="western">So now I move to the next level - encapsulating
+the the subpart LINK with a link. 
+</P>
+<PRE CLASS="western">...
+  subparts.LINK = TEXT
+  subparts.LINK.current = 1
+<FONT COLOR="#ff0000">  subparts.LINK.typolink {</FONT>
+<FONT COLOR="#ff0000">    parameter = 1</FONT>
+<FONT COLOR="#ff0000">  }</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This adds the correct link-tag to the subpart and
+it now links to page with id=1. 
+</P>
+<P CLASS="western">In this case id=1 happens to be the &quot;frontpage&quot;
+of my site, but I would like a more flexible solution, so what I'm
+going to do is to fetch the uid of the page on level 0 in the
+rootline. We know howto already (.data = leveluid:0 - see stdWrap and
+datatypes in TSref), but we don't know, if the .parameter property of
+the &quot;typolink&quot; object has stdWrap-properties... (get to the
+reference, find the typolink function .... looking. ... YES!).</P>
+<PRE CLASS="western">...
+  subparts.LINK = TEXT
+  subparts.LINK.current = 1
+  subparts.LINK.typolink {
+   <FONT COLOR="#ff0000"> parameter.data = leveluid:0</FONT>
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/9)</H4>
+<P CLASS="western">Can you make the link jump the the page on level 1
+in the rootline instead of the front page? Can you define the target
+of the link to be &quot;_blank&quot;? And can you also wrap the link
+in &lt;B&gt;-tags?</P>
+<H3 CLASS="western">FORM</H3>
+<P CLASS="western">Of cource you can create forms manually, but the
+advantage of letting Typo3 do it is that the syntax is simple enough
+to teach it to non-techies and you can have it automatically
+validated (simple way) by JavaScript.</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = FORM
+page.10.data = Label | input
+page.10.layout = ###LABEL###: ###FIELD###&lt;BR&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This is the absolute minimum of information needed
+to create a form.</P>
+<P CLASS="western">The .data property takes input that is conforms to
+the syntax defined in TSref and .layout is a minitemplate where
+###LABEL### and ###FIELD### represents respectively the label and
+field inserted.</P>
+<P CLASS="western">First of all, how do we add more fields? Well
+normally the input that generates the form comes from a text-field in
+the database, normally &quot;bodytext&quot; of a tt_content record.
+In that input every line represents a new element. We cannot do that
+with string-input directly to the .data property, so the workaround
+is that entering a double-&quot;|&quot; equals a linebreak.
+Therefore...</P>
+<PRE CLASS="western">page.10 = FORM
+<FONT COLOR="#ff0000">page.10.data = Name|input    ||    Address|textarea    ||    Send|submit|Send the form</FONT>
+page.10.layout = ###LABEL###: ###FIELD###&lt;BR&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">...generates this:</P>
+<P CLASS="western"><IMG SRC="6_html_2bdbc684.png" NAME="Grafik43" ALIGN=LEFT WIDTH=344 HEIGHT=316 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The tslib/index_ts.php script (which is the main
+front-end script, see Typo3Overview, F1) is able to send
+formmail-emails. To create a working email form you have to at least
+setup this:</P>
+<PRE CLASS="western">page.10 = FORM
+page.10.data = Name|<FONT COLOR="#ff0000">*</FONT>input<FONT COLOR="#ff0000">,40</FONT> || Address|textarea<FONT COLOR="#ff0000">,40,10</FONT> || Send it...|<FONT COLOR="#ff0000">formtype_mail=submit|Send the form</FONT> || <FONT COLOR="#ff0000">|subject=hidden|This is the subject</FONT>
+<FONT COLOR="#ff0000">page.10.recipient = your@email.com</FONT>
+page.10.layout = ###LABEL###: ###FIELD###&lt;BR&gt;
+<FONT COLOR="#ff0000">page.10.locationData = 1</FONT>
+<FONT COLOR="#ff0000">page.10.REQ=1</FONT>
+<FONT COLOR="#ff0000">page.10.REQ.layout = ###LABEL### (Required): ###FIELD###&lt;BR&gt;</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice the changes in red: 
+</P>
+<UL>
+	<LI><P CLASS="western">The input fields are given a size parameter</P>
+	<LI><P CLASS="western">as is the textarea</P>
+	<LI><P CLASS="western">the submit-button is named &quot;formtype_mail&quot;
+	in order for the script to realize that a mail is being sent</P>
+	<LI><P CLASS="western">the subject is set</P>
+	<LI><P CLASS="western">the recipient is set</P>
+	<LI><P CLASS="western">locationData is set ON (required if the
+	index_ts.php script is going to send the mail)</P>
+	<LI><P CLASS="western">REQ is introduced which enables the check for
+	required-field (which the &quot;Name&quot; field is marked as due to
+	the asterisk in front of the word &quot;input&quot;)</P>
+	<LI><P CLASS="western">REQ.layout is introduced as an alternative
+	layout to the required fields.</P>
+</UL>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">It looks like this:</P>
+<P CLASS="western"><IMG SRC="6_html_m3b167565.png" NAME="Grafik44" ALIGN=LEFT WIDTH=470 HEIGHT=286 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If you would like to go into details with this,
+please see the default form-definitions in the static_template
+&quot;styles.content (default)&quot; / styles.content.mailform</P>
+<P CLASS="western"><IMG SRC="6_html_m18b7bd5.png" NAME="Grafik45" ALIGN=LEFT WIDTH=475 HEIGHT=406 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">CASE</H3>
+<P CLASS="western">This cObject provides yet a &quot;control
+structure&quot; to TypoScript. It works like a switch-construct:</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = CASE
+page.10.key = <FONT COLOR="#0000ff">cheese</FONT>
+
+page.10.<FONT COLOR="#0000ff">cheese</FONT> = IMAGE
+page.10.<FONT COLOR="#0000ff">cheese</FONT> {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width=200
+  wrap = Cheese.... &amp;nbsp;| &amp;nbsp; is what this guy says
+}
+
+page.10.tomatoes = TEXT
+page.10.tomatoes.value = Tomatoes are so tasty
+
+page.10.default = TEXT
+page.10.default.value = If nothing else is going on, this happens...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This is the result:</P>
+<P CLASS="western"><IMG SRC="6_html_79158aae.png" NAME="Grafik46" ALIGN=LEFT WIDTH=454 HEIGHT=326 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">As you see, because the reserved property &quot;key&quot;
+in the array of the CASE cObject is assigned the value &quot;cheese&quot;
+the content of the cObject &quot;page.10.cheese&quot; is fetched!
+(The list of reserved properties are &quot;setCurrent&quot;, &quot;key&quot;,
+&quot;default&quot;, &quot;stdWrap&quot; and &quot;if&quot;)</P>
+<P CLASS="western">Try to enter &quot;tomatoes&quot; instead! Or
+leave it blank - in which case the &quot;page.10.default&quot;
+cObject is rendered.</P>
+<P CLASS="western">The useful part is when you have some data to
+input into the .key property instead of fixed values. Lets
+reconstruct the the script a bit:</P>
+<PRE CLASS="western">temp.cheese = IMAGE
+temp.cheese {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width=200
+  wrap = Cheese.... &amp;nbsp;| &amp;nbsp; is what this guy says
+}
+
+temp.tomatoes = TEXT
+temp.tomatoes.value = Tomatoes are so tasty
+
+temp.default = TEXT
+temp.default.value = If nothing else is going on, this happens...
+
+page.10 = CASE
+page.10.key.data = level:1
+page.10.1 &lt; temp.cheese
+page.10.2 &lt; temp.tomatoes
+page.10.default &lt; temp.default
+
+page.20 = TEXT
+page.20.data = level:1
+page.20.wrap = &lt;HR&gt; | - 
+page.30 = TEXT
+page.30.field = title</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This is the result:</P>
+<P CLASS="western"><IMG SRC="6_html_m3061cd7a.png" NAME="Grafik47" ALIGN=LEFT WIDTH=449 HEIGHT=474 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Try to hit the pages &quot;Startpage&quot;,
+&quot;Content elements&quot;, &quot;Insert content&quot; and because
+each is at it's specific level, it presents specific content.</P>
+<PRE CLASS="western">...
+page.10.1 &lt; temp.cheese
+page.10.2 &lt; temp.tomatoes
+page.10.default &lt; temp.default
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Another little hint was my use of temporary
+objects created in the temp. toplevel object (read about this
+elsewhere). It can be very useful to define chunks of TypoScript in
+that toplevel object and later in the script copy the chunks into the
+correct position. This creates an opportunity to get a better
+overview of your TypoScripts.</P>
+<H4 CLASS="western">Challenge</H4>
+<P CLASS="western">Take a little time to look into the
+static_template &quot;content (default)&quot;. Try to get a grasp on
+the CASE cObject used in the tt_content toplevel object. Whenever
+necessary, refer to &quot;styles.content (default)&quot; which
+provides a lot of premade objects for use in &quot;content (default)&quot;</P>
+<H3 CLASS="western">LOAD_REGISTER</H3>
+<P CLASS="western">This cObject does not return any values. Rather
+you can use it to set some values in the &quot;register&quot;. It's a
+kind of way to pass values around between the TypoScript objects but
+it is a hack in order to enable just a tiny degree of this. Remember
+TypoScript is not &quot;executed&quot; like a JavaScript. It's still
+just a bunch of configuration.</P>
+<P CLASS="western">But anyway this example shows how it works:</P>
+<PRE CLASS="western">page.10 = LOAD_REGISTER
+page.10.MY_VALUE = The register value!
+
+page.5 = TEXT
+page.5.value = The default value
+page.5.override.data = register:MY_VALUE
+page.5.wrap = | &lt;HR&gt;
+
+page.15 &lt; page.5</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This is the result:</P>
+<P CLASS="western"><IMG SRC="6_html_34d4c563.png" NAME="Grafik48" ALIGN=LEFT WIDTH=179 HEIGHT=95 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>Explanation:</B></P>
+<P CLASS="western">Consider the TypoScript: 
+</P>
+<P CLASS="western">The object at position &quot;5&quot; in the
+cObject array of the PAGE object &quot;page&quot; is 'executed&quot;
+before position &quot;10&quot; which is where the register MY_VALUE
+is set for the first time. Because the register value until then was
+empty &quot;page.5&quot; returned the value of the .value property.
+That was &quot;The default value&quot;</P>
+<P CLASS="western">When &quot;page.10&quot; is executed the
+register-value is set.</P>
+<P CLASS="western">When &quot;page.20&quot; is executed, the register
+is <I>not </I>empty anymore, therefore the value overrides the
+default value. And the output becomes &quot;The register value!&quot;</P>
+<P CLASS="western"><IMG SRC="6_html_6a9d7741.png" NAME="Grafik49" ALIGN=LEFT WIDTH=283 HEIGHT=209 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge</H4>
+<P CLASS="western">Try to look at the static_templates &quot;TEMPLATE;
+FIRST&quot; and &quot;TEMPLATE; MM&quot;. They both utilize this
+feature. To accomplish what?</P>
+<H1 CLASS="western">imgResource and GIFBUILDER</H1>
+<H2 CLASS="western">Introduction</H2>
+<P CLASS="western">The datatype of some properties is apparently
+&quot;imgResource&quot;. Taking a look at the definition of the
+datatype, we learn that it can do one of two things. 
+</P>
+<P CLASS="western">Either &quot;imgResource&quot; is a file-reference
+after the same concept of &quot;resource&quot; but with a few
+additional properties to modify the image.</P>
+<P CLASS="western">Or &quot;imgResource&quot; is a GIFBUILDER-object,
+which lets us design an image by combining graphical objects like
+other images, text and solid filled boxes.</P>
+<H2 CLASS="western">A regular file as input</H2>
+<P CLASS="western">We've done this already (with the
+alligator-image), because the .file property of the IMAGE cObject is
+an &quot;imgResource&quot;. But lets take another challenge here. We
+would like to define a background image for our template. 
+</P>
+<P CLASS="western">Looking at the properties of a PAGE object, .bgImg
+seems to be the correct choise and it's and imgResource. 
+</P>
+<P CLASS="western">Try this:</P>
+<PRE CLASS="western">page.bgImg = fileadmin/tsbyex/sunset_keywest.jpg</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">You should see this now:</P>
+<P CLASS="western">[N/A...]</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Try to add this line:</P>
+<PRE CLASS="western">page.bgImg = fileadmin/tsbyex/sunset_keywest.jpg
+page.bgImg.width = 200</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">You should see this:</P>
+<P CLASS="western"><IMG SRC="6_html_65db5b13.jpg" NAME="Graphic6" ALIGN=LEFT WIDTH=400 HEIGHT=394 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Bitmap masks</H3>
+<P CLASS="western">Before we go on, lets have a bit of fun.</P>
+<P CLASS="western">We're going to use a bitmap image concept called
+masking. Basically a mask is a grayscale image used to combine two
+images in a way where the black and white areas of the mask
+determines which areas of the two combined images are visible or not.</P>
+<P CLASS="western">This is our masks, &quot;mask.jpg&quot;:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m7c8f0d22.png" NAME="Grafik63" ALIGN=LEFT WIDTH=306 HEIGHT=191 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Now try this:</P>
+<PRE CLASS="western">page.bgImg = fileadmin/tsbyex/sunset_keywest.jpg
+page.bgImg.width = 200
+<FONT COLOR="#ff0000">page.bgImg.m.bgImg = fileadmin/tsbyex/alligator.jpg</FONT>
+<FONT COLOR="#ff0000">page.bgImg.m.mask = fileadmin/tsbyex/mask.jpg</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_c328279.jpg" NAME="Graphic8" ALIGN=LEFT WIDTH=425 HEIGHT=311 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Try this</P>
+<PRE CLASS="western">page.bgImg = fileadmin/tsbyex/sunset_keywest.jpg
+page.bgImg.width = <FONT COLOR="#ff0000">300</FONT>
+page.bgImg.m.bgImg = fileadmin/tsbyex/alligator.jpg
+<FONT COLOR="#ff0000">page.bgImg.m.bgImg.params = -rotate 90 </FONT>
+page.bgImg.m.mask = fileadmin/tsbyex/mask.jpg</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western">[N/A...]</P>
+<H3 CLASS="western">Import an image</H3>
+<P CLASS="western">OK, we would like the background image to be
+attached to the individual pages, so we can change the image easily
+for each page. For that purpose we need to attach the image to the
+page-record in the media-field.</P>
+<P CLASS="western"><IMG SRC="6_html_4050d06.png" NAME="Grafik64" ALIGN=LEFT WIDTH=624 HEIGHT=343 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Do this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Try to insert this TypoScript on the page:</P>
+<PRE CLASS="western">page.10 =TEXT
+page.10.debugData = 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">You should see this when you hit the page (first
+time, remember it's a debug-output!)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_24fd6587.png" NAME="Grafik67" ALIGN=LEFT WIDTH=425 HEIGHT=116 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The &quot;media&quot; field contains references to
+the images by listing them separated by commas. Simple, eh?</P>
+<P CLASS="western">We would like to extract a single file from the
+list, more precisely the second image, &quot;doggiebus.jpg&quot;:</P>
+<PRE CLASS="western">page.10 =TEXT
+page.10.field = media
+page.10.listNum = 1</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">&quot;.listNum&quot; is the great trick here. See
+the TSref for a description...</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m416fa120.png" NAME="Grafik68" ALIGN=LEFT WIDTH=453 HEIGHT=377 BORDER=0><BR CLEAR=LEFT>All
+we need now is to know where the images are actually stored, so we
+can prepend the correct filepath. So we go to the &quot;Tools&quot;
+module and in the &quot;Configuration&quot; submodule (tools_config),
+we browse the $tc array:</P>
+<P CLASS="western">As you see, the upload path was uploads/media.</P>
+<P CLASS="western">In order to use this knowledge with the
+imgResource, look that the .import property (TSref). From this, we
+can conclude that the TypoScript should look like:</P>
+<PRE CLASS="western">page.bgImg {
+  import = uploads/media/
+  import.field = media
+  import.listNum = 1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western">[N/A]</P>
+<P CLASS="western">Doggiebus all over. Of course you can still add
+&quot;page.bgImg.width = 200&quot; if you like a smaller tile for a
+greater smile :-)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (imgResource/1)</H4>
+<P CLASS="western" STYLE="font-weight: normal">You would like a
+default background image for a page in case there's no uploaded image
+on position 1 in the media-field. Can you do that? (It's not easy -
+use the TSref, Luke.)</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<H2 CLASS="western">GIFBUILDER</H2>
+<P CLASS="western">Let's start with a simple example:</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file.XY = 200,300
+page.10.file.backColor = olive
+page.10.file.10 = BOX
+page.10.file.10 {
+  dimensions = 20,20,160,260
+  color = green
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m54cc3ad8.png" NAME="Grafik70" ALIGN=LEFT WIDTH=271 HEIGHT=339 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">OK, let try that in combination with the
+background image inferno from before:</P>
+<PRE CLASS="western">page.bgImg = GIFBUILDER
+page.bgImg {
+  XY = 200,300
+  backColor = olive
+  10 = BOX
+  10 {
+    dimensions = 20,20,160,260
+    color = green
+  }
+}
+page.bgImg.m.bgImg = fileadmin/tsbyex/alligator.jpg
+page.bgImg.m.bgImg.params = -rotate 90 
+page.bgImg.m.mask = fileadmin/tsbyex/mask.jpg</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and the result is:</P>
+<P CLASS="western">[N/A...]</P>
+<P CLASS="western" STYLE="page-break-before: always"><BR><BR>
+</P>
+<P CLASS="western">... something else that we had imaged. 
+</P>
+<P CLASS="western">Reason. The TypoScript is wrong. The masking
+feature with the &quot;m.bgImg....&quot; stuff applied to
+imgResources if the value of imgResource was a filename and <I>not</I>
+GIFBUILDER. In the latter case the properties that applies is found
+in a section of it's own... So sorry.</P>
+<P CLASS="western">But you can do it, if the GIFBUILDER object is not
+the &quot;base-image&quot;:</P>
+<PRE CLASS="western">  # The base image:
+page.bgImg = fileadmin/tsbyex/alligator.jpg
+page.bgImg.width = 300
+page.bgImg.height = 200
+
+  # The GIFBUILDER overlay:
+page.bgImg.m.bgImg = GIFBUILDER
+page.bgImg.m.bgImg {
+  XY = 300,200
+  backColor = olive
+  10 = BOX
+  10 {
+    dimensions = 20,20,260,160
+    color = green
+  }
+}
+
+  # The mask (not the movie...)
+page.bgImg.m.mask = fileadmin/tsbyex/mask2.gif</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">results in</P>
+<P CLASS="western"><IMG SRC="6_html_m7fbfd397.jpg" NAME="Graphic9" ALIGN=LEFT WIDTH=368 HEIGHT=281 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always"><BR><BR>
+</P>
+<P CLASS="western">The mask &quot;mask2.gif&quot; looks like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m7c8f0d22.png" NAME="Grafik73" ALIGN=LEFT WIDTH=400 HEIGHT=250 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">GIFBUILDER basics</H3>
+<P CLASS="western">Back to the basics. The first example showed us
+how to create a colored box. Now we're going to add some text:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file {
+  XY = 200,300
+  backColor = olive
+  10 = BOX
+  10.dimensions = 20,20,160,260
+  10.color = green
+
+  20 = TEXT
+  20.text = Hello World
+  20.offset = 10,10
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This results in:</P>
+<P CLASS="western"><IMG SRC="6_html_1c0b4a86.png" NAME="Grafik74" ALIGN=LEFT WIDTH=255 HEIGHT=64 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">+calc</H3>
+<P CLASS="western" STYLE="font-weight: normal">Many integet values
+can be defined by simple arithmetic operations like +, -, / and *. A
+special feature is that you can insert codes in these expressions
+that are substituted with the width or height of either a TEXT- or an
+IMAGE-GIFBUILDER object. In that way we're able to control eg. the
+width of the image based on the width of the text.</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="6_html_295b167e.png" NAME="Grafik75" ALIGN=LEFT WIDTH=326 HEIGHT=104 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file {
+<FONT COLOR="#ff0000">  XY = [20.w]+20, 30</FONT>
+  backColor = olive
+  10 = BOX
+  10.dimensions = 20,20,160,260
+  10.color = green
+
+  20 = TEXT
+  20.text = Hello World
+<FONT COLOR="#ff0000">  20.offset = 10,15</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_1e59cd51.png" NAME="Grafik76" ALIGN=LEFT WIDTH=169 HEIGHT=77 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Extending this to the BOX-object also we can use
+the BOX-object to create an underlining of the TEXT. Furthermore lets
+try the &quot;niceText&quot; property of the TEXT object.</P>
+<PRE CLASS="western">...
+<FONT COLOR="#ff0000">  10.dimensions = 11,20,[20.w],1</FONT>
+<FONT COLOR="#ff0000">  10.color = blue</FONT>
+
+  20 = TEXT
+  20.text = Hello World
+  20.offset = 10,15
+<FONT COLOR="#ff0000">  20.niceText = 1</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_1e59cd51.png" NAME="Grafik77" ALIGN=LEFT WIDTH=169 HEIGHT=77 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Obviously the BOX-object has adjusted according to
+our expectations. But the other change - the .niceText option we
+enabled - has caused the text to render in another fashion. 
+</P>
+<H3 CLASS="western">.niceText</H3>
+<P CLASS="western">See, this is a workaround to compensate for the
+fact that the freetype library used by GDLib in PHP is not always
+able to provide a satisfying antialias (&quot;soft edges&quot; to
+prevent the jagged, pixelated edges). So this flag makes Typo3 render
+the text in double size on a mask-file which is then scaled down to
+correct size and used with ImageMagick's combine-tool to
+&quot;superimpose&quot; (mask) the text onto the background. It takes
+more CPU power. The result is also better (usually).</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always"><IMG SRC="6_html_m6b877316.png" NAME="Grafik78" ALIGN=LEFT WIDTH=638 HEIGHT=123 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>Left:</B> Normal text. Antialiased by Freetype.
+<B>Middle:</B> .niceText=1  <B>Right:</B> .antiAlias=0 (Antialias
+totally disabled)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">The GIFBUILDER TEXT object</H3>
+<P CLASS="western">Now, we'll try some more options for the text:</P>
+<PRE CLASS="western">...
+  20 = TEXT
+  20.text = Hello World
+  20.offset = 10,15
+  20.niceText = 1
+<FONT COLOR="#ff0000">  20.fontSize= 20</FONT>
+<FONT COLOR="#ff0000">  20.fontFile = t3lib/fonts/verdana.ttf</FONT>
+<FONT COLOR="#ff0000">  20.fontColor = #660000</FONT>
+<FONT COLOR="#ff0000">  20.shadow.offset = 2,2</FONT>
+<FONT COLOR="#ff0000">  20.shadow.blur = 60</FONT>
+<FONT COLOR="#ff0000">  20.shadow.opacity = 40</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">results in this:</P>
+<P CLASS="western"><IMG SRC="6_html_m60b2f0c4.png" NAME="Grafik79" ALIGN=LEFT WIDTH=293 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/1)</H4>
+<P CLASS="western">Can you produce a text, which seems to be embossed
+from the background? And could you make that the page title and not a
+static value like &quot;Hello World&quot;?</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H3 CLASS="western">The IMAGE object</H3>
+<P CLASS="western">You can also add an image to the GIFBUILDER
+objects. 
+</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file {
+  XY = 200, [10.h]
+
+  10 = IMAGE
+  10.file = fileadmin/tsbyex/sunset_keywest.jpg
+  10.file.width= 200
+
+  20 = TEXT
+  20.text.field = title
+  20.offset = 0,120
+  20.niceText = 1
+  20.align=center
+  20.fontSize= 40
+  20.fontFile = t3lib/fonts/verdana.ttf
+  20.fontColor = yellow
+
+  30 = IMAGE
+  30.file = fileadmin/tsbyex/alligator.jpg
+  30.file.width=50
+  30.tile = 2,2
+  30.align = c,c
+
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">In this example there are even two images
+involved. One of them is tiled twice horizontally and vertically
+while center-aligned in both directions also. Result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_28fde1b3.gif" NAME="Graphic10" ALIGN=LEFT WIDTH=299 HEIGHT=193 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/2)</H4>
+<P CLASS="western">Can you make each of the alligator images appear
+in each of the outer corners instead, 5 pixels from the border? (You
+may - if you wish - skip the background image and title.)</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/3)</H4>
+<P CLASS="western">Can you create a red frame of 2 pixels around the
+image also?</P>
+<H1 CLASS="western">Navigation</H1>
+<H3 CLASS="western">HMENU</H3>
+<P CLASS="western">The cObject HMENU is used to generate
+&quot;hierarchical menus&quot; - that is navigation.</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = TMENU
+page.10.1.NO {
+  linkWrap = &lt;B&gt;|&lt;/B&gt;&lt;BR&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_3acaffff.png" NAME="Grafik88" ALIGN=LEFT WIDTH=206 HEIGHT=121 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Very simple. Yet.</P>
+<P CLASS="western">Important things to know about the &quot;mother&quot;-object
+HMENU (&quot;TMENU&quot; from the example is a child in this
+terminology) is that is has</P>
+<UL>
+	<LI><P CLASS="western">a numerical array of &quot;menuObj&quot;
+	(menu objects)</P>
+	<LI><P CLASS="western">an .entryLevel definition. Entrylevel
+	determines at which level in the rootline, the menu is drawn.</P>
+	<LI><P CLASS="western">.begin and .maxItems definitions useful to
+	control the number of items.</P>
+</UL>
+<P CLASS="western">But also you should know that a menu consist of
+links to page with the type &quot;Standard&quot;, &quot;Advanced&quot;,
+&quot;External URL&quot; and &quot;Shortcut&quot;. Depending on the
+configuration the type &quot;Spacer&quot; may also appear (if .SPC is
+defined), but a &quot;Spacer&quot; page is only a placeholder - a way
+to insert a space in a menu if the menu-configuration is designed in
+such a way.</P>
+<P CLASS="western">This example shows a menu that works on &quot;Level2&quot;
+pages items (rootline level 1). 
+</P>
+<PRE CLASS="western">page.10 = HMENU
+<FONT COLOR="#ff0000">page.10.entryLevel = 1</FONT>
+page.10.1 = TMENU
+page.10.1.NO {
+  linkWrap = &lt;B&gt;|&lt;/B&gt;&lt;BR&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">The result:</P>
+<P CLASS="western"><IMG SRC="6_html_e2a9d09.png" NAME="Grafik89" ALIGN=LEFT WIDTH=203 HEIGHT=173 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(This appears only if you hit id=2, because none
+of the other pages (except from the access-restricted page)  has
+subpages. Root level does not show a menu either because entryLevel
+is set to 1)</P>
+<H3 CLASS="western">TMENU</H3>
+<P CLASS="western">The TMENU is a text-based menu. There are lots of
+examples around. Look in the static_template table. The &quot;content
+(default)&quot; template has a bunch of examples attached to the
+tt_content.menu definition.</P>
+<P CLASS="western">Here's an example taken from the static_template
+&quot;TEMPLATE; BUSINESS&quot;:</P>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = TMENU
+page.10.1.target = page
+page.10.1 {
+  expAll = 1
+  wrap = &lt;table width=&quot;300&quot; border=1 cellspacing=0 cellpadding=0&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;clear.gif&quot; width=1 hspace=200 height=1 vspace=3 border=0&gt;&lt;/td&gt;&lt;/tr&gt; | &lt;/table&gt;
+  NO.linkWrap = &lt;font face=Arial size=2 color=black&gt;&lt;b&gt; |&lt;/b&gt;&lt;/font&gt;
+  NO.allWrap = &lt;tr&gt;&lt;td&gt;&lt;img src=&quot;clear.gif&quot; width=1 height=1 vspace=3 border=0&gt;&lt;br&gt; | &lt;/td&gt;&lt;/tr&gt;
+}
+page.10.2 = TMENU
+page.10.2 {
+  wrap = &lt;tr&gt;&lt;td nowrap&gt; | &lt;/td&gt;&lt;/tr&gt;
+  target = page
+  NO {
+    beforeImg =  media/bullets/bullet1_n.gif
+    beforeROImg = media/bullets/bullet1_h.gif
+    beforeImgTagParams = hspace=2
+    RO = 1
+    after = &lt;br&gt;
+    ATagBeforeWrap = 1
+    linkWrap= &lt;font face=Verdana size=1 color=black&gt; | &lt;/font&gt;
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m5f9a2883.png" NAME="Grafik90" ALIGN=LEFT WIDTH=455 HEIGHT=247 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">You should know one thing about the TMENU: There
+are two properties, .before and .after. They have stdWrap properties
+both and they are actually identical. But - as stated in the TSref -
+the cObj-&gt;data array used by stdWrap's .field property is <I>not
+</I>loaded with the page-record of the current menu-item when
+executed. Originally that was a design error, but the workaround in
+order to be backwards compatible has been that stdWrap can retrieve
+the field-values of the menu-item page through the .data-property. So
+instead of &quot;before.field = title&quot; (which gets the main page
+title) use &quot;before.data = page:title&quot;.</P>
+<H4 CLASS="western">Challenge (TMENU/1)</H4>
+<P CLASS="western">Finetune the menu to your own taste and insert
+another image-bullet, but insert it to the right of the items!</P>
+<H4 CLASS="western">Challenge (TMENU/2)</H4>
+<P CLASS="western">Add a third level</P>
+<H4 CLASS="western">Challenge (TMENU/3)</H4>
+<P CLASS="western">Add a feature that changes the color of the items
+to red if the item is &quot;active&quot; (that is, if an item is one
+of the pages in the rootline)</P>
+<H4 CLASS="western">Challenge (TMENU/4)</H4>
+<P CLASS="western">Create this menu:</P>
+<P CLASS="western"><IMG SRC="6_html_671f3be7.png" NAME="Grafik93" ALIGN=LEFT WIDTH=269 HEIGHT=257 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Example (TMENU)</H4>
+<P CLASS="western">This is a screendump from www.fladsaa.dk. The code
+used for the menu here is found in the Challenge-section in the back,
+if you would like to see it:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_mc420244.png" NAME="Grafik114" ALIGN=LEFT WIDTH=284 HEIGHT=342 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">IMGMENU</H3>
+<P CLASS="western">This is an imagemap menu. 
+</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">temp.topmenu = HMENU
+temp.topmenu.1.target = _top
+temp.topmenu.maxItems = 6
+temp.topmenu.entryLevel = 0
+temp.topmenu.1 = IMGMENU
+temp.topmenu.1.imgMapExtras = &lt;AREA SHAPE=&quot;rect&quot; alt=&quot;Frontpage&quot; COORDS=&quot;5,5,69,70&quot; href=&quot;http://www.typo3.com&quot; target=&quot;_top&quot;&gt;
+temp.topmenu.1 {
+  wrap = |&lt;BR&gt;
+  main.XY = [10.w] , [10.h]
+  main.10 = IMAGE
+  main.10.file = fileadmin/tsbyex/imglogo.gif
+  main.reduceColors = 16
+
+  dWorkArea = 77,68
+
+  NO.distrib = textX+10, 0
+  NO.10 = TEXT
+  NO.10 {
+    text.field = title
+    fontSize = 11
+    fontColor = black
+    niceText = 1
+    offset = 0,0
+    imgMap.explode = 3,2
+  }
+  NO.20 =   || BOX
+  NO.20 {
+    dimensions = -5,-9,1,11
+    color = white
+  }
+}
+
+page.10 &lt; temp.topmenu
+</PRE><P CLASS="western">
+<B>Result:</B></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m5844695f.png" NAME="Grafik94" ALIGN=LEFT WIDTH=554 HEIGHT=115 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><B>Comments:</B></P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">main.</PRE><P CLASS="western">
+This sets up the basic image of the imagemap. .reduceColors is a
+general GIFBUILDER-property which you should use widely in order to
+keep your filesizes down. The less colors the less filesize</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">dWorkArea = 77,68</PRE><P CLASS="western">
+This defines the offset of the menu-items from upper left corner</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">NO.</PRE><P CLASS="western">
+In general main. describes the imagemap background and NO. describes
+each item on the image map.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">NO.distrib = textX+10,0</PRE><P CLASS="western">
+This defines that every item should be offset from each other with
+the width of the previous item plus another 10 pixels</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">imgMap.explode</PRE><P CLASS="western">
+Defines how much the iamgemap polygon around every item is &quot;expanded&quot;
+in order to cover an area a little larger (or smaller with neg.
+numbers) than the textlabels themselves.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">temp.topmenu.1.imgMapExtras = &lt;AREA SHAPE=&quot;rect&quot; alt=&quot;Frontpage&quot; COORDS=&quot;5,5,69,70&quot; href=&quot;http://www.typo3.com&quot; target=&quot;_top&quot;&gt;</PRE><P CLASS="western">
+This adds an area-definitions to the imagemap. The area covered in
+this case is the square to the left on the background image. This
+area links to http://www.typo3.com. 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">NO.20 =   || BOX</PRE><P CLASS="western">
+The &quot;operator&quot; &quot;||&quot; (double-vertical line) is a
+part of a very complex concept called &quot;optionSplit&quot;. The
+concept is more confusing than a missing file on a
+Windows-installation so be careful if you start playing with it.
+Personally I always refer to the examples in the TSref. See the
+discussion below.</P>
+<H4 CLASS="western">Challenge (IMGMENU/1)</H4>
+<P CLASS="western">Can you rearrange the elements so they appear
+almost like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m3656e9c0.png" NAME="Grafik95" ALIGN=LEFT WIDTH=273 HEIGHT=107 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">optionSplit</H3>
+<P CLASS="western">But what is it anyway, optionSplit? Why would I
+care?</P>
+<P CLASS="western">optionSplit is very powerful because it provides a
+way to set different values for the properties of your menu objects
+based on whether they are the first, the last or &quot;middle&quot;
+elements in the menu. optionSplit works on <I>all</I> properties and
+their values in the TypoScript of a whole menu object!</P>
+<P CLASS="western">For instance, if I would like the first element to
+be yellow, the last element to be blue and any other elements to be
+white, I can specify the 
+</P>
+<PRE CLASS="western">    fontColor = yellow |*| white |*| blue</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">like that. Result:</P>
+<P CLASS="western"><IMG SRC="6_html_6937eba.png" NAME="Grafik96" ALIGN=LEFT WIDTH=255 HEIGHT=118 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">If I add another page to the testsite, the menu
+will be updated accordingly:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m328fcadb.png" NAME="Grafik97" ALIGN=LEFT WIDTH=194 HEIGHT=164 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m1dc8d5c7.png" NAME="Grafik98" ALIGN=LEFT WIDTH=258 HEIGHT=111 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (IMGMENU/2)</H4>
+<P CLASS="western">Can you define a optionSplit for the color of the
+vertical line that would make it alter between white and black?</P>
+<H3 CLASS="western">GMENU</H3>
+<P CLASS="western">Now lets get on with the GMENU menu object.</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+  XY = [10.w],[10.h]
+  backColor = #cccccc || #eeeeee
+  10 = TEXT
+  10.text.field = title
+  10.offset = 0,7
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m206e9515.png" NAME="Grafik100" ALIGN=LEFT WIDTH=428 HEIGHT=80 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This is close to being the most simple GMENu you
+can create at all. Let's modify it further to be a bit more useful:</P>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+<FONT COLOR="#ff0000">  XY = [10.w]+20,20</FONT>
+<FONT COLOR="#ff0000">  backColor = |*| #cccccc || #eeeeee |*|</FONT>
+  10 = TEXT
+  10.text.field = title
+<FONT COLOR="#ff0000">  10.offset = 0,13</FONT>
+<FONT COLOR="#ff0000">  10.align = center</FONT>
+<FONT COLOR="#ff0000">  10.niceText = 1</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result: 
+</P>
+<P CLASS="western"><IMG SRC="6_html_25a9dc5a.png" NAME="Grafik101" ALIGN=LEFT WIDTH=515 HEIGHT=84 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Better yet. Lets add roll over effect:</P>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+  XY = [10.w]+20,20
+  backColor = |*| #cccccc || #eeeeee |*|
+  10 = TEXT
+  10.text.field = title
+  10.offset = 0,13
+  10.align = center
+  10.niceText = 1
+}
+<FONT COLOR="#ff0000">page.10.1.RO &lt; page.10.1.NO</FONT>
+<FONT COLOR="#ff0000">page.10.1.RO = 1</FONT>
+<FONT COLOR="#ff0000">page.10.1.RO {</FONT>
+<FONT COLOR="#ff0000">  backColor = red</FONT>
+<FONT COLOR="#ff0000">  10.fontColor = white</FONT>
+<FONT COLOR="#ff0000">}</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_1f20416a.png" NAME="Grafik102" ALIGN=LEFT WIDTH=514 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU/1)</H4>
+<P CLASS="western">Could you manage to create this menu with embossed
+elements like the one we made with the GIFBUILDER-object earlier in
+this document? And could you make it so that the emboss direction is
+reversed when you roll over the element?</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1f20416a.png" NAME="Grafik103" ALIGN=LEFT WIDTH=514 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">Images on GMENUs</H3>
+<P CLASS="western">You can use background images for your menuitems</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+<FONT COLOR="#ff0000">  wrap = | &lt;BR&gt;</FONT>
+<FONT COLOR="#ff0000">  XY = [4.w], [4.h]</FONT>
+  backColor = olive
+  
+<FONT COLOR="#ff0000">  4 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  4.file = fileadmin/tsbyex/menuback.gif</FONT>
+
+  10 = TEXT
+  10.text.field = title
+  10.offset = 0,<FONT COLOR="#ff0000">14</FONT>
+  10.align = center
+  10.niceText = 1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">The image
+&quot;menuback.gif&quot; looks like this:</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="6_html_589c556a.png" NAME="Grafik107" ALIGN=LEFT WIDTH=160 HEIGHT=24 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">Result:</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="6_html_78b92575.png" NAME="Grafik108" ALIGN=LEFT WIDTH=214 HEIGHT=173 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Advanced Example (GMENU)</H4>
+<P CLASS="western" STYLE="font-weight: normal">If you would like to
+study this advanced example, where the GMENU creates a dynamically
+embossed background for menuitems, please go to the Challenge section
+in the back.</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="6_html_5080dbf2.png" NAME="Grafik112" ALIGN=LEFT WIDTH=611 HEIGHT=106 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU/2)</H4>
+<P CLASS="western">Could you create this menu, based on what you know
+about the GIFBUILDER object? 
+</P>
+<P CLASS="western">Three images, 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m228809c2.png" NAME="Grafik109" ALIGN=LEFT WIDTH=13 HEIGHT=20 BORDER=0>
+ <I>left.gif</I></P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_475ce823.png" NAME="Grafik110" ALIGN=LEFT WIDTH=28 HEIGHT=20 BORDER=0>
+ <I>middle.gif</I> and 
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m228809c2.png" NAME="Grafik111" ALIGN=LEFT WIDTH=13 HEIGHT=20 BORDER=0>
+ <I>right.gif </I>
+</P>
+<P CLASS="western">from media/buttons/ are used</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1f20416a.png" NAME="Grafik105" ALIGN=LEFT WIDTH=514 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">GMENU_LAYER</H3>
+<P CLASS="western">Typo3 also supports the use of DHTML menus on
+layers. But it requires the HMENU to consist of two menu objects
+where the first is GMENU_LAYER. The second can be either a TMENU or
+GMENU</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.includeLibs.gmenu_layers = media/scripts/gmenu_layers.php
+page.10 = HMENU
+page.10.1 = GMENU_LAYERS
+page.10.1 {
+  layerStyle = position:absolute;left:0px;top:30px;width:10px;VISIBILITY:hidden; 
+  xPosOffset =-10
+  lockPosition = x
+  expAll=1
+  NO {
+    backColor = #cccccc
+    XY = [10.w]+10, 14
+    10 = TEXT
+    10.text.field = title
+    10.offset = 5,10
+  }
+}
+page.10.2 = GMENU
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+  backColor = #99cccc
+  XY = 120, 14
+  10 = TEXT
+  10.text.field = title
+  10.offset = 5,10
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m2be85166.png" NAME="Grafik116" ALIGN=LEFT WIDTH=464 HEIGHT=154 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU_LAYERS/1)</H4>
+<P CLASS="western">Can you modify this menu to a layout like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m745202d9.png" NAME="Grafik117" ALIGN=LEFT WIDTH=474 HEIGHT=183 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(All modifications are done to menu object 2, the
+GMENU)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU_LAYERS/2)</H4>
+<P CLASS="western">Can you modify this menu to a layout almost like
+this (at least the orientation of the menu):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m6e3e303f.png" NAME="Grafik119" ALIGN=LEFT WIDTH=274 HEIGHT=196 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(All modifications are done to menu object 1, the
+GMENU_LAYER)</P>
+<H3 CLASS="western">Extending a background image to the whole menu</H3>
+<P CLASS="western">I would like to demonstrate a final powerful
+feature of the GMENU object: Extending a background image over the
+whole menu:</P>
+<P CLASS="western">Based on this menu:</P>
+<PRE CLASS="western">page.includeLibs.gmenu_layers = media/scripts/gmenu_layers.php
+page.10 = HMENU
+page.10.1 = GMENU_LAYERS
+page.10.1 {
+  layerStyle = position:absolute;left:0px;top:30px;width:10px;VISIBILITY:hidden; 
+  xPosOffset =-10
+  lockPosition = x
+  expAll=1
+  NO {
+    backColor = #cccccc
+    XY = [10.w]+10, 14
+    10 = TEXT
+    10.text.field = title
+    10.offset = 5,10
+  }
+}
+page.10.2 = GMENU
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+  backColor = #99cccc
+  XY = 200, 20
+  10 = TEXT
+  10.text.field = title
+  10.offset = 5,15
+  10.fontColor = white
+  10.niceText = 1
+  10.fontSize = 20
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_7b7a5df7.png" NAME="Grafik122" ALIGN=LEFT WIDTH=465 HEIGHT=201 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... add these lines:</P>
+<PRE CLASS="western">...
+page.10.2 = GMENU
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+  backColor = #99cccc
+  XY = 200, 20
+
+  <FONT COLOR="#ff0000">5 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  5.file = fileadmin/tsbyex/sunset_keywest.jpg</FONT>
+
+  10 = TEXT
+  10.text.field = title
+  10.offset = 5,15
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_7b7a5df7.png" NAME="Grafik123" ALIGN=LEFT WIDTH=465 HEIGHT=201 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">That inserted the sunset-image as background. But
+we would like that image to extend over the whole menu which is done
+by addition a property to the GMENU-object about which
+GIFBUILDER-objects to modify regarding offset values. So add:</P>
+<PRE CLASS="western"><FONT COLOR="#ff0000">page.10.2.applyTotalH = 5</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_7b7a5df7.png" NAME="Grafik124" ALIGN=LEFT WIDTH=465 HEIGHT=201 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and this is what you get!</P>
+<P CLASS="western">Regarding the property .applyTotalH, look it up in
+the TSref. Basically it's a pointer that works like this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_4a399234.png" NAME="Grafik125" ALIGN=LEFT WIDTH=320 HEIGHT=148 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Finally you may create such menus but wish that
+you menu will always be as high as the background image in order not
+to crop it in the bottom. Then add this:</P>
+<PRE CLASS="western">...
+page.10.2 = GMENU
+page.10.2.applyTotalH = 5
+<FONT COLOR="#ff0000">page.10.2.min = , 200</FONT>
+<FONT COLOR="#ff0000">page.10.2.max = , 200</FONT>
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+  backColor = #99cccc
+  XY = 200, 20
+
+  5 = IMAGE
+  5.file = fileadmin/tsbyex/sunset_keywest.jpg
+<FONT COLOR="#ff0000">  5.height = 200</FONT>
+
+  10 = TEXT
+  10.text.field = title
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_10dc6a2c.jpg" NAME="Graphic11" ALIGN=LEFT WIDTH=649 HEIGHT=366 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice: The properties .min and .max defines both
+x and y dimensions. In this case we specify only the y-dimension by
+the comma:</P>
+<PRE CLASS="western"><FONT COLOR="#ff0000">page.10.2.min = , 200</FONT>
+<FONT COLOR="#ff0000">page.10.2.max = , 200</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always">PHP
+include-scripts</H1>
+<H3 CLASS="western">PHP_SCRIPT cObject</H3>
+<P CLASS="western">There's not much to say about this, that hasn't
+been said already. So what I'm going to do is to direct you to the
+TSref, section &quot;PHP include scripts&quot; in the end of the
+document. There's a very fine &quot;Casestory&quot; which you can do
+as an execise. 
+</P>
+<P CLASS="western">Also there's a great demonstration on the
+testsite, you're working on. Unfortunately you've been working on a
+test-template, so directing you to page &quot;index.php?id=30&quot;
+will only display your last adventures with the test template. So,
+deactivate your test template for a while and check out the guide:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_73785f90.png" NAME="Grafik50" ALIGN=LEFT WIDTH=403 HEIGHT=215 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m47a6475.png" NAME="Grafik51" ALIGN=LEFT WIDTH=247 HEIGHT=69 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_42c1c09.png" NAME="Grafik52" ALIGN=LEFT WIDTH=498 HEIGHT=266 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">(Remember to &quot;Clear All Cache&quot; in the
+[menu] after deactivating...)</P>
+<H3 CLASS="western">Inspiration</H3>
+<P CLASS="western">If you need inspiration to your scripts, you
+should really take a look at some of the default scripts. The most
+basic is the guestbook script af media/scripts/guest.inc. I'm not
+gonna list the code here. There's too much. 
+</P>
+<P CLASS="western">Remember to look at the &quot;content.tt_guest&quot;
+static_template also. The TypoScript in there is the key to
+understand how you connect TypoScript with your own scripts.</P>
+<H3 CLASS="western">Example: Userdefined tags</H3>
+<P CLASS="western">I just thought of a great example of an include
+script. Really useful. On the www.typo3.com website I sometimes list
+TypoScript code. That's done with a special tag, I introduced there.
+In order to try this, we'll stick to the original testsite, because
+it features some content which come in handy here.</P>
+<P CLASS="western">1) Open the testsite template and add this:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western"># Add the custom tag, &lt;TS&gt;...&lt;/TS&gt; to the parseFunc of bodytext
+tt_content.text.20.parseFunc.tags {
+  ts.stripNL = 0
+  ts = PHP_SCRIPT 
+  ts.file = fileadmin/tsbyex/testtag.inc
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m13259cd4.png" NAME="Grafik54" ALIGN=LEFT WIDTH=539 HEIGHT=271 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">2) Open the document fileadmin/tsbyex/testtag.inc
+with your favourite text-browser and verify that this is the content:</P>
+<PRE CLASS="western">&lt;?
+	$contentOfTag = $this-&gt;getCurrentVal();
+	$content = '&lt;B&gt;'.$contentOfTag.'&lt;/b&gt;';
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">3) Open &quot;Startpage&quot; on the testsite and
+add &lt;ts&gt;...&lt;/ts&gt; tags like you see here:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_40a17324.png" NAME="Grafik53" ALIGN=LEFT WIDTH=614 HEIGHT=222 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... and guess what. This is the outcome:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_6a977466.png" NAME="Grafik55" ALIGN=LEFT WIDTH=437 HEIGHT=166 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Moving a bit further, lets include a library with
+a class. By time that's a necessity anyway, so...</P>
+<P CLASS="western">1) Add/modify this to the TypoScript template:</P>
+<PRE CLASS="western"># Add the custom tag, &lt;TS&gt;...&lt;/TS&gt; to the parseFunc of bodytext
+tt_content.text.20.parseFunc.tags {
+  ts.stripNL = 0
+  ts = PHP_SCRIPT 
+  ts.file = fileadmin/tsbyex/<FONT COLOR="#ff0000">testtag2.inc</FONT>
+}
+
+<FONT COLOR="#ff0000">includeLibs.testclass_example = fileadmin/tsbyex/testclass.inc</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">2) Open the document fileadmin/tsbyex/testtag2.inc
+and fileadmin/tsbyex/testclass.inc with your favourite text-browser
+and verify that this is the content:</P>
+<P CLASS="western">fileadmin/tsbyex/testtag2.inc</P>
+<PRE CLASS="western">&lt;?
+	$test_object = new testClass;
+	$contentOfTag = $this-&gt;getCurrentVal();
+	$content = $test_object-&gt;formatTS($contentOfTag, 1);
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">fileadmin/tsbyex/testclass.inc</P>
+<PRE CLASS="western">&lt;?
+class testClass {
+	function formatTS($input, $ln)	{
+		$input = ereg_replace(&quot;^[^&quot;.chr(10).&quot;]*.&quot;,&quot;&quot;,$input);
+		$input = chop($input);
+		$cArr = explode(chr(10),$input);
+		
+		reset($cArr);
+		$n = ceil(log10(count($cArr)));
+		$lineNum=&quot;&quot;;
+		while(list($k,$v)=each($cArr))	{
+			if ($ln)	$lineNum = sprintf(&quot;% &quot;.$n.&quot;d&quot;,($k+1)).&quot;:   &quot;;
+			$v=htmlspecialchars($v);
+			$cArr[$k] = str_replace(&quot; &quot;,chr(160),$lineNum.$v);
+		}
+		$output = implode($cArr, &quot;&lt;BR&gt;&quot;).&quot;&lt;BR&gt;&quot;;
+		$output = '&lt;font face=verdana size=1 color=maroon&gt;'.$output.'&lt;/font&gt;';
+		return $output;
+	}
+}
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_570b4a5c.png" NAME="Grafik56" ALIGN=LEFT WIDTH=622 HEIGHT=305 BORDER=0><BR CLEAR=LEFT>3)
+Finally enter this to the content record:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">... and you should see this in your frontend, when
+you reload:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m5d6a8b09.png" NAME="Grafik57" ALIGN=LEFT WIDTH=451 HEIGHT=268 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (PHP_SCRIPT1)</H4>
+<P CLASS="western">Write a script that displays two formfields, lets
+you enter two numbers and when they are sent to the same page, you
+calculate the sum of the figures. And display it.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (PHP_SCRIPT2)</H4>
+<P CLASS="western">Find out what the function enableFields() from the
+class cObj (tslib/content.php) does. (The actual function is in
+t3lib/page.php though). What arguments does it take and how could you
+use this effectively?</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always">Content
+rendering</H1>
+<H3 CLASS="western">Introduction</H3>
+<P CLASS="western">You should read the PDF-document
+&quot;content_rendering.pdf&quot; on the topic. 
+</P>
+<P CLASS="western">But regular pagecontent is normally rendered by
+the static_template &quot;content (default)&quot; which you include
+with your template:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m524d64a6.png" NAME="Grafik127" ALIGN=LEFT WIDTH=518 HEIGHT=402 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The static_template &quot;content (default)&quot;
+includes other static_template by itself. One of them is the famous
+&quot;styles.content (default)&quot; which holds a lot of premade
+TypoScript objects that is copied into useful locations in the
+nodetree.</P>
+<P CLASS="western">Looking in the Object Browser you see a rootlevel
+object &quot;tt_content&quot; has appeared. <I><B>The toplevel object
+&quot;tt_content&quot; is the cObject that renders content from the
+table &quot;tt_content&quot; by default!</B></I><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+And it appears to start out with a CASE content object that
+determines the content type of the content element in question:</SPAN></SPAN></P>
+<P CLASS="western" STYLE="font-style: normal; font-weight: normal"><IMG SRC="6_html_36e6df9c.png" NAME="Grafik128" ALIGN=LEFT WIDTH=468 HEIGHT=497 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">CONTENT</H3>
+<P CLASS="western">The cObject &quot;CONTENT&quot; is used to fetch
+the content from the &quot;tt_content&quot; table. It performs a
+SELECT-query on the database and the result is then - one record at a
+time - rendered by the &quot;tt_content.&quot; toplevel object
+(unless we specify something else)</P>
+<H5 CLASS="western">Example:</H5>
+<P CLASS="western">(First: include the static_template &quot;content
+(default)&quot; if you haven't done that already!)</P>
+<PRE CLASS="western">page.10 = CONTENT
+page.10 {
+  table = tt_content
+  select.orderBy = sorting
+  select.where = colPos=0
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_23f43459.png" NAME="Grafik129" ALIGN=LEFT WIDTH=481 HEIGHT=321 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">It's simple as that!</P>
+<H3 CLASS="western">colPos</H3>
+<P CLASS="western">But what is &quot;colPos=0&quot;? 
+</P>
+<P CLASS="western">Well, Typo3 can (by default) work with four
+columns of content defined by the field &quot;colPos&quot; of the
+tt_content table. This is how the interface displays the columns and
+as you see, currently there are no items in the other columns:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_5edbfb1d.png" NAME="Grafik130" ALIGN=LEFT WIDTH=508 HEIGHT=350 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_4d419790.png" NAME="Grafik131" ALIGN=LEFT WIDTH=315 HEIGHT=240 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Try to create some new content in the &quot;border&quot;
+column:</P>
+<P CLASS="western">... and it nicely appears in the &quot;border&quot;
+column:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m7a59a15f.png" NAME="Grafik132" ALIGN=LEFT WIDTH=296 HEIGHT=148 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">In order to insert the content on the website, you
+need to know which value the field &quot;colPos&quot; has for the
+border column. So go to the $tc-browser in the Tools-module:</P>
+<P CLASS="western"><IMG SRC="6_html_m1839d1cb.png" NAME="Grafik133" ALIGN=LEFT WIDTH=497 HEIGHT=682 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The value is &quot;3&quot;. So modify your
+TypoScript like this:</P>
+<PRE CLASS="western">page.10 = CONTENT
+page.10 {
+  table = tt_content
+  select.orderBy = sorting
+  select.where = <FONT COLOR="#ff0000">colPos=3</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_50318920.png" NAME="Grafik134" ALIGN=LEFT WIDTH=337 HEIGHT=121 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H3 CLASS="western">styles.content (default)</H3>
+<P CLASS="western">Let take a minute to look in the &quot;styles.content
+(default)&quot; static_template. As stated it contains premade chunks
+of TypoScript for our free use. Actually the tasks above could have
+been done much easier based on what we see here:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_11343f5e.png" NAME="Grafik135" ALIGN=LEFT WIDTH=576 HEIGHT=274 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<PRE CLASS="western">page.10 &lt; styles.content.get
+
+substitutes
+page.10 = CONTENT
+page.10 {
+  table = tt_content
+  select.orderBy = sorting
+  select.where = colPos=0
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">and likewise with the &quot;border&quot;-column:</P>
+<PRE CLASS="western">page.10 &lt; styles.content.getBorder</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Get it? Good.</P>
+<H3 CLASS="western">lib.stdheader</H3>
+<P CLASS="western">In static_template &quot;content (default)&quot;
+you see a object &quot;lib.stdheader&quot; defined:</P>
+<PRE CLASS="western">lib.stdheader = COA
+lib.stdheader {
+  stdWrap.wrapAlign.field = header_position
+  stdWrap.typolink.parameter.field = header_link
+  stdWrap.fieldRequired = header
+  stdWrap.if {
+    equals.field = header_layout
+    value = 100
+    negate = 1
+  }
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... and used many places:</P>
+<PRE CLASS="western"># CType: bullet
+tt_content.bullets = COA
+tt_content.bullets {
+<FONT COLOR="#ff0000">  10 = &lt; lib.stdheader</FONT>
+  20 = CASE
+...
+
+# CType: text
+tt_content.text = COA
+tt_content.text {
+<FONT COLOR="#ff0000">  10 = &lt; lib.stdheader</FONT>
+  20 = TEXT
+  20 {
+...
+
+# CType: multimedia
+tt_content.multimedia = COA
+tt_content.multimedia {
+<FONT COLOR="#ff0000">  10 = &lt; lib.stdheader</FONT>
+  20 = MULTIMEDIA
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Opposite to the normal use of &quot;shared code&quot;
+which is actually copied to other locations, cObjects can be shared
+by a reference to a toplevel object (see TSref, section &quot;cObjects&quot;).</P>
+<P CLASS="western">Looking in the Object Browser, we realize that
+this is true:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_63e20b64.png" NAME="Grafik136" ALIGN=LEFT WIDTH=313 HEIGHT=54 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">tt_content.text.10 has the <I>value</I> &quot;&lt;
+lib.stdheader&quot; - not the object properties! 
+</P>
+<P CLASS="western">This is a very clever implementation in this case
+because if the header of all content elements is rendered through the
+same object, lib.stdheader, that is the only place to make changes if
+we would like to alter the header rendering!</P>
+<H5 CLASS="western">Example:</H5>
+<PRE CLASS="western">page.10 &lt; styles.content.getBorder
+
+lib.stdheader &gt;
+lib.stdheader = TEXT
+lib.stdheader.value = ALTERNATIVE HEADER !! </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">results in:</P>
+<P CLASS="western"><IMG SRC="6_html_m478e8e8f.png" NAME="Grafik137" ALIGN=LEFT WIDTH=341 HEIGHT=72 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Apart from that, I'm not going to help you more
+with standard content rendering. Based on the material in this
+document, you must browse through the tt_content node-tree and see
+for yourself. 
+</P>
+<P CLASS="western">It's like the answers to the big questions in
+life: &quot;It's all in the Scriptures&quot;. :-)</P>
+<H3 CLASS="western">RECORD</H3>
+<P CLASS="western">This cObject is used to retrieve single records.
+CONTENT was designed to get a list of records - normally from the
+table tt_content. But it could be any table:</P>
+<H5 CLASS="western">A quick example:</H5>
+<PRE CLASS="western">page.10 = RECORDS
+page.10.source = 1
+page.10.tables = tt_content
+page.10.conf.tt_content = TEXT
+page.10.conf.tt_content {
+  field = header
+  case = upper
+  wrap = &lt;B&gt; | &lt;/B&gt;
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">results in:</P>
+<P CLASS="western"><IMG SRC="6_html_m680f5a12.png" NAME="Grafik138" ALIGN=LEFT WIDTH=323 HEIGHT=79 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">... because the record from table &quot;tt_content&quot;
+with uid &quot;1&quot; was :</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_5a2a9e9f.png" NAME="Grafik139" ALIGN=LEFT WIDTH=417 HEIGHT=138 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H5 CLASS="western">Another example:</H5>
+<P CLASS="western">In the tt_address database there are a few records
+with Simpsons characters. They are at the page &quot;Another site
+in.../Lists/Addresses/&quot;</P>
+<PRE CLASS="western">temp.tt_address = COA
+temp.tt_address.wrap = | &lt;HR&gt;
+temp.tt_address.10 = TEXT 
+temp.tt_address.10 {
+  field = name
+  case = upper
+  wrap = &lt;B&gt; | &lt;/B&gt;&lt;BR&gt;
+}
+temp.tt_address.20 = IMAGE
+temp.tt_address.20 {
+  file.import.field = image
+  file.import = uploads/pics/
+  file.import.listNum = 0
+  file.height = 100
+}
+
+page.10 = RECORDS
+page.10.source = 3,1,5
+page.10.tables = <FONT COLOR="#ff0000">tt_address</FONT>
+page.10.conf.<FONT COLOR="#ff0000">tt_address</FONT> &lt; temp.tt_address</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Results in:</P>
+<P CLASS="western"><IMG SRC="6_html_143a0764.png" NAME="Graphic12" ALIGN=LEFT WIDTH=324 HEIGHT=435 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western" STYLE="page-break-before: always">Notice how
+&quot;tt_content&quot; in the first TypoScript is now &quot;tt_address&quot;
+because we're working on a different table.</P>
+<P CLASS="western">An alternative implementation does exactly the
+same is this:</P>
+<PRE CLASS="western">tt_address = COA
+tt_address.wrap = | &lt;HR&gt;
+tt_address.10 = TEXT 
+tt_address.10 {
+  field = name
+  case = upper
+  wrap = &lt;B&gt; | &lt;/B&gt;&lt;BR&gt;
+}
+tt_address.20 = IMAGE
+tt_address.20 {
+  file.import.field = image
+  file.import = uploads/pics/
+  file.import.listNum = 0
+  file.height = 100
+}
+
+page.10 = RECORDS
+page.10.source = 3,1,5
+page.10.tables = tt_address</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice how the line &quot;page.10.conf.<FONT COLOR="#ff0000">tt_address</FONT>
+&lt; temp.tt_address&quot; was removed. That line copied the object
+&quot;temp.tt_address&quot; and used that for rendering of the
+record. But the default option is to use the toplevel object named
+like the table. Thus &quot;tt_address&quot; on the toplevel would
+render the record if this line is left out and that's exactly what
+the example shows (&quot;temp.tt_address&quot; was changed to
+&quot;tt_address&quot;).</P>
+<H1 CLASS="western" STYLE="page-break-before: always">Challenge
+answers</H1>
+<H4 CLASS="western">Challenge (stdWrap/1)</H4>
+<P CLASS="western">You can use both .date and .strftime. Each
+property has a data-type, &quot;date-conf&quot; and &quot;strftime-conf&quot;
+which is basically from the PHP-manual</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = crdate
+<FONT COLOR="#ff0000">page.10.date = d-m-y H:i</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs 
+</P>
+<PRE CLASS="western">01-07-00 15:48</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = crdate
+<FONT COLOR="#ff0000">page.10.strftime = %A %e. %B, %I:%M %p</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs</P>
+<PRE CLASS="western">Saturday 1. July, 03:48 PM </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = crdate
+<FONT COLOR="#ff0000">page.10.strftime = %A %e. %B, %I:%M %p</FONT>
+<FONT COLOR="#ff0000">config.locale_all = deutsch</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">outputs</P>
+<PRE CLASS="western">Samstag 1. Juli, 03:48 </PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (stdWrap/2)</H4>
+<PRE CLASS="western">page.10 = TEXT
+page.10.data = leveltitle:-2</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (stdWrap/3)</H4>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = subtitle
+page.10.ifEmpty = Hello world</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (stdWrap/4)</H4>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = subtitle
+page.10.ifEmpty {
+  field = title
+  required = 1
+  wrap = &lt;font color=&quot;red&quot;&gt;|&lt;/font&gt;
+}
+page.10.wrap = &lt;H3&gt;|&lt;/H3&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">.ifEmpty (from stdWrap) is a string-value with
+stdWrap properties, so there the party continues, using .field,
+.required (which returns if .field returned empty) and .wrap (which
+is only carried out, if .required didn't force a return)</P>
+<P CLASS="western">Alternatively (using .if instead of .required)</P>
+<PRE CLASS="western">page.10 = TEXT
+page.10.field = subtitle
+page.10.ifEmpty {
+  field = title
+<FONT COLOR="#ff0000">  if.isTrue.field = title</FONT>
+  wrap = &lt;font color=&quot;red&quot;&gt;|&lt;/font&gt;
+}
+page.10.wrap = &lt;H3&gt;|&lt;/H3&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/1)</H4>
+<PRE CLASS="western">page.10 = COA
+
+# Header to this section
+page.10.10 = TEXT
+page.10.10 {
+  value = This is the page title:
+...
+  20.wrap = Subtitle: &lt;B&gt; |&lt;/B&gt;
+<FONT COLOR="#ff0000">  20.required=1</FONT>
+}</PRE><H4 CLASS="western">
+Challenge (cObject/2)</H4>
+<PRE CLASS="western">page.10 = COA
+<FONT COLOR="#ff0000">page.10.if.isTrue.field = subtitle</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">See the TSref (-&gt;if) for properties to this
+object. In this case -&gt;if returns true if the fieldvalue of
+subtitle is not empty</P>
+<H4 CLASS="western">Challenge (cObject/3)</H4>
+<PRE CLASS="western">page.10 = COA
+<FONT COLOR="#ff0000">page.10.if.value = 1</FONT>
+<FONT COLOR="#ff0000">page.10.if.isGreaterThan.data = level:1</FONT>
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Here we compare two values. It's a bit
+'backwards', but here is how it works: &quot;<I>if returns true if
+the level we're at (rootline level, starting with zero for the
+rootpage) is greater than the value defined by if.value</I>&quot;</P>
+<H4 CLASS="western">Questions (cObject/4)</H4>
+<P CLASS="western">Typo3 actually scales the image. 
+</P>
+<P CLASS="western">The first example has the filename
+&quot;fileadmin/tsbyex/alligator.jpg&quot;.</P>
+<P CLASS="western">The second example has the filename
+&quot;typo3temp/3de305c72b.jpg&quot;. The filename is the cropped
+result of a md5-hash made on the serialized TypoScript configuration
+for the image. Notice that a change of properties for the imgResource
+is also a new file in the typo3temp/-folder and therefore this folder
+will by time collect a lot of unused images in it. 
+</P>
+<H4 CLASS="western">Challenge (cObject/5)</H4>
+<P CLASS="western">Plain version:</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10 {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width = 200
+  imageLinkWrap = 1
+  imageLinkWrap.enable = 1
+<FONT COLOR="#ff0000">  imageLinkWrap.JSwindow = 1</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">The &quot;Rolls Royce&quot; version:</P>
+<PRE CLASS="western">page.10 = IMAGE
+page.10 {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width = 200
+  imageLinkWrap = 1
+  imageLinkWrap.enable = 1
+<FONT COLOR="#ff0000">  imageLinkWrap.JSwindow = 1</FONT>
+<FONT COLOR="#ff0000">  imageLinkWrap {</FONT>
+<FONT COLOR="#ff0000">    bodyTag = &lt;BODY bgColor=black&gt;</FONT>
+<FONT COLOR="#ff0000">    wrap = &lt;A href=&quot;javascript:close();&quot;&gt; | &lt;/A&gt;</FONT>
+<FONT COLOR="#ff0000">    width = 400m</FONT>
+<FONT COLOR="#ff0000">    height = 300</FONT>
+<FONT COLOR="#ff0000">    JSwindow = 1</FONT>
+<FONT COLOR="#ff0000">    JSwindow.expand = 22,30</FONT>
+<FONT COLOR="#ff0000">  }</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">... resulting in this:</P>
+<P CLASS="western">The window is closed with a click on the image
+which is limited to the max dimensions 400x300 pixels. The JavaScript
+window is sized based on the image-size but 22 and 30 pixels are
+added in order to put borders to the window. 
+</P>
+<P CLASS="western"><IMG SRC="6_html_m7d13633f.jpg" NAME="Graphic13" ALIGN=LEFT WIDTH=432 HEIGHT=320 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/6)</H4>
+<PRE CLASS="western">page.10 = IMG_RESOURCE
+page.10 {
+  file = fileadmin/tsbyex/alligator.jpg
+  file.width = 200
+}
+page.10.stdWrap.wrap = &lt;table border=1 cellpadding=30 background=&quot;|&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;BR&gt;&lt;font color=white size=4&gt;&lt;B&gt;Hello World&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(last line is <I>one</I> line!)</P>
+<P CLASS="western"><IMG SRC="6_html_6eafd384.png" NAME="Grafik34" ALIGN=LEFT WIDTH=192 HEIGHT=139 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/7)</H4>
+<PRE CLASS="western">page.5 = TEXT
+page.5.value = Before ruler
+<FONT COLOR="#ff0000">page.5.wrap = | &lt;BR&gt;</FONT>
+
+page.10 = HRULER
+page.10 {
+  lineThickness = 3
+  lineColor = red
+}
+<FONT COLOR="#ff0000">page.10.stdWrap.spaceAfter = 20</FONT>
+<FONT COLOR="#ff0000">page.10.stdWrap.spaceBefore = 10</FONT>
+
+page.15 = TEXT
+page.15.value = After ruler</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This results in:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m18442846.png" NAME="Grafik36" ALIGN=LEFT WIDTH=388 HEIGHT=273 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Notice that we had to set a &lt;BR&gt; tag after
+the &quot;Before ruler&quot; text. If not, the space above didn't
+work.</P>
+<P CLASS="western">The HTML-source code:</P>
+<PRE CLASS="western">Before ruler&lt;BR&gt;
+&lt;img src=&quot;clear.gif&quot; width=1 height=10 border=0&gt;&lt;BR&gt;
+&lt;table border=0 cellspacing=0 cellpadding=0 width=99%&gt;
+  &lt;tr&gt;
+    &lt;td bgColor=&quot;red&quot;&gt;&lt;img src=&quot;clear.gif&quot; width=1 height=3&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;img src=&quot;clear.gif&quot; width=1 height=20 border=0&gt;&lt;BR&gt;
+After ruler</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/8)</H4>
+<PRE CLASS="western"><FONT COLOR="#ff0000">page.bodyTagMargins = 0</FONT>
+page.10 = OTABLE
+page.10 {
+<FONT COLOR="#ff0000">  tableParams = border=0 cellpadding=0 cellspacing=0 width=1</FONT>
+<FONT COLOR="#ff0000">  offset = 0,20</FONT>
+
+  10 = TEXT
+  10.value = What a cute little alligator! Dear Lord, may it never grow up!
+  10.wrap = |&lt;BR&gt;
+
+  20 = IMAGE
+  20.file = fileadmin/tsbyex/alligator.jpg
+  20.file.width=200
+
+<FONT COLOR="#ff0000">  30 = CLEARGIF</FONT>
+<FONT COLOR="#ff0000">  30.width=250</FONT>
+<FONT COLOR="#ff0000">  30.stdWrap.wrap = &lt;BR&gt; |</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (cObject/9)</H4>
+<PRE CLASS="western">page.10 = TEMPLATE
+page.10 {
+  template = FILE
+  template.file = fileadmin/tsbyex/template.html
+  workOnSubpart = DOCUMENT
+  marks.SIMPLE_WORD = TEXT
+  marks.SIMPLE_WORD.field = title
+  subparts.LINK = TEXT
+  subparts.LINK.current = 1
+  subparts.LINK.typolink {
+<FONT COLOR="#ff0000">    parameter.data = leveluid:1</FONT>
+<FONT COLOR="#ff0000">    wrap = &lt;B&gt;|&lt;/B&gt;</FONT>
+<FONT COLOR="#ff0000">    target = _blank</FONT>
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (PHP_SCRIPT1)</H4>
+<P CLASS="western">See fileadmin/tsbyex/test_calculate.inc</P>
+<P CLASS="western">Try this TypoScript (with your test template):</P>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">page.10 = PHP_SCRIPT
+page.10.file = fileadmin/tsbyex/test_calculate.inc</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This is the output:</P>
+<P CLASS="western"><IMG SRC="6_html_m25744976.png" NAME="Grafik58" ALIGN=LEFT WIDTH=373 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Try to input some numbers and click &quot;Calculate!&quot;</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_723a99b3.png" NAME="Grafik59" ALIGN=LEFT WIDTH=177 HEIGHT=65 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">This is the codelisting:</P>
+<PRE CLASS="western">&lt;?
+
+if (is_object($this))	{
+	if (t3lib_div::GPvar(&quot;submit&quot;))	{
+// Calculate result.
+			// Disable cache, because the result must not be cached:
+		<FONT COLOR="#ff0000">$GLOBALS[&quot;TSFE&quot;]-&gt;set_no_cache();</FONT>
+			// Get values:
+		$value_1 = t3lib_div::GPvar(&quot;value_1&quot;);
+		$value_2 = t3lib_div::GPvar(&quot;value_2&quot;);
+			// Output result:
+		$content.=&quot;Result is: &quot;.($value_1 + $value_2);
+	} else {
+// Draw the form:
+		$content.='
+&lt;form action=&quot;<FONT COLOR="#ff0000">index.php?id='.$GLOBALS[&quot;TSFE&quot;]-&gt;id.'&amp;type='.$GLOBALS[&quot;TSFE&quot;]-&gt;type.'&amp;no_cache=1</FONT>&quot; method=&quot;POST&quot;&gt;
+	&lt;input type=&quot;Text&quot; name=&quot;value_1&quot;&gt; + &lt;input type=&quot;Text&quot; name=&quot;value_2&quot;&gt; =&lt;br&gt;
+	&lt;input type=&quot;Submit&quot; name=&quot;submit&quot; value=&quot;Calculate!&quot;&gt;
+&lt;/form&gt;		
+		';
+	}
+} else die(&quot;You MUST include this script as a PHP_SCRIPT cObject.&quot;);
+
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Especially I would like you to notice that the URL
+of the form is the current page and that the &amp;no_cache=1
+parameter is sent. That parameter forces the index_ts.php script to
+&quot;execute&quot; the TypoScript template (thereby rendering the
+cObjects). If that parameter is not set, we might instead of getting
+the result, see the form again, because the form is cached!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m42d64081.png" NAME="Grafik60" ALIGN=LEFT WIDTH=247 HEIGHT=88 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">When the result is displayed, the cache is already
+disable if the &amp;no_cache parameter is sent. But in case it isn't,
+we make sure that the page is not cached with the
+$GLOBALS[&quot;TSFE&quot;]-&gt;set_no_cache() function.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (PHP_SCRIPT2)</H4>
+<P CLASS="western">In your include-scripts you can use the function
+$this-&gt;enablefields(&quot;[table-name]&quot;) to get a part of a
+WHERE-clause the deselects records from a table if they are either
+hidden or timed or user-disabled - based on the settings in
+tables.php. So that's why it's brilliant! It provides a bulletproof
+way for you to make correct SQL-queries with respect to the hidden,
+start-/endtime and fe_group features of record - if these features
+appear.</P>
+<P CLASS="western">Try this example:</P>
+<P CLASS="western">In your template (your test template)</P>
+<PRE CLASS="western">page.10 = PHP_SCRIPT
+page.10.file = fileadmin/tsbyex/test_enablefields.inc</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Hit the site:</P>
+<PRE CLASS="western">|pages|<BR>| AND NOT pages.deleted AND NOT pages.hidden AND (pages.starttime&lt;=985903309) AND (pages.endtime=0 OR pages.endtime&gt;985903309) AND pages.fe_group IN (0,-1)|
+<BR>|tt_content|<BR>| AND NOT tt_content.deleted AND NOT tt_content.hidden AND (tt_content.starttime&lt;=985903309) AND (tt_content.endtime=0 OR tt_content.endtime&gt;985903309) AND tt_content.fe_group IN (0,-1)|
+<BR>|tt_address|<BR>| AND NOT tt_address.deleted AND NOT tt_address.hidden|</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">As you can see, the function outputs (by the
+debug() function, see the file
+fileadmin/tsbyex/test_enablefields.inc) the WHERE-clauses returned.</P>
+<P CLASS="western">For all tables, &quot;pages&quot;, &quot;tt_content&quot;
+and &quot;tt_address&quot; the field <I>deleted</I> cannot be true.
+The deleted field is set for  deleted records in Typo3. Also all
+tables is checked for their <I>hidden</I>-fields</P>
+<P CLASS="western">But apparently the table &quot;tt_address&quot;
+doesn't have the startime and endtime fields opposite to &quot;pages&quot;
+and &quot;tt_content&quot;. 
+</P>
+<P CLASS="western">A quick check in tables.php:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">(pages)</P>
+<PRE CLASS="western">...
+$tc[pages] = Array (
+	&quot;ctrl&quot; =&gt; Array (
+		&quot;label&quot; =&gt; &quot;title&quot;,
+		&quot;tstamp&quot; =&gt; &quot;tstamp&quot;,
+		&quot;sortby&quot; =&gt; &quot;sorting&quot;,
+		&quot;title&quot; =&gt; &quot;Page|Side|Seite|Side|Pagina|Page&quot;,
+		&quot;type&quot; =&gt; &quot;doktype&quot;,
+	<FONT COLOR="#ff0000">	&quot;delete&quot; =&gt; &quot;deleted&quot;,</FONT>
+		&quot;crdate&quot; =&gt; &quot;crdate&quot;,
+		&quot;cruser_id&quot; =&gt; &quot;cruser_id&quot;,
+<FONT COLOR="#ff0000">		&quot;enablecolumns&quot; =&gt; Array (</FONT>
+<FONT COLOR="#ff0000">			&quot;fe_group&quot; =&gt; &quot;fe_group&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;disabled&quot; =&gt; &quot;hidden&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;starttime&quot; =&gt; &quot;starttime&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;endtime&quot; =&gt; &quot;endtime&quot;</FONT>
+<FONT COLOR="#ff0000">		),</FONT>
+		&quot;mainpalette&quot; =&gt; 1,
+		&quot;useColumnsForDefaultValues&quot; =&gt; &quot;doktype,fe_group,hidden&quot;
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(tt_content)</P>
+<PRE CLASS="western">$tc[tt_content] = Array (
+	&quot;ctrl&quot; =&gt; Array (
+		&quot;label&quot; =&gt; &quot;header&quot;,
+		&quot;sortby&quot; =&gt; &quot;sorting&quot;,
+		&quot;tstamp&quot; =&gt; &quot;tstamp&quot;,
+		&quot;title&quot; =&gt; &quot;Pagecontent|Sideindhold|Seiteninhalt|Sideinnhold|Contenuto pagina|Contenu de la page&quot;,
+<FONT COLOR="#ff0000">		&quot;delete&quot; =&gt; &quot;deleted&quot;,</FONT>
+		&quot;type&quot; =&gt; &quot;CType&quot;,
+<FONT COLOR="#ff0000">		&quot;enablecolumns&quot; =&gt; Array (</FONT>
+<FONT COLOR="#ff0000">			&quot;fe_group&quot; =&gt; &quot;fe_group&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;disabled&quot; =&gt; &quot;hidden&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;starttime&quot; =&gt; &quot;starttime&quot;,</FONT>
+<FONT COLOR="#ff0000">			&quot;endtime&quot; =&gt; &quot;endtime&quot;</FONT>
+<FONT COLOR="#ff0000">		),</FONT>
+		&quot;typeicon_column&quot; =&gt; &quot;CType&quot;,
+		&quot;typeicons&quot; =&gt; Array (
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">(tt_address)</P>
+<PRE CLASS="western">$tc[tt_address] = Array (
+	&quot;ctrl&quot; =&gt; Array (
+		&quot;label&quot; =&gt; &quot;name&quot;,
+		&quot;default_sortby&quot; =&gt; &quot;ORDER BY name&quot;,
+		&quot;tstamp&quot; =&gt; &quot;tstamp&quot;,
+<FONT COLOR="#ff0000">		&quot;delete&quot; =&gt; &quot;deleted&quot;,</FONT>
+		&quot;title&quot; =&gt; &quot;Address|Adresse|Adresse|Adresse|Indirizzo:&quot;,
+<FONT COLOR="#ff0000">		&quot;enablecolumns&quot; =&gt; Array (</FONT>
+<FONT COLOR="#ff0000">			&quot;disabled&quot; =&gt; &quot;hidden&quot;</FONT>
+<FONT COLOR="#ff0000">		),</FONT>
+		&quot;thumbnail&quot; =&gt; &quot;image&quot;
+	),
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">These examples show where the &quot;enablefields&quot;
+are configured.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">Codelisting of
+&quot;fileadmin/tsbyex/test_enablefields.inc&quot;</P>
+<PRE CLASS="western">&lt;?
+
+
+debug(&quot;pages&quot;,1);
+debug($this-&gt;enableFields(&quot;pages&quot;),1);
+
+debug(&quot;tt_content&quot;,1);
+debug($this-&gt;enableFields(&quot;tt_content&quot;),1);
+
+debug(&quot;tt_address&quot;,1);
+debug($this-&gt;enableFields(&quot;tt_address&quot;),1);
+
+?&gt;</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (imgResource/1)</H4>
+<PRE CLASS="western">page.bgImg.import {
+  cObject = TEXT
+  cObject.value = fileadmin/tsbyex/alligator.jpg  
+  cObject.override {
+    required = 1
+    field = media
+    listNum = 1
+    wrap = uploads/media/ | 
+  }
+}
+page.bgImg.width = 200</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">You're going to figure that out yourself...</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/1)</H4>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file {
+  XY = [20.w]+20, 30
+  backColor = olive
+
+  20 = TEXT
+  20.text.field = title
+  20.offset = 10,20
+  20.niceText = 1
+  20.fontSize= 20
+  20.fontFile = t3lib/fonts/verdana.ttf
+  20.fontColor = #660000
+  20.emboss {
+    offset = -2,-2
+    highColor = olive : +30
+    lowColor = olive : -30
+    blur = 30
+    opacity = 80
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_fe77941.png" NAME="Grafik80" ALIGN=LEFT WIDTH=195 HEIGHT=92 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Notice the color definitions in the .emboss
+property. The TSref says that the value is &quot;GraphicColor&quot;
+which has an option that lets us arithmetically alter the color
+value. In this case the &quot;high&quot; color (light) is lightened
+(linear brightness value) with 30 and the &quot;low&quot; is likewise
+darkened with 30. Unfortunately Typo3 (ImageMagick...) doesn't
+support the blend-modes &quot;multiply&quot; and &quot;screen&quot;
+know from many image manipulation programs. Those modes would have
+been more correct in these situations.</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/2)</H4>
+<PRE CLASS="western">page.10 = IMAGE
+page.10.file = GIFBUILDER
+page.10.file {
+<FONT COLOR="#ff0000">  XY = 200, 160</FONT>
+<FONT COLOR="#ff0000">  backColor = silver</FONT>
+
+  20 = TEXT
+  20.text.field = title
+  20.offset = 0,120
+  20.niceText = 1
+  20.align=center
+  20.fontSize= 40
+  20.fontFile = t3lib/fonts/verdana.ttf
+  20.fontColor = yellow
+ <FONT COLOR="#ff0000">   # Left, top</FONT>
+<FONT COLOR="#ff0000">  30 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  30.file = fileadmin/tsbyex/alligator.jpg</FONT>
+<FONT COLOR="#ff0000">  30.file.width=50</FONT>
+<FONT COLOR="#ff0000">  30.offset = 5,5</FONT>
+<FONT COLOR="#ff0000">    # Left, bottom</FONT>
+<FONT COLOR="#ff0000">  31 &lt; .30</FONT>
+<FONT COLOR="#ff0000">  31.align = , b</FONT>
+<FONT COLOR="#ff0000">  31.offset = 5,-5</FONT>
+<FONT COLOR="#ff0000">    # Right, top</FONT>
+<FONT COLOR="#ff0000">  32 &lt; .30</FONT>
+<FONT COLOR="#ff0000">  32.align = r , t</FONT>
+<FONT COLOR="#ff0000">  32.offset = -5,5</FONT>
+<FONT COLOR="#ff0000">    # Right, bottom</FONT>
+<FONT COLOR="#ff0000">  33 &lt; .30</FONT>
+<FONT COLOR="#ff0000">  33.align = r , b</FONT>
+<FONT COLOR="#ff0000">  33.offset = -5,-5</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_6be79c5b.png" NAME="Grafik82" ALIGN=LEFT WIDTH=249 HEIGHT=219 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">The .align and .offset properties are interrelated
+as you see. If you set align to &quot;r,b&quot; (right - bottom), the
+offset is relative to this position and you must specify &quot;-5,
+-5&quot; to push the image up and to the left.</P>
+<P CLASS="western">Also notice how the TypoScript syntax is utilized
+to copy the first object into the other object positions thereby
+saving the redundancy of specifying the same filename again and again
+and again...</P>
+<P CLASS="western">This is how it looks in the Object Browser:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m5bee3f44.png" NAME="Grafik83" ALIGN=LEFT WIDTH=511 HEIGHT=592 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GIFBUILDER/3)</H4>
+<P CLASS="western">Add:</P>
+<PRE CLASS="western"><FONT COLOR="#ff0000">    # Left border</FONT>
+<FONT COLOR="#ff0000">  40 = BOX</FONT>
+<FONT COLOR="#ff0000">  40.color = red</FONT>
+<FONT COLOR="#ff0000">  40.dimensions = 0,0,2,160</FONT>
+<FONT COLOR="#ff0000">    # Right border</FONT>
+<FONT COLOR="#ff0000">  41 &lt; .40</FONT>
+<FONT COLOR="#ff0000">  41.align = r</FONT>
+<FONT COLOR="#ff0000">    # Top border</FONT>
+<FONT COLOR="#ff0000">  42 &lt; .40</FONT>
+<FONT COLOR="#ff0000">  42.dimensions = 0,0,200,2</FONT>
+<FONT COLOR="#ff0000">    # Bottom border</FONT>
+<FONT COLOR="#ff0000">  43 &lt; .42</FONT>
+<FONT COLOR="#ff0000">  43.align = ,b</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_6e61af2c.png" NAME="Grafik84" ALIGN=LEFT WIDTH=243 HEIGHT=199 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (TMENU/1)</H4>
+<PRE CLASS="western">...
+  wrap = &lt;tr&gt;&lt;td nowrap&gt; | &lt;/td&gt;&lt;/tr&gt;
+  target = page
+  NO {
+<FONT COLOR="#ff0000">    afterImg =  media/bullets/bullet1_n.gif</FONT>
+<FONT COLOR="#ff0000">    afterROImg = media/bullets/bullet1_h.gif</FONT>
+<FONT COLOR="#ff0000">    afterImgTagParams = hspace=2</FONT>
+    RO = 1
+    after = &lt;br&gt;
+...</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Challenge (TMENU/2)</H4>
+<PRE CLASS="western">...
+    after = &lt;br&gt;
+    ATagBeforeWrap = 1
+    linkWrap= &lt;font face=Verdana size=1 color=black&gt; | &lt;/font&gt;
+  }
+}
+<FONT COLOR="#ff0000">page.10.3 &lt; page.10.2</FONT>
+<FONT COLOR="#ff0000">page.10.3.wrap &gt;</FONT>
+<FONT COLOR="#ff0000">page.10.3.NO.before = &lt;font size=1&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/font&gt;</FONT>
+<FONT COLOR="#ff0000">page.10.2.expAll = 1</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_ma8335d4.png" NAME="Grafik91" ALIGN=LEFT WIDTH=427 HEIGHT=291 BORDER=0><BR CLEAR=LEFT>Result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western">(In order to have enough menu items I had to move
+some pages from &quot;Another site in...&quot;)</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (TMENU/3)</H4>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = TMENU
+page.10.1.target = page
+page.10.1 {
+  expAll = 1
+  wrap = &lt;table width=&quot;300&quot; border=1 cellspacing=0 cellpadding=0&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;clear.gif&quot; width=1 hspace=200 height=1 vspace=3 border=0&gt;&lt;/td&gt;&lt;/tr&gt; | &lt;/table&gt;
+  NO.linkWrap = &lt;font face=Arial size=2 color=black&gt;&lt;b&gt; |&lt;/b&gt;&lt;/font&gt;
+  NO.allWrap = &lt;tr&gt;&lt;td&gt;&lt;img src=&quot;clear.gif&quot; width=1 height=1 vspace=3 border=0&gt;&lt;br&gt; | &lt;/td&gt;&lt;/tr&gt;
+  <FONT COLOR="#ff0000">NO.ATagBeforeWrap = 1</FONT>
+<FONT COLOR="#ff0000">  ACT &lt; .NO</FONT>
+<FONT COLOR="#ff0000">  ACT = 1</FONT>
+<FONT COLOR="#ff0000">  ACT.linkWrap = &lt;font face=Arial size=2 color=red&gt;&lt;b&gt; |&lt;/b&gt;&lt;/font&gt;</FONT>
+}
+page.10.2 = TMENU
+page.10.2 {
+  wrap = &lt;tr&gt;&lt;td nowrap&gt; | &lt;/td&gt;&lt;/tr&gt;
+  target = page
+  NO {
+    afterImg =  media/bullets/bullet1_n.gif
+    afterROImg = media/bullets/bullet1_h.gif
+    afterImgTagParams = hspace=2
+    RO = 1
+    after = &lt;br&gt;
+    ATagBeforeWrap = 1
+    linkWrap= &lt;font face=Verdana size=1 color=black&gt; | &lt;/font&gt;
+  }
+  <FONT COLOR="#ff0000">ACT &lt; .NO</FONT>
+<FONT COLOR="#ff0000">  ACT =1</FONT>
+<FONT COLOR="#ff0000">  ACT.linkWrap = &lt;font face=Verdana size=1 color=red&gt; | &lt;/font&gt;</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_m1454c215.png" NAME="Grafik92" ALIGN=LEFT WIDTH=459 HEIGHT=243 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (TMENU/4)</H4>
+<P CLASS="western"><BR><BR>
+</P>
+<PRE CLASS="western">temp.challengeMenu = HMENU
+temp.challengeMenu.stdWrap.wrap  = &lt;TABLE width=&quot;200&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#004828&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;TABLE border=&quot;0&quot; width=&quot;100%&quot; cellspacing=&quot;1&quot; cellpadding=&quot;2&quot;&gt;|&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+temp.challengeMenu.entryLevel = 0
+temp.challengeMenu.1 = TMENU
+temp.challengeMenu.1.target = _top
+temp.challengeMenu.1.NO {
+  allWrap = &lt;TR&gt;&lt;TD bgcolor=&quot;#638E7B&quot; align=&quot;center&quot; valign=&quot;top&quot; width=&quot;5&quot;&gt;&lt;IMG src=&quot;media/bullets/blackdot.gif&quot; width=&quot;5&quot; height=&quot;9&quot;&gt;&lt;/TD&gt;&lt;TD bgcolor=&quot;#638E7B&quot; width=&quot;160&quot;&gt; | &lt;/TD&gt;&lt;/TR&gt;
+  ATagBeforeWrap = 1
+  linkWrap = &lt;FONT face=&quot;Verdana, Arial, Helvetica, sans-serif&quot; size=&quot;1&quot; color=&quot;#004B2C&quot;&gt; | &lt;/FONT&gt;
+  stdWrap.case = upper
+}
+temp.challengeMenu.1.ACT &lt; temp.challengeMenu.1.NO
+temp.challengeMenu.1.ACT = 1
+temp.challengeMenu.1.ACT {
+  linkWrap = &lt;FONT face=&quot;Verdana, Arial, Helvetica, sans-serif&quot; size=&quot;1&quot; color=&quot;white&quot;&gt; | &lt;/FONT&gt;
+}
+temp.challengeMenu.2 = TMENU
+temp.challengeMenu.2.target = _top
+temp.challengeMenu.2.NO {
+  allWrap = &lt;TR&gt;&lt;TD colspan=&quot;2&quot; bgcolor=&quot;#D0DCD8&quot;&gt;|&lt;/TD&gt;&lt;/TR&gt;
+  ATagBeforeWrap = 1
+  linkWrap = &lt;FONT face=&quot;Verdana, Arial, Helvetica, sans-serif&quot; size=&quot;1&quot; color=&quot;#004B2C&quot;&gt;|&lt;/FONT&gt;
+  stdWrap.case = upper
+}
+temp.challengeMenu.2.ACT &lt; temp.challengeMenu.2.NO
+temp.challengeMenu.2.ACT = 1
+temp.challengeMenu.2.ACT {
+  allWrap = &lt;TR&gt;&lt;TD colspan=&quot;2&quot; bgcolor=&quot;#FFFBE7&quot;&gt;|&lt;/TD&gt;&lt;/TR&gt;
+  linkWrap = &lt;FONT face=&quot;Verdana, Arial, Helvetica, sans-serif&quot; size=&quot;1&quot; color=&quot;#004B2C&quot;&gt;|&lt;/FONT&gt;
+}
+
+
+page.noLinkUnderline =1
+page.10 &lt; temp.challengeMenu</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<H4 CLASS="western">Example (TMENU)</H4>
+<PRE CLASS="western">temp.leftmenu = HMENU
+temp.leftmenu.entryLevel = 0
+temp.leftmenu.1 = TMENU
+temp.leftmenu.1.target = _top
+temp.leftmenu.1.collapse = 1
+temp.leftmenu.1.wrap = &lt;table border=0 cellpadding=0 cellspacing=0&gt; | &lt;/table&gt;
+temp.leftmenu.1.NO {
+  allWrap = &lt;TR&gt;&lt;TD colspan=2&gt;&lt;img src=&quot;clear.gif&quot; width=1 height=5&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD colspan=2&gt; | &lt;/TD&gt;&lt;/TR&gt;
+  ATagBeforeWrap = 1
+  linkWrap = &lt;b&gt;&lt;font face=&quot;verdana&quot; size=1 color=black&gt; | &lt;/font&gt;&lt;/b&gt;
+  stdWrap.case = upper
+}
+
+temp.leftmenu.2 = TMENU
+temp.leftmenu.2.target = _top
+temp.leftmenu.2.wrap = | &lt;TR&gt;&lt;TD&gt;&lt;img src=&quot;clear.gif&quot; width=1 height=10&gt;&lt;/TD&gt;&lt;TD&gt;&lt;/TD&gt;&lt;/TR&gt;
+temp.leftmenu.2.NO {
+  allWrap = &lt;TR&gt;&lt;TD&gt;&lt;img src=&quot;clear.gif&quot; width=10 height=1&gt;&lt;/TD&gt;&lt;TD&gt; | &lt;/TD&gt;&lt;/TR&gt;
+  after = &lt;BR&gt;&lt;img src=&quot;media/bullets/stipler3.gif&quot; height=1 vspace=1&gt; |*||*| &lt;img src=&quot;clear.gif&quot; width=1 height=1&gt;&lt;BR&gt;
+  ATagBeforeWrap = 1
+  linkWrap = &lt;font face=&quot;verdana&quot; size=1 color=black&gt; | &lt;/font&gt;
+}
+
+page.10 &lt; temp.leftmenu</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_322445c3.png" NAME="Grafik115" ALIGN=LEFT WIDTH=210 HEIGHT=246 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (IMGMENU/1)</H4>
+<PRE CLASS="western">...
+<FONT COLOR="#ff0000">  dWorkArea = 77,15</FONT>
+
+<FONT COLOR="#ff0000">  NO.distrib = 0, 15</FONT>
+  NO.10 = TEXT
+  NO.10 {
+    text.field = title
+    fontSize = 11
+    fontColor = black
+    niceText = 1
+    offset = 0,0
+    imgMap.explode = 3,2
+  }
+<FONT COLOR="#ff0000">  NO.20 = BOX</FONT>
+  NO.20 {
+<FONT COLOR="#ff0000">    dimensions = 0,3,120,1</FONT>
+    color = white
+  }
+}
+
+page.10 &lt; temp.topmenu</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Notice that the &quot;||&quot; from &quot;NO.20&quot;
+is removed in order to make the white line appear under every
+element!</P>
+<P CLASS="western"><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (IMGMENU/2):</H4>
+<PRE CLASS="western">...
+  NO.20 = BOX
+  NO.20 {
+    dimensions = 0,3,120,1
+   <FONT COLOR="#ff0000"> color = |*| white || black |*|</FONT>
+  }
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m190fcb89.png" NAME="Grafik99" ALIGN=LEFT WIDTH=243 HEIGHT=116 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU/1)</H4>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+  XY = [10.w]+20,20
+  backColor = olive
+  10 = TEXT
+  10.text.field = title
+  10.offset = 0,13
+  10.align = center
+  10.niceText = 1
+<FONT COLOR="#ff0000">  10.emboss {</FONT>
+<FONT COLOR="#ff0000">    offset = -2,-2</FONT>
+<FONT COLOR="#ff0000">    highColor = olive : +30</FONT>
+<FONT COLOR="#ff0000">    lowColor = olive : -30</FONT>
+<FONT COLOR="#ff0000">    blur = 30</FONT>
+<FONT COLOR="#ff0000">    opacity = 80</FONT>
+<FONT COLOR="#ff0000">  }</FONT>
+}
+
+<FONT COLOR="#ff0000">page.10.1.RO &lt; page.10.1.NO</FONT>
+<FONT COLOR="#ff0000">page.10.1.RO = 1</FONT>
+<FONT COLOR="#ff0000">page.10.1.RO {</FONT>
+<FONT COLOR="#ff0000">  10.emboss.offset = 2,2</FONT>
+<FONT COLOR="#ff0000">}</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1f20416a.png" NAME="Grafik104" ALIGN=LEFT WIDTH=514 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Advanced Example (GMENU)</H4>
+<P CLASS="western">Put this in the Constants-field:</P>
+<PRE CLASS="western">buttonH = 25
+buttonColor = #ccccff</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Put this in the Setup-field:</P>
+<PRE CLASS="western">temp.topmenuText = TEXT
+temp.topmenuText {
+  text.field = title
+  offset = 10,17
+  fontFile = fileadmin/fonts/arial_bold.ttf
+  fontSize = 15
+  niceText = 1
+}
+
+temp.topmenu = HMENU
+temp.topmenu.1 = GMENU
+temp.topmenu.1.target = _top
+temp.topmenu.1.accessKey = 1
+temp.topmenu.1.NO {
+  XY = [100.w]+22, {$buttonH}
+  backColor = {$buttonColor}
+  10 = IMAGE
+  10.file = GIFBUILDER
+  10.file {
+    XY = 6,30
+    backColor = {$buttonColor} : *0.5
+    100 = SCALE
+    100.width = 6
+    100.height = {$buttonH}
+  }
+  10.mask = GIFBUILDER
+  10.mask {
+    XY = 6,30
+    10 = IMAGE 
+    10.file = media/buttons/maskpart1.tif
+    100 = SCALE
+    100.width = 6
+    100.height = {$buttonH}
+  }
+  20 = IMAGE
+  20.file = GIFBUILDER
+  20.align = r
+  20.file {
+    XY = 6,30
+    backColor = {$buttonColor} : *0.5
+    100 = SCALE
+    100.width = 6
+    100.height = {$buttonH}
+  }
+  20.mask = GIFBUILDER
+  20.mask {
+    XY = 6,30
+    10 = IMAGE 
+    10.file = media/buttons/maskpart2.tif
+    100 = SCALE
+    100.width = 6
+    100.height = {$buttonH}
+  }
+  30 = IMAGE
+  30.file = GIFBUILDER
+  30.offset = 6,0
+  30.file {
+    XY = [100.w]+10,{$buttonH}
+    backColor = {$buttonColor} : *0.5
+    100 &lt; temp.topmenuText
+    100.hide = 1
+  }
+  30.mask = GIFBUILDER
+  30.mask {
+    XY = [40.w], [40.h]
+    40 = IMAGE
+    40.file = media/buttons/maskpart3.tif
+    60 = SCALE
+    60.width = [100.w]+10
+    60.height = {$buttonH}
+    100 &lt; temp.topmenuText
+    100.hide = 1
+  }
+
+  100 &lt; temp.topmenuText
+}
+temp.topmenu.1.RO &lt; temp.topmenu.1.NO
+temp.topmenu.1.RO=1
+temp.topmenu.1.RO.100.fontColor = white
+
+page.10 &lt; temp.topmenu</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal">Result:</P>
+<P CLASS="western" STYLE="font-weight: normal"><BR><BR>
+</P>
+<P CLASS="western" STYLE="font-weight: normal"><IMG SRC="6_html_5080dbf2.png" NAME="Grafik113" ALIGN=LEFT WIDTH=611 HEIGHT=106 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU/2)</H4>
+<PRE CLASS="western">page.10 = HMENU
+page.10.1 = GMENU
+page.10.1.NO {
+  XY = [10.w]+20,20
+  backColor = olive
+  
+<FONT COLOR="#ff0000">  4 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  4.file = media/buttons/middle.gif</FONT>
+<FONT COLOR="#ff0000">  4.tile = 10</FONT>
+
+<FONT COLOR="#ff0000">  5 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  5.file = media/buttons/left.gif</FONT>
+
+<FONT COLOR="#ff0000">  6 = IMAGE</FONT>
+<FONT COLOR="#ff0000">  6.file = media/buttons/right.gif</FONT>
+<FONT COLOR="#ff0000">  6.align = r</FONT>
+
+  10 = TEXT
+  10.text.field = title
+  10.offset = 0,13
+  10.align = center
+  10.niceText = 1
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_1f20416a.png" NAME="Grafik106" ALIGN=LEFT WIDTH=514 HEIGHT=91 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<H4 CLASS="western">Challenge (GMENU_LAYERS/1)</H4>
+<PRE CLASS="western">page.includeLibs.gmenu_layers = media/scripts/gmenu_layers.php
+page.10 = HMENU
+page.10.1 = GMENU_LAYERS
+page.10.1 {
+  layerStyle = position:absolute;left:0px;top:30px;width:10px;VISIBILITY:hidden; 
+  xPosOffset =-10
+  lockPosition = x
+  expAll=1
+  NO {
+    backColor = #cccccc
+    XY = [10.w]+10, 14
+    10 = TEXT
+    10.text.field = title
+    10.offset = 5,10
+  }
+}
+page.10.2 = GMENU
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+<FONT COLOR="#ff0000">  backColor = |*| #99cccc || #99cccc : *1.2 |*|</FONT>
+<FONT COLOR="#ff0000">  XY = 120, 20</FONT>
+  10 = TEXT
+  10.text.field = title
+  10.offset = 5<FONT COLOR="#ff0000">,13</FONT>
+ <FONT COLOR="#ff0000"> 10.niceText = 1</FONT>
+
+<FONT COLOR="#ff0000">  20 = BOX</FONT>
+<FONT COLOR="#ff0000">  20.dimensions = 0,0,2,20</FONT>
+<FONT COLOR="#ff0000">  20.color = #660000</FONT>
+
+<FONT COLOR="#ff0000">  21 &lt; .20</FONT>
+<FONT COLOR="#ff0000">  21.align = r</FONT>
+
+<FONT COLOR="#ff0000">  22 = BOX ||</FONT>
+<FONT COLOR="#ff0000">  22.dimensions = 0,0,120,2</FONT>
+<FONT COLOR="#ff0000">  22.color = #660000</FONT>
+
+<FONT COLOR="#ff0000">  23 = |*||*|    || BOX</FONT>
+<FONT COLOR="#ff0000">  23.dimensions = 0,0,120,2</FONT>
+<FONT COLOR="#ff0000">  23.color = #660000</FONT>
+<FONT COLOR="#ff0000">  23.align = ,b</FONT>
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m745202d9.png" NAME="Grafik118" ALIGN=LEFT WIDTH=474 HEIGHT=183 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western">Comments: The GIFBUILDER objects 22 and 23 are
+enabled by optionSplit. In the case of &quot;22&quot; optionSplit
+assigns &quot;BOX&quot; as value to &quot;22&quot; only for the first
+item in the menu. In the case of &quot;23&quot; optionSplit assigns
+&quot;BOX&quot; as value to &quot;23&quot; only for the last item.
+Refer to the optionSplit examples in TSref.</P>
+<H4 CLASS="western">Challenge (GMENU_LAYERS/2)</H4>
+<PRE CLASS="western">page.includeLibs.gmenu_layers = media/scripts/gmenu_layers.php
+page.10 = HMENU
+page.10.1 = GMENU_LAYERS
+page.10.1 {
+  layerStyle = position:absolute;left:<FONT COLOR="#ff0000">120px</FONT>;top:30px;width:10px;VISIBILITY:hidden; 
+<FONT COLOR="#ff0000">  yPosOffset =-30</FONT>
+<FONT COLOR="#ff0000">  lockPosition = y</FONT>
+  expAll=1
+  NO {
+<FONT COLOR="#ff0000">    wrap = |&lt;BR&gt;</FONT>
+<FONT COLOR="#ff0000">    backColor =  |*| #ff6600 || #ff6600 : -30 |*|</FONT>
+<FONT COLOR="#ff0000">    XY = 130, 15</FONT>
+    10 = TEXT
+    10.text.field = title
+<FONT COLOR="#ff0000">    10.text.case = upper</FONT>
+    10.offset = 5,10
+<FONT COLOR="#ff0000">    10.niceText = 1</FONT>
+<FONT COLOR="#ff0000">    10.fontFace = t3lib/fonts/verdana.ttf</FONT>
+<FONT COLOR="#ff0000">    10.fontSize = 8</FONT>
+<FONT COLOR="#ff0000">    10.spacing = 2</FONT>
+
+<FONT COLOR="#ff0000">    20 &lt; .10</FONT>
+  }
+<FONT COLOR="#ff0000">  RO &lt; .NO</FONT>
+<FONT COLOR="#ff0000">  RO=1</FONT>
+<FONT COLOR="#ff0000">  RO.backColor = #ff9900</FONT>
+}
+page.10.2 = GMENU
+page.10.2.wrap = |&lt;BR&gt;
+page.10.2.NO {
+  backColor = |*| #99cccc || #99cccc : *1.2 |*|
+  XY = 120, 20
+  10 = TEXT
+  10.text.field = title
+  10.offset = 5,13
+  10.niceText = 1
+
+  20 = BOX
+  20.dimensions = 0,0,2,20
+  20.color = #660000
+
+  21 &lt; .20
+  21.align = r
+
+  22 = BOX ||
+  22.dimensions = 0,0,120,2
+  22.color = #660000
+
+  23 = |*||*|    || BOX
+  23.dimensions = 0,0,120,2
+  23.color = #660000
+  23.align = ,b
+
+}</PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">Result:</P>
+<P CLASS="western"><IMG SRC="6_html_m6e3e303f.png" NAME="Grafik120" ALIGN=LEFT WIDTH=274 HEIGHT=196 BORDER=0><BR CLEAR=LEFT><B>Comments:</B></P>
+<P CLASS="western">The main thing of changing the orientation of the
+GMENU_LAYERS here is to rearrange the parameters for the dynamic
+layers:</P>
+<PRE CLASS="western">  layerStyle = position:absolute;left:<FONT COLOR="#ff0000">120px</FONT>;top:30px;width:10px;VISIBILITY:hidden; 
+<FONT COLOR="#ff0000">  yPosOffset =-30</FONT>
+<FONT COLOR="#ff0000">  lockPosition = y</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">When you implement the menu on a page, you'll need
+to tweek these parameters to fit the page-design you make in order
+for the menu to appear at the correct (absolute) coordinates.</P>
+<P CLASS="western">Among other nifty things in this menu is</P>
+<PRE CLASS="western"><FONT COLOR="#ff0000">    20 &lt; .10</FONT></PRE><P CLASS="western">
+<BR><BR>
+</P>
+<P CLASS="western">This creates a copy of the textobject, because
+without the text tends to be too weak. So this is a workaround for
+the fact that we dont have the bold version of the font at hands.
+This is how it would look without:</P>
+<P CLASS="western"><BR><BR>
+</P>
+<P CLASS="western"><IMG SRC="6_html_25c40941.png" NAME="Grafik121" ALIGN=LEFT WIDTH=176 HEIGHT=105 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P CLASS="western"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P CLASS="footer-western" ALIGN=RIGHT STYLE="margin-top: 0.3cm"><IMG SRC="6_html_m766693be.png" NAME="Graphic1" ALIGN=LEFT WIDTH=102 HEIGHT=32 BORDER=0><SDFIELD TYPE=DOCINFO SUBTYPE=TITLE>TypoScript By Example</SDFIELD>
+	<B>- </B><B><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>32</SDFIELD></B></P>
+	<P CLASS="footer-western" ALIGN=RIGHT><BR><BR>
+	</P>
+</DIV>
+</BODY>
+</HTML>
